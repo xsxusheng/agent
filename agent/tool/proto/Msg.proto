@@ -1,0 +1,65 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;**/
+package proto;
+
+/**option java_package = "com.fiberhome.fums.proto";**/
+/**option java_outer_classname = "Msg";**/
+
+/**
+	上传/下发消息通用结构体
+**/
+message Major 
+{
+	Header header = 1;          //消息头
+	string body   = 2;          //消息体,序列化后的消息
+}
+
+/**
+	消息头
+**/
+message Header
+{
+	string host  = 1;           //主机名，一般为agent的主机名
+	string ip    = 2;           //主机ip，一般为agent的ip地址
+	int32  seq   = 3;           //序列号，全局唯一id，分析查找问题用
+	int64  timestamp = 4;       //时间戳
+	enum DIRECTION
+	{
+		AGENTOFUMS    = 0;   //agent发往FUMS的消息
+		FUMSTOAGEN    = 1;   //FUMS发往agent的消息
+        OTHER         = 2;	 //保留
+	}
+	
+	DIRECTION direction = 5;   //消息方向，比如agent->FUNS，还是FUMS->agent
+	
+	enum DataType
+	{
+		/*****FUNS<-AGENT********/
+		PERF        = 0;        
+		EVENT       = 1;
+		APP         = 2;
+		ACS_EVENT   = 3;
+		STB_INSPECT = 4;
+		RESPONSE    = 5;
+		UPHOSTCFG   = 6;
+		
+		/********FUNS<->AGENT******/
+		ALARM       = 100;
+		
+		/*****FUNS->AGENT********/
+		
+		CONFIG       = 200;
+		CTRL_APP     = 201;
+		SOFTWARE     = 202;
+		REALQUERYHOSTCFG = 203;
+		HASWITCH     = 204;
+		
+		
+		/********心跳***********/
+		
+		HEART       = 300;
+	}
+	DataType  type     = 6;  //消息类型
+	string    rabbitmqInfo = 7;  //rabbitmq信息
+}
+

@@ -1,0 +1,119 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;*/
+package proto;
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "Perf";
+import "CommonDefine.proto";
+message PerfData
+{
+	enum PERFDATATYPE
+	{
+		HOST_TYPE    = 0;
+		PROCESS_TYPE = 1;
+		DISK_TYPE    = 2;
+		NIC_TYPE     = 3;
+		APP_PERF     = 4;
+	}
+	PERFDATATYPE type = 1;
+	string       data = 2;
+}
+
+message Hostdata
+{
+	string  queryTime           = 1;
+	double  cpuAveUsage         = 2;
+	double  cpuMaxUsge          = 3;
+	int32   maxContiueTime      = 4;  
+	double  memUsageAve         = 5;
+	int64   rxFlowAve           = 6;
+	int64   txFlowAve           = 7;
+	int32   tcpLinkNum          = 8;
+	int32   tcpInboundTotal     = 9;
+	int32   tcpOutboundTotal    = 10;
+	int32   memTotal            = 11;
+	int32   diskUsage           = 12;
+	double  memMaxUsage         = 13;
+	int32   diskTotal           = 14;
+}
+
+message ProcessData
+{
+	repeated SingleProcessPerfData   perfdata   = 1;
+}
+
+message SingleProcessPerfData
+{
+	int64   PID              = 1;
+	string  COMMAND          = 2;
+	float   CPU              = 3;
+	float   MEM              = 4;  
+	int64   SIZE             = 5;
+	int64   VIRT             = 6;
+	int64   RES              = 7;
+	int64   SHR              = 8;
+	string  TIME             = 9;
+	string  STATE            = 10;
+	float   CPUMAX           = 11;
+	float   MEMMAX           = 12;
+}
+
+message NicData
+{
+	repeated SingleNicPerfData   perfdata   = 1;
+}
+
+message DiskData
+{
+	repeated SingleDiskPerfData   perfdata   = 1;
+}
+
+message SingleDiskPerfData
+{
+	string  dev              = 1;
+	float   tps              = 2;
+	float   rd_sec           = 3;
+	float   wr_sec           = 4;  
+	float   avgrq_sz         = 5;
+	float   avgqu_sz         = 6;
+	float   await            = 7;
+	float   svctm            = 8;
+	float   util             = 9;
+}
+
+
+
+
+message AppPerfData
+{
+	repeated SingleAppPerfData   perfdata = 1;
+}
+
+message SingleAppPerfData
+{
+	int32   sequence        = 1;
+	enum APP_TYPE_ENUM
+	{
+		CSD     = 0;
+		LRS     = 1;
+		CSV     = 2;
+		CSP     = 3;
+		CSX     = 4;
+		DRS     = 5;
+	}
+	APP_TYPE_ENUM  appType  = 2; 
+	EnumDefineData.AppTypeEnum appTypeCode = 3;
+	string   createTime     = 4;
+	double   cpuRatio       = 5;
+	int32    usedMemory     = 6;   //KB
+	double   usedSysDisk    = 7;   //GB
+	double   usedDataDisk   = 8;   //GB
+	double   totalDataDisk  = 9;  //GB
+	double   cacheIn        = 10;  //KB
+	double   cacheOut       = 11;  //KB
+	double   curconn        = 12;
+	double   averagereq     = 13;
+	double   DNSRequests    = 14;
+	double   DNSResponse    = 15;
+	double   httpRequests   = 16;
+	double   httpRedirects  = 17;
+}

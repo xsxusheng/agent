@@ -1,0 +1,29 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;**/
+package proto;
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "AcsEvent";
+import "CommonDefine.proto";
+
+message AcsEventData
+{
+	string   messageType   = 1;
+	string   probableCause = 2;
+	string   uniqueNo      = 3;
+	string   stb           = 4;
+	string   createTime    = 5;
+	string   entityInstance = 6;
+	EnumDefineData.AppTypeEnum appTypeCode = 7;
+	string   messageFormat  = 8;
+	string   message       = 9;
+	string   desp          = 10;	
+
+	enum TmCtrlTypeEnum
+	{
+		STB_HEARTBIT  = 0;
+		CTRL_TM_RST   = 1;
+	}
+	
+	TmCtrlTypeEnum  ctrlType = 11;  	
+}
+

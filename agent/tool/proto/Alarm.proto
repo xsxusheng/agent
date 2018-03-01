@@ -1,0 +1,65 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;*/
+package proto;
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "AlarmProto";
+import "CommonDefine.proto";
+
+message AlarmData
+{
+	enum ALARM_OP_TYPE
+	{
+		ADD    = 0;
+		UPDATE = 1;
+		DEL    = 2;
+	}
+	ALARM_OP_TYPE  op_type           = 1;
+	int32    alarmSeqNo              = 2;
+	string   alarmProbableCause      = 3;
+	int32    alarmProbableCauseCode  = 4;
+	string   alarmSpecificReason     = 5;
+	int32    alarmSpecificReasonCode = 6;
+	string   alarmEntityInstance     = 7;
+	EnumDefineData.AppTypeEnum appTypeCode = 8;
+	string   alarmOccurTime          = 9;
+	string   alarmMessage            = 10;
+	enum AlarmEntityTypeEnum
+	{
+		OTHER     =  0;
+		HOST      =  1;
+		NE        =  2;
+		APP       =  3;
+		FUMS      =  4;		
+	}
+	AlarmEntityTypeEnum   alarmEntityType    = 11;
+	string                alarmEntityTypeStr = 12;
+	
+	enum  AlarmSeverityEnum
+	{
+		NORMAL        = 0;
+		CRITICAL      = 1;
+		MAJOR         = 2;
+		MINOR         = 3;
+		WARNING       = 4;
+		CLEARED       = 5;
+	}
+	AlarmSeverityEnum   alarmSeverity       = 13;
+	string              alarmSeverityStr    = 14;
+	
+	enum  AlarmTypeEnum
+	{
+		COMMUNICATION        = 0;      
+		DEVICE               = 1;
+		PROCESSINGFAILURE    = 2;
+		QOS                  = 3;
+		ENVIRONMENT          = 4;
+	}
+	AlarmTypeEnum  alarmType      = 15;
+	string         alarmTypeStr   = 16;
+}
+
+message AlarmResponse
+{	
+	CommonResponse  res     = 1;
+}
+

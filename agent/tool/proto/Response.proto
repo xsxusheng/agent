@@ -1,0 +1,24 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;**/
+package proto;
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "Response";
+
+import "Msg.proto";
+
+message ResponseData
+{
+	int64             uniqueId = 1;  
+	Header.DataType   resType  = 2;
+	string            data     = 3;
+}
+
+
+message NtpDateResponse
+{
+	string  offset      = 1;
+}
+
+
+
+

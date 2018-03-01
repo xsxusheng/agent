@@ -1,0 +1,125 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;*/
+package proto;
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "RealQueryHostStatus";
+import "CommonDefine.proto";
+
+message RealQueryHostStatusData
+{
+	int64   uniqueId               = 1;
+	enum HostCfgTypeEnum
+	{
+		SYSTEM         = 0;
+		DISKSTATUS     = 1;
+		DISKCFG        = 2;	
+		DISKRAID       = 3;
+		DISKHEALTH     = 4;
+		NIC            = 5;
+		PROCESS        = 6;		
+	}
+	HostCfgTypeEnum  queryCfgType  = 2;
+}
+
+
+message RealQueryHostStatusResponse
+{
+	RealQueryHostStatusData.HostCfgTypeEnum    queryCfgType  = 1;
+	string      data     =  2;
+}
+
+message RealSystemInfo
+{
+	string    sysDescr       = 1;
+	double    sysUptime      = 2;
+	int32     cpuFrequency   = 3;
+	int32     cpuNumbers     = 4;
+	string    loadAverage    = 5;
+	double    cpuUsage       = 6;
+	int32     memorySize     = 7;
+	double    memoryUsage    = 8;
+	int32     diskTotalSize  = 9;
+	int32     mainFSDiskSize = 10;
+	int32     mainFSAvailableSize = 11;
+	int32     mainFSDiskUseRatio  = 12;
+	string    osName              = 13;
+	string    osVersion           = 14;
+	string    osVender            = 15;
+	int32     tcpNum              = 16;
+	int32     tcpTotalInbound     = 17;
+	int32     tcpTotalOutbound    = 18;
+	string    cpuMonokaryonUsage  = 19;
+	double    swapUsage           = 20;	
+	string    agentVersion        = 21;
+}
+
+message RealDiskStatusInfo
+{
+	repeated RealSingleDiskStatusInfo singleDiskStatus = 1;
+}
+
+message RealSingleDiskStatusInfo
+{
+	string     diskName         = 1;
+	string     diskServiceTime  = 2;
+	string     diskQueue        = 3;
+	string     diskReadBytes    = 4;
+	string     diskReads        = 5;
+	string     diskWriteBytes   = 6;
+	string     diskWrites       = 7;
+	string     diskTotal        = 8;
+	string     diskAvail        = 9;
+	string     diskUsage        = 10;
+}
+
+message RealDiskCfgInfo
+{
+	repeated RealSingleDiskCfgInfo  singleDiskInfo   = 1;
+}
+
+message RealSingleDiskCfgInfo
+{
+	int32      diskIndex        = 1;
+	string     diskName         = 2;
+	string     diskSize         = 3;
+	string     diskSeqNo        = 4;
+}
+
+
+message RealDiskRaidCfgInfo
+{
+	string       personalities      = 1;
+	string       unusedDevices      = 2;
+}
+
+message RealDiskHealthInfo
+{
+	repeated RealSingleDiskHealthInfo singleDiskHealth = 1;
+}
+message RealSingleDiskHealthInfo
+{
+	string  diskName        = 1;
+	string  smartCtlInfo    = 2;
+}
+
+
+message RealNicStatusInfo
+{
+	repeated SingleNicPerfData singleNicInfo = 1;
+}
+
+
+message RealProcessStatusInfo
+{
+	repeated RealSingleProcessStatusInfo singleProcessInfo = 1;
+}
+message RealSingleProcessStatusInfo
+{
+	int32    processId        = 1;
+	string   processAppName   = 2;
+	int64    processPid       = 3;
+	string   processState     = 4;
+	string   processCpuUsage  = 5;
+	string   processMemory   = 6;
+}
+

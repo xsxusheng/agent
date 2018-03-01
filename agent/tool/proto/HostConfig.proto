@@ -1,0 +1,19 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;*/
+package proto;
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "HostConfig";
+import "RealQueryHostStatus.proto";
+
+message HostConfigData
+{
+	repeated HostCfgSingleItem cfgItem = 1;
+}
+
+message HostCfgSingleItem
+{
+	RealQueryHostStatusData.HostCfgTypeEnum  upCfgType = 1;
+	string      data           =  2;
+}
+
+

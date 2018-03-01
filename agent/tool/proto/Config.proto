@@ -1,0 +1,41 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;*/
+package proto;
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "Config";
+import "CommonDefine.proto";
+
+message ConfigData
+{
+	int64   uniqueId           = 1;
+	int32   configFileNo       = 2;//文件序列号
+	enum  ConfigFileTypeEnum
+	{
+		AGETN     = 0;
+		APPS      = 1;
+		NTP       = 2;
+		FTP       = 3;
+		STS       = 4;
+		FTP_STSC  = 5;
+		EPG       = 6;
+		COMMON    = 7;
+		DOWNLOAD  = 8;
+	}
+	ConfigFileTypeEnum  configFileType     = 3;
+	string  configFileName     = 4;
+	string  configFileContent  = 5;
+	string  updateNotifyScript = 6;          //通知网元更新所使用配置文件的脚本
+	string  fileSavePath       = 7;
+	string  viewConfScript     = 8;         //查询当前所使用配置文件的脚本
+	string  serverPath         = 9;         //采用下载文件方式时，文件在服务器上保存路径
+}
+
+
+message ConfigUpdateResponse
+{
+	int64   uniqueId                 = 1;      //废弃
+	string  fileName                 = 2;	
+	CommonResponse.ResStatusEnum  status    = 3;
+	string                reason            = 4;
+	ConfigData.ConfigFileTypeEnum    neType = 5;
+}

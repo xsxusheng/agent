@@ -1,0 +1,108 @@
+syntax = "proto3";
+/**package com.fiberhome.fums.proto;**/
+package proto;
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "CommonDefine";
+
+message CommonResponse
+{
+	string responseMsg        = 1;
+	int32  responseCode       = 2;
+	
+	enum ResStatusEnum
+	{
+		SUCCESS     = 0;
+		FAILED      = 1;
+	}
+	
+	ResStatusEnum status     = 3;
+}
+
+message SingleNicPerfData
+{
+	string  nicName              = 1;
+	string  nicIpAddress         = 2;
+	string  nicSpeed             = 3;
+	int64   nicRxBytes           = 4;  
+	int64   nicTxBytes           = 5;
+	int64   nicRxPackets         = 6;
+	int64   nicRxDropped         = 7;
+	int64   nicRxErrors          = 8;
+	int64   nicRxFrame           = 9;
+	int64   nicRxOverruns        = 10;
+	int64   nicTxPackets         = 11;
+	int64   nicTxDropped         = 12;
+	int64   nicTxErrors          = 13;
+	int64   nicTxOverruns        = 14;
+	int32   nicOutputBandWidth   = 15;
+	int32   nicInputBandWidth    = 16;
+	int64   nicRxBytesMax        = 17;
+	int64   nicTxBytesMax        = 18;
+	int64   nicRxSpeed           = 19;  //b/s
+	int64   nicTxSpeed           = 20;  //b/s
+	int64   nicRxMaxSpeed        = 21;  //b/s
+	int64   nicTxMaxSpeed        = 22;  //b/s
+}
+
+message EnumDefineData
+{
+	enum   AppTypeEnum
+	{
+		GSLB      = 0;
+		SS        = 1;
+		EPG       = 2;
+		EPG_DB    = 3;
+		EPG_CACHE = 4;
+		EPG_WEB   = 5;
+		EPG_LB    = 6;
+		EPG_HA    = 7;
+		EPG_LOG   = 8;
+		EPG_RSYNC = 9;
+		ACS_WEB   = 10;
+		ACS_HA    = 11;
+		ACS_LB    = 12;
+		ACS       = 13;
+		ACS_ALL   = 14;
+		AAA       = 15;
+		AAA_WEB   = 16;
+		AAA_HA    = 17;
+		AAA_LB    = 18;
+		AAA_ALL   = 19;
+		VODLD     = 20;
+		TVLD      = 21;
+		TVLD_TVLD = 22;
+		TVLD_TLCC = 23;
+		VCC       = 24;
+		MW        = 25;
+		MW_MA     = 26;
+		MW_OSS    = 27;
+		MW_JBOSS  = 28;
+		MW_HA     = 29;
+		DB        = 30;
+		DB_HA     = 31;
+		PC_EPG    = 32;
+		ADS       = 33;
+		RRS       = 34;
+		RRS_HA    = 35;
+		CMM       = 36;
+		CMMD2     = 37;
+		TMS       = 38;
+		CMS       = 39;
+		ESS       = 40;
+		OSS       = 41;
+		TCMS      = 42;
+		TVMS      = 43;
+		NGINX     = 44;
+		EPG4K     = 45;
+		TVGW      = 46;
+		CSD       = 47;
+		LRS       = 48;
+		LCM       = 49;
+		CSP       = 50;
+		CSV       = 51;
+		DRS       = 52;
+		CSX       = 53;
+		CSJ       = 54;
+		AGENT     = 55;
+	}
+}
