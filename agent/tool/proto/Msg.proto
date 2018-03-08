@@ -1,9 +1,8 @@
 syntax = "proto3";
-/**package com.fiberhome.fums.proto;**/
-package proto;
+package com.fiberhome.fums.proto;
 
-/**option java_package = "com.fiberhome.fums.proto";**/
-/**option java_outer_classname = "Msg";**/
+option java_package = "com.fiberhome.fums.proto";   
+option java_outer_classname = "Msg";
 
 /**
 	上传/下发消息通用结构体

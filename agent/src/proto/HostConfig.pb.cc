@@ -17,6 +17,9 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class HostConfigDataDefaultTypeInternal {
 public:
@@ -104,7 +107,7 @@ void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
-  ::proto::protobuf_RealQueryHostStatus_2eproto::InitDefaults();
+  ::com::fiberhome::fums::proto::protobuf_RealQueryHostStatus_2eproto::InitDefaults();
   _HostConfigData_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_HostConfigData_default_instance_);_HostCfgSingleItem_default_instance_._instance.DefaultConstruct();
@@ -119,19 +122,20 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\020HostConfig.proto\022\005proto\032\031RealQueryHost"
-      "Status.proto\";\n\016HostConfigData\022)\n\007cfgIte"
-      "m\030\001 \003(\0132\030.proto.HostCfgSingleItem\"d\n\021Hos"
-      "tCfgSingleItem\022A\n\tupCfgType\030\001 \001(\0162..prot"
-      "o.RealQueryHostStatusData.HostCfgTypeEnu"
-      "m\022\014\n\004data\030\002 \001(\tB&\n\030com.fiberhome.fums.pr"
-      "otoB\nHostConfigb\006proto3"
+      "\n\020HostConfig.proto\022\030com.fiberhome.fums.p"
+      "roto\032\031RealQueryHostStatus.proto\"N\n\016HostC"
+      "onfigData\022<\n\007cfgItem\030\001 \003(\0132+.com.fiberho"
+      "me.fums.proto.HostCfgSingleItem\"w\n\021HostC"
+      "fgSingleItem\022T\n\tupCfgType\030\001 \001(\0162A.com.fi"
+      "berhome.fums.proto.RealQueryHostStatusDa"
+      "ta.HostCfgTypeEnum\022\014\n\004data\030\002 \001(\tB&\n\030com."
+      "fiberhome.fums.protoB\nHostConfigb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 263);
+      descriptor, 320);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "HostConfig.proto", &protobuf_RegisterTypes);
-  ::proto::protobuf_RealQueryHostStatus_2eproto::AddDescriptors();
+  ::com::fiberhome::fums::proto::protobuf_RealQueryHostStatus_2eproto::AddDescriptors();
 }
 } // anonymous namespace
 
@@ -161,7 +165,7 @@ HostConfigData::HostConfigData()
     protobuf_HostConfig_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.HostConfigData)
+  // @@protoc_insertion_point(constructor:com.fiberhome.fums.proto.HostConfigData)
 }
 HostConfigData::HostConfigData(const HostConfigData& from)
   : ::google::protobuf::Message(),
@@ -169,7 +173,7 @@ HostConfigData::HostConfigData(const HostConfigData& from)
       cfgitem_(from.cfgitem_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:proto.HostConfigData)
+  // @@protoc_insertion_point(copy_constructor:com.fiberhome.fums.proto.HostConfigData)
 }
 
 void HostConfigData::SharedCtor() {
@@ -177,7 +181,7 @@ void HostConfigData::SharedCtor() {
 }
 
 HostConfigData::~HostConfigData() {
-  // @@protoc_insertion_point(destructor:proto.HostConfigData)
+  // @@protoc_insertion_point(destructor:com.fiberhome.fums.proto.HostConfigData)
   SharedDtor();
 }
 
@@ -208,7 +212,7 @@ HostConfigData* HostConfigData::New(::google::protobuf::Arena* arena) const {
 }
 
 void HostConfigData::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto.HostConfigData)
+// @@protoc_insertion_point(message_clear_start:com.fiberhome.fums.proto.HostConfigData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -221,13 +225,13 @@ bool HostConfigData::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.HostConfigData)
+  // @@protoc_insertion_point(parse_start:com.fiberhome.fums.proto.HostConfigData)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .proto.HostCfgSingleItem cfgItem = 1;
+      // repeated .com.fiberhome.fums.proto.HostCfgSingleItem cfgItem = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
@@ -251,21 +255,21 @@ bool HostConfigData::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.HostConfigData)
+  // @@protoc_insertion_point(parse_success:com.fiberhome.fums.proto.HostConfigData)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.HostConfigData)
+  // @@protoc_insertion_point(parse_failure:com.fiberhome.fums.proto.HostConfigData)
   return false;
 #undef DO_
 }
 
 void HostConfigData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.HostConfigData)
+  // @@protoc_insertion_point(serialize_start:com.fiberhome.fums.proto.HostConfigData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .proto.HostCfgSingleItem cfgItem = 1;
+  // repeated .com.fiberhome.fums.proto.HostCfgSingleItem cfgItem = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->cfgitem_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -276,17 +280,17 @@ void HostConfigData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.HostConfigData)
+  // @@protoc_insertion_point(serialize_end:com.fiberhome.fums.proto.HostConfigData)
 }
 
 ::google::protobuf::uint8* HostConfigData::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:proto.HostConfigData)
+  // @@protoc_insertion_point(serialize_to_array_start:com.fiberhome.fums.proto.HostConfigData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .proto.HostCfgSingleItem cfgItem = 1;
+  // repeated .com.fiberhome.fums.proto.HostCfgSingleItem cfgItem = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->cfgitem_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -298,12 +302,12 @@ void HostConfigData::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.HostConfigData)
+  // @@protoc_insertion_point(serialize_to_array_end:com.fiberhome.fums.proto.HostConfigData)
   return target;
 }
 
 size_t HostConfigData::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto.HostConfigData)
+// @@protoc_insertion_point(message_byte_size_start:com.fiberhome.fums.proto.HostConfigData)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -311,7 +315,7 @@ size_t HostConfigData::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .proto.HostCfgSingleItem cfgItem = 1;
+  // repeated .com.fiberhome.fums.proto.HostCfgSingleItem cfgItem = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->cfgitem_size());
     total_size += 1UL * count;
@@ -330,22 +334,22 @@ size_t HostConfigData::ByteSizeLong() const {
 }
 
 void HostConfigData::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:proto.HostConfigData)
+// @@protoc_insertion_point(generalized_merge_from_start:com.fiberhome.fums.proto.HostConfigData)
   GOOGLE_DCHECK_NE(&from, this);
   const HostConfigData* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const HostConfigData>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.HostConfigData)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.fiberhome.fums.proto.HostConfigData)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.HostConfigData)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.fiberhome.fums.proto.HostConfigData)
     MergeFrom(*source);
   }
 }
 
 void HostConfigData::MergeFrom(const HostConfigData& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto.HostConfigData)
+// @@protoc_insertion_point(class_specific_merge_from_start:com.fiberhome.fums.proto.HostConfigData)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -355,14 +359,14 @@ void HostConfigData::MergeFrom(const HostConfigData& from) {
 }
 
 void HostConfigData::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:proto.HostConfigData)
+// @@protoc_insertion_point(generalized_copy_from_start:com.fiberhome.fums.proto.HostConfigData)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void HostConfigData::CopyFrom(const HostConfigData& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto.HostConfigData)
+// @@protoc_insertion_point(class_specific_copy_from_start:com.fiberhome.fums.proto.HostConfigData)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -391,33 +395,33 @@ void HostConfigData::InternalSwap(HostConfigData* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // HostConfigData
 
-// repeated .proto.HostCfgSingleItem cfgItem = 1;
+// repeated .com.fiberhome.fums.proto.HostCfgSingleItem cfgItem = 1;
 int HostConfigData::cfgitem_size() const {
   return cfgitem_.size();
 }
 void HostConfigData::clear_cfgitem() {
   cfgitem_.Clear();
 }
-const ::proto::HostCfgSingleItem& HostConfigData::cfgitem(int index) const {
-  // @@protoc_insertion_point(field_get:proto.HostConfigData.cfgItem)
+const ::com::fiberhome::fums::proto::HostCfgSingleItem& HostConfigData::cfgitem(int index) const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HostConfigData.cfgItem)
   return cfgitem_.Get(index);
 }
-::proto::HostCfgSingleItem* HostConfigData::mutable_cfgitem(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.HostConfigData.cfgItem)
+::com::fiberhome::fums::proto::HostCfgSingleItem* HostConfigData::mutable_cfgitem(int index) {
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.HostConfigData.cfgItem)
   return cfgitem_.Mutable(index);
 }
-::proto::HostCfgSingleItem* HostConfigData::add_cfgitem() {
-  // @@protoc_insertion_point(field_add:proto.HostConfigData.cfgItem)
+::com::fiberhome::fums::proto::HostCfgSingleItem* HostConfigData::add_cfgitem() {
+  // @@protoc_insertion_point(field_add:com.fiberhome.fums.proto.HostConfigData.cfgItem)
   return cfgitem_.Add();
 }
-::google::protobuf::RepeatedPtrField< ::proto::HostCfgSingleItem >*
+::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::HostCfgSingleItem >*
 HostConfigData::mutable_cfgitem() {
-  // @@protoc_insertion_point(field_mutable_list:proto.HostConfigData.cfgItem)
+  // @@protoc_insertion_point(field_mutable_list:com.fiberhome.fums.proto.HostConfigData.cfgItem)
   return &cfgitem_;
 }
-const ::google::protobuf::RepeatedPtrField< ::proto::HostCfgSingleItem >&
+const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::HostCfgSingleItem >&
 HostConfigData::cfgitem() const {
-  // @@protoc_insertion_point(field_list:proto.HostConfigData.cfgItem)
+  // @@protoc_insertion_point(field_list:com.fiberhome.fums.proto.HostConfigData.cfgItem)
   return cfgitem_;
 }
 
@@ -436,7 +440,7 @@ HostCfgSingleItem::HostCfgSingleItem()
     protobuf_HostConfig_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(constructor:com.fiberhome.fums.proto.HostCfgSingleItem)
 }
 HostCfgSingleItem::HostCfgSingleItem(const HostCfgSingleItem& from)
   : ::google::protobuf::Message(),
@@ -448,7 +452,7 @@ HostCfgSingleItem::HostCfgSingleItem(const HostCfgSingleItem& from)
     data_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.data_);
   }
   upcfgtype_ = from.upcfgtype_;
-  // @@protoc_insertion_point(copy_constructor:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(copy_constructor:com.fiberhome.fums.proto.HostCfgSingleItem)
 }
 
 void HostCfgSingleItem::SharedCtor() {
@@ -458,7 +462,7 @@ void HostCfgSingleItem::SharedCtor() {
 }
 
 HostCfgSingleItem::~HostCfgSingleItem() {
-  // @@protoc_insertion_point(destructor:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(destructor:com.fiberhome.fums.proto.HostCfgSingleItem)
   SharedDtor();
 }
 
@@ -490,7 +494,7 @@ HostCfgSingleItem* HostCfgSingleItem::New(::google::protobuf::Arena* arena) cons
 }
 
 void HostCfgSingleItem::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto.HostCfgSingleItem)
+// @@protoc_insertion_point(message_clear_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -504,13 +508,13 @@ bool HostCfgSingleItem::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(parse_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
+      // .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
@@ -518,7 +522,7 @@ bool HostCfgSingleItem::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_upcfgtype(static_cast< ::proto::RealQueryHostStatusData_HostCfgTypeEnum >(value));
+          set_upcfgtype(static_cast< ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum >(value));
         } else {
           goto handle_unusual;
         }
@@ -534,7 +538,7 @@ bool HostCfgSingleItem::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->data().data(), static_cast<int>(this->data().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "proto.HostCfgSingleItem.data"));
+            "com.fiberhome.fums.proto.HostCfgSingleItem.data"));
         } else {
           goto handle_unusual;
         }
@@ -553,21 +557,21 @@ bool HostCfgSingleItem::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(parse_success:com.fiberhome.fums.proto.HostCfgSingleItem)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(parse_failure:com.fiberhome.fums.proto.HostCfgSingleItem)
   return false;
 #undef DO_
 }
 
 void HostCfgSingleItem::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(serialize_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
+  // .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
   if (this->upcfgtype() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->upcfgtype(), output);
@@ -578,7 +582,7 @@ void HostCfgSingleItem::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->data().data(), static_cast<int>(this->data().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "proto.HostCfgSingleItem.data");
+      "com.fiberhome.fums.proto.HostCfgSingleItem.data");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->data(), output);
   }
@@ -587,17 +591,17 @@ void HostCfgSingleItem::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(serialize_end:com.fiberhome.fums.proto.HostCfgSingleItem)
 }
 
 ::google::protobuf::uint8* HostCfgSingleItem::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(serialize_to_array_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
+  // .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
   if (this->upcfgtype() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->upcfgtype(), target);
@@ -608,7 +612,7 @@ void HostCfgSingleItem::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->data().data(), static_cast<int>(this->data().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "proto.HostCfgSingleItem.data");
+      "com.fiberhome.fums.proto.HostCfgSingleItem.data");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->data(), target);
@@ -618,12 +622,12 @@ void HostCfgSingleItem::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(serialize_to_array_end:com.fiberhome.fums.proto.HostCfgSingleItem)
   return target;
 }
 
 size_t HostCfgSingleItem::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto.HostCfgSingleItem)
+// @@protoc_insertion_point(message_byte_size_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -638,7 +642,7 @@ size_t HostCfgSingleItem::ByteSizeLong() const {
         this->data());
   }
 
-  // .proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
+  // .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
   if (this->upcfgtype() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->upcfgtype());
@@ -652,22 +656,22 @@ size_t HostCfgSingleItem::ByteSizeLong() const {
 }
 
 void HostCfgSingleItem::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:proto.HostCfgSingleItem)
+// @@protoc_insertion_point(generalized_merge_from_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   GOOGLE_DCHECK_NE(&from, this);
   const HostCfgSingleItem* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const HostCfgSingleItem>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.fiberhome.fums.proto.HostCfgSingleItem)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.HostCfgSingleItem)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.fiberhome.fums.proto.HostCfgSingleItem)
     MergeFrom(*source);
   }
 }
 
 void HostCfgSingleItem::MergeFrom(const HostCfgSingleItem& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto.HostCfgSingleItem)
+// @@protoc_insertion_point(class_specific_merge_from_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -683,14 +687,14 @@ void HostCfgSingleItem::MergeFrom(const HostCfgSingleItem& from) {
 }
 
 void HostCfgSingleItem::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:proto.HostCfgSingleItem)
+// @@protoc_insertion_point(generalized_copy_from_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void HostCfgSingleItem::CopyFrom(const HostCfgSingleItem& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto.HostCfgSingleItem)
+// @@protoc_insertion_point(class_specific_copy_from_start:com.fiberhome.fums.proto.HostCfgSingleItem)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -720,18 +724,18 @@ void HostCfgSingleItem::InternalSwap(HostCfgSingleItem* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // HostCfgSingleItem
 
-// .proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
+// .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum upCfgType = 1;
 void HostCfgSingleItem::clear_upcfgtype() {
   upcfgtype_ = 0;
 }
-::proto::RealQueryHostStatusData_HostCfgTypeEnum HostCfgSingleItem::upcfgtype() const {
-  // @@protoc_insertion_point(field_get:proto.HostCfgSingleItem.upCfgType)
-  return static_cast< ::proto::RealQueryHostStatusData_HostCfgTypeEnum >(upcfgtype_);
+::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum HostCfgSingleItem::upcfgtype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HostCfgSingleItem.upCfgType)
+  return static_cast< ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum >(upcfgtype_);
 }
-void HostCfgSingleItem::set_upcfgtype(::proto::RealQueryHostStatusData_HostCfgTypeEnum value) {
+void HostCfgSingleItem::set_upcfgtype(::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum value) {
   
   upcfgtype_ = value;
-  // @@protoc_insertion_point(field_set:proto.HostCfgSingleItem.upCfgType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HostCfgSingleItem.upCfgType)
 }
 
 // string data = 2;
@@ -739,41 +743,41 @@ void HostCfgSingleItem::clear_data() {
   data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 const ::std::string& HostCfgSingleItem::data() const {
-  // @@protoc_insertion_point(field_get:proto.HostCfgSingleItem.data)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HostCfgSingleItem.data)
   return data_.GetNoArena();
 }
 void HostCfgSingleItem::set_data(const ::std::string& value) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.HostCfgSingleItem.data)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HostCfgSingleItem.data)
 }
 #if LANG_CXX11
 void HostCfgSingleItem::set_data(::std::string&& value) {
   
   data_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.HostCfgSingleItem.data)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.HostCfgSingleItem.data)
 }
 #endif
 void HostCfgSingleItem::set_data(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.HostCfgSingleItem.data)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.HostCfgSingleItem.data)
 }
 void HostCfgSingleItem::set_data(const char* value, size_t size) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.HostCfgSingleItem.data)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.HostCfgSingleItem.data)
 }
 ::std::string* HostCfgSingleItem::mutable_data() {
   
-  // @@protoc_insertion_point(field_mutable:proto.HostCfgSingleItem.data)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.HostCfgSingleItem.data)
   return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* HostCfgSingleItem::release_data() {
-  // @@protoc_insertion_point(field_release:proto.HostCfgSingleItem.data)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.HostCfgSingleItem.data)
   
   return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -784,7 +788,7 @@ void HostCfgSingleItem::set_allocated_data(::std::string* data) {
     
   }
   data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
-  // @@protoc_insertion_point(field_set_allocated:proto.HostCfgSingleItem.data)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.HostCfgSingleItem.data)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -792,5 +796,8 @@ void HostCfgSingleItem::set_allocated_data(::std::string* data) {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 // @@protoc_insertion_point(global_scope)

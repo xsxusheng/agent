@@ -32,12 +32,21 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "CommonDefine.pb.h"
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class AppData;
 class AppDataDefaultTypeInternal;
 extern AppDataDefaultTypeInternal _AppData_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_App_2eproto {
@@ -123,7 +132,7 @@ inline bool AppData_AppInstallStatusEnum_Parse(
 }
 // ===================================================================
 
-class AppData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.AppData) */ {
+class AppData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.AppData) */ {
  public:
   AppData();
   virtual ~AppData();
@@ -344,29 +353,29 @@ class AppData : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::std::string* release_apptryinstallingfailedreason();
   void set_allocated_apptryinstallingfailedreason(::std::string* apptryinstallingfailedreason);
 
-  // .proto.AppData.APP_OP_TYPE op_type = 1;
+  // .com.fiberhome.fums.proto.AppData.APP_OP_TYPE op_type = 1;
   void clear_op_type();
   static const int kOpTypeFieldNumber = 1;
-  ::proto::AppData_APP_OP_TYPE op_type() const;
-  void set_op_type(::proto::AppData_APP_OP_TYPE value);
+  ::com::fiberhome::fums::proto::AppData_APP_OP_TYPE op_type() const;
+  void set_op_type(::com::fiberhome::fums::proto::AppData_APP_OP_TYPE value);
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 3;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 3;
   void clear_apptypecode();
   static const int kAppTypeCodeFieldNumber = 3;
-  ::proto::EnumDefineData_AppTypeEnum apptypecode() const;
-  void set_apptypecode(::proto::EnumDefineData_AppTypeEnum value);
+  ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum apptypecode() const;
+  void set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value);
 
-  // .proto.AppData.AppStatusTypeEnum appStatus = 5;
+  // .com.fiberhome.fums.proto.AppData.AppStatusTypeEnum appStatus = 5;
   void clear_appstatus();
   static const int kAppStatusFieldNumber = 5;
-  ::proto::AppData_AppStatusTypeEnum appstatus() const;
-  void set_appstatus(::proto::AppData_AppStatusTypeEnum value);
+  ::com::fiberhome::fums::proto::AppData_AppStatusTypeEnum appstatus() const;
+  void set_appstatus(::com::fiberhome::fums::proto::AppData_AppStatusTypeEnum value);
 
-  // .proto.AppData.AppInstallStatusEnum appTryInstallingStatus = 7;
+  // .com.fiberhome.fums.proto.AppData.AppInstallStatusEnum appTryInstallingStatus = 7;
   void clear_apptryinstallingstatus();
   static const int kAppTryInstallingStatusFieldNumber = 7;
-  ::proto::AppData_AppInstallStatusEnum apptryinstallingstatus() const;
-  void set_apptryinstallingstatus(::proto::AppData_AppInstallStatusEnum value);
+  ::com::fiberhome::fums::proto::AppData_AppInstallStatusEnum apptryinstallingstatus() const;
+  void set_apptryinstallingstatus(::com::fiberhome::fums::proto::AppData_AppInstallStatusEnum value);
 
   // bool isMayStart = 9;
   void clear_ismaystart();
@@ -386,7 +395,7 @@ class AppData : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::int32 appdemonstatus() const;
   void set_appdemonstatus(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:proto.AppData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.AppData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -416,18 +425,18 @@ class AppData : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 #endif  // __GNUC__
 // AppData
 
-// .proto.AppData.APP_OP_TYPE op_type = 1;
+// .com.fiberhome.fums.proto.AppData.APP_OP_TYPE op_type = 1;
 inline void AppData::clear_op_type() {
   op_type_ = 0;
 }
-inline ::proto::AppData_APP_OP_TYPE AppData::op_type() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.op_type)
-  return static_cast< ::proto::AppData_APP_OP_TYPE >(op_type_);
+inline ::com::fiberhome::fums::proto::AppData_APP_OP_TYPE AppData::op_type() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.op_type)
+  return static_cast< ::com::fiberhome::fums::proto::AppData_APP_OP_TYPE >(op_type_);
 }
-inline void AppData::set_op_type(::proto::AppData_APP_OP_TYPE value) {
+inline void AppData::set_op_type(::com::fiberhome::fums::proto::AppData_APP_OP_TYPE value) {
   
   op_type_ = value;
-  // @@protoc_insertion_point(field_set:proto.AppData.op_type)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.op_type)
 }
 
 // string appType = 2;
@@ -435,41 +444,41 @@ inline void AppData::clear_apptype() {
   apptype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AppData::apptype() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.appType)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.appType)
   return apptype_.GetNoArena();
 }
 inline void AppData::set_apptype(const ::std::string& value) {
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AppData.appType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.appType)
 }
 #if LANG_CXX11
 inline void AppData::set_apptype(::std::string&& value) {
   
   apptype_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AppData.appType)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AppData.appType)
 }
 #endif
 inline void AppData::set_apptype(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AppData.appType)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AppData.appType)
 }
 inline void AppData::set_apptype(const char* value, size_t size) {
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AppData.appType)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AppData.appType)
 }
 inline ::std::string* AppData::mutable_apptype() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AppData.appType)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AppData.appType)
   return apptype_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AppData::release_apptype() {
-  // @@protoc_insertion_point(field_release:proto.AppData.appType)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AppData.appType)
   
   return apptype_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -480,21 +489,21 @@ inline void AppData::set_allocated_apptype(::std::string* apptype) {
     
   }
   apptype_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), apptype);
-  // @@protoc_insertion_point(field_set_allocated:proto.AppData.appType)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AppData.appType)
 }
 
-// .proto.EnumDefineData.AppTypeEnum appTypeCode = 3;
+// .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 3;
 inline void AppData::clear_apptypecode() {
   apptypecode_ = 0;
 }
-inline ::proto::EnumDefineData_AppTypeEnum AppData::apptypecode() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.appTypeCode)
-  return static_cast< ::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
+inline ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum AppData::apptypecode() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.appTypeCode)
+  return static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
 }
-inline void AppData::set_apptypecode(::proto::EnumDefineData_AppTypeEnum value) {
+inline void AppData::set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value) {
   
   apptypecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.AppData.appTypeCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.appTypeCode)
 }
 
 // string appVersion = 4;
@@ -502,41 +511,41 @@ inline void AppData::clear_appversion() {
   appversion_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AppData::appversion() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.appVersion)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.appVersion)
   return appversion_.GetNoArena();
 }
 inline void AppData::set_appversion(const ::std::string& value) {
   
   appversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AppData.appVersion)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.appVersion)
 }
 #if LANG_CXX11
 inline void AppData::set_appversion(::std::string&& value) {
   
   appversion_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AppData.appVersion)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AppData.appVersion)
 }
 #endif
 inline void AppData::set_appversion(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   appversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AppData.appVersion)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AppData.appVersion)
 }
 inline void AppData::set_appversion(const char* value, size_t size) {
   
   appversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AppData.appVersion)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AppData.appVersion)
 }
 inline ::std::string* AppData::mutable_appversion() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AppData.appVersion)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AppData.appVersion)
   return appversion_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AppData::release_appversion() {
-  // @@protoc_insertion_point(field_release:proto.AppData.appVersion)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AppData.appVersion)
   
   return appversion_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -547,21 +556,21 @@ inline void AppData::set_allocated_appversion(::std::string* appversion) {
     
   }
   appversion_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), appversion);
-  // @@protoc_insertion_point(field_set_allocated:proto.AppData.appVersion)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AppData.appVersion)
 }
 
-// .proto.AppData.AppStatusTypeEnum appStatus = 5;
+// .com.fiberhome.fums.proto.AppData.AppStatusTypeEnum appStatus = 5;
 inline void AppData::clear_appstatus() {
   appstatus_ = 0;
 }
-inline ::proto::AppData_AppStatusTypeEnum AppData::appstatus() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.appStatus)
-  return static_cast< ::proto::AppData_AppStatusTypeEnum >(appstatus_);
+inline ::com::fiberhome::fums::proto::AppData_AppStatusTypeEnum AppData::appstatus() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.appStatus)
+  return static_cast< ::com::fiberhome::fums::proto::AppData_AppStatusTypeEnum >(appstatus_);
 }
-inline void AppData::set_appstatus(::proto::AppData_AppStatusTypeEnum value) {
+inline void AppData::set_appstatus(::com::fiberhome::fums::proto::AppData_AppStatusTypeEnum value) {
   
   appstatus_ = value;
-  // @@protoc_insertion_point(field_set:proto.AppData.appStatus)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.appStatus)
 }
 
 // string appTryInstallingVersion = 6;
@@ -569,41 +578,41 @@ inline void AppData::clear_apptryinstallingversion() {
   apptryinstallingversion_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AppData::apptryinstallingversion() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.appTryInstallingVersion)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.appTryInstallingVersion)
   return apptryinstallingversion_.GetNoArena();
 }
 inline void AppData::set_apptryinstallingversion(const ::std::string& value) {
   
   apptryinstallingversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AppData.appTryInstallingVersion)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.appTryInstallingVersion)
 }
 #if LANG_CXX11
 inline void AppData::set_apptryinstallingversion(::std::string&& value) {
   
   apptryinstallingversion_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AppData.appTryInstallingVersion)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AppData.appTryInstallingVersion)
 }
 #endif
 inline void AppData::set_apptryinstallingversion(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   apptryinstallingversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AppData.appTryInstallingVersion)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AppData.appTryInstallingVersion)
 }
 inline void AppData::set_apptryinstallingversion(const char* value, size_t size) {
   
   apptryinstallingversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AppData.appTryInstallingVersion)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AppData.appTryInstallingVersion)
 }
 inline ::std::string* AppData::mutable_apptryinstallingversion() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AppData.appTryInstallingVersion)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AppData.appTryInstallingVersion)
   return apptryinstallingversion_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AppData::release_apptryinstallingversion() {
-  // @@protoc_insertion_point(field_release:proto.AppData.appTryInstallingVersion)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AppData.appTryInstallingVersion)
   
   return apptryinstallingversion_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -614,21 +623,21 @@ inline void AppData::set_allocated_apptryinstallingversion(::std::string* apptry
     
   }
   apptryinstallingversion_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), apptryinstallingversion);
-  // @@protoc_insertion_point(field_set_allocated:proto.AppData.appTryInstallingVersion)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AppData.appTryInstallingVersion)
 }
 
-// .proto.AppData.AppInstallStatusEnum appTryInstallingStatus = 7;
+// .com.fiberhome.fums.proto.AppData.AppInstallStatusEnum appTryInstallingStatus = 7;
 inline void AppData::clear_apptryinstallingstatus() {
   apptryinstallingstatus_ = 0;
 }
-inline ::proto::AppData_AppInstallStatusEnum AppData::apptryinstallingstatus() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.appTryInstallingStatus)
-  return static_cast< ::proto::AppData_AppInstallStatusEnum >(apptryinstallingstatus_);
+inline ::com::fiberhome::fums::proto::AppData_AppInstallStatusEnum AppData::apptryinstallingstatus() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.appTryInstallingStatus)
+  return static_cast< ::com::fiberhome::fums::proto::AppData_AppInstallStatusEnum >(apptryinstallingstatus_);
 }
-inline void AppData::set_apptryinstallingstatus(::proto::AppData_AppInstallStatusEnum value) {
+inline void AppData::set_apptryinstallingstatus(::com::fiberhome::fums::proto::AppData_AppInstallStatusEnum value) {
   
   apptryinstallingstatus_ = value;
-  // @@protoc_insertion_point(field_set:proto.AppData.appTryInstallingStatus)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.appTryInstallingStatus)
 }
 
 // string appTryInstallingFailedReason = 8;
@@ -636,41 +645,41 @@ inline void AppData::clear_apptryinstallingfailedreason() {
   apptryinstallingfailedreason_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AppData::apptryinstallingfailedreason() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.appTryInstallingFailedReason)
   return apptryinstallingfailedreason_.GetNoArena();
 }
 inline void AppData::set_apptryinstallingfailedreason(const ::std::string& value) {
   
   apptryinstallingfailedreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AppData.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.appTryInstallingFailedReason)
 }
 #if LANG_CXX11
 inline void AppData::set_apptryinstallingfailedreason(::std::string&& value) {
   
   apptryinstallingfailedreason_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AppData.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AppData.appTryInstallingFailedReason)
 }
 #endif
 inline void AppData::set_apptryinstallingfailedreason(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   apptryinstallingfailedreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AppData.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AppData.appTryInstallingFailedReason)
 }
 inline void AppData::set_apptryinstallingfailedreason(const char* value, size_t size) {
   
   apptryinstallingfailedreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AppData.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AppData.appTryInstallingFailedReason)
 }
 inline ::std::string* AppData::mutable_apptryinstallingfailedreason() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AppData.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AppData.appTryInstallingFailedReason)
   return apptryinstallingfailedreason_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AppData::release_apptryinstallingfailedreason() {
-  // @@protoc_insertion_point(field_release:proto.AppData.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AppData.appTryInstallingFailedReason)
   
   return apptryinstallingfailedreason_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -681,7 +690,7 @@ inline void AppData::set_allocated_apptryinstallingfailedreason(::std::string* a
     
   }
   apptryinstallingfailedreason_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), apptryinstallingfailedreason);
-  // @@protoc_insertion_point(field_set_allocated:proto.AppData.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AppData.appTryInstallingFailedReason)
 }
 
 // bool isMayStart = 9;
@@ -689,13 +698,13 @@ inline void AppData::clear_ismaystart() {
   ismaystart_ = false;
 }
 inline bool AppData::ismaystart() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.isMayStart)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.isMayStart)
   return ismaystart_;
 }
 inline void AppData::set_ismaystart(bool value) {
   
   ismaystart_ = value;
-  // @@protoc_insertion_point(field_set:proto.AppData.isMayStart)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.isMayStart)
 }
 
 // int32 startCount = 10;
@@ -703,13 +712,13 @@ inline void AppData::clear_startcount() {
   startcount_ = 0;
 }
 inline ::google::protobuf::int32 AppData::startcount() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.startCount)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.startCount)
   return startcount_;
 }
 inline void AppData::set_startcount(::google::protobuf::int32 value) {
   
   startcount_ = value;
-  // @@protoc_insertion_point(field_set:proto.AppData.startCount)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.startCount)
 }
 
 // int32 appDemonStatus = 11;
@@ -717,13 +726,13 @@ inline void AppData::clear_appdemonstatus() {
   appdemonstatus_ = 0;
 }
 inline ::google::protobuf::int32 AppData::appdemonstatus() const {
-  // @@protoc_insertion_point(field_get:proto.AppData.appDemonStatus)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AppData.appDemonStatus)
   return appdemonstatus_;
 }
 inline void AppData::set_appdemonstatus(::google::protobuf::int32 value) {
   
   appdemonstatus_ = value;
-  // @@protoc_insertion_point(field_set:proto.AppData.appDemonStatus)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AppData.appDemonStatus)
 }
 
 #ifdef __GNUC__
@@ -735,24 +744,27 @@ inline void AppData::set_appdemonstatus(::google::protobuf::int32 value) {
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::AppData_APP_OP_TYPE> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::AppData_APP_OP_TYPE> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::AppData_APP_OP_TYPE>() {
-  return ::proto::AppData_APP_OP_TYPE_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::AppData_APP_OP_TYPE>() {
+  return ::com::fiberhome::fums::proto::AppData_APP_OP_TYPE_descriptor();
 }
-template <> struct is_proto_enum< ::proto::AppData_AppStatusTypeEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::AppData_AppStatusTypeEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::AppData_AppStatusTypeEnum>() {
-  return ::proto::AppData_AppStatusTypeEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::AppData_AppStatusTypeEnum>() {
+  return ::com::fiberhome::fums::proto::AppData_AppStatusTypeEnum_descriptor();
 }
-template <> struct is_proto_enum< ::proto::AppData_AppInstallStatusEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::AppData_AppInstallStatusEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::AppData_AppInstallStatusEnum>() {
-  return ::proto::AppData_AppInstallStatusEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::AppData_AppInstallStatusEnum>() {
+  return ::com::fiberhome::fums::proto::AppData_AppInstallStatusEnum_descriptor();
 }
 
 }  // namespace protobuf

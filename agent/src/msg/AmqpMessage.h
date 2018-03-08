@@ -26,7 +26,7 @@ class AmqpMessage
 {
 public:
     AmqpMessage();
-    ~AmqpMessage();
+    virtual ~AmqpMessage();
 
 protected:
     void Connection(string &ip, int port, string &virtualHost, string &userName, string &password);
@@ -34,6 +34,8 @@ protected:
     void ExchangeDeclare(string &exchange, string &exchangeType, int passive, int durable, int autoDelete, int internal);
     void QueueDeclare(string &queuename, int passive, int durable, int exclusive, int autoDelete);
     void QueueBind(string &queuename, string &exchange, string &routingKey);
+    void SetPublishProps(int durable = 2);
+    void BasicPublish(string &exchange, string &routingKey, string &message);
     void BasicQos(int prefetchCount);
     void SetConsumer(string &queuename, int noAck);
     void ReceiveMessage(string &message);
@@ -41,6 +43,7 @@ protected:
 
 private:
     int m_type;
+    amqp_basic_properties_t m_props;
     amqp_connection_state_t m_conn;
 };
 #endif

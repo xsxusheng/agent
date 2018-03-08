@@ -31,12 +31,21 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class HeartData;
 class HeartDataDefaultTypeInternal;
 extern HeartDataDefaultTypeInternal _HeartData_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_HeartProto_2eproto {
@@ -77,7 +86,7 @@ inline bool HeartData_HeartType_Parse(
 }
 // ===================================================================
 
-class HeartData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.HeartData) */ {
+class HeartData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.HeartData) */ {
  public:
   HeartData();
   virtual ~HeartData();
@@ -204,13 +213,13 @@ class HeartData : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::int64 uniqueid() const;
   void set_uniqueid(::google::protobuf::int64 value);
 
-  // .proto.HeartData.HeartType heartType = 3;
+  // .com.fiberhome.fums.proto.HeartData.HeartType heartType = 3;
   void clear_hearttype();
   static const int kHeartTypeFieldNumber = 3;
-  ::proto::HeartData_HeartType hearttype() const;
-  void set_hearttype(::proto::HeartData_HeartType value);
+  ::com::fiberhome::fums::proto::HeartData_HeartType hearttype() const;
+  void set_hearttype(::com::fiberhome::fums::proto::HeartData_HeartType value);
 
-  // @@protoc_insertion_point(class_scope:proto.HeartData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.HeartData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -237,13 +246,13 @@ inline void HeartData::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 HeartData::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.HeartData.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HeartData.uniqueId)
   return uniqueid_;
 }
 inline void HeartData::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.HeartData.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HeartData.uniqueId)
 }
 
 // string msg = 2;
@@ -251,41 +260,41 @@ inline void HeartData::clear_msg() {
   msg_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& HeartData::msg() const {
-  // @@protoc_insertion_point(field_get:proto.HeartData.msg)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HeartData.msg)
   return msg_.GetNoArena();
 }
 inline void HeartData::set_msg(const ::std::string& value) {
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.HeartData.msg)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HeartData.msg)
 }
 #if LANG_CXX11
 inline void HeartData::set_msg(::std::string&& value) {
   
   msg_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.HeartData.msg)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.HeartData.msg)
 }
 #endif
 inline void HeartData::set_msg(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.HeartData.msg)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.HeartData.msg)
 }
 inline void HeartData::set_msg(const char* value, size_t size) {
   
   msg_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.HeartData.msg)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.HeartData.msg)
 }
 inline ::std::string* HeartData::mutable_msg() {
   
-  // @@protoc_insertion_point(field_mutable:proto.HeartData.msg)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.HeartData.msg)
   return msg_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* HeartData::release_msg() {
-  // @@protoc_insertion_point(field_release:proto.HeartData.msg)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.HeartData.msg)
   
   return msg_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -296,21 +305,21 @@ inline void HeartData::set_allocated_msg(::std::string* msg) {
     
   }
   msg_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), msg);
-  // @@protoc_insertion_point(field_set_allocated:proto.HeartData.msg)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.HeartData.msg)
 }
 
-// .proto.HeartData.HeartType heartType = 3;
+// .com.fiberhome.fums.proto.HeartData.HeartType heartType = 3;
 inline void HeartData::clear_hearttype() {
   hearttype_ = 0;
 }
-inline ::proto::HeartData_HeartType HeartData::hearttype() const {
-  // @@protoc_insertion_point(field_get:proto.HeartData.heartType)
-  return static_cast< ::proto::HeartData_HeartType >(hearttype_);
+inline ::com::fiberhome::fums::proto::HeartData_HeartType HeartData::hearttype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HeartData.heartType)
+  return static_cast< ::com::fiberhome::fums::proto::HeartData_HeartType >(hearttype_);
 }
-inline void HeartData::set_hearttype(::proto::HeartData_HeartType value) {
+inline void HeartData::set_hearttype(::com::fiberhome::fums::proto::HeartData_HeartType value) {
   
   hearttype_ = value;
-  // @@protoc_insertion_point(field_set:proto.HeartData.heartType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HeartData.heartType)
 }
 
 #ifdef __GNUC__
@@ -322,14 +331,17 @@ inline void HeartData::set_hearttype(::proto::HeartData_HeartType value) {
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::HeartData_HeartType> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::HeartData_HeartType> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::HeartData_HeartType>() {
-  return ::proto::HeartData_HeartType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::HeartData_HeartType>() {
+  return ::com::fiberhome::fums::proto::HeartData_HeartType_descriptor();
 }
 
 }  // namespace protobuf

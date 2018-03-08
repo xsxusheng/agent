@@ -32,12 +32,21 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "CommonDefine.pb.h"
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class AcsEventData;
 class AcsEventDataDefaultTypeInternal;
 extern AcsEventDataDefaultTypeInternal _AcsEventData_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_AcsEvent_2eproto {
@@ -78,7 +87,7 @@ inline bool AcsEventData_TmCtrlTypeEnum_Parse(
 }
 // ===================================================================
 
-class AcsEventData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.AcsEventData) */ {
+class AcsEventData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.AcsEventData) */ {
  public:
   AcsEventData();
   virtual ~AcsEventData();
@@ -311,19 +320,19 @@ class AcsEventData : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_desp();
   void set_allocated_desp(::std::string* desp);
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 7;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 7;
   void clear_apptypecode();
   static const int kAppTypeCodeFieldNumber = 7;
-  ::proto::EnumDefineData_AppTypeEnum apptypecode() const;
-  void set_apptypecode(::proto::EnumDefineData_AppTypeEnum value);
+  ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum apptypecode() const;
+  void set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value);
 
-  // .proto.AcsEventData.TmCtrlTypeEnum ctrlType = 11;
+  // .com.fiberhome.fums.proto.AcsEventData.TmCtrlTypeEnum ctrlType = 11;
   void clear_ctrltype();
   static const int kCtrlTypeFieldNumber = 11;
-  ::proto::AcsEventData_TmCtrlTypeEnum ctrltype() const;
-  void set_ctrltype(::proto::AcsEventData_TmCtrlTypeEnum value);
+  ::com::fiberhome::fums::proto::AcsEventData_TmCtrlTypeEnum ctrltype() const;
+  void set_ctrltype(::com::fiberhome::fums::proto::AcsEventData_TmCtrlTypeEnum value);
 
-  // @@protoc_insertion_point(class_scope:proto.AcsEventData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.AcsEventData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -358,41 +367,41 @@ inline void AcsEventData::clear_messagetype() {
   messagetype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::messagetype() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.messageType)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.messageType)
   return messagetype_.GetNoArena();
 }
 inline void AcsEventData::set_messagetype(const ::std::string& value) {
   
   messagetype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.messageType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.messageType)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_messagetype(::std::string&& value) {
   
   messagetype_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.messageType)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.messageType)
 }
 #endif
 inline void AcsEventData::set_messagetype(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   messagetype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.messageType)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.messageType)
 }
 inline void AcsEventData::set_messagetype(const char* value, size_t size) {
   
   messagetype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.messageType)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.messageType)
 }
 inline ::std::string* AcsEventData::mutable_messagetype() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.messageType)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.messageType)
   return messagetype_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_messagetype() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.messageType)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.messageType)
   
   return messagetype_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -403,7 +412,7 @@ inline void AcsEventData::set_allocated_messagetype(::std::string* messagetype) 
     
   }
   messagetype_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), messagetype);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.messageType)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.messageType)
 }
 
 // string probableCause = 2;
@@ -411,41 +420,41 @@ inline void AcsEventData::clear_probablecause() {
   probablecause_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::probablecause() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.probableCause)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.probableCause)
   return probablecause_.GetNoArena();
 }
 inline void AcsEventData::set_probablecause(const ::std::string& value) {
   
   probablecause_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.probableCause)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.probableCause)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_probablecause(::std::string&& value) {
   
   probablecause_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.probableCause)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.probableCause)
 }
 #endif
 inline void AcsEventData::set_probablecause(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   probablecause_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.probableCause)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.probableCause)
 }
 inline void AcsEventData::set_probablecause(const char* value, size_t size) {
   
   probablecause_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.probableCause)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.probableCause)
 }
 inline ::std::string* AcsEventData::mutable_probablecause() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.probableCause)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.probableCause)
   return probablecause_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_probablecause() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.probableCause)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.probableCause)
   
   return probablecause_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -456,7 +465,7 @@ inline void AcsEventData::set_allocated_probablecause(::std::string* probablecau
     
   }
   probablecause_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), probablecause);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.probableCause)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.probableCause)
 }
 
 // string uniqueNo = 3;
@@ -464,41 +473,41 @@ inline void AcsEventData::clear_uniqueno() {
   uniqueno_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::uniqueno() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.uniqueNo)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.uniqueNo)
   return uniqueno_.GetNoArena();
 }
 inline void AcsEventData::set_uniqueno(const ::std::string& value) {
   
   uniqueno_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.uniqueNo)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.uniqueNo)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_uniqueno(::std::string&& value) {
   
   uniqueno_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.uniqueNo)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.uniqueNo)
 }
 #endif
 inline void AcsEventData::set_uniqueno(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   uniqueno_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.uniqueNo)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.uniqueNo)
 }
 inline void AcsEventData::set_uniqueno(const char* value, size_t size) {
   
   uniqueno_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.uniqueNo)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.uniqueNo)
 }
 inline ::std::string* AcsEventData::mutable_uniqueno() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.uniqueNo)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.uniqueNo)
   return uniqueno_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_uniqueno() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.uniqueNo)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.uniqueNo)
   
   return uniqueno_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -509,7 +518,7 @@ inline void AcsEventData::set_allocated_uniqueno(::std::string* uniqueno) {
     
   }
   uniqueno_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), uniqueno);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.uniqueNo)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.uniqueNo)
 }
 
 // string stb = 4;
@@ -517,41 +526,41 @@ inline void AcsEventData::clear_stb() {
   stb_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::stb() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.stb)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.stb)
   return stb_.GetNoArena();
 }
 inline void AcsEventData::set_stb(const ::std::string& value) {
   
   stb_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.stb)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.stb)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_stb(::std::string&& value) {
   
   stb_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.stb)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.stb)
 }
 #endif
 inline void AcsEventData::set_stb(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   stb_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.stb)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.stb)
 }
 inline void AcsEventData::set_stb(const char* value, size_t size) {
   
   stb_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.stb)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.stb)
 }
 inline ::std::string* AcsEventData::mutable_stb() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.stb)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.stb)
   return stb_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_stb() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.stb)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.stb)
   
   return stb_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -562,7 +571,7 @@ inline void AcsEventData::set_allocated_stb(::std::string* stb) {
     
   }
   stb_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), stb);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.stb)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.stb)
 }
 
 // string createTime = 5;
@@ -570,41 +579,41 @@ inline void AcsEventData::clear_createtime() {
   createtime_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::createtime() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.createTime)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.createTime)
   return createtime_.GetNoArena();
 }
 inline void AcsEventData::set_createtime(const ::std::string& value) {
   
   createtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.createTime)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.createTime)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_createtime(::std::string&& value) {
   
   createtime_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.createTime)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.createTime)
 }
 #endif
 inline void AcsEventData::set_createtime(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   createtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.createTime)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.createTime)
 }
 inline void AcsEventData::set_createtime(const char* value, size_t size) {
   
   createtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.createTime)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.createTime)
 }
 inline ::std::string* AcsEventData::mutable_createtime() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.createTime)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.createTime)
   return createtime_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_createtime() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.createTime)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.createTime)
   
   return createtime_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -615,7 +624,7 @@ inline void AcsEventData::set_allocated_createtime(::std::string* createtime) {
     
   }
   createtime_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), createtime);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.createTime)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.createTime)
 }
 
 // string entityInstance = 6;
@@ -623,41 +632,41 @@ inline void AcsEventData::clear_entityinstance() {
   entityinstance_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::entityinstance() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.entityInstance)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.entityInstance)
   return entityinstance_.GetNoArena();
 }
 inline void AcsEventData::set_entityinstance(const ::std::string& value) {
   
   entityinstance_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.entityInstance)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.entityInstance)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_entityinstance(::std::string&& value) {
   
   entityinstance_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.entityInstance)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.entityInstance)
 }
 #endif
 inline void AcsEventData::set_entityinstance(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   entityinstance_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.entityInstance)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.entityInstance)
 }
 inline void AcsEventData::set_entityinstance(const char* value, size_t size) {
   
   entityinstance_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.entityInstance)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.entityInstance)
 }
 inline ::std::string* AcsEventData::mutable_entityinstance() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.entityInstance)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.entityInstance)
   return entityinstance_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_entityinstance() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.entityInstance)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.entityInstance)
   
   return entityinstance_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -668,21 +677,21 @@ inline void AcsEventData::set_allocated_entityinstance(::std::string* entityinst
     
   }
   entityinstance_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), entityinstance);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.entityInstance)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.entityInstance)
 }
 
-// .proto.EnumDefineData.AppTypeEnum appTypeCode = 7;
+// .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 7;
 inline void AcsEventData::clear_apptypecode() {
   apptypecode_ = 0;
 }
-inline ::proto::EnumDefineData_AppTypeEnum AcsEventData::apptypecode() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.appTypeCode)
-  return static_cast< ::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
+inline ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum AcsEventData::apptypecode() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.appTypeCode)
+  return static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
 }
-inline void AcsEventData::set_apptypecode(::proto::EnumDefineData_AppTypeEnum value) {
+inline void AcsEventData::set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value) {
   
   apptypecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.appTypeCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.appTypeCode)
 }
 
 // string messageFormat = 8;
@@ -690,41 +699,41 @@ inline void AcsEventData::clear_messageformat() {
   messageformat_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::messageformat() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.messageFormat)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.messageFormat)
   return messageformat_.GetNoArena();
 }
 inline void AcsEventData::set_messageformat(const ::std::string& value) {
   
   messageformat_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.messageFormat)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.messageFormat)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_messageformat(::std::string&& value) {
   
   messageformat_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.messageFormat)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.messageFormat)
 }
 #endif
 inline void AcsEventData::set_messageformat(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   messageformat_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.messageFormat)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.messageFormat)
 }
 inline void AcsEventData::set_messageformat(const char* value, size_t size) {
   
   messageformat_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.messageFormat)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.messageFormat)
 }
 inline ::std::string* AcsEventData::mutable_messageformat() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.messageFormat)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.messageFormat)
   return messageformat_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_messageformat() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.messageFormat)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.messageFormat)
   
   return messageformat_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -735,7 +744,7 @@ inline void AcsEventData::set_allocated_messageformat(::std::string* messageform
     
   }
   messageformat_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), messageformat);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.messageFormat)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.messageFormat)
 }
 
 // string message = 9;
@@ -743,41 +752,41 @@ inline void AcsEventData::clear_message() {
   message_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::message() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.message)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.message)
   return message_.GetNoArena();
 }
 inline void AcsEventData::set_message(const ::std::string& value) {
   
   message_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.message)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.message)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_message(::std::string&& value) {
   
   message_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.message)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.message)
 }
 #endif
 inline void AcsEventData::set_message(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   message_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.message)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.message)
 }
 inline void AcsEventData::set_message(const char* value, size_t size) {
   
   message_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.message)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.message)
 }
 inline ::std::string* AcsEventData::mutable_message() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.message)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.message)
   return message_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_message() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.message)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.message)
   
   return message_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -788,7 +797,7 @@ inline void AcsEventData::set_allocated_message(::std::string* message) {
     
   }
   message_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), message);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.message)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.message)
 }
 
 // string desp = 10;
@@ -796,41 +805,41 @@ inline void AcsEventData::clear_desp() {
   desp_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AcsEventData::desp() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.desp)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.desp)
   return desp_.GetNoArena();
 }
 inline void AcsEventData::set_desp(const ::std::string& value) {
   
   desp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.desp)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.desp)
 }
 #if LANG_CXX11
 inline void AcsEventData::set_desp(::std::string&& value) {
   
   desp_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AcsEventData.desp)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AcsEventData.desp)
 }
 #endif
 inline void AcsEventData::set_desp(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   desp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AcsEventData.desp)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AcsEventData.desp)
 }
 inline void AcsEventData::set_desp(const char* value, size_t size) {
   
   desp_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AcsEventData.desp)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AcsEventData.desp)
 }
 inline ::std::string* AcsEventData::mutable_desp() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AcsEventData.desp)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AcsEventData.desp)
   return desp_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AcsEventData::release_desp() {
-  // @@protoc_insertion_point(field_release:proto.AcsEventData.desp)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AcsEventData.desp)
   
   return desp_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -841,21 +850,21 @@ inline void AcsEventData::set_allocated_desp(::std::string* desp) {
     
   }
   desp_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), desp);
-  // @@protoc_insertion_point(field_set_allocated:proto.AcsEventData.desp)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AcsEventData.desp)
 }
 
-// .proto.AcsEventData.TmCtrlTypeEnum ctrlType = 11;
+// .com.fiberhome.fums.proto.AcsEventData.TmCtrlTypeEnum ctrlType = 11;
 inline void AcsEventData::clear_ctrltype() {
   ctrltype_ = 0;
 }
-inline ::proto::AcsEventData_TmCtrlTypeEnum AcsEventData::ctrltype() const {
-  // @@protoc_insertion_point(field_get:proto.AcsEventData.ctrlType)
-  return static_cast< ::proto::AcsEventData_TmCtrlTypeEnum >(ctrltype_);
+inline ::com::fiberhome::fums::proto::AcsEventData_TmCtrlTypeEnum AcsEventData::ctrltype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AcsEventData.ctrlType)
+  return static_cast< ::com::fiberhome::fums::proto::AcsEventData_TmCtrlTypeEnum >(ctrltype_);
 }
-inline void AcsEventData::set_ctrltype(::proto::AcsEventData_TmCtrlTypeEnum value) {
+inline void AcsEventData::set_ctrltype(::com::fiberhome::fums::proto::AcsEventData_TmCtrlTypeEnum value) {
   
   ctrltype_ = value;
-  // @@protoc_insertion_point(field_set:proto.AcsEventData.ctrlType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AcsEventData.ctrlType)
 }
 
 #ifdef __GNUC__
@@ -867,14 +876,17 @@ inline void AcsEventData::set_ctrltype(::proto::AcsEventData_TmCtrlTypeEnum valu
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::AcsEventData_TmCtrlTypeEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::AcsEventData_TmCtrlTypeEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::AcsEventData_TmCtrlTypeEnum>() {
-  return ::proto::AcsEventData_TmCtrlTypeEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::AcsEventData_TmCtrlTypeEnum>() {
+  return ::com::fiberhome::fums::proto::AcsEventData_TmCtrlTypeEnum_descriptor();
 }
 
 }  // namespace protobuf

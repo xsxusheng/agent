@@ -16,12 +16,12 @@ using namespace std;
 
 Properties::Properties()
 {
-    cout<<"Properties 构造函数"<<endl;
+    //SV_LOG("Properties 构造函数");
 }
 
 Properties::~Properties()
 {
-    cout<<"Properties 析构函数"<<endl;
+    //SV_LOG("Properties 析构函数");
 }
 
 /*

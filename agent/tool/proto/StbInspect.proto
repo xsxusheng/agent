@@ -1,6 +1,5 @@
 syntax = "proto3";
-/**package com.fiberhome.fums.proto;*/
-package proto;
+package com.fiberhome.fums.proto;
 option java_package = "com.fiberhome.fums.proto";   
 option java_outer_classname = "StbInspect";
 import "CommonDefine.proto";

@@ -32,6 +32,9 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "CommonDefine.pb.h"
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class CtrlSoftwareStatusResponse;
 class CtrlSoftwareStatusResponseDefaultTypeInternal;
@@ -40,7 +43,13 @@ class SoftwareData;
 class SoftwareDataDefaultTypeInternal;
 extern SoftwareDataDefaultTypeInternal _SoftwareData_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_SoftwareInstall_2eproto {
@@ -82,7 +91,7 @@ inline bool SoftwareData_SoftwareCtrlTypeEnum_Parse(
 }
 // ===================================================================
 
-class SoftwareData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.SoftwareData) */ {
+class SoftwareData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.SoftwareData) */ {
  public:
   SoftwareData();
   virtual ~SoftwareData();
@@ -259,19 +268,19 @@ class SoftwareData : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::int32 softwarectrlid() const;
   void set_softwarectrlid(::google::protobuf::int32 value);
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
   void clear_apptypecode();
   static const int kAppTypeCodeFieldNumber = 4;
-  ::proto::EnumDefineData_AppTypeEnum apptypecode() const;
-  void set_apptypecode(::proto::EnumDefineData_AppTypeEnum value);
+  ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum apptypecode() const;
+  void set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value);
 
-  // .proto.SoftwareData.SoftwareCtrlTypeEnum softwareCtrlType = 6;
+  // .com.fiberhome.fums.proto.SoftwareData.SoftwareCtrlTypeEnum softwareCtrlType = 6;
   void clear_softwarectrltype();
   static const int kSoftwareCtrlTypeFieldNumber = 6;
-  ::proto::SoftwareData_SoftwareCtrlTypeEnum softwarectrltype() const;
-  void set_softwarectrltype(::proto::SoftwareData_SoftwareCtrlTypeEnum value);
+  ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum softwarectrltype() const;
+  void set_softwarectrltype(::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum value);
 
-  // @@protoc_insertion_point(class_scope:proto.SoftwareData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.SoftwareData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -288,7 +297,7 @@ class SoftwareData : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // -------------------------------------------------------------------
 
-class CtrlSoftwareStatusResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.CtrlSoftwareStatusResponse) */ {
+class CtrlSoftwareStatusResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse) */ {
  public:
   CtrlSoftwareStatusResponse();
   virtual ~CtrlSoftwareStatusResponse();
@@ -417,25 +426,25 @@ class CtrlSoftwareStatusResponse : public ::google::protobuf::Message /* @@proto
   ::google::protobuf::int64 uniqueid() const;
   void set_uniqueid(::google::protobuf::int64 value);
 
-  // .proto.SoftwareData.SoftwareCtrlTypeEnum ctrlType = 2;
+  // .com.fiberhome.fums.proto.SoftwareData.SoftwareCtrlTypeEnum ctrlType = 2;
   void clear_ctrltype();
   static const int kCtrlTypeFieldNumber = 2;
-  ::proto::SoftwareData_SoftwareCtrlTypeEnum ctrltype() const;
-  void set_ctrltype(::proto::SoftwareData_SoftwareCtrlTypeEnum value);
+  ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum ctrltype() const;
+  void set_ctrltype(::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum value);
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
   void clear_apptypecode();
   static const int kAppTypeCodeFieldNumber = 4;
-  ::proto::EnumDefineData_AppTypeEnum apptypecode() const;
-  void set_apptypecode(::proto::EnumDefineData_AppTypeEnum value);
+  ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum apptypecode() const;
+  void set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value);
 
-  // .proto.CommonResponse.ResStatusEnum appTryInstallingStatus = 6;
+  // .com.fiberhome.fums.proto.CommonResponse.ResStatusEnum appTryInstallingStatus = 6;
   void clear_apptryinstallingstatus();
   static const int kAppTryInstallingStatusFieldNumber = 6;
-  ::proto::CommonResponse_ResStatusEnum apptryinstallingstatus() const;
-  void set_apptryinstallingstatus(::proto::CommonResponse_ResStatusEnum value);
+  ::com::fiberhome::fums::proto::CommonResponse_ResStatusEnum apptryinstallingstatus() const;
+  void set_apptryinstallingstatus(::com::fiberhome::fums::proto::CommonResponse_ResStatusEnum value);
 
-  // @@protoc_insertion_point(class_scope:proto.CtrlSoftwareStatusResponse)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -466,13 +475,13 @@ inline void SoftwareData::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 SoftwareData::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.SoftwareData.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.SoftwareData.uniqueId)
   return uniqueid_;
 }
 inline void SoftwareData::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.SoftwareData.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.SoftwareData.uniqueId)
 }
 
 // int32 softwareCtrlId = 2;
@@ -480,13 +489,13 @@ inline void SoftwareData::clear_softwarectrlid() {
   softwarectrlid_ = 0;
 }
 inline ::google::protobuf::int32 SoftwareData::softwarectrlid() const {
-  // @@protoc_insertion_point(field_get:proto.SoftwareData.softwareCtrlId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.SoftwareData.softwareCtrlId)
   return softwarectrlid_;
 }
 inline void SoftwareData::set_softwarectrlid(::google::protobuf::int32 value) {
   
   softwarectrlid_ = value;
-  // @@protoc_insertion_point(field_set:proto.SoftwareData.softwareCtrlId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.SoftwareData.softwareCtrlId)
 }
 
 // string softwareType = 3;
@@ -494,41 +503,41 @@ inline void SoftwareData::clear_softwaretype() {
   softwaretype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& SoftwareData::softwaretype() const {
-  // @@protoc_insertion_point(field_get:proto.SoftwareData.softwareType)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.SoftwareData.softwareType)
   return softwaretype_.GetNoArena();
 }
 inline void SoftwareData::set_softwaretype(const ::std::string& value) {
   
   softwaretype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.SoftwareData.softwareType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.SoftwareData.softwareType)
 }
 #if LANG_CXX11
 inline void SoftwareData::set_softwaretype(::std::string&& value) {
   
   softwaretype_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.SoftwareData.softwareType)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.SoftwareData.softwareType)
 }
 #endif
 inline void SoftwareData::set_softwaretype(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   softwaretype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.SoftwareData.softwareType)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.SoftwareData.softwareType)
 }
 inline void SoftwareData::set_softwaretype(const char* value, size_t size) {
   
   softwaretype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.SoftwareData.softwareType)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.SoftwareData.softwareType)
 }
 inline ::std::string* SoftwareData::mutable_softwaretype() {
   
-  // @@protoc_insertion_point(field_mutable:proto.SoftwareData.softwareType)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.SoftwareData.softwareType)
   return softwaretype_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* SoftwareData::release_softwaretype() {
-  // @@protoc_insertion_point(field_release:proto.SoftwareData.softwareType)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.SoftwareData.softwareType)
   
   return softwaretype_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -539,21 +548,21 @@ inline void SoftwareData::set_allocated_softwaretype(::std::string* softwaretype
     
   }
   softwaretype_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), softwaretype);
-  // @@protoc_insertion_point(field_set_allocated:proto.SoftwareData.softwareType)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.SoftwareData.softwareType)
 }
 
-// .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+// .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
 inline void SoftwareData::clear_apptypecode() {
   apptypecode_ = 0;
 }
-inline ::proto::EnumDefineData_AppTypeEnum SoftwareData::apptypecode() const {
-  // @@protoc_insertion_point(field_get:proto.SoftwareData.appTypeCode)
-  return static_cast< ::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
+inline ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum SoftwareData::apptypecode() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.SoftwareData.appTypeCode)
+  return static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
 }
-inline void SoftwareData::set_apptypecode(::proto::EnumDefineData_AppTypeEnum value) {
+inline void SoftwareData::set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value) {
   
   apptypecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.SoftwareData.appTypeCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.SoftwareData.appTypeCode)
 }
 
 // string softwareVersion = 5;
@@ -561,41 +570,41 @@ inline void SoftwareData::clear_softwareversion() {
   softwareversion_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& SoftwareData::softwareversion() const {
-  // @@protoc_insertion_point(field_get:proto.SoftwareData.softwareVersion)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.SoftwareData.softwareVersion)
   return softwareversion_.GetNoArena();
 }
 inline void SoftwareData::set_softwareversion(const ::std::string& value) {
   
   softwareversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.SoftwareData.softwareVersion)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.SoftwareData.softwareVersion)
 }
 #if LANG_CXX11
 inline void SoftwareData::set_softwareversion(::std::string&& value) {
   
   softwareversion_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.SoftwareData.softwareVersion)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.SoftwareData.softwareVersion)
 }
 #endif
 inline void SoftwareData::set_softwareversion(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   softwareversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.SoftwareData.softwareVersion)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.SoftwareData.softwareVersion)
 }
 inline void SoftwareData::set_softwareversion(const char* value, size_t size) {
   
   softwareversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.SoftwareData.softwareVersion)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.SoftwareData.softwareVersion)
 }
 inline ::std::string* SoftwareData::mutable_softwareversion() {
   
-  // @@protoc_insertion_point(field_mutable:proto.SoftwareData.softwareVersion)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.SoftwareData.softwareVersion)
   return softwareversion_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* SoftwareData::release_softwareversion() {
-  // @@protoc_insertion_point(field_release:proto.SoftwareData.softwareVersion)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.SoftwareData.softwareVersion)
   
   return softwareversion_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -606,21 +615,21 @@ inline void SoftwareData::set_allocated_softwareversion(::std::string* softwarev
     
   }
   softwareversion_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), softwareversion);
-  // @@protoc_insertion_point(field_set_allocated:proto.SoftwareData.softwareVersion)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.SoftwareData.softwareVersion)
 }
 
-// .proto.SoftwareData.SoftwareCtrlTypeEnum softwareCtrlType = 6;
+// .com.fiberhome.fums.proto.SoftwareData.SoftwareCtrlTypeEnum softwareCtrlType = 6;
 inline void SoftwareData::clear_softwarectrltype() {
   softwarectrltype_ = 0;
 }
-inline ::proto::SoftwareData_SoftwareCtrlTypeEnum SoftwareData::softwarectrltype() const {
-  // @@protoc_insertion_point(field_get:proto.SoftwareData.softwareCtrlType)
-  return static_cast< ::proto::SoftwareData_SoftwareCtrlTypeEnum >(softwarectrltype_);
+inline ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum SoftwareData::softwarectrltype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.SoftwareData.softwareCtrlType)
+  return static_cast< ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum >(softwarectrltype_);
 }
-inline void SoftwareData::set_softwarectrltype(::proto::SoftwareData_SoftwareCtrlTypeEnum value) {
+inline void SoftwareData::set_softwarectrltype(::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum value) {
   
   softwarectrltype_ = value;
-  // @@protoc_insertion_point(field_set:proto.SoftwareData.softwareCtrlType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.SoftwareData.softwareCtrlType)
 }
 
 // string softwareCtrlObject = 7;
@@ -628,41 +637,41 @@ inline void SoftwareData::clear_softwarectrlobject() {
   softwarectrlobject_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& SoftwareData::softwarectrlobject() const {
-  // @@protoc_insertion_point(field_get:proto.SoftwareData.softwareCtrlObject)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.SoftwareData.softwareCtrlObject)
   return softwarectrlobject_.GetNoArena();
 }
 inline void SoftwareData::set_softwarectrlobject(const ::std::string& value) {
   
   softwarectrlobject_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.SoftwareData.softwareCtrlObject)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.SoftwareData.softwareCtrlObject)
 }
 #if LANG_CXX11
 inline void SoftwareData::set_softwarectrlobject(::std::string&& value) {
   
   softwarectrlobject_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.SoftwareData.softwareCtrlObject)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.SoftwareData.softwareCtrlObject)
 }
 #endif
 inline void SoftwareData::set_softwarectrlobject(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   softwarectrlobject_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.SoftwareData.softwareCtrlObject)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.SoftwareData.softwareCtrlObject)
 }
 inline void SoftwareData::set_softwarectrlobject(const char* value, size_t size) {
   
   softwarectrlobject_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.SoftwareData.softwareCtrlObject)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.SoftwareData.softwareCtrlObject)
 }
 inline ::std::string* SoftwareData::mutable_softwarectrlobject() {
   
-  // @@protoc_insertion_point(field_mutable:proto.SoftwareData.softwareCtrlObject)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.SoftwareData.softwareCtrlObject)
   return softwarectrlobject_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* SoftwareData::release_softwarectrlobject() {
-  // @@protoc_insertion_point(field_release:proto.SoftwareData.softwareCtrlObject)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.SoftwareData.softwareCtrlObject)
   
   return softwarectrlobject_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -673,7 +682,7 @@ inline void SoftwareData::set_allocated_softwarectrlobject(::std::string* softwa
     
   }
   softwarectrlobject_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), softwarectrlobject);
-  // @@protoc_insertion_point(field_set_allocated:proto.SoftwareData.softwareCtrlObject)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.SoftwareData.softwareCtrlObject)
 }
 
 // string args = 8;
@@ -681,41 +690,41 @@ inline void SoftwareData::clear_args() {
   args_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& SoftwareData::args() const {
-  // @@protoc_insertion_point(field_get:proto.SoftwareData.args)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.SoftwareData.args)
   return args_.GetNoArena();
 }
 inline void SoftwareData::set_args(const ::std::string& value) {
   
   args_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.SoftwareData.args)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.SoftwareData.args)
 }
 #if LANG_CXX11
 inline void SoftwareData::set_args(::std::string&& value) {
   
   args_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.SoftwareData.args)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.SoftwareData.args)
 }
 #endif
 inline void SoftwareData::set_args(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   args_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.SoftwareData.args)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.SoftwareData.args)
 }
 inline void SoftwareData::set_args(const char* value, size_t size) {
   
   args_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.SoftwareData.args)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.SoftwareData.args)
 }
 inline ::std::string* SoftwareData::mutable_args() {
   
-  // @@protoc_insertion_point(field_mutable:proto.SoftwareData.args)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.SoftwareData.args)
   return args_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* SoftwareData::release_args() {
-  // @@protoc_insertion_point(field_release:proto.SoftwareData.args)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.SoftwareData.args)
   
   return args_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -726,7 +735,7 @@ inline void SoftwareData::set_allocated_args(::std::string* args) {
     
   }
   args_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), args);
-  // @@protoc_insertion_point(field_set_allocated:proto.SoftwareData.args)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.SoftwareData.args)
 }
 
 // -------------------------------------------------------------------
@@ -738,27 +747,27 @@ inline void CtrlSoftwareStatusResponse::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 CtrlSoftwareStatusResponse::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlSoftwareStatusResponse.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.uniqueId)
   return uniqueid_;
 }
 inline void CtrlSoftwareStatusResponse::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.CtrlSoftwareStatusResponse.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.uniqueId)
 }
 
-// .proto.SoftwareData.SoftwareCtrlTypeEnum ctrlType = 2;
+// .com.fiberhome.fums.proto.SoftwareData.SoftwareCtrlTypeEnum ctrlType = 2;
 inline void CtrlSoftwareStatusResponse::clear_ctrltype() {
   ctrltype_ = 0;
 }
-inline ::proto::SoftwareData_SoftwareCtrlTypeEnum CtrlSoftwareStatusResponse::ctrltype() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlSoftwareStatusResponse.ctrlType)
-  return static_cast< ::proto::SoftwareData_SoftwareCtrlTypeEnum >(ctrltype_);
+inline ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum CtrlSoftwareStatusResponse::ctrltype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.ctrlType)
+  return static_cast< ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum >(ctrltype_);
 }
-inline void CtrlSoftwareStatusResponse::set_ctrltype(::proto::SoftwareData_SoftwareCtrlTypeEnum value) {
+inline void CtrlSoftwareStatusResponse::set_ctrltype(::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum value) {
   
   ctrltype_ = value;
-  // @@protoc_insertion_point(field_set:proto.CtrlSoftwareStatusResponse.ctrlType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.ctrlType)
 }
 
 // string swAppType = 3;
@@ -766,41 +775,41 @@ inline void CtrlSoftwareStatusResponse::clear_swapptype() {
   swapptype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& CtrlSoftwareStatusResponse::swapptype() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlSoftwareStatusResponse.swAppType)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppType)
   return swapptype_.GetNoArena();
 }
 inline void CtrlSoftwareStatusResponse::set_swapptype(const ::std::string& value) {
   
   swapptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.CtrlSoftwareStatusResponse.swAppType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppType)
 }
 #if LANG_CXX11
 inline void CtrlSoftwareStatusResponse::set_swapptype(::std::string&& value) {
   
   swapptype_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.CtrlSoftwareStatusResponse.swAppType)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppType)
 }
 #endif
 inline void CtrlSoftwareStatusResponse::set_swapptype(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   swapptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.CtrlSoftwareStatusResponse.swAppType)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppType)
 }
 inline void CtrlSoftwareStatusResponse::set_swapptype(const char* value, size_t size) {
   
   swapptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.CtrlSoftwareStatusResponse.swAppType)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppType)
 }
 inline ::std::string* CtrlSoftwareStatusResponse::mutable_swapptype() {
   
-  // @@protoc_insertion_point(field_mutable:proto.CtrlSoftwareStatusResponse.swAppType)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppType)
   return swapptype_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* CtrlSoftwareStatusResponse::release_swapptype() {
-  // @@protoc_insertion_point(field_release:proto.CtrlSoftwareStatusResponse.swAppType)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppType)
   
   return swapptype_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -811,21 +820,21 @@ inline void CtrlSoftwareStatusResponse::set_allocated_swapptype(::std::string* s
     
   }
   swapptype_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), swapptype);
-  // @@protoc_insertion_point(field_set_allocated:proto.CtrlSoftwareStatusResponse.swAppType)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppType)
 }
 
-// .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+// .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
 inline void CtrlSoftwareStatusResponse::clear_apptypecode() {
   apptypecode_ = 0;
 }
-inline ::proto::EnumDefineData_AppTypeEnum CtrlSoftwareStatusResponse::apptypecode() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlSoftwareStatusResponse.appTypeCode)
-  return static_cast< ::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
+inline ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum CtrlSoftwareStatusResponse::apptypecode() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTypeCode)
+  return static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
 }
-inline void CtrlSoftwareStatusResponse::set_apptypecode(::proto::EnumDefineData_AppTypeEnum value) {
+inline void CtrlSoftwareStatusResponse::set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value) {
   
   apptypecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.CtrlSoftwareStatusResponse.appTypeCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTypeCode)
 }
 
 // string swAppVersion = 5;
@@ -833,41 +842,41 @@ inline void CtrlSoftwareStatusResponse::clear_swappversion() {
   swappversion_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& CtrlSoftwareStatusResponse::swappversion() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlSoftwareStatusResponse.swAppVersion)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppVersion)
   return swappversion_.GetNoArena();
 }
 inline void CtrlSoftwareStatusResponse::set_swappversion(const ::std::string& value) {
   
   swappversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.CtrlSoftwareStatusResponse.swAppVersion)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppVersion)
 }
 #if LANG_CXX11
 inline void CtrlSoftwareStatusResponse::set_swappversion(::std::string&& value) {
   
   swappversion_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.CtrlSoftwareStatusResponse.swAppVersion)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppVersion)
 }
 #endif
 inline void CtrlSoftwareStatusResponse::set_swappversion(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   swappversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.CtrlSoftwareStatusResponse.swAppVersion)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppVersion)
 }
 inline void CtrlSoftwareStatusResponse::set_swappversion(const char* value, size_t size) {
   
   swappversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.CtrlSoftwareStatusResponse.swAppVersion)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppVersion)
 }
 inline ::std::string* CtrlSoftwareStatusResponse::mutable_swappversion() {
   
-  // @@protoc_insertion_point(field_mutable:proto.CtrlSoftwareStatusResponse.swAppVersion)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppVersion)
   return swappversion_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* CtrlSoftwareStatusResponse::release_swappversion() {
-  // @@protoc_insertion_point(field_release:proto.CtrlSoftwareStatusResponse.swAppVersion)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppVersion)
   
   return swappversion_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -878,21 +887,21 @@ inline void CtrlSoftwareStatusResponse::set_allocated_swappversion(::std::string
     
   }
   swappversion_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), swappversion);
-  // @@protoc_insertion_point(field_set_allocated:proto.CtrlSoftwareStatusResponse.swAppVersion)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.swAppVersion)
 }
 
-// .proto.CommonResponse.ResStatusEnum appTryInstallingStatus = 6;
+// .com.fiberhome.fums.proto.CommonResponse.ResStatusEnum appTryInstallingStatus = 6;
 inline void CtrlSoftwareStatusResponse::clear_apptryinstallingstatus() {
   apptryinstallingstatus_ = 0;
 }
-inline ::proto::CommonResponse_ResStatusEnum CtrlSoftwareStatusResponse::apptryinstallingstatus() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlSoftwareStatusResponse.appTryInstallingStatus)
-  return static_cast< ::proto::CommonResponse_ResStatusEnum >(apptryinstallingstatus_);
+inline ::com::fiberhome::fums::proto::CommonResponse_ResStatusEnum CtrlSoftwareStatusResponse::apptryinstallingstatus() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingStatus)
+  return static_cast< ::com::fiberhome::fums::proto::CommonResponse_ResStatusEnum >(apptryinstallingstatus_);
 }
-inline void CtrlSoftwareStatusResponse::set_apptryinstallingstatus(::proto::CommonResponse_ResStatusEnum value) {
+inline void CtrlSoftwareStatusResponse::set_apptryinstallingstatus(::com::fiberhome::fums::proto::CommonResponse_ResStatusEnum value) {
   
   apptryinstallingstatus_ = value;
-  // @@protoc_insertion_point(field_set:proto.CtrlSoftwareStatusResponse.appTryInstallingStatus)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingStatus)
 }
 
 // string appTryInstallingFailedReason = 7;
@@ -900,41 +909,41 @@ inline void CtrlSoftwareStatusResponse::clear_apptryinstallingfailedreason() {
   apptryinstallingfailedreason_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& CtrlSoftwareStatusResponse::apptryinstallingfailedreason() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
   return apptryinstallingfailedreason_.GetNoArena();
 }
 inline void CtrlSoftwareStatusResponse::set_apptryinstallingfailedreason(const ::std::string& value) {
   
   apptryinstallingfailedreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
 }
 #if LANG_CXX11
 inline void CtrlSoftwareStatusResponse::set_apptryinstallingfailedreason(::std::string&& value) {
   
   apptryinstallingfailedreason_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
 }
 #endif
 inline void CtrlSoftwareStatusResponse::set_apptryinstallingfailedreason(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   apptryinstallingfailedreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
 }
 inline void CtrlSoftwareStatusResponse::set_apptryinstallingfailedreason(const char* value, size_t size) {
   
   apptryinstallingfailedreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
 }
 inline ::std::string* CtrlSoftwareStatusResponse::mutable_apptryinstallingfailedreason() {
   
-  // @@protoc_insertion_point(field_mutable:proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
   return apptryinstallingfailedreason_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* CtrlSoftwareStatusResponse::release_apptryinstallingfailedreason() {
-  // @@protoc_insertion_point(field_release:proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
   
   return apptryinstallingfailedreason_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -945,7 +954,7 @@ inline void CtrlSoftwareStatusResponse::set_allocated_apptryinstallingfailedreas
     
   }
   apptryinstallingfailedreason_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), apptryinstallingfailedreason);
-  // @@protoc_insertion_point(field_set_allocated:proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.CtrlSoftwareStatusResponse.appTryInstallingFailedReason)
 }
 
 #ifdef __GNUC__
@@ -959,14 +968,17 @@ inline void CtrlSoftwareStatusResponse::set_allocated_apptryinstallingfailedreas
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::SoftwareData_SoftwareCtrlTypeEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::SoftwareData_SoftwareCtrlTypeEnum>() {
-  return ::proto::SoftwareData_SoftwareCtrlTypeEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum>() {
+  return ::com::fiberhome::fums::proto::SoftwareData_SoftwareCtrlTypeEnum_descriptor();
 }
 
 }  // namespace protobuf

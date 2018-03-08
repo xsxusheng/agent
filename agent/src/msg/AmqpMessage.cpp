@@ -159,6 +159,7 @@ void AmqpMessage::QueueDeclare(string &queuename, int passive, int durable, int 
 {
     int error = AMQP_RESPONSE_NONE;
 
+    SV_LOG("queue declare");
 	if(m_conn == NULL)
 	{
 		SV_ERROR("Can not declare queue, m_conn is null");
@@ -179,10 +180,12 @@ void AmqpMessage::QueueDeclare(string &queuename, int passive, int durable, int 
 		SV_ERROR("queue declare error");
         throw -1;
     }
+    SV_LOG("queue declare end");
 }
 
 void AmqpMessage::QueueBind(string &queuename, string &exchange, string &routingKey)
 {
+    SV_LOG("queue bind");
     int error = AMQP_RESPONSE_NONE;
 	
 	if(queuename.empty() || exchange.empty() || routingKey.empty())
@@ -192,6 +195,11 @@ void AmqpMessage::QueueBind(string &queuename, string &exchange, string &routing
 	}
 	SV_LOG("bind queue : queue = %s, exchange = %s, routing_key = %s", queuename.c_str(), exchange.c_str(), routingKey.c_str());
 
+    if(m_conn == NULL)
+    {
+        SV_ERROR("can not bind queue, m_conn is null");
+    }
+
     amqp_queue_bind(m_conn, 1, amqp_cstring_bytes(queuename.c_str()), amqp_cstring_bytes(exchange.c_str()), amqp_cstring_bytes(routingKey.c_str()), amqp_empty_table);
     error = DieOnAmqpError(amqp_get_rpc_reply(m_conn), "bind queue");
     if(error != AMQP_RESPONSE_NORMAL)
@@ -200,6 +208,122 @@ void AmqpMessage::QueueBind(string &queuename, string &exchange, string &routing
         throw -1;
     }
 }
+
+
+void AmqpMessage::SetPublishProps(int durable)
+{
+    memset(&m_props, 0, sizeof(m_props));
+    m_props._flags = AMQP_BASIC_CONTENT_TYPE_FLAG | AMQP_BASIC_DELIVERY_MODE_FLAG;
+    m_props.content_type = amqp_cstring_bytes("text/plain");
+    m_props.delivery_mode = 2;
+}
+
+
+void AmqpMessage::BasicPublish(string &exchange, string &routingKey, string &message)
+{
+    int result = 0;
+    amqp_frame_t frame;
+    amqp_rpc_reply_t ret;
+
+    if(m_conn == NULL)
+    {
+        SV_ERROR("can not basic publish message, m_conn is null");
+        throw -1;
+    }
+    if(exchange.empty() || routingKey.empty() || message.empty())
+    {
+        SV_ERROR("parameter error : exchange = %s, routingKey = %s", exchange.c_str(), routingKey.c_str());
+        throw -1;
+    }
+
+    result = amqp_basic_publish(m_conn, 1, amqp_cstring_bytes(exchange.c_str()), amqp_cstring_bytes(routingKey.c_str()), 0, 0, &m_props, amqp_cstring_bytes(message.c_str()));
+    if(result < 0)
+    {
+        SV_ERROR("basic publish message error");
+        throw -1;
+    }
+
+    return;
+
+    struct timeval timeout;
+    timeout.tv_sec = 0;
+    timeout.tv_usec = 50000;
+    if(AMQP_STATUS_OK != amqp_simple_wait_frame_noblock(m_conn, &frame, &timeout))
+    {
+        SV_ERROR("basic publish mesage timeout");
+        throw -1;
+    }
+
+    if(AMQP_FRAME_METHOD == frame.frame_type)
+    {
+        amqp_method_t method = frame.payload.method;
+        SV_LOG("method.id = %08X, method.name = %s", method.id, amqp_method_name(method.id));
+        switch(method.id)
+        {
+            /* 如果开启消息确认机制，则消息被确认 */
+            case AMQP_BASIC_ACK_METHOD:
+            {
+                amqp_basic_ack_t *s;
+                s = (amqp_basic_ack_t *) method.decoded; 
+                SV_LOG("Ack.delivery_tag = %d", s->delivery_tag);
+                SV_LOG("Ack.multiple = %d", s->multiple);
+            }
+            break;
+
+            /* 消息没有被确认 */
+            case AMQP_BASIC_NACK_METHOD:
+            {
+                amqp_basic_nack_t *s;
+                s = (amqp_basic_nack_t *) method.decoded;
+                SV_LOG("NAck.delivery_tag = %d", s->delivery_tag);
+                SV_LOG("NAck.multiple = %d", s->multiple);
+                SV_LOG("NAck.requeue = %d", s->requeue);
+            }
+            break;
+            /* if a published message couldn't be routed and the mandatory flag was set 
+             * this is what would be returned. The message then needs to be read.
+             */
+            case AMQP_BASIC_RETURN_METHOD:
+                {
+                    amqp_message_t message;
+                    amqp_basic_return_t *s;
+                    char str[1024] = {0};
+                    s = (amqp_basic_return_t *) method.decoded;
+                    SV_LOG("Return.reply_code = %d", s->reply_code);
+                    if(s->reply_text.len < 1024)
+                    {
+                        strncpy(str, (char *)s->reply_text.bytes, s->reply_text.len);
+                    }
+                    strncpy(str, (char *)s->reply_text.bytes, s->reply_text.len);
+                    SV_LOG("Return.reply_text=%s\n", str);
+
+                    ret = amqp_read_message(m_conn, frame.channel, &message, 0);
+                    if (AMQP_RESPONSE_NORMAL != ret.reply_type)
+                    {
+                        SV_ERROR("amqp read message error");
+                        throw -1;
+                    }
+                    if(message.body.len < 1024)
+                    {
+                        strncpy(str, (char *) message.body.bytes, message.body.len);
+                        str[message.body.len] = 0;
+                    }
+                    SV_LOG("Return.message=%s\n", str);
+                    amqp_destroy_message(&message);
+                }
+                break;
+
+            case AMQP_CHANNEL_CLOSE_METHOD:
+                SV_ERROR("amqp channel abnormal closed");
+            case AMQP_CONNECTION_CLOSE_METHOD:
+                SV_ERROR("amqp connection abnormal closed");
+            default:
+                SV_ERROR("basic publish exception");
+                throw -1;
+        }
+    }
+}
+
 
 void AmqpMessage::BasicQos(int prefetchCount)
 {

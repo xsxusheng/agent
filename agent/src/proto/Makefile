@@ -3,6 +3,7 @@
 
 TARGET = proto
 CFLAGS = -Wall -O -g -Wno-write-strings
+INC_DIR = -I../../3rd/protobuf/include
 ###########################################################
 CC = gcc
 XX = g++

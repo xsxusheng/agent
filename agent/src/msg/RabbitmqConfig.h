@@ -15,7 +15,7 @@ class RabbitmqConfig
 public:
     RabbitmqConfig();
     ~RabbitmqConfig();
-    static void Init();
+    static int Init();
     static string GetHost();
     static string GetVnmhost();
     static string GetUserName();

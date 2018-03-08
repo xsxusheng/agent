@@ -10,22 +10,31 @@ using namespace std;
 
 class AgentUtils
 {
-private:
-    static const int ALARM_FILTER_TIMES = 5;
-    static const string rabbitmqConfFile;
 public:
+    static int Init();
     //获取当前Agent版本
-    string GetAgentVersion();
+    static string GetAgentVersion();
     //获取当前时间
-    unsigned long long GetCurrentTimeMsec();
+    static unsigned long long GetCurrentTimeMsec();
     //获取脚本路径
-    string GetScripPath();
+    static string GetScripPath();
     //获取文件绝对路径
-    string GetFileAbsPath();
+    static string GetFileAbsPath();
     //获取本地IP
-    string GetLocalIP();
+    static string GetLocalIP();
     //获取文件名
-    string GetFileName();
+    static string GetFileName();
     //获取rabbitmq配置文件
-    string GetRabbitmqConfFile();
+    static string GetRabbitmqConfFile();
+
+private:
+    static int __LoadSystemConfig(string &filName);
+    static int __LoadAgentVersion(string &fileName);
+private:
+    static string sm_rabbitmqConfFile;
+    static string sm_systemConfigFile;
+    static string sm_agentVersionFile;
+    static string m_agentIP;
+    static int m_AppMsgPort;
+    static string sm_etcPath;
 };

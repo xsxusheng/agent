@@ -17,6 +17,9 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class HaSwitchDataDefaultTypeInternal {
 public:
@@ -109,7 +112,7 @@ void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
-  ::proto::protobuf_CommonDefine_2eproto::InitDefaults();
+  ::com::fiberhome::fums::proto::protobuf_CommonDefine_2eproto::InitDefaults();
   _HaSwitchData_default_instance_._instance.DefaultConstruct();
   ::google::protobuf::internal::OnShutdownDestroyMessage(
       &_HaSwitchData_default_instance_);_HaSwitchResponse_default_instance_._instance.DefaultConstruct();
@@ -124,23 +127,25 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\016HaSwitch.proto\022\005proto\032\022CommonDefine.pr"
-      "oto\"\326\001\n\014HaSwitchData\022\020\n\010uniqueId\030\001 \001(\003\022:"
-      "\n\014haSwitchType\030\002 \001(\0162$.proto.HaSwitchDat"
-      "a.HaSwitchTypeEnum\022\017\n\007appType\030\003 \001(\t\0226\n\013a"
-      "ppTypeCode\030\004 \001(\0162!.proto.EnumDefineData."
-      "AppTypeEnum\"/\n\020HaSwitchTypeEnum\022\r\n\tSWITC"
-      "H_HA\020\000\022\014\n\010QUERY_HA\020\001\"r\n\020HaSwitchResponse"
-      "\022\020\n\010uniqueId\030\001 \001(\003\022:\n\014haSwitchType\030\002 \001(\016"
-      "2$.proto.HaSwitchData.HaSwitchTypeEnum\022\020"
-      "\n\010haStatus\030\003 \001(\005B$\n\030com.fiberhome.fums.p"
-      "rotoB\010HaSwitchb\006proto3"
+      "\n\016HaSwitch.proto\022\030com.fiberhome.fums.pro"
+      "to\032\022CommonDefine.proto\"\374\001\n\014HaSwitchData\022"
+      "\020\n\010uniqueId\030\001 \001(\003\022M\n\014haSwitchType\030\002 \001(\0162"
+      "7.com.fiberhome.fums.proto.HaSwitchData."
+      "HaSwitchTypeEnum\022\017\n\007appType\030\003 \001(\t\022I\n\013app"
+      "TypeCode\030\004 \001(\01624.com.fiberhome.fums.prot"
+      "o.EnumDefineData.AppTypeEnum\"/\n\020HaSwitch"
+      "TypeEnum\022\r\n\tSWITCH_HA\020\000\022\014\n\010QUERY_HA\020\001\"\205\001"
+      "\n\020HaSwitchResponse\022\020\n\010uniqueId\030\001 \001(\003\022M\n\014"
+      "haSwitchType\030\002 \001(\01627.com.fiberhome.fums."
+      "proto.HaSwitchData.HaSwitchTypeEnum\022\020\n\010h"
+      "aStatus\030\003 \001(\005B$\n\030com.fiberhome.fums.prot"
+      "oB\010HaSwitchb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 422);
+      descriptor, 499);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "HaSwitch.proto", &protobuf_RegisterTypes);
-  ::proto::protobuf_CommonDefine_2eproto::AddDescriptors();
+  ::com::fiberhome::fums::proto::protobuf_CommonDefine_2eproto::AddDescriptors();
 }
 } // anonymous namespace
 
@@ -194,7 +199,7 @@ HaSwitchData::HaSwitchData()
     protobuf_HaSwitch_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.HaSwitchData)
+  // @@protoc_insertion_point(constructor:com.fiberhome.fums.proto.HaSwitchData)
 }
 HaSwitchData::HaSwitchData(const HaSwitchData& from)
   : ::google::protobuf::Message(),
@@ -208,7 +213,7 @@ HaSwitchData::HaSwitchData(const HaSwitchData& from)
   ::memcpy(&uniqueid_, &from.uniqueid_,
     static_cast<size_t>(reinterpret_cast<char*>(&apptypecode_) -
     reinterpret_cast<char*>(&uniqueid_)) + sizeof(apptypecode_));
-  // @@protoc_insertion_point(copy_constructor:proto.HaSwitchData)
+  // @@protoc_insertion_point(copy_constructor:com.fiberhome.fums.proto.HaSwitchData)
 }
 
 void HaSwitchData::SharedCtor() {
@@ -220,7 +225,7 @@ void HaSwitchData::SharedCtor() {
 }
 
 HaSwitchData::~HaSwitchData() {
-  // @@protoc_insertion_point(destructor:proto.HaSwitchData)
+  // @@protoc_insertion_point(destructor:com.fiberhome.fums.proto.HaSwitchData)
   SharedDtor();
 }
 
@@ -252,7 +257,7 @@ HaSwitchData* HaSwitchData::New(::google::protobuf::Arena* arena) const {
 }
 
 void HaSwitchData::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto.HaSwitchData)
+// @@protoc_insertion_point(message_clear_start:com.fiberhome.fums.proto.HaSwitchData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -268,7 +273,7 @@ bool HaSwitchData::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.HaSwitchData)
+  // @@protoc_insertion_point(parse_start:com.fiberhome.fums.proto.HaSwitchData)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -288,7 +293,7 @@ bool HaSwitchData::MergePartialFromCodedStream(
         break;
       }
 
-      // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+      // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
@@ -296,7 +301,7 @@ bool HaSwitchData::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_haswitchtype(static_cast< ::proto::HaSwitchData_HaSwitchTypeEnum >(value));
+          set_haswitchtype(static_cast< ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum >(value));
         } else {
           goto handle_unusual;
         }
@@ -312,14 +317,14 @@ bool HaSwitchData::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->apptype().data(), static_cast<int>(this->apptype().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "proto.HaSwitchData.appType"));
+            "com.fiberhome.fums.proto.HaSwitchData.appType"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+      // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
@@ -327,7 +332,7 @@ bool HaSwitchData::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_apptypecode(static_cast< ::proto::EnumDefineData_AppTypeEnum >(value));
+          set_apptypecode(static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(value));
         } else {
           goto handle_unusual;
         }
@@ -346,17 +351,17 @@ bool HaSwitchData::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.HaSwitchData)
+  // @@protoc_insertion_point(parse_success:com.fiberhome.fums.proto.HaSwitchData)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.HaSwitchData)
+  // @@protoc_insertion_point(parse_failure:com.fiberhome.fums.proto.HaSwitchData)
   return false;
 #undef DO_
 }
 
 void HaSwitchData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.HaSwitchData)
+  // @@protoc_insertion_point(serialize_start:com.fiberhome.fums.proto.HaSwitchData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -365,7 +370,7 @@ void HaSwitchData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->uniqueid(), output);
   }
 
-  // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+  // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
   if (this->haswitchtype() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->haswitchtype(), output);
@@ -376,12 +381,12 @@ void HaSwitchData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->apptype().data(), static_cast<int>(this->apptype().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "proto.HaSwitchData.appType");
+      "com.fiberhome.fums.proto.HaSwitchData.appType");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       3, this->apptype(), output);
   }
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
   if (this->apptypecode() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       4, this->apptypecode(), output);
@@ -391,13 +396,13 @@ void HaSwitchData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.HaSwitchData)
+  // @@protoc_insertion_point(serialize_end:com.fiberhome.fums.proto.HaSwitchData)
 }
 
 ::google::protobuf::uint8* HaSwitchData::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:proto.HaSwitchData)
+  // @@protoc_insertion_point(serialize_to_array_start:com.fiberhome.fums.proto.HaSwitchData)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -406,7 +411,7 @@ void HaSwitchData::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->uniqueid(), target);
   }
 
-  // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+  // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
   if (this->haswitchtype() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->haswitchtype(), target);
@@ -417,13 +422,13 @@ void HaSwitchData::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->apptype().data(), static_cast<int>(this->apptype().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "proto.HaSwitchData.appType");
+      "com.fiberhome.fums.proto.HaSwitchData.appType");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         3, this->apptype(), target);
   }
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
   if (this->apptypecode() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       4, this->apptypecode(), target);
@@ -433,12 +438,12 @@ void HaSwitchData::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.HaSwitchData)
+  // @@protoc_insertion_point(serialize_to_array_end:com.fiberhome.fums.proto.HaSwitchData)
   return target;
 }
 
 size_t HaSwitchData::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto.HaSwitchData)
+// @@protoc_insertion_point(message_byte_size_start:com.fiberhome.fums.proto.HaSwitchData)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -460,13 +465,13 @@ size_t HaSwitchData::ByteSizeLong() const {
         this->uniqueid());
   }
 
-  // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+  // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
   if (this->haswitchtype() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->haswitchtype());
   }
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
   if (this->apptypecode() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->apptypecode());
@@ -480,22 +485,22 @@ size_t HaSwitchData::ByteSizeLong() const {
 }
 
 void HaSwitchData::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:proto.HaSwitchData)
+// @@protoc_insertion_point(generalized_merge_from_start:com.fiberhome.fums.proto.HaSwitchData)
   GOOGLE_DCHECK_NE(&from, this);
   const HaSwitchData* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const HaSwitchData>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.HaSwitchData)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.fiberhome.fums.proto.HaSwitchData)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.HaSwitchData)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.fiberhome.fums.proto.HaSwitchData)
     MergeFrom(*source);
   }
 }
 
 void HaSwitchData::MergeFrom(const HaSwitchData& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto.HaSwitchData)
+// @@protoc_insertion_point(class_specific_merge_from_start:com.fiberhome.fums.proto.HaSwitchData)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -517,14 +522,14 @@ void HaSwitchData::MergeFrom(const HaSwitchData& from) {
 }
 
 void HaSwitchData::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:proto.HaSwitchData)
+// @@protoc_insertion_point(generalized_copy_from_start:com.fiberhome.fums.proto.HaSwitchData)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void HaSwitchData::CopyFrom(const HaSwitchData& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto.HaSwitchData)
+// @@protoc_insertion_point(class_specific_copy_from_start:com.fiberhome.fums.proto.HaSwitchData)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -561,27 +566,27 @@ void HaSwitchData::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 ::google::protobuf::int64 HaSwitchData::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchData.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchData.uniqueId)
   return uniqueid_;
 }
 void HaSwitchData::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchData.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchData.uniqueId)
 }
 
-// .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+// .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
 void HaSwitchData::clear_haswitchtype() {
   haswitchtype_ = 0;
 }
-::proto::HaSwitchData_HaSwitchTypeEnum HaSwitchData::haswitchtype() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchData.haSwitchType)
-  return static_cast< ::proto::HaSwitchData_HaSwitchTypeEnum >(haswitchtype_);
+::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum HaSwitchData::haswitchtype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchData.haSwitchType)
+  return static_cast< ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum >(haswitchtype_);
 }
-void HaSwitchData::set_haswitchtype(::proto::HaSwitchData_HaSwitchTypeEnum value) {
+void HaSwitchData::set_haswitchtype(::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum value) {
   
   haswitchtype_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchData.haSwitchType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchData.haSwitchType)
 }
 
 // string appType = 3;
@@ -589,41 +594,41 @@ void HaSwitchData::clear_apptype() {
   apptype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 const ::std::string& HaSwitchData::apptype() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchData.appType)
   return apptype_.GetNoArena();
 }
 void HaSwitchData::set_apptype(const ::std::string& value) {
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 #if LANG_CXX11
 void HaSwitchData::set_apptype(::std::string&& value) {
   
   apptype_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 #endif
 void HaSwitchData::set_apptype(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 void HaSwitchData::set_apptype(const char* value, size_t size) {
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 ::std::string* HaSwitchData::mutable_apptype() {
   
-  // @@protoc_insertion_point(field_mutable:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.HaSwitchData.appType)
   return apptype_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 ::std::string* HaSwitchData::release_apptype() {
-  // @@protoc_insertion_point(field_release:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.HaSwitchData.appType)
   
   return apptype_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -634,21 +639,21 @@ void HaSwitchData::set_allocated_apptype(::std::string* apptype) {
     
   }
   apptype_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), apptype);
-  // @@protoc_insertion_point(field_set_allocated:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 
-// .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+// .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
 void HaSwitchData::clear_apptypecode() {
   apptypecode_ = 0;
 }
-::proto::EnumDefineData_AppTypeEnum HaSwitchData::apptypecode() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchData.appTypeCode)
-  return static_cast< ::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
+::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum HaSwitchData::apptypecode() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchData.appTypeCode)
+  return static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
 }
-void HaSwitchData::set_apptypecode(::proto::EnumDefineData_AppTypeEnum value) {
+void HaSwitchData::set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value) {
   
   apptypecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchData.appTypeCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchData.appTypeCode)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -667,7 +672,7 @@ HaSwitchResponse::HaSwitchResponse()
     protobuf_HaSwitch_2eproto::InitDefaults();
   }
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(constructor:com.fiberhome.fums.proto.HaSwitchResponse)
 }
 HaSwitchResponse::HaSwitchResponse(const HaSwitchResponse& from)
   : ::google::protobuf::Message(),
@@ -677,7 +682,7 @@ HaSwitchResponse::HaSwitchResponse(const HaSwitchResponse& from)
   ::memcpy(&uniqueid_, &from.uniqueid_,
     static_cast<size_t>(reinterpret_cast<char*>(&hastatus_) -
     reinterpret_cast<char*>(&uniqueid_)) + sizeof(hastatus_));
-  // @@protoc_insertion_point(copy_constructor:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(copy_constructor:com.fiberhome.fums.proto.HaSwitchResponse)
 }
 
 void HaSwitchResponse::SharedCtor() {
@@ -688,7 +693,7 @@ void HaSwitchResponse::SharedCtor() {
 }
 
 HaSwitchResponse::~HaSwitchResponse() {
-  // @@protoc_insertion_point(destructor:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(destructor:com.fiberhome.fums.proto.HaSwitchResponse)
   SharedDtor();
 }
 
@@ -719,7 +724,7 @@ HaSwitchResponse* HaSwitchResponse::New(::google::protobuf::Arena* arena) const 
 }
 
 void HaSwitchResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:proto.HaSwitchResponse)
+// @@protoc_insertion_point(message_clear_start:com.fiberhome.fums.proto.HaSwitchResponse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -734,7 +739,7 @@ bool HaSwitchResponse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(parse_start:com.fiberhome.fums.proto.HaSwitchResponse)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -754,7 +759,7 @@ bool HaSwitchResponse::MergePartialFromCodedStream(
         break;
       }
 
-      // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+      // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
@@ -762,7 +767,7 @@ bool HaSwitchResponse::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_haswitchtype(static_cast< ::proto::HaSwitchData_HaSwitchTypeEnum >(value));
+          set_haswitchtype(static_cast< ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum >(value));
         } else {
           goto handle_unusual;
         }
@@ -795,17 +800,17 @@ bool HaSwitchResponse::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(parse_success:com.fiberhome.fums.proto.HaSwitchResponse)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(parse_failure:com.fiberhome.fums.proto.HaSwitchResponse)
   return false;
 #undef DO_
 }
 
 void HaSwitchResponse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(serialize_start:com.fiberhome.fums.proto.HaSwitchResponse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -814,7 +819,7 @@ void HaSwitchResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->uniqueid(), output);
   }
 
-  // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+  // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
   if (this->haswitchtype() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       2, this->haswitchtype(), output);
@@ -829,13 +834,13 @@ void HaSwitchResponse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(serialize_end:com.fiberhome.fums.proto.HaSwitchResponse)
 }
 
 ::google::protobuf::uint8* HaSwitchResponse::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:com.fiberhome.fums.proto.HaSwitchResponse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -844,7 +849,7 @@ void HaSwitchResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->uniqueid(), target);
   }
 
-  // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+  // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
   if (this->haswitchtype() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       2, this->haswitchtype(), target);
@@ -859,12 +864,12 @@ void HaSwitchResponse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:com.fiberhome.fums.proto.HaSwitchResponse)
   return target;
 }
 
 size_t HaSwitchResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:proto.HaSwitchResponse)
+// @@protoc_insertion_point(message_byte_size_start:com.fiberhome.fums.proto.HaSwitchResponse)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -879,7 +884,7 @@ size_t HaSwitchResponse::ByteSizeLong() const {
         this->uniqueid());
   }
 
-  // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+  // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
   if (this->haswitchtype() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->haswitchtype());
@@ -900,22 +905,22 @@ size_t HaSwitchResponse::ByteSizeLong() const {
 }
 
 void HaSwitchResponse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:proto.HaSwitchResponse)
+// @@protoc_insertion_point(generalized_merge_from_start:com.fiberhome.fums.proto.HaSwitchResponse)
   GOOGLE_DCHECK_NE(&from, this);
   const HaSwitchResponse* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const HaSwitchResponse>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:com.fiberhome.fums.proto.HaSwitchResponse)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:com.fiberhome.fums.proto.HaSwitchResponse)
     MergeFrom(*source);
   }
 }
 
 void HaSwitchResponse::MergeFrom(const HaSwitchResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:proto.HaSwitchResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:com.fiberhome.fums.proto.HaSwitchResponse)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -933,14 +938,14 @@ void HaSwitchResponse::MergeFrom(const HaSwitchResponse& from) {
 }
 
 void HaSwitchResponse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:proto.HaSwitchResponse)
+// @@protoc_insertion_point(generalized_copy_from_start:com.fiberhome.fums.proto.HaSwitchResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void HaSwitchResponse::CopyFrom(const HaSwitchResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:proto.HaSwitchResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:com.fiberhome.fums.proto.HaSwitchResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -976,27 +981,27 @@ void HaSwitchResponse::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 ::google::protobuf::int64 HaSwitchResponse::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchResponse.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchResponse.uniqueId)
   return uniqueid_;
 }
 void HaSwitchResponse::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchResponse.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchResponse.uniqueId)
 }
 
-// .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+// .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
 void HaSwitchResponse::clear_haswitchtype() {
   haswitchtype_ = 0;
 }
-::proto::HaSwitchData_HaSwitchTypeEnum HaSwitchResponse::haswitchtype() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchResponse.haSwitchType)
-  return static_cast< ::proto::HaSwitchData_HaSwitchTypeEnum >(haswitchtype_);
+::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum HaSwitchResponse::haswitchtype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchResponse.haSwitchType)
+  return static_cast< ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum >(haswitchtype_);
 }
-void HaSwitchResponse::set_haswitchtype(::proto::HaSwitchData_HaSwitchTypeEnum value) {
+void HaSwitchResponse::set_haswitchtype(::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum value) {
   
   haswitchtype_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchResponse.haSwitchType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchResponse.haSwitchType)
 }
 
 // int32 haStatus = 3;
@@ -1004,13 +1009,13 @@ void HaSwitchResponse::clear_hastatus() {
   hastatus_ = 0;
 }
 ::google::protobuf::int32 HaSwitchResponse::hastatus() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchResponse.haStatus)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchResponse.haStatus)
   return hastatus_;
 }
 void HaSwitchResponse::set_hastatus(::google::protobuf::int32 value) {
   
   hastatus_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchResponse.haStatus)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchResponse.haStatus)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -1018,5 +1023,8 @@ void HaSwitchResponse::set_hastatus(::google::protobuf::int32 value) {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 // @@protoc_insertion_point(global_scope)

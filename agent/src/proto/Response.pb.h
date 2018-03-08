@@ -31,6 +31,9 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "Msg.pb.h"
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class NtpDateResponse;
 class NtpDateResponseDefaultTypeInternal;
@@ -39,7 +42,13 @@ class ResponseData;
 class ResponseDataDefaultTypeInternal;
 extern ResponseDataDefaultTypeInternal _ResponseData_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_Response_2eproto {
@@ -59,7 +68,7 @@ void InitDefaults();
 
 // ===================================================================
 
-class ResponseData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.ResponseData) */ {
+class ResponseData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.ResponseData) */ {
  public:
   ResponseData();
   virtual ~ResponseData();
@@ -160,13 +169,13 @@ class ResponseData : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::int64 uniqueid() const;
   void set_uniqueid(::google::protobuf::int64 value);
 
-  // .proto.Header.DataType resType = 2;
+  // .com.fiberhome.fums.proto.Header.DataType resType = 2;
   void clear_restype();
   static const int kResTypeFieldNumber = 2;
-  ::proto::Header_DataType restype() const;
-  void set_restype(::proto::Header_DataType value);
+  ::com::fiberhome::fums::proto::Header_DataType restype() const;
+  void set_restype(::com::fiberhome::fums::proto::Header_DataType value);
 
-  // @@protoc_insertion_point(class_scope:proto.ResponseData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.ResponseData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -178,7 +187,7 @@ class ResponseData : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // -------------------------------------------------------------------
 
-class NtpDateResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.NtpDateResponse) */ {
+class NtpDateResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.NtpDateResponse) */ {
  public:
   NtpDateResponse();
   virtual ~NtpDateResponse();
@@ -273,7 +282,7 @@ class NtpDateResponse : public ::google::protobuf::Message /* @@protoc_insertion
   ::std::string* release_offset();
   void set_allocated_offset(::std::string* offset);
 
-  // @@protoc_insertion_point(class_scope:proto.NtpDateResponse)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.NtpDateResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -298,27 +307,27 @@ inline void ResponseData::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 ResponseData::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.ResponseData.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.ResponseData.uniqueId)
   return uniqueid_;
 }
 inline void ResponseData::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.ResponseData.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.ResponseData.uniqueId)
 }
 
-// .proto.Header.DataType resType = 2;
+// .com.fiberhome.fums.proto.Header.DataType resType = 2;
 inline void ResponseData::clear_restype() {
   restype_ = 0;
 }
-inline ::proto::Header_DataType ResponseData::restype() const {
-  // @@protoc_insertion_point(field_get:proto.ResponseData.resType)
-  return static_cast< ::proto::Header_DataType >(restype_);
+inline ::com::fiberhome::fums::proto::Header_DataType ResponseData::restype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.ResponseData.resType)
+  return static_cast< ::com::fiberhome::fums::proto::Header_DataType >(restype_);
 }
-inline void ResponseData::set_restype(::proto::Header_DataType value) {
+inline void ResponseData::set_restype(::com::fiberhome::fums::proto::Header_DataType value) {
   
   restype_ = value;
-  // @@protoc_insertion_point(field_set:proto.ResponseData.resType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.ResponseData.resType)
 }
 
 // string data = 3;
@@ -326,41 +335,41 @@ inline void ResponseData::clear_data() {
   data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& ResponseData::data() const {
-  // @@protoc_insertion_point(field_get:proto.ResponseData.data)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.ResponseData.data)
   return data_.GetNoArena();
 }
 inline void ResponseData::set_data(const ::std::string& value) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.ResponseData.data)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.ResponseData.data)
 }
 #if LANG_CXX11
 inline void ResponseData::set_data(::std::string&& value) {
   
   data_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.ResponseData.data)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.ResponseData.data)
 }
 #endif
 inline void ResponseData::set_data(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.ResponseData.data)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.ResponseData.data)
 }
 inline void ResponseData::set_data(const char* value, size_t size) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.ResponseData.data)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.ResponseData.data)
 }
 inline ::std::string* ResponseData::mutable_data() {
   
-  // @@protoc_insertion_point(field_mutable:proto.ResponseData.data)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.ResponseData.data)
   return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* ResponseData::release_data() {
-  // @@protoc_insertion_point(field_release:proto.ResponseData.data)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.ResponseData.data)
   
   return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -371,7 +380,7 @@ inline void ResponseData::set_allocated_data(::std::string* data) {
     
   }
   data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
-  // @@protoc_insertion_point(field_set_allocated:proto.ResponseData.data)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.ResponseData.data)
 }
 
 // -------------------------------------------------------------------
@@ -383,41 +392,41 @@ inline void NtpDateResponse::clear_offset() {
   offset_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& NtpDateResponse::offset() const {
-  // @@protoc_insertion_point(field_get:proto.NtpDateResponse.offset)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.NtpDateResponse.offset)
   return offset_.GetNoArena();
 }
 inline void NtpDateResponse::set_offset(const ::std::string& value) {
   
   offset_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.NtpDateResponse.offset)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.NtpDateResponse.offset)
 }
 #if LANG_CXX11
 inline void NtpDateResponse::set_offset(::std::string&& value) {
   
   offset_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.NtpDateResponse.offset)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.NtpDateResponse.offset)
 }
 #endif
 inline void NtpDateResponse::set_offset(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   offset_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.NtpDateResponse.offset)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.NtpDateResponse.offset)
 }
 inline void NtpDateResponse::set_offset(const char* value, size_t size) {
   
   offset_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.NtpDateResponse.offset)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.NtpDateResponse.offset)
 }
 inline ::std::string* NtpDateResponse::mutable_offset() {
   
-  // @@protoc_insertion_point(field_mutable:proto.NtpDateResponse.offset)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.NtpDateResponse.offset)
   return offset_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* NtpDateResponse::release_offset() {
-  // @@protoc_insertion_point(field_release:proto.NtpDateResponse.offset)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.NtpDateResponse.offset)
   
   return offset_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -428,7 +437,7 @@ inline void NtpDateResponse::set_allocated_offset(::std::string* offset) {
     
   }
   offset_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), offset);
-  // @@protoc_insertion_point(field_set_allocated:proto.NtpDateResponse.offset)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.NtpDateResponse.offset)
 }
 
 #ifdef __GNUC__
@@ -442,6 +451,9 @@ inline void NtpDateResponse::set_allocated_offset(::std::string* offset) {
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 // @@protoc_insertion_point(global_scope)
 

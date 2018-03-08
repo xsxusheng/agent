@@ -15,10 +15,10 @@ using namespace std;
 
 Properties* RabbitmqConfig::sm_props = NULL;
 
-void RabbitmqConfig::Init()
+int RabbitmqConfig::Init()
 {
     try {
-        string rabbitmqConfFile("/root/agent_demo/agent/etc/rabbitmq.properties");
+        string rabbitmqConfFile("/opt/fonsview/NE/agentd/etc/rabbitmq.properties");
         if(sm_props != NULL)
         {
             delete sm_props;
@@ -28,7 +28,10 @@ void RabbitmqConfig::Init()
         sm_props->Load(rabbitmqConfFile);
     }catch(...){
         SV_LOG("read rabbitmq.properties error");
+        return -1;
     }
+
+    return 0;
 }
 
 string RabbitmqConfig::GetHost()
@@ -134,7 +137,7 @@ string RabbitmqConfig::GetExchangeNmr()
         SV_ERROR("sm_props is NULL");
         throw -1;
     }
-    exchangeNmr = sm_props->GetValue("rabbitmq.exchangenmr");
+    exchangeNmr = sm_props->GetValue("rabbitmq.exchange_nmr");
     if(exchangeNmr.empty())
     {
         SV_ERROR("Fail to get exchangeNmr");

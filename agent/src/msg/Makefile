@@ -3,6 +3,7 @@
 
 TARGET = libmsg
 CFLAGS = -Wall -O -g -Wno-write-strings
+INC_DIR = -I../../3rd/log4cplus/include -I../../3rd/protobuf/include -I../../3rd/rabbitmq/include
 ###########################################################
 CC = gcc
 XX = g++

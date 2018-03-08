@@ -16,10 +16,10 @@ using namespace std;
 /*
  * 初始化为NULL
  */
-AmqpReceiveBuilder* AmqpReceiveBuilder::amqpReceiveBuilder = NULL;
-Locker AmqpReceiveBuilder::lock;
+AmqpReceiveBuilder* AmqpReceiveBuilder::sm_amqpReceiveBuilder = NULL;
+Locker AmqpReceiveBuilder::sm_lock;
 
-AmqpReceiveBuilder::AmqpReceiveBuilder()
+AmqpReceiveBuilder::AmqpReceiveBuilder() : m_stop(true)
 {
     ;
 }
@@ -29,36 +29,38 @@ AmqpReceiveBuilder::AmqpReceiveBuilder()
  */
 AmqpReceiveBuilder* AmqpReceiveBuilder::GetInstance()
 {
-    if(amqpReceiveBuilder == NULL)
+    if(sm_amqpReceiveBuilder == NULL)
     {
-        lock.lock();
-        if(amqpReceiveBuilder == NULL)
+        sm_lock.lock();
+        if(sm_amqpReceiveBuilder == NULL)
         {
-            amqpReceiveBuilder = new AmqpReceiveBuilder();
+            sm_amqpReceiveBuilder = new AmqpReceiveBuilder();
         }
-        lock.unlock();
+        sm_lock.unlock();
     }
 
-    return amqpReceiveBuilder;
+    return sm_amqpReceiveBuilder;
+}
+
+bool AmqpReceiveBuilder::Stop()
+{
+    return m_stop;
+}
+
+void AmqpReceiveBuilder::__DoRun()
+{
+    m_stop = false;
+    SV_LOG("启动MQ消息监听线程");
+    InitMessageChannel();
+    SV_LOG("停止MQ消息监听线程");
+    m_stop = true;
 }
 
 
 /*
  * 初始化MQ消息通道
  */
-int AmqpReceiveBuilder::InitAmqpMessageChannel()
-{
-    int res = 0;
-
-    res = CreateAmqpReceiveMessageChannel();
-    if(res < 0)
-    {
-        return -1;
-    }
-
-    return 0;
-}
-int AmqpReceiveBuilder::CreateAmqpReceiveMessageChannel()
+int AmqpReceiveBuilder::InitMessageChannel()
 {
     string host("");
     int port;
@@ -104,7 +106,7 @@ int AmqpReceiveBuilder::CreateAmqpReceiveMessageChannel()
     return 0;
 }
 
-void AmqpReceiveBuilder::StartConsume()
+void AmqpReceiveBuilder::__StartConsume()
 {
     string message;
     

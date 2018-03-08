@@ -32,6 +32,9 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "CommonDefine.pb.h"
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class CtrlAppData;
 class CtrlAppDataDefaultTypeInternal;
@@ -40,7 +43,13 @@ class CtrlAppRstResponse;
 class CtrlAppRstResponseDefaultTypeInternal;
 extern CtrlAppRstResponseDefaultTypeInternal _CtrlAppRstResponse_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_CtrlApp_2eproto {
@@ -84,7 +93,7 @@ inline bool CtrlAppData_CtrlTypeEnum_Parse(
 }
 // ===================================================================
 
-class CtrlAppData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.CtrlAppData) */ {
+class CtrlAppData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.CtrlAppData) */ {
  public:
   CtrlAppData();
   virtual ~CtrlAppData();
@@ -217,19 +226,19 @@ class CtrlAppData : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::int64 uniqueid() const;
   void set_uniqueid(::google::protobuf::int64 value);
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 3;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 3;
   void clear_apptypecode();
   static const int kAppTypeCodeFieldNumber = 3;
-  ::proto::EnumDefineData_AppTypeEnum apptypecode() const;
-  void set_apptypecode(::proto::EnumDefineData_AppTypeEnum value);
+  ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum apptypecode() const;
+  void set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value);
 
-  // .proto.CtrlAppData.CtrlTypeEnum ctrlType = 4;
+  // .com.fiberhome.fums.proto.CtrlAppData.CtrlTypeEnum ctrlType = 4;
   void clear_ctrltype();
   static const int kCtrlTypeFieldNumber = 4;
-  ::proto::CtrlAppData_CtrlTypeEnum ctrltype() const;
-  void set_ctrltype(::proto::CtrlAppData_CtrlTypeEnum value);
+  ::com::fiberhome::fums::proto::CtrlAppData_CtrlTypeEnum ctrltype() const;
+  void set_ctrltype(::com::fiberhome::fums::proto::CtrlAppData_CtrlTypeEnum value);
 
-  // @@protoc_insertion_point(class_scope:proto.CtrlAppData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.CtrlAppData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -242,7 +251,7 @@ class CtrlAppData : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
-class CtrlAppRstResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.CtrlAppRstResponse) */ {
+class CtrlAppRstResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.CtrlAppRstResponse) */ {
  public:
   CtrlAppRstResponse();
   virtual ~CtrlAppRstResponse();
@@ -323,14 +332,14 @@ class CtrlAppRstResponse : public ::google::protobuf::Message /* @@protoc_insert
 
   // accessors -------------------------------------------------------
 
-  // .proto.CommonResponse res = 2;
+  // .com.fiberhome.fums.proto.CommonResponse res = 2;
   bool has_res() const;
   void clear_res();
   static const int kResFieldNumber = 2;
-  const ::proto::CommonResponse& res() const;
-  ::proto::CommonResponse* mutable_res();
-  ::proto::CommonResponse* release_res();
-  void set_allocated_res(::proto::CommonResponse* res);
+  const ::com::fiberhome::fums::proto::CommonResponse& res() const;
+  ::com::fiberhome::fums::proto::CommonResponse* mutable_res();
+  ::com::fiberhome::fums::proto::CommonResponse* release_res();
+  void set_allocated_res(::com::fiberhome::fums::proto::CommonResponse* res);
 
   // int64 uniqueId = 1;
   void clear_uniqueid();
@@ -338,11 +347,11 @@ class CtrlAppRstResponse : public ::google::protobuf::Message /* @@protoc_insert
   ::google::protobuf::int64 uniqueid() const;
   void set_uniqueid(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:proto.CtrlAppRstResponse)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.CtrlAppRstResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::proto::CommonResponse* res_;
+  ::com::fiberhome::fums::proto::CommonResponse* res_;
   ::google::protobuf::int64 uniqueid_;
   mutable int _cached_size_;
   friend struct protobuf_CtrlApp_2eproto::TableStruct;
@@ -364,13 +373,13 @@ inline void CtrlAppData::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 CtrlAppData::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlAppData.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlAppData.uniqueId)
   return uniqueid_;
 }
 inline void CtrlAppData::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.CtrlAppData.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlAppData.uniqueId)
 }
 
 // string appType = 2;
@@ -378,41 +387,41 @@ inline void CtrlAppData::clear_apptype() {
   apptype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& CtrlAppData::apptype() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlAppData.appType)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlAppData.appType)
   return apptype_.GetNoArena();
 }
 inline void CtrlAppData::set_apptype(const ::std::string& value) {
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.CtrlAppData.appType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlAppData.appType)
 }
 #if LANG_CXX11
 inline void CtrlAppData::set_apptype(::std::string&& value) {
   
   apptype_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.CtrlAppData.appType)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.CtrlAppData.appType)
 }
 #endif
 inline void CtrlAppData::set_apptype(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.CtrlAppData.appType)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.CtrlAppData.appType)
 }
 inline void CtrlAppData::set_apptype(const char* value, size_t size) {
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.CtrlAppData.appType)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.CtrlAppData.appType)
 }
 inline ::std::string* CtrlAppData::mutable_apptype() {
   
-  // @@protoc_insertion_point(field_mutable:proto.CtrlAppData.appType)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.CtrlAppData.appType)
   return apptype_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* CtrlAppData::release_apptype() {
-  // @@protoc_insertion_point(field_release:proto.CtrlAppData.appType)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.CtrlAppData.appType)
   
   return apptype_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -423,35 +432,35 @@ inline void CtrlAppData::set_allocated_apptype(::std::string* apptype) {
     
   }
   apptype_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), apptype);
-  // @@protoc_insertion_point(field_set_allocated:proto.CtrlAppData.appType)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.CtrlAppData.appType)
 }
 
-// .proto.EnumDefineData.AppTypeEnum appTypeCode = 3;
+// .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 3;
 inline void CtrlAppData::clear_apptypecode() {
   apptypecode_ = 0;
 }
-inline ::proto::EnumDefineData_AppTypeEnum CtrlAppData::apptypecode() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlAppData.appTypeCode)
-  return static_cast< ::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
+inline ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum CtrlAppData::apptypecode() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlAppData.appTypeCode)
+  return static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
 }
-inline void CtrlAppData::set_apptypecode(::proto::EnumDefineData_AppTypeEnum value) {
+inline void CtrlAppData::set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value) {
   
   apptypecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.CtrlAppData.appTypeCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlAppData.appTypeCode)
 }
 
-// .proto.CtrlAppData.CtrlTypeEnum ctrlType = 4;
+// .com.fiberhome.fums.proto.CtrlAppData.CtrlTypeEnum ctrlType = 4;
 inline void CtrlAppData::clear_ctrltype() {
   ctrltype_ = 0;
 }
-inline ::proto::CtrlAppData_CtrlTypeEnum CtrlAppData::ctrltype() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlAppData.ctrlType)
-  return static_cast< ::proto::CtrlAppData_CtrlTypeEnum >(ctrltype_);
+inline ::com::fiberhome::fums::proto::CtrlAppData_CtrlTypeEnum CtrlAppData::ctrltype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlAppData.ctrlType)
+  return static_cast< ::com::fiberhome::fums::proto::CtrlAppData_CtrlTypeEnum >(ctrltype_);
 }
-inline void CtrlAppData::set_ctrltype(::proto::CtrlAppData_CtrlTypeEnum value) {
+inline void CtrlAppData::set_ctrltype(::com::fiberhome::fums::proto::CtrlAppData_CtrlTypeEnum value) {
   
   ctrltype_ = value;
-  // @@protoc_insertion_point(field_set:proto.CtrlAppData.ctrlType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlAppData.ctrlType)
 }
 
 // -------------------------------------------------------------------
@@ -463,16 +472,16 @@ inline void CtrlAppRstResponse::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 CtrlAppRstResponse::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.CtrlAppRstResponse.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlAppRstResponse.uniqueId)
   return uniqueid_;
 }
 inline void CtrlAppRstResponse::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.CtrlAppRstResponse.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.CtrlAppRstResponse.uniqueId)
 }
 
-// .proto.CommonResponse res = 2;
+// .com.fiberhome.fums.proto.CommonResponse res = 2;
 inline bool CtrlAppRstResponse::has_res() const {
   return this != internal_default_instance() && res_ != NULL;
 }
@@ -480,28 +489,28 @@ inline void CtrlAppRstResponse::clear_res() {
   if (GetArenaNoVirtual() == NULL && res_ != NULL) delete res_;
   res_ = NULL;
 }
-inline const ::proto::CommonResponse& CtrlAppRstResponse::res() const {
-  const ::proto::CommonResponse* p = res_;
-  // @@protoc_insertion_point(field_get:proto.CtrlAppRstResponse.res)
-  return p != NULL ? *p : *reinterpret_cast<const ::proto::CommonResponse*>(
-      &::proto::_CommonResponse_default_instance_);
+inline const ::com::fiberhome::fums::proto::CommonResponse& CtrlAppRstResponse::res() const {
+  const ::com::fiberhome::fums::proto::CommonResponse* p = res_;
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.CtrlAppRstResponse.res)
+  return p != NULL ? *p : *reinterpret_cast<const ::com::fiberhome::fums::proto::CommonResponse*>(
+      &::com::fiberhome::fums::proto::_CommonResponse_default_instance_);
 }
-inline ::proto::CommonResponse* CtrlAppRstResponse::mutable_res() {
+inline ::com::fiberhome::fums::proto::CommonResponse* CtrlAppRstResponse::mutable_res() {
   
   if (res_ == NULL) {
-    res_ = new ::proto::CommonResponse;
+    res_ = new ::com::fiberhome::fums::proto::CommonResponse;
   }
-  // @@protoc_insertion_point(field_mutable:proto.CtrlAppRstResponse.res)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.CtrlAppRstResponse.res)
   return res_;
 }
-inline ::proto::CommonResponse* CtrlAppRstResponse::release_res() {
-  // @@protoc_insertion_point(field_release:proto.CtrlAppRstResponse.res)
+inline ::com::fiberhome::fums::proto::CommonResponse* CtrlAppRstResponse::release_res() {
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.CtrlAppRstResponse.res)
   
-  ::proto::CommonResponse* temp = res_;
+  ::com::fiberhome::fums::proto::CommonResponse* temp = res_;
   res_ = NULL;
   return temp;
 }
-inline void CtrlAppRstResponse::set_allocated_res(::proto::CommonResponse* res) {
+inline void CtrlAppRstResponse::set_allocated_res(::com::fiberhome::fums::proto::CommonResponse* res) {
   delete res_;
   res_ = res;
   if (res) {
@@ -509,7 +518,7 @@ inline void CtrlAppRstResponse::set_allocated_res(::proto::CommonResponse* res) 
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.CtrlAppRstResponse.res)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.CtrlAppRstResponse.res)
 }
 
 #ifdef __GNUC__
@@ -523,14 +532,17 @@ inline void CtrlAppRstResponse::set_allocated_res(::proto::CommonResponse* res) 
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::CtrlAppData_CtrlTypeEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::CtrlAppData_CtrlTypeEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::CtrlAppData_CtrlTypeEnum>() {
-  return ::proto::CtrlAppData_CtrlTypeEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::CtrlAppData_CtrlTypeEnum>() {
+  return ::com::fiberhome::fums::proto::CtrlAppData_CtrlTypeEnum_descriptor();
 }
 
 }  // namespace protobuf

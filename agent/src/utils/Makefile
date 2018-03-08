@@ -2,7 +2,9 @@
 ###########################################################
 
 TARGET = libutils
-CFLAGS = -Wall -O -g -fPIC -Wno-write-strings
+DIR:=$(shell pwd)
+CFLAGS = -Wall -O -g -Wno-write-strings
+INC_DIR = -I../../3rd/log4cplus/include -I../../3rd/protobuf/include
 ###########################################################
 CC = gcc
 XX = g++
@@ -14,9 +16,11 @@ CXX_OBJS = $(subst .cpp,.o,$(CXX_SRC))
 ALL_OBJ = $(C_OBJS) $(CXX_OBJS)
 ###########################################################
 %.o:%.c
+	echo $(DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC_DIR) -std=c99
 %.o:%.cpp 
-	$(XX) $(CFLAGS) -c $< -o $@ $(INC_DIR)
+	echo $(DIR)
+	$(XX) $(CFLAGS) -c $< -o $@ $(INC_DIR) 
 ###########################################################
 all: $(TARGET)
 $(TARGET): $(ALL_OBJ)

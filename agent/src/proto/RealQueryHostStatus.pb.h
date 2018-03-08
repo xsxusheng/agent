@@ -32,6 +32,9 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "CommonDefine.pb.h"
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class RealDiskCfgInfo;
 class RealDiskCfgInfoDefaultTypeInternal;
@@ -73,7 +76,13 @@ class RealSystemInfo;
 class RealSystemInfoDefaultTypeInternal;
 extern RealSystemInfoDefaultTypeInternal _RealSystemInfo_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_RealQueryHostStatus_2eproto {
@@ -119,7 +128,7 @@ inline bool RealQueryHostStatusData_HostCfgTypeEnum_Parse(
 }
 // ===================================================================
 
-class RealQueryHostStatusData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealQueryHostStatusData) */ {
+class RealQueryHostStatusData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealQueryHostStatusData) */ {
  public:
   RealQueryHostStatusData();
   virtual ~RealQueryHostStatusData();
@@ -242,13 +251,13 @@ class RealQueryHostStatusData : public ::google::protobuf::Message /* @@protoc_i
   ::google::protobuf::int64 uniqueid() const;
   void set_uniqueid(::google::protobuf::int64 value);
 
-  // .proto.RealQueryHostStatusData.HostCfgTypeEnum queryCfgType = 2;
+  // .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum queryCfgType = 2;
   void clear_querycfgtype();
   static const int kQueryCfgTypeFieldNumber = 2;
-  ::proto::RealQueryHostStatusData_HostCfgTypeEnum querycfgtype() const;
-  void set_querycfgtype(::proto::RealQueryHostStatusData_HostCfgTypeEnum value);
+  ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum querycfgtype() const;
+  void set_querycfgtype(::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum value);
 
-  // @@protoc_insertion_point(class_scope:proto.RealQueryHostStatusData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealQueryHostStatusData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -259,7 +268,7 @@ class RealQueryHostStatusData : public ::google::protobuf::Message /* @@protoc_i
 };
 // -------------------------------------------------------------------
 
-class RealQueryHostStatusResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealQueryHostStatusResponse) */ {
+class RealQueryHostStatusResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealQueryHostStatusResponse) */ {
  public:
   RealQueryHostStatusResponse();
   virtual ~RealQueryHostStatusResponse();
@@ -354,13 +363,13 @@ class RealQueryHostStatusResponse : public ::google::protobuf::Message /* @@prot
   ::std::string* release_data();
   void set_allocated_data(::std::string* data);
 
-  // .proto.RealQueryHostStatusData.HostCfgTypeEnum queryCfgType = 1;
+  // .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum queryCfgType = 1;
   void clear_querycfgtype();
   static const int kQueryCfgTypeFieldNumber = 1;
-  ::proto::RealQueryHostStatusData_HostCfgTypeEnum querycfgtype() const;
-  void set_querycfgtype(::proto::RealQueryHostStatusData_HostCfgTypeEnum value);
+  ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum querycfgtype() const;
+  void set_querycfgtype(::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum value);
 
-  // @@protoc_insertion_point(class_scope:proto.RealQueryHostStatusResponse)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealQueryHostStatusResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -371,7 +380,7 @@ class RealQueryHostStatusResponse : public ::google::protobuf::Message /* @@prot
 };
 // -------------------------------------------------------------------
 
-class RealSystemInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealSystemInfo) */ {
+class RealSystemInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealSystemInfo) */ {
  public:
   RealSystemInfo();
   virtual ~RealSystemInfo();
@@ -634,7 +643,7 @@ class RealSystemInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   double swapusage() const;
   void set_swapusage(double value);
 
-  // @@protoc_insertion_point(class_scope:proto.RealSystemInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealSystemInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -664,7 +673,7 @@ class RealSystemInfo : public ::google::protobuf::Message /* @@protoc_insertion_
 };
 // -------------------------------------------------------------------
 
-class RealDiskStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealDiskStatusInfo) */ {
+class RealDiskStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealDiskStatusInfo) */ {
  public:
   RealDiskStatusInfo();
   virtual ~RealDiskStatusInfo();
@@ -745,29 +754,29 @@ class RealDiskStatusInfo : public ::google::protobuf::Message /* @@protoc_insert
 
   // accessors -------------------------------------------------------
 
-  // repeated .proto.RealSingleDiskStatusInfo singleDiskStatus = 1;
+  // repeated .com.fiberhome.fums.proto.RealSingleDiskStatusInfo singleDiskStatus = 1;
   int singlediskstatus_size() const;
   void clear_singlediskstatus();
   static const int kSingleDiskStatusFieldNumber = 1;
-  const ::proto::RealSingleDiskStatusInfo& singlediskstatus(int index) const;
-  ::proto::RealSingleDiskStatusInfo* mutable_singlediskstatus(int index);
-  ::proto::RealSingleDiskStatusInfo* add_singlediskstatus();
-  ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskStatusInfo >*
+  const ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo& singlediskstatus(int index) const;
+  ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo* mutable_singlediskstatus(int index);
+  ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo* add_singlediskstatus();
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo >*
       mutable_singlediskstatus();
-  const ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskStatusInfo >&
+  const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo >&
       singlediskstatus() const;
 
-  // @@protoc_insertion_point(class_scope:proto.RealDiskStatusInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealDiskStatusInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskStatusInfo > singlediskstatus_;
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo > singlediskstatus_;
   mutable int _cached_size_;
   friend struct protobuf_RealQueryHostStatus_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class RealSingleDiskStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealSingleDiskStatusInfo) */ {
+class RealSingleDiskStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealSingleDiskStatusInfo) */ {
  public:
   RealSingleDiskStatusInfo();
   virtual ~RealSingleDiskStatusInfo();
@@ -988,7 +997,7 @@ class RealSingleDiskStatusInfo : public ::google::protobuf::Message /* @@protoc_
   ::std::string* release_diskusage();
   void set_allocated_diskusage(::std::string* diskusage);
 
-  // @@protoc_insertion_point(class_scope:proto.RealSingleDiskStatusInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealSingleDiskStatusInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1007,7 +1016,7 @@ class RealSingleDiskStatusInfo : public ::google::protobuf::Message /* @@protoc_
 };
 // -------------------------------------------------------------------
 
-class RealDiskCfgInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealDiskCfgInfo) */ {
+class RealDiskCfgInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealDiskCfgInfo) */ {
  public:
   RealDiskCfgInfo();
   virtual ~RealDiskCfgInfo();
@@ -1088,29 +1097,29 @@ class RealDiskCfgInfo : public ::google::protobuf::Message /* @@protoc_insertion
 
   // accessors -------------------------------------------------------
 
-  // repeated .proto.RealSingleDiskCfgInfo singleDiskInfo = 1;
+  // repeated .com.fiberhome.fums.proto.RealSingleDiskCfgInfo singleDiskInfo = 1;
   int singlediskinfo_size() const;
   void clear_singlediskinfo();
   static const int kSingleDiskInfoFieldNumber = 1;
-  const ::proto::RealSingleDiskCfgInfo& singlediskinfo(int index) const;
-  ::proto::RealSingleDiskCfgInfo* mutable_singlediskinfo(int index);
-  ::proto::RealSingleDiskCfgInfo* add_singlediskinfo();
-  ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskCfgInfo >*
+  const ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo& singlediskinfo(int index) const;
+  ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo* mutable_singlediskinfo(int index);
+  ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo* add_singlediskinfo();
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo >*
       mutable_singlediskinfo();
-  const ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskCfgInfo >&
+  const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo >&
       singlediskinfo() const;
 
-  // @@protoc_insertion_point(class_scope:proto.RealDiskCfgInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealDiskCfgInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskCfgInfo > singlediskinfo_;
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo > singlediskinfo_;
   mutable int _cached_size_;
   friend struct protobuf_RealQueryHostStatus_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class RealSingleDiskCfgInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealSingleDiskCfgInfo) */ {
+class RealSingleDiskCfgInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealSingleDiskCfgInfo) */ {
  public:
   RealSingleDiskCfgInfo();
   virtual ~RealSingleDiskCfgInfo();
@@ -1239,7 +1248,7 @@ class RealSingleDiskCfgInfo : public ::google::protobuf::Message /* @@protoc_ins
   ::google::protobuf::int32 diskindex() const;
   void set_diskindex(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:proto.RealSingleDiskCfgInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealSingleDiskCfgInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1252,7 +1261,7 @@ class RealSingleDiskCfgInfo : public ::google::protobuf::Message /* @@protoc_ins
 };
 // -------------------------------------------------------------------
 
-class RealDiskRaidCfgInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealDiskRaidCfgInfo) */ {
+class RealDiskRaidCfgInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealDiskRaidCfgInfo) */ {
  public:
   RealDiskRaidCfgInfo();
   virtual ~RealDiskRaidCfgInfo();
@@ -1361,7 +1370,7 @@ class RealDiskRaidCfgInfo : public ::google::protobuf::Message /* @@protoc_inser
   ::std::string* release_unuseddevices();
   void set_allocated_unuseddevices(::std::string* unuseddevices);
 
-  // @@protoc_insertion_point(class_scope:proto.RealDiskRaidCfgInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealDiskRaidCfgInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1372,7 +1381,7 @@ class RealDiskRaidCfgInfo : public ::google::protobuf::Message /* @@protoc_inser
 };
 // -------------------------------------------------------------------
 
-class RealDiskHealthInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealDiskHealthInfo) */ {
+class RealDiskHealthInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealDiskHealthInfo) */ {
  public:
   RealDiskHealthInfo();
   virtual ~RealDiskHealthInfo();
@@ -1453,29 +1462,29 @@ class RealDiskHealthInfo : public ::google::protobuf::Message /* @@protoc_insert
 
   // accessors -------------------------------------------------------
 
-  // repeated .proto.RealSingleDiskHealthInfo singleDiskHealth = 1;
+  // repeated .com.fiberhome.fums.proto.RealSingleDiskHealthInfo singleDiskHealth = 1;
   int singlediskhealth_size() const;
   void clear_singlediskhealth();
   static const int kSingleDiskHealthFieldNumber = 1;
-  const ::proto::RealSingleDiskHealthInfo& singlediskhealth(int index) const;
-  ::proto::RealSingleDiskHealthInfo* mutable_singlediskhealth(int index);
-  ::proto::RealSingleDiskHealthInfo* add_singlediskhealth();
-  ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskHealthInfo >*
+  const ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo& singlediskhealth(int index) const;
+  ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo* mutable_singlediskhealth(int index);
+  ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo* add_singlediskhealth();
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo >*
       mutable_singlediskhealth();
-  const ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskHealthInfo >&
+  const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo >&
       singlediskhealth() const;
 
-  // @@protoc_insertion_point(class_scope:proto.RealDiskHealthInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealDiskHealthInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskHealthInfo > singlediskhealth_;
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo > singlediskhealth_;
   mutable int _cached_size_;
   friend struct protobuf_RealQueryHostStatus_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class RealSingleDiskHealthInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealSingleDiskHealthInfo) */ {
+class RealSingleDiskHealthInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealSingleDiskHealthInfo) */ {
  public:
   RealSingleDiskHealthInfo();
   virtual ~RealSingleDiskHealthInfo();
@@ -1584,7 +1593,7 @@ class RealSingleDiskHealthInfo : public ::google::protobuf::Message /* @@protoc_
   ::std::string* release_smartctlinfo();
   void set_allocated_smartctlinfo(::std::string* smartctlinfo);
 
-  // @@protoc_insertion_point(class_scope:proto.RealSingleDiskHealthInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealSingleDiskHealthInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1595,7 +1604,7 @@ class RealSingleDiskHealthInfo : public ::google::protobuf::Message /* @@protoc_
 };
 // -------------------------------------------------------------------
 
-class RealNicStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealNicStatusInfo) */ {
+class RealNicStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealNicStatusInfo) */ {
  public:
   RealNicStatusInfo();
   virtual ~RealNicStatusInfo();
@@ -1676,29 +1685,29 @@ class RealNicStatusInfo : public ::google::protobuf::Message /* @@protoc_inserti
 
   // accessors -------------------------------------------------------
 
-  // repeated .proto.SingleNicPerfData singleNicInfo = 1;
+  // repeated .com.fiberhome.fums.proto.SingleNicPerfData singleNicInfo = 1;
   int singlenicinfo_size() const;
   void clear_singlenicinfo();
   static const int kSingleNicInfoFieldNumber = 1;
-  const ::proto::SingleNicPerfData& singlenicinfo(int index) const;
-  ::proto::SingleNicPerfData* mutable_singlenicinfo(int index);
-  ::proto::SingleNicPerfData* add_singlenicinfo();
-  ::google::protobuf::RepeatedPtrField< ::proto::SingleNicPerfData >*
+  const ::com::fiberhome::fums::proto::SingleNicPerfData& singlenicinfo(int index) const;
+  ::com::fiberhome::fums::proto::SingleNicPerfData* mutable_singlenicinfo(int index);
+  ::com::fiberhome::fums::proto::SingleNicPerfData* add_singlenicinfo();
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::SingleNicPerfData >*
       mutable_singlenicinfo();
-  const ::google::protobuf::RepeatedPtrField< ::proto::SingleNicPerfData >&
+  const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::SingleNicPerfData >&
       singlenicinfo() const;
 
-  // @@protoc_insertion_point(class_scope:proto.RealNicStatusInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealNicStatusInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::proto::SingleNicPerfData > singlenicinfo_;
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::SingleNicPerfData > singlenicinfo_;
   mutable int _cached_size_;
   friend struct protobuf_RealQueryHostStatus_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class RealProcessStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealProcessStatusInfo) */ {
+class RealProcessStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealProcessStatusInfo) */ {
  public:
   RealProcessStatusInfo();
   virtual ~RealProcessStatusInfo();
@@ -1779,29 +1788,29 @@ class RealProcessStatusInfo : public ::google::protobuf::Message /* @@protoc_ins
 
   // accessors -------------------------------------------------------
 
-  // repeated .proto.RealSingleProcessStatusInfo singleProcessInfo = 1;
+  // repeated .com.fiberhome.fums.proto.RealSingleProcessStatusInfo singleProcessInfo = 1;
   int singleprocessinfo_size() const;
   void clear_singleprocessinfo();
   static const int kSingleProcessInfoFieldNumber = 1;
-  const ::proto::RealSingleProcessStatusInfo& singleprocessinfo(int index) const;
-  ::proto::RealSingleProcessStatusInfo* mutable_singleprocessinfo(int index);
-  ::proto::RealSingleProcessStatusInfo* add_singleprocessinfo();
-  ::google::protobuf::RepeatedPtrField< ::proto::RealSingleProcessStatusInfo >*
+  const ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo& singleprocessinfo(int index) const;
+  ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo* mutable_singleprocessinfo(int index);
+  ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo* add_singleprocessinfo();
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo >*
       mutable_singleprocessinfo();
-  const ::google::protobuf::RepeatedPtrField< ::proto::RealSingleProcessStatusInfo >&
+  const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo >&
       singleprocessinfo() const;
 
-  // @@protoc_insertion_point(class_scope:proto.RealProcessStatusInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealProcessStatusInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::proto::RealSingleProcessStatusInfo > singleprocessinfo_;
+  ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo > singleprocessinfo_;
   mutable int _cached_size_;
   friend struct protobuf_RealQueryHostStatus_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class RealSingleProcessStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.RealSingleProcessStatusInfo) */ {
+class RealSingleProcessStatusInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.RealSingleProcessStatusInfo) */ {
  public:
   RealSingleProcessStatusInfo();
   virtual ~RealSingleProcessStatusInfo();
@@ -1950,7 +1959,7 @@ class RealSingleProcessStatusInfo : public ::google::protobuf::Message /* @@prot
   ::google::protobuf::int32 processid() const;
   void set_processid(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:proto.RealSingleProcessStatusInfo)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.RealSingleProcessStatusInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1980,45 +1989,45 @@ inline void RealQueryHostStatusData::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 RealQueryHostStatusData::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.RealQueryHostStatusData.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealQueryHostStatusData.uniqueId)
   return uniqueid_;
 }
 inline void RealQueryHostStatusData::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealQueryHostStatusData.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealQueryHostStatusData.uniqueId)
 }
 
-// .proto.RealQueryHostStatusData.HostCfgTypeEnum queryCfgType = 2;
+// .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum queryCfgType = 2;
 inline void RealQueryHostStatusData::clear_querycfgtype() {
   querycfgtype_ = 0;
 }
-inline ::proto::RealQueryHostStatusData_HostCfgTypeEnum RealQueryHostStatusData::querycfgtype() const {
-  // @@protoc_insertion_point(field_get:proto.RealQueryHostStatusData.queryCfgType)
-  return static_cast< ::proto::RealQueryHostStatusData_HostCfgTypeEnum >(querycfgtype_);
+inline ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum RealQueryHostStatusData::querycfgtype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealQueryHostStatusData.queryCfgType)
+  return static_cast< ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum >(querycfgtype_);
 }
-inline void RealQueryHostStatusData::set_querycfgtype(::proto::RealQueryHostStatusData_HostCfgTypeEnum value) {
+inline void RealQueryHostStatusData::set_querycfgtype(::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum value) {
   
   querycfgtype_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealQueryHostStatusData.queryCfgType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealQueryHostStatusData.queryCfgType)
 }
 
 // -------------------------------------------------------------------
 
 // RealQueryHostStatusResponse
 
-// .proto.RealQueryHostStatusData.HostCfgTypeEnum queryCfgType = 1;
+// .com.fiberhome.fums.proto.RealQueryHostStatusData.HostCfgTypeEnum queryCfgType = 1;
 inline void RealQueryHostStatusResponse::clear_querycfgtype() {
   querycfgtype_ = 0;
 }
-inline ::proto::RealQueryHostStatusData_HostCfgTypeEnum RealQueryHostStatusResponse::querycfgtype() const {
-  // @@protoc_insertion_point(field_get:proto.RealQueryHostStatusResponse.queryCfgType)
-  return static_cast< ::proto::RealQueryHostStatusData_HostCfgTypeEnum >(querycfgtype_);
+inline ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum RealQueryHostStatusResponse::querycfgtype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealQueryHostStatusResponse.queryCfgType)
+  return static_cast< ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum >(querycfgtype_);
 }
-inline void RealQueryHostStatusResponse::set_querycfgtype(::proto::RealQueryHostStatusData_HostCfgTypeEnum value) {
+inline void RealQueryHostStatusResponse::set_querycfgtype(::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum value) {
   
   querycfgtype_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealQueryHostStatusResponse.queryCfgType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealQueryHostStatusResponse.queryCfgType)
 }
 
 // string data = 2;
@@ -2026,41 +2035,41 @@ inline void RealQueryHostStatusResponse::clear_data() {
   data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealQueryHostStatusResponse::data() const {
-  // @@protoc_insertion_point(field_get:proto.RealQueryHostStatusResponse.data)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealQueryHostStatusResponse.data)
   return data_.GetNoArena();
 }
 inline void RealQueryHostStatusResponse::set_data(const ::std::string& value) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealQueryHostStatusResponse.data)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealQueryHostStatusResponse.data)
 }
 #if LANG_CXX11
 inline void RealQueryHostStatusResponse::set_data(::std::string&& value) {
   
   data_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealQueryHostStatusResponse.data)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealQueryHostStatusResponse.data)
 }
 #endif
 inline void RealQueryHostStatusResponse::set_data(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealQueryHostStatusResponse.data)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealQueryHostStatusResponse.data)
 }
 inline void RealQueryHostStatusResponse::set_data(const char* value, size_t size) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealQueryHostStatusResponse.data)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealQueryHostStatusResponse.data)
 }
 inline ::std::string* RealQueryHostStatusResponse::mutable_data() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealQueryHostStatusResponse.data)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealQueryHostStatusResponse.data)
   return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealQueryHostStatusResponse::release_data() {
-  // @@protoc_insertion_point(field_release:proto.RealQueryHostStatusResponse.data)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealQueryHostStatusResponse.data)
   
   return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2071,7 +2080,7 @@ inline void RealQueryHostStatusResponse::set_allocated_data(::std::string* data)
     
   }
   data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealQueryHostStatusResponse.data)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealQueryHostStatusResponse.data)
 }
 
 // -------------------------------------------------------------------
@@ -2083,41 +2092,41 @@ inline void RealSystemInfo::clear_sysdescr() {
   sysdescr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSystemInfo::sysdescr() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.sysDescr)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.sysDescr)
   return sysdescr_.GetNoArena();
 }
 inline void RealSystemInfo::set_sysdescr(const ::std::string& value) {
   
   sysdescr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.sysDescr)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.sysDescr)
 }
 #if LANG_CXX11
 inline void RealSystemInfo::set_sysdescr(::std::string&& value) {
   
   sysdescr_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSystemInfo.sysDescr)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSystemInfo.sysDescr)
 }
 #endif
 inline void RealSystemInfo::set_sysdescr(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   sysdescr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSystemInfo.sysDescr)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSystemInfo.sysDescr)
 }
 inline void RealSystemInfo::set_sysdescr(const char* value, size_t size) {
   
   sysdescr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSystemInfo.sysDescr)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSystemInfo.sysDescr)
 }
 inline ::std::string* RealSystemInfo::mutable_sysdescr() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSystemInfo.sysDescr)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSystemInfo.sysDescr)
   return sysdescr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSystemInfo::release_sysdescr() {
-  // @@protoc_insertion_point(field_release:proto.RealSystemInfo.sysDescr)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSystemInfo.sysDescr)
   
   return sysdescr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2128,7 +2137,7 @@ inline void RealSystemInfo::set_allocated_sysdescr(::std::string* sysdescr) {
     
   }
   sysdescr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), sysdescr);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSystemInfo.sysDescr)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSystemInfo.sysDescr)
 }
 
 // double sysUptime = 2;
@@ -2136,13 +2145,13 @@ inline void RealSystemInfo::clear_sysuptime() {
   sysuptime_ = 0;
 }
 inline double RealSystemInfo::sysuptime() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.sysUptime)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.sysUptime)
   return sysuptime_;
 }
 inline void RealSystemInfo::set_sysuptime(double value) {
   
   sysuptime_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.sysUptime)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.sysUptime)
 }
 
 // int32 cpuFrequency = 3;
@@ -2150,13 +2159,13 @@ inline void RealSystemInfo::clear_cpufrequency() {
   cpufrequency_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::cpufrequency() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.cpuFrequency)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.cpuFrequency)
   return cpufrequency_;
 }
 inline void RealSystemInfo::set_cpufrequency(::google::protobuf::int32 value) {
   
   cpufrequency_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.cpuFrequency)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.cpuFrequency)
 }
 
 // int32 cpuNumbers = 4;
@@ -2164,13 +2173,13 @@ inline void RealSystemInfo::clear_cpunumbers() {
   cpunumbers_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::cpunumbers() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.cpuNumbers)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.cpuNumbers)
   return cpunumbers_;
 }
 inline void RealSystemInfo::set_cpunumbers(::google::protobuf::int32 value) {
   
   cpunumbers_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.cpuNumbers)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.cpuNumbers)
 }
 
 // string loadAverage = 5;
@@ -2178,41 +2187,41 @@ inline void RealSystemInfo::clear_loadaverage() {
   loadaverage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSystemInfo::loadaverage() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.loadAverage)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.loadAverage)
   return loadaverage_.GetNoArena();
 }
 inline void RealSystemInfo::set_loadaverage(const ::std::string& value) {
   
   loadaverage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.loadAverage)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.loadAverage)
 }
 #if LANG_CXX11
 inline void RealSystemInfo::set_loadaverage(::std::string&& value) {
   
   loadaverage_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSystemInfo.loadAverage)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSystemInfo.loadAverage)
 }
 #endif
 inline void RealSystemInfo::set_loadaverage(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   loadaverage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSystemInfo.loadAverage)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSystemInfo.loadAverage)
 }
 inline void RealSystemInfo::set_loadaverage(const char* value, size_t size) {
   
   loadaverage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSystemInfo.loadAverage)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSystemInfo.loadAverage)
 }
 inline ::std::string* RealSystemInfo::mutable_loadaverage() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSystemInfo.loadAverage)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSystemInfo.loadAverage)
   return loadaverage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSystemInfo::release_loadaverage() {
-  // @@protoc_insertion_point(field_release:proto.RealSystemInfo.loadAverage)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSystemInfo.loadAverage)
   
   return loadaverage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2223,7 +2232,7 @@ inline void RealSystemInfo::set_allocated_loadaverage(::std::string* loadaverage
     
   }
   loadaverage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), loadaverage);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSystemInfo.loadAverage)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSystemInfo.loadAverage)
 }
 
 // double cpuUsage = 6;
@@ -2231,13 +2240,13 @@ inline void RealSystemInfo::clear_cpuusage() {
   cpuusage_ = 0;
 }
 inline double RealSystemInfo::cpuusage() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.cpuUsage)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.cpuUsage)
   return cpuusage_;
 }
 inline void RealSystemInfo::set_cpuusage(double value) {
   
   cpuusage_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.cpuUsage)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.cpuUsage)
 }
 
 // int32 memorySize = 7;
@@ -2245,13 +2254,13 @@ inline void RealSystemInfo::clear_memorysize() {
   memorysize_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::memorysize() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.memorySize)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.memorySize)
   return memorysize_;
 }
 inline void RealSystemInfo::set_memorysize(::google::protobuf::int32 value) {
   
   memorysize_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.memorySize)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.memorySize)
 }
 
 // double memoryUsage = 8;
@@ -2259,13 +2268,13 @@ inline void RealSystemInfo::clear_memoryusage() {
   memoryusage_ = 0;
 }
 inline double RealSystemInfo::memoryusage() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.memoryUsage)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.memoryUsage)
   return memoryusage_;
 }
 inline void RealSystemInfo::set_memoryusage(double value) {
   
   memoryusage_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.memoryUsage)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.memoryUsage)
 }
 
 // int32 diskTotalSize = 9;
@@ -2273,13 +2282,13 @@ inline void RealSystemInfo::clear_disktotalsize() {
   disktotalsize_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::disktotalsize() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.diskTotalSize)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.diskTotalSize)
   return disktotalsize_;
 }
 inline void RealSystemInfo::set_disktotalsize(::google::protobuf::int32 value) {
   
   disktotalsize_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.diskTotalSize)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.diskTotalSize)
 }
 
 // int32 mainFSDiskSize = 10;
@@ -2287,13 +2296,13 @@ inline void RealSystemInfo::clear_mainfsdisksize() {
   mainfsdisksize_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::mainfsdisksize() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.mainFSDiskSize)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.mainFSDiskSize)
   return mainfsdisksize_;
 }
 inline void RealSystemInfo::set_mainfsdisksize(::google::protobuf::int32 value) {
   
   mainfsdisksize_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.mainFSDiskSize)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.mainFSDiskSize)
 }
 
 // int32 mainFSAvailableSize = 11;
@@ -2301,13 +2310,13 @@ inline void RealSystemInfo::clear_mainfsavailablesize() {
   mainfsavailablesize_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::mainfsavailablesize() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.mainFSAvailableSize)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.mainFSAvailableSize)
   return mainfsavailablesize_;
 }
 inline void RealSystemInfo::set_mainfsavailablesize(::google::protobuf::int32 value) {
   
   mainfsavailablesize_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.mainFSAvailableSize)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.mainFSAvailableSize)
 }
 
 // int32 mainFSDiskUseRatio = 12;
@@ -2315,13 +2324,13 @@ inline void RealSystemInfo::clear_mainfsdiskuseratio() {
   mainfsdiskuseratio_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::mainfsdiskuseratio() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.mainFSDiskUseRatio)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.mainFSDiskUseRatio)
   return mainfsdiskuseratio_;
 }
 inline void RealSystemInfo::set_mainfsdiskuseratio(::google::protobuf::int32 value) {
   
   mainfsdiskuseratio_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.mainFSDiskUseRatio)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.mainFSDiskUseRatio)
 }
 
 // string osName = 13;
@@ -2329,41 +2338,41 @@ inline void RealSystemInfo::clear_osname() {
   osname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSystemInfo::osname() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.osName)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.osName)
   return osname_.GetNoArena();
 }
 inline void RealSystemInfo::set_osname(const ::std::string& value) {
   
   osname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.osName)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.osName)
 }
 #if LANG_CXX11
 inline void RealSystemInfo::set_osname(::std::string&& value) {
   
   osname_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSystemInfo.osName)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSystemInfo.osName)
 }
 #endif
 inline void RealSystemInfo::set_osname(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   osname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSystemInfo.osName)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSystemInfo.osName)
 }
 inline void RealSystemInfo::set_osname(const char* value, size_t size) {
   
   osname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSystemInfo.osName)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSystemInfo.osName)
 }
 inline ::std::string* RealSystemInfo::mutable_osname() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSystemInfo.osName)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSystemInfo.osName)
   return osname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSystemInfo::release_osname() {
-  // @@protoc_insertion_point(field_release:proto.RealSystemInfo.osName)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSystemInfo.osName)
   
   return osname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2374,7 +2383,7 @@ inline void RealSystemInfo::set_allocated_osname(::std::string* osname) {
     
   }
   osname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), osname);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSystemInfo.osName)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSystemInfo.osName)
 }
 
 // string osVersion = 14;
@@ -2382,41 +2391,41 @@ inline void RealSystemInfo::clear_osversion() {
   osversion_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSystemInfo::osversion() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.osVersion)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.osVersion)
   return osversion_.GetNoArena();
 }
 inline void RealSystemInfo::set_osversion(const ::std::string& value) {
   
   osversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.osVersion)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.osVersion)
 }
 #if LANG_CXX11
 inline void RealSystemInfo::set_osversion(::std::string&& value) {
   
   osversion_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSystemInfo.osVersion)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSystemInfo.osVersion)
 }
 #endif
 inline void RealSystemInfo::set_osversion(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   osversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSystemInfo.osVersion)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSystemInfo.osVersion)
 }
 inline void RealSystemInfo::set_osversion(const char* value, size_t size) {
   
   osversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSystemInfo.osVersion)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSystemInfo.osVersion)
 }
 inline ::std::string* RealSystemInfo::mutable_osversion() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSystemInfo.osVersion)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSystemInfo.osVersion)
   return osversion_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSystemInfo::release_osversion() {
-  // @@protoc_insertion_point(field_release:proto.RealSystemInfo.osVersion)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSystemInfo.osVersion)
   
   return osversion_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2427,7 +2436,7 @@ inline void RealSystemInfo::set_allocated_osversion(::std::string* osversion) {
     
   }
   osversion_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), osversion);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSystemInfo.osVersion)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSystemInfo.osVersion)
 }
 
 // string osVender = 15;
@@ -2435,41 +2444,41 @@ inline void RealSystemInfo::clear_osvender() {
   osvender_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSystemInfo::osvender() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.osVender)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.osVender)
   return osvender_.GetNoArena();
 }
 inline void RealSystemInfo::set_osvender(const ::std::string& value) {
   
   osvender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.osVender)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.osVender)
 }
 #if LANG_CXX11
 inline void RealSystemInfo::set_osvender(::std::string&& value) {
   
   osvender_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSystemInfo.osVender)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSystemInfo.osVender)
 }
 #endif
 inline void RealSystemInfo::set_osvender(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   osvender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSystemInfo.osVender)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSystemInfo.osVender)
 }
 inline void RealSystemInfo::set_osvender(const char* value, size_t size) {
   
   osvender_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSystemInfo.osVender)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSystemInfo.osVender)
 }
 inline ::std::string* RealSystemInfo::mutable_osvender() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSystemInfo.osVender)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSystemInfo.osVender)
   return osvender_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSystemInfo::release_osvender() {
-  // @@protoc_insertion_point(field_release:proto.RealSystemInfo.osVender)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSystemInfo.osVender)
   
   return osvender_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2480,7 +2489,7 @@ inline void RealSystemInfo::set_allocated_osvender(::std::string* osvender) {
     
   }
   osvender_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), osvender);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSystemInfo.osVender)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSystemInfo.osVender)
 }
 
 // int32 tcpNum = 16;
@@ -2488,13 +2497,13 @@ inline void RealSystemInfo::clear_tcpnum() {
   tcpnum_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::tcpnum() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.tcpNum)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.tcpNum)
   return tcpnum_;
 }
 inline void RealSystemInfo::set_tcpnum(::google::protobuf::int32 value) {
   
   tcpnum_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.tcpNum)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.tcpNum)
 }
 
 // int32 tcpTotalInbound = 17;
@@ -2502,13 +2511,13 @@ inline void RealSystemInfo::clear_tcptotalinbound() {
   tcptotalinbound_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::tcptotalinbound() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.tcpTotalInbound)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.tcpTotalInbound)
   return tcptotalinbound_;
 }
 inline void RealSystemInfo::set_tcptotalinbound(::google::protobuf::int32 value) {
   
   tcptotalinbound_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.tcpTotalInbound)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.tcpTotalInbound)
 }
 
 // int32 tcpTotalOutbound = 18;
@@ -2516,13 +2525,13 @@ inline void RealSystemInfo::clear_tcptotaloutbound() {
   tcptotaloutbound_ = 0;
 }
 inline ::google::protobuf::int32 RealSystemInfo::tcptotaloutbound() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.tcpTotalOutbound)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.tcpTotalOutbound)
   return tcptotaloutbound_;
 }
 inline void RealSystemInfo::set_tcptotaloutbound(::google::protobuf::int32 value) {
   
   tcptotaloutbound_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.tcpTotalOutbound)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.tcpTotalOutbound)
 }
 
 // string cpuMonokaryonUsage = 19;
@@ -2530,41 +2539,41 @@ inline void RealSystemInfo::clear_cpumonokaryonusage() {
   cpumonokaryonusage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSystemInfo::cpumonokaryonusage() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.cpuMonokaryonUsage)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.cpuMonokaryonUsage)
   return cpumonokaryonusage_.GetNoArena();
 }
 inline void RealSystemInfo::set_cpumonokaryonusage(const ::std::string& value) {
   
   cpumonokaryonusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.cpuMonokaryonUsage)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.cpuMonokaryonUsage)
 }
 #if LANG_CXX11
 inline void RealSystemInfo::set_cpumonokaryonusage(::std::string&& value) {
   
   cpumonokaryonusage_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSystemInfo.cpuMonokaryonUsage)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSystemInfo.cpuMonokaryonUsage)
 }
 #endif
 inline void RealSystemInfo::set_cpumonokaryonusage(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   cpumonokaryonusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSystemInfo.cpuMonokaryonUsage)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSystemInfo.cpuMonokaryonUsage)
 }
 inline void RealSystemInfo::set_cpumonokaryonusage(const char* value, size_t size) {
   
   cpumonokaryonusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSystemInfo.cpuMonokaryonUsage)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSystemInfo.cpuMonokaryonUsage)
 }
 inline ::std::string* RealSystemInfo::mutable_cpumonokaryonusage() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSystemInfo.cpuMonokaryonUsage)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSystemInfo.cpuMonokaryonUsage)
   return cpumonokaryonusage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSystemInfo::release_cpumonokaryonusage() {
-  // @@protoc_insertion_point(field_release:proto.RealSystemInfo.cpuMonokaryonUsage)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSystemInfo.cpuMonokaryonUsage)
   
   return cpumonokaryonusage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2575,7 +2584,7 @@ inline void RealSystemInfo::set_allocated_cpumonokaryonusage(::std::string* cpum
     
   }
   cpumonokaryonusage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), cpumonokaryonusage);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSystemInfo.cpuMonokaryonUsage)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSystemInfo.cpuMonokaryonUsage)
 }
 
 // double swapUsage = 20;
@@ -2583,13 +2592,13 @@ inline void RealSystemInfo::clear_swapusage() {
   swapusage_ = 0;
 }
 inline double RealSystemInfo::swapusage() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.swapUsage)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.swapUsage)
   return swapusage_;
 }
 inline void RealSystemInfo::set_swapusage(double value) {
   
   swapusage_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.swapUsage)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.swapUsage)
 }
 
 // string agentVersion = 21;
@@ -2597,41 +2606,41 @@ inline void RealSystemInfo::clear_agentversion() {
   agentversion_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSystemInfo::agentversion() const {
-  // @@protoc_insertion_point(field_get:proto.RealSystemInfo.agentVersion)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSystemInfo.agentVersion)
   return agentversion_.GetNoArena();
 }
 inline void RealSystemInfo::set_agentversion(const ::std::string& value) {
   
   agentversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSystemInfo.agentVersion)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSystemInfo.agentVersion)
 }
 #if LANG_CXX11
 inline void RealSystemInfo::set_agentversion(::std::string&& value) {
   
   agentversion_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSystemInfo.agentVersion)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSystemInfo.agentVersion)
 }
 #endif
 inline void RealSystemInfo::set_agentversion(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   agentversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSystemInfo.agentVersion)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSystemInfo.agentVersion)
 }
 inline void RealSystemInfo::set_agentversion(const char* value, size_t size) {
   
   agentversion_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSystemInfo.agentVersion)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSystemInfo.agentVersion)
 }
 inline ::std::string* RealSystemInfo::mutable_agentversion() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSystemInfo.agentVersion)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSystemInfo.agentVersion)
   return agentversion_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSystemInfo::release_agentversion() {
-  // @@protoc_insertion_point(field_release:proto.RealSystemInfo.agentVersion)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSystemInfo.agentVersion)
   
   return agentversion_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2642,40 +2651,40 @@ inline void RealSystemInfo::set_allocated_agentversion(::std::string* agentversi
     
   }
   agentversion_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), agentversion);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSystemInfo.agentVersion)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSystemInfo.agentVersion)
 }
 
 // -------------------------------------------------------------------
 
 // RealDiskStatusInfo
 
-// repeated .proto.RealSingleDiskStatusInfo singleDiskStatus = 1;
+// repeated .com.fiberhome.fums.proto.RealSingleDiskStatusInfo singleDiskStatus = 1;
 inline int RealDiskStatusInfo::singlediskstatus_size() const {
   return singlediskstatus_.size();
 }
 inline void RealDiskStatusInfo::clear_singlediskstatus() {
   singlediskstatus_.Clear();
 }
-inline const ::proto::RealSingleDiskStatusInfo& RealDiskStatusInfo::singlediskstatus(int index) const {
-  // @@protoc_insertion_point(field_get:proto.RealDiskStatusInfo.singleDiskStatus)
+inline const ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo& RealDiskStatusInfo::singlediskstatus(int index) const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealDiskStatusInfo.singleDiskStatus)
   return singlediskstatus_.Get(index);
 }
-inline ::proto::RealSingleDiskStatusInfo* RealDiskStatusInfo::mutable_singlediskstatus(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.RealDiskStatusInfo.singleDiskStatus)
+inline ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo* RealDiskStatusInfo::mutable_singlediskstatus(int index) {
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealDiskStatusInfo.singleDiskStatus)
   return singlediskstatus_.Mutable(index);
 }
-inline ::proto::RealSingleDiskStatusInfo* RealDiskStatusInfo::add_singlediskstatus() {
-  // @@protoc_insertion_point(field_add:proto.RealDiskStatusInfo.singleDiskStatus)
+inline ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo* RealDiskStatusInfo::add_singlediskstatus() {
+  // @@protoc_insertion_point(field_add:com.fiberhome.fums.proto.RealDiskStatusInfo.singleDiskStatus)
   return singlediskstatus_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskStatusInfo >*
+inline ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo >*
 RealDiskStatusInfo::mutable_singlediskstatus() {
-  // @@protoc_insertion_point(field_mutable_list:proto.RealDiskStatusInfo.singleDiskStatus)
+  // @@protoc_insertion_point(field_mutable_list:com.fiberhome.fums.proto.RealDiskStatusInfo.singleDiskStatus)
   return &singlediskstatus_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskStatusInfo >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskStatusInfo >&
 RealDiskStatusInfo::singlediskstatus() const {
-  // @@protoc_insertion_point(field_list:proto.RealDiskStatusInfo.singleDiskStatus)
+  // @@protoc_insertion_point(field_list:com.fiberhome.fums.proto.RealDiskStatusInfo.singleDiskStatus)
   return singlediskstatus_;
 }
 
@@ -2688,41 +2697,41 @@ inline void RealSingleDiskStatusInfo::clear_diskname() {
   diskname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskname() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskName)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskName)
   return diskname_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskname(const ::std::string& value) {
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskName)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskName)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskname(::std::string&& value) {
   
   diskname_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskName)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskName)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskname(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskName)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskName)
 }
 inline void RealSingleDiskStatusInfo::set_diskname(const char* value, size_t size) {
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskName)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskName)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskname() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskName)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskName)
   return diskname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskname() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskName)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskName)
   
   return diskname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2733,7 +2742,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskname(::std::string* disk
     
   }
   diskname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskname);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskName)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskName)
 }
 
 // string diskServiceTime = 2;
@@ -2741,41 +2750,41 @@ inline void RealSingleDiskStatusInfo::clear_diskservicetime() {
   diskservicetime_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskservicetime() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskServiceTime)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskServiceTime)
   return diskservicetime_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskservicetime(const ::std::string& value) {
   
   diskservicetime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskServiceTime)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskServiceTime)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskservicetime(::std::string&& value) {
   
   diskservicetime_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskServiceTime)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskServiceTime)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskservicetime(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskservicetime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskServiceTime)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskServiceTime)
 }
 inline void RealSingleDiskStatusInfo::set_diskservicetime(const char* value, size_t size) {
   
   diskservicetime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskServiceTime)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskServiceTime)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskservicetime() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskServiceTime)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskServiceTime)
   return diskservicetime_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskservicetime() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskServiceTime)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskServiceTime)
   
   return diskservicetime_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2786,7 +2795,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskservicetime(::std::strin
     
   }
   diskservicetime_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskservicetime);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskServiceTime)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskServiceTime)
 }
 
 // string diskQueue = 3;
@@ -2794,41 +2803,41 @@ inline void RealSingleDiskStatusInfo::clear_diskqueue() {
   diskqueue_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskqueue() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskQueue)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskQueue)
   return diskqueue_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskqueue(const ::std::string& value) {
   
   diskqueue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskQueue)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskQueue)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskqueue(::std::string&& value) {
   
   diskqueue_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskQueue)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskQueue)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskqueue(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskqueue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskQueue)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskQueue)
 }
 inline void RealSingleDiskStatusInfo::set_diskqueue(const char* value, size_t size) {
   
   diskqueue_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskQueue)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskQueue)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskqueue() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskQueue)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskQueue)
   return diskqueue_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskqueue() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskQueue)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskQueue)
   
   return diskqueue_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2839,7 +2848,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskqueue(::std::string* dis
     
   }
   diskqueue_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskqueue);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskQueue)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskQueue)
 }
 
 // string diskReadBytes = 4;
@@ -2847,41 +2856,41 @@ inline void RealSingleDiskStatusInfo::clear_diskreadbytes() {
   diskreadbytes_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskreadbytes() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskReadBytes)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReadBytes)
   return diskreadbytes_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskreadbytes(const ::std::string& value) {
   
   diskreadbytes_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskReadBytes)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReadBytes)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskreadbytes(::std::string&& value) {
   
   diskreadbytes_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskReadBytes)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReadBytes)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskreadbytes(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskreadbytes_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskReadBytes)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReadBytes)
 }
 inline void RealSingleDiskStatusInfo::set_diskreadbytes(const char* value, size_t size) {
   
   diskreadbytes_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskReadBytes)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReadBytes)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskreadbytes() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskReadBytes)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReadBytes)
   return diskreadbytes_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskreadbytes() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskReadBytes)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReadBytes)
   
   return diskreadbytes_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2892,7 +2901,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskreadbytes(::std::string*
     
   }
   diskreadbytes_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskreadbytes);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskReadBytes)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReadBytes)
 }
 
 // string diskReads = 5;
@@ -2900,41 +2909,41 @@ inline void RealSingleDiskStatusInfo::clear_diskreads() {
   diskreads_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskreads() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskReads)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReads)
   return diskreads_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskreads(const ::std::string& value) {
   
   diskreads_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskReads)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReads)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskreads(::std::string&& value) {
   
   diskreads_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskReads)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReads)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskreads(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskreads_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskReads)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReads)
 }
 inline void RealSingleDiskStatusInfo::set_diskreads(const char* value, size_t size) {
   
   diskreads_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskReads)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReads)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskreads() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskReads)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReads)
   return diskreads_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskreads() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskReads)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReads)
   
   return diskreads_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2945,7 +2954,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskreads(::std::string* dis
     
   }
   diskreads_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskreads);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskReads)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskReads)
 }
 
 // string diskWriteBytes = 6;
@@ -2953,41 +2962,41 @@ inline void RealSingleDiskStatusInfo::clear_diskwritebytes() {
   diskwritebytes_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskwritebytes() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskWriteBytes)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWriteBytes)
   return diskwritebytes_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskwritebytes(const ::std::string& value) {
   
   diskwritebytes_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskWriteBytes)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWriteBytes)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskwritebytes(::std::string&& value) {
   
   diskwritebytes_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskWriteBytes)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWriteBytes)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskwritebytes(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskwritebytes_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskWriteBytes)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWriteBytes)
 }
 inline void RealSingleDiskStatusInfo::set_diskwritebytes(const char* value, size_t size) {
   
   diskwritebytes_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskWriteBytes)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWriteBytes)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskwritebytes() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskWriteBytes)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWriteBytes)
   return diskwritebytes_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskwritebytes() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskWriteBytes)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWriteBytes)
   
   return diskwritebytes_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2998,7 +3007,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskwritebytes(::std::string
     
   }
   diskwritebytes_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskwritebytes);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskWriteBytes)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWriteBytes)
 }
 
 // string diskWrites = 7;
@@ -3006,41 +3015,41 @@ inline void RealSingleDiskStatusInfo::clear_diskwrites() {
   diskwrites_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskwrites() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskWrites)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWrites)
   return diskwrites_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskwrites(const ::std::string& value) {
   
   diskwrites_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskWrites)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWrites)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskwrites(::std::string&& value) {
   
   diskwrites_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskWrites)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWrites)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskwrites(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskwrites_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskWrites)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWrites)
 }
 inline void RealSingleDiskStatusInfo::set_diskwrites(const char* value, size_t size) {
   
   diskwrites_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskWrites)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWrites)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskwrites() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskWrites)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWrites)
   return diskwrites_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskwrites() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskWrites)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWrites)
   
   return diskwrites_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3051,7 +3060,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskwrites(::std::string* di
     
   }
   diskwrites_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskwrites);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskWrites)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskWrites)
 }
 
 // string diskTotal = 8;
@@ -3059,41 +3068,41 @@ inline void RealSingleDiskStatusInfo::clear_disktotal() {
   disktotal_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::disktotal() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskTotal)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskTotal)
   return disktotal_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_disktotal(const ::std::string& value) {
   
   disktotal_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskTotal)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskTotal)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_disktotal(::std::string&& value) {
   
   disktotal_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskTotal)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskTotal)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_disktotal(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   disktotal_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskTotal)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskTotal)
 }
 inline void RealSingleDiskStatusInfo::set_disktotal(const char* value, size_t size) {
   
   disktotal_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskTotal)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskTotal)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_disktotal() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskTotal)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskTotal)
   return disktotal_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_disktotal() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskTotal)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskTotal)
   
   return disktotal_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3104,7 +3113,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_disktotal(::std::string* dis
     
   }
   disktotal_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), disktotal);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskTotal)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskTotal)
 }
 
 // string diskAvail = 9;
@@ -3112,41 +3121,41 @@ inline void RealSingleDiskStatusInfo::clear_diskavail() {
   diskavail_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskavail() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskAvail)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskAvail)
   return diskavail_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskavail(const ::std::string& value) {
   
   diskavail_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskAvail)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskAvail)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskavail(::std::string&& value) {
   
   diskavail_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskAvail)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskAvail)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskavail(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskavail_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskAvail)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskAvail)
 }
 inline void RealSingleDiskStatusInfo::set_diskavail(const char* value, size_t size) {
   
   diskavail_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskAvail)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskAvail)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskavail() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskAvail)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskAvail)
   return diskavail_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskavail() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskAvail)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskAvail)
   
   return diskavail_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3157,7 +3166,7 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskavail(::std::string* dis
     
   }
   diskavail_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskavail);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskAvail)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskAvail)
 }
 
 // string diskUsage = 10;
@@ -3165,41 +3174,41 @@ inline void RealSingleDiskStatusInfo::clear_diskusage() {
   diskusage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskStatusInfo::diskusage() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskStatusInfo.diskUsage)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskUsage)
   return diskusage_.GetNoArena();
 }
 inline void RealSingleDiskStatusInfo::set_diskusage(const ::std::string& value) {
   
   diskusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskStatusInfo.diskUsage)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskUsage)
 }
 #if LANG_CXX11
 inline void RealSingleDiskStatusInfo::set_diskusage(::std::string&& value) {
   
   diskusage_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskStatusInfo.diskUsage)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskUsage)
 }
 #endif
 inline void RealSingleDiskStatusInfo::set_diskusage(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskStatusInfo.diskUsage)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskUsage)
 }
 inline void RealSingleDiskStatusInfo::set_diskusage(const char* value, size_t size) {
   
   diskusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskStatusInfo.diskUsage)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskUsage)
 }
 inline ::std::string* RealSingleDiskStatusInfo::mutable_diskusage() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskStatusInfo.diskUsage)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskUsage)
   return diskusage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskStatusInfo::release_diskusage() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskStatusInfo.diskUsage)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskUsage)
   
   return diskusage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3210,40 +3219,40 @@ inline void RealSingleDiskStatusInfo::set_allocated_diskusage(::std::string* dis
     
   }
   diskusage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskusage);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskStatusInfo.diskUsage)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskStatusInfo.diskUsage)
 }
 
 // -------------------------------------------------------------------
 
 // RealDiskCfgInfo
 
-// repeated .proto.RealSingleDiskCfgInfo singleDiskInfo = 1;
+// repeated .com.fiberhome.fums.proto.RealSingleDiskCfgInfo singleDiskInfo = 1;
 inline int RealDiskCfgInfo::singlediskinfo_size() const {
   return singlediskinfo_.size();
 }
 inline void RealDiskCfgInfo::clear_singlediskinfo() {
   singlediskinfo_.Clear();
 }
-inline const ::proto::RealSingleDiskCfgInfo& RealDiskCfgInfo::singlediskinfo(int index) const {
-  // @@protoc_insertion_point(field_get:proto.RealDiskCfgInfo.singleDiskInfo)
+inline const ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo& RealDiskCfgInfo::singlediskinfo(int index) const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealDiskCfgInfo.singleDiskInfo)
   return singlediskinfo_.Get(index);
 }
-inline ::proto::RealSingleDiskCfgInfo* RealDiskCfgInfo::mutable_singlediskinfo(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.RealDiskCfgInfo.singleDiskInfo)
+inline ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo* RealDiskCfgInfo::mutable_singlediskinfo(int index) {
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealDiskCfgInfo.singleDiskInfo)
   return singlediskinfo_.Mutable(index);
 }
-inline ::proto::RealSingleDiskCfgInfo* RealDiskCfgInfo::add_singlediskinfo() {
-  // @@protoc_insertion_point(field_add:proto.RealDiskCfgInfo.singleDiskInfo)
+inline ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo* RealDiskCfgInfo::add_singlediskinfo() {
+  // @@protoc_insertion_point(field_add:com.fiberhome.fums.proto.RealDiskCfgInfo.singleDiskInfo)
   return singlediskinfo_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskCfgInfo >*
+inline ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo >*
 RealDiskCfgInfo::mutable_singlediskinfo() {
-  // @@protoc_insertion_point(field_mutable_list:proto.RealDiskCfgInfo.singleDiskInfo)
+  // @@protoc_insertion_point(field_mutable_list:com.fiberhome.fums.proto.RealDiskCfgInfo.singleDiskInfo)
   return &singlediskinfo_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskCfgInfo >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskCfgInfo >&
 RealDiskCfgInfo::singlediskinfo() const {
-  // @@protoc_insertion_point(field_list:proto.RealDiskCfgInfo.singleDiskInfo)
+  // @@protoc_insertion_point(field_list:com.fiberhome.fums.proto.RealDiskCfgInfo.singleDiskInfo)
   return singlediskinfo_;
 }
 
@@ -3256,13 +3265,13 @@ inline void RealSingleDiskCfgInfo::clear_diskindex() {
   diskindex_ = 0;
 }
 inline ::google::protobuf::int32 RealSingleDiskCfgInfo::diskindex() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskCfgInfo.diskIndex)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskIndex)
   return diskindex_;
 }
 inline void RealSingleDiskCfgInfo::set_diskindex(::google::protobuf::int32 value) {
   
   diskindex_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskCfgInfo.diskIndex)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskIndex)
 }
 
 // string diskName = 2;
@@ -3270,41 +3279,41 @@ inline void RealSingleDiskCfgInfo::clear_diskname() {
   diskname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskCfgInfo::diskname() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskCfgInfo.diskName)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskName)
   return diskname_.GetNoArena();
 }
 inline void RealSingleDiskCfgInfo::set_diskname(const ::std::string& value) {
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskCfgInfo.diskName)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskName)
 }
 #if LANG_CXX11
 inline void RealSingleDiskCfgInfo::set_diskname(::std::string&& value) {
   
   diskname_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskCfgInfo.diskName)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskName)
 }
 #endif
 inline void RealSingleDiskCfgInfo::set_diskname(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskCfgInfo.diskName)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskName)
 }
 inline void RealSingleDiskCfgInfo::set_diskname(const char* value, size_t size) {
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskCfgInfo.diskName)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskName)
 }
 inline ::std::string* RealSingleDiskCfgInfo::mutable_diskname() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskCfgInfo.diskName)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskName)
   return diskname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskCfgInfo::release_diskname() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskCfgInfo.diskName)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskName)
   
   return diskname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3315,7 +3324,7 @@ inline void RealSingleDiskCfgInfo::set_allocated_diskname(::std::string* disknam
     
   }
   diskname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskname);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskCfgInfo.diskName)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskName)
 }
 
 // string diskSize = 3;
@@ -3323,41 +3332,41 @@ inline void RealSingleDiskCfgInfo::clear_disksize() {
   disksize_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskCfgInfo::disksize() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskCfgInfo.diskSize)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSize)
   return disksize_.GetNoArena();
 }
 inline void RealSingleDiskCfgInfo::set_disksize(const ::std::string& value) {
   
   disksize_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskCfgInfo.diskSize)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSize)
 }
 #if LANG_CXX11
 inline void RealSingleDiskCfgInfo::set_disksize(::std::string&& value) {
   
   disksize_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskCfgInfo.diskSize)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSize)
 }
 #endif
 inline void RealSingleDiskCfgInfo::set_disksize(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   disksize_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskCfgInfo.diskSize)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSize)
 }
 inline void RealSingleDiskCfgInfo::set_disksize(const char* value, size_t size) {
   
   disksize_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskCfgInfo.diskSize)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSize)
 }
 inline ::std::string* RealSingleDiskCfgInfo::mutable_disksize() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskCfgInfo.diskSize)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSize)
   return disksize_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskCfgInfo::release_disksize() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskCfgInfo.diskSize)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSize)
   
   return disksize_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3368,7 +3377,7 @@ inline void RealSingleDiskCfgInfo::set_allocated_disksize(::std::string* disksiz
     
   }
   disksize_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), disksize);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskCfgInfo.diskSize)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSize)
 }
 
 // string diskSeqNo = 4;
@@ -3376,41 +3385,41 @@ inline void RealSingleDiskCfgInfo::clear_diskseqno() {
   diskseqno_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskCfgInfo::diskseqno() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskCfgInfo.diskSeqNo)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSeqNo)
   return diskseqno_.GetNoArena();
 }
 inline void RealSingleDiskCfgInfo::set_diskseqno(const ::std::string& value) {
   
   diskseqno_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskCfgInfo.diskSeqNo)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSeqNo)
 }
 #if LANG_CXX11
 inline void RealSingleDiskCfgInfo::set_diskseqno(::std::string&& value) {
   
   diskseqno_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskCfgInfo.diskSeqNo)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSeqNo)
 }
 #endif
 inline void RealSingleDiskCfgInfo::set_diskseqno(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskseqno_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskCfgInfo.diskSeqNo)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSeqNo)
 }
 inline void RealSingleDiskCfgInfo::set_diskseqno(const char* value, size_t size) {
   
   diskseqno_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskCfgInfo.diskSeqNo)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSeqNo)
 }
 inline ::std::string* RealSingleDiskCfgInfo::mutable_diskseqno() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskCfgInfo.diskSeqNo)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSeqNo)
   return diskseqno_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskCfgInfo::release_diskseqno() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskCfgInfo.diskSeqNo)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSeqNo)
   
   return diskseqno_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3421,7 +3430,7 @@ inline void RealSingleDiskCfgInfo::set_allocated_diskseqno(::std::string* diskse
     
   }
   diskseqno_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskseqno);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskCfgInfo.diskSeqNo)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskCfgInfo.diskSeqNo)
 }
 
 // -------------------------------------------------------------------
@@ -3433,41 +3442,41 @@ inline void RealDiskRaidCfgInfo::clear_personalities() {
   personalities_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealDiskRaidCfgInfo::personalities() const {
-  // @@protoc_insertion_point(field_get:proto.RealDiskRaidCfgInfo.personalities)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.personalities)
   return personalities_.GetNoArena();
 }
 inline void RealDiskRaidCfgInfo::set_personalities(const ::std::string& value) {
   
   personalities_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealDiskRaidCfgInfo.personalities)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.personalities)
 }
 #if LANG_CXX11
 inline void RealDiskRaidCfgInfo::set_personalities(::std::string&& value) {
   
   personalities_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealDiskRaidCfgInfo.personalities)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.personalities)
 }
 #endif
 inline void RealDiskRaidCfgInfo::set_personalities(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   personalities_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealDiskRaidCfgInfo.personalities)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.personalities)
 }
 inline void RealDiskRaidCfgInfo::set_personalities(const char* value, size_t size) {
   
   personalities_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealDiskRaidCfgInfo.personalities)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.personalities)
 }
 inline ::std::string* RealDiskRaidCfgInfo::mutable_personalities() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealDiskRaidCfgInfo.personalities)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.personalities)
   return personalities_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealDiskRaidCfgInfo::release_personalities() {
-  // @@protoc_insertion_point(field_release:proto.RealDiskRaidCfgInfo.personalities)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.personalities)
   
   return personalities_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3478,7 +3487,7 @@ inline void RealDiskRaidCfgInfo::set_allocated_personalities(::std::string* pers
     
   }
   personalities_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), personalities);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealDiskRaidCfgInfo.personalities)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.personalities)
 }
 
 // string unusedDevices = 2;
@@ -3486,41 +3495,41 @@ inline void RealDiskRaidCfgInfo::clear_unuseddevices() {
   unuseddevices_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealDiskRaidCfgInfo::unuseddevices() const {
-  // @@protoc_insertion_point(field_get:proto.RealDiskRaidCfgInfo.unusedDevices)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.unusedDevices)
   return unuseddevices_.GetNoArena();
 }
 inline void RealDiskRaidCfgInfo::set_unuseddevices(const ::std::string& value) {
   
   unuseddevices_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealDiskRaidCfgInfo.unusedDevices)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.unusedDevices)
 }
 #if LANG_CXX11
 inline void RealDiskRaidCfgInfo::set_unuseddevices(::std::string&& value) {
   
   unuseddevices_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealDiskRaidCfgInfo.unusedDevices)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.unusedDevices)
 }
 #endif
 inline void RealDiskRaidCfgInfo::set_unuseddevices(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   unuseddevices_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealDiskRaidCfgInfo.unusedDevices)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.unusedDevices)
 }
 inline void RealDiskRaidCfgInfo::set_unuseddevices(const char* value, size_t size) {
   
   unuseddevices_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealDiskRaidCfgInfo.unusedDevices)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.unusedDevices)
 }
 inline ::std::string* RealDiskRaidCfgInfo::mutable_unuseddevices() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealDiskRaidCfgInfo.unusedDevices)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.unusedDevices)
   return unuseddevices_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealDiskRaidCfgInfo::release_unuseddevices() {
-  // @@protoc_insertion_point(field_release:proto.RealDiskRaidCfgInfo.unusedDevices)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.unusedDevices)
   
   return unuseddevices_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3531,40 +3540,40 @@ inline void RealDiskRaidCfgInfo::set_allocated_unuseddevices(::std::string* unus
     
   }
   unuseddevices_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), unuseddevices);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealDiskRaidCfgInfo.unusedDevices)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealDiskRaidCfgInfo.unusedDevices)
 }
 
 // -------------------------------------------------------------------
 
 // RealDiskHealthInfo
 
-// repeated .proto.RealSingleDiskHealthInfo singleDiskHealth = 1;
+// repeated .com.fiberhome.fums.proto.RealSingleDiskHealthInfo singleDiskHealth = 1;
 inline int RealDiskHealthInfo::singlediskhealth_size() const {
   return singlediskhealth_.size();
 }
 inline void RealDiskHealthInfo::clear_singlediskhealth() {
   singlediskhealth_.Clear();
 }
-inline const ::proto::RealSingleDiskHealthInfo& RealDiskHealthInfo::singlediskhealth(int index) const {
-  // @@protoc_insertion_point(field_get:proto.RealDiskHealthInfo.singleDiskHealth)
+inline const ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo& RealDiskHealthInfo::singlediskhealth(int index) const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealDiskHealthInfo.singleDiskHealth)
   return singlediskhealth_.Get(index);
 }
-inline ::proto::RealSingleDiskHealthInfo* RealDiskHealthInfo::mutable_singlediskhealth(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.RealDiskHealthInfo.singleDiskHealth)
+inline ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo* RealDiskHealthInfo::mutable_singlediskhealth(int index) {
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealDiskHealthInfo.singleDiskHealth)
   return singlediskhealth_.Mutable(index);
 }
-inline ::proto::RealSingleDiskHealthInfo* RealDiskHealthInfo::add_singlediskhealth() {
-  // @@protoc_insertion_point(field_add:proto.RealDiskHealthInfo.singleDiskHealth)
+inline ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo* RealDiskHealthInfo::add_singlediskhealth() {
+  // @@protoc_insertion_point(field_add:com.fiberhome.fums.proto.RealDiskHealthInfo.singleDiskHealth)
   return singlediskhealth_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskHealthInfo >*
+inline ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo >*
 RealDiskHealthInfo::mutable_singlediskhealth() {
-  // @@protoc_insertion_point(field_mutable_list:proto.RealDiskHealthInfo.singleDiskHealth)
+  // @@protoc_insertion_point(field_mutable_list:com.fiberhome.fums.proto.RealDiskHealthInfo.singleDiskHealth)
   return &singlediskhealth_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::proto::RealSingleDiskHealthInfo >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleDiskHealthInfo >&
 RealDiskHealthInfo::singlediskhealth() const {
-  // @@protoc_insertion_point(field_list:proto.RealDiskHealthInfo.singleDiskHealth)
+  // @@protoc_insertion_point(field_list:com.fiberhome.fums.proto.RealDiskHealthInfo.singleDiskHealth)
   return singlediskhealth_;
 }
 
@@ -3577,41 +3586,41 @@ inline void RealSingleDiskHealthInfo::clear_diskname() {
   diskname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskHealthInfo::diskname() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskHealthInfo.diskName)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.diskName)
   return diskname_.GetNoArena();
 }
 inline void RealSingleDiskHealthInfo::set_diskname(const ::std::string& value) {
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskHealthInfo.diskName)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.diskName)
 }
 #if LANG_CXX11
 inline void RealSingleDiskHealthInfo::set_diskname(::std::string&& value) {
   
   diskname_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskHealthInfo.diskName)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.diskName)
 }
 #endif
 inline void RealSingleDiskHealthInfo::set_diskname(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskHealthInfo.diskName)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.diskName)
 }
 inline void RealSingleDiskHealthInfo::set_diskname(const char* value, size_t size) {
   
   diskname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskHealthInfo.diskName)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.diskName)
 }
 inline ::std::string* RealSingleDiskHealthInfo::mutable_diskname() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskHealthInfo.diskName)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.diskName)
   return diskname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskHealthInfo::release_diskname() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskHealthInfo.diskName)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.diskName)
   
   return diskname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3622,7 +3631,7 @@ inline void RealSingleDiskHealthInfo::set_allocated_diskname(::std::string* disk
     
   }
   diskname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), diskname);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskHealthInfo.diskName)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.diskName)
 }
 
 // string smartCtlInfo = 2;
@@ -3630,41 +3639,41 @@ inline void RealSingleDiskHealthInfo::clear_smartctlinfo() {
   smartctlinfo_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleDiskHealthInfo::smartctlinfo() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleDiskHealthInfo.smartCtlInfo)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.smartCtlInfo)
   return smartctlinfo_.GetNoArena();
 }
 inline void RealSingleDiskHealthInfo::set_smartctlinfo(const ::std::string& value) {
   
   smartctlinfo_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleDiskHealthInfo.smartCtlInfo)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.smartCtlInfo)
 }
 #if LANG_CXX11
 inline void RealSingleDiskHealthInfo::set_smartctlinfo(::std::string&& value) {
   
   smartctlinfo_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleDiskHealthInfo.smartCtlInfo)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.smartCtlInfo)
 }
 #endif
 inline void RealSingleDiskHealthInfo::set_smartctlinfo(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   smartctlinfo_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleDiskHealthInfo.smartCtlInfo)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.smartCtlInfo)
 }
 inline void RealSingleDiskHealthInfo::set_smartctlinfo(const char* value, size_t size) {
   
   smartctlinfo_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleDiskHealthInfo.smartCtlInfo)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.smartCtlInfo)
 }
 inline ::std::string* RealSingleDiskHealthInfo::mutable_smartctlinfo() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleDiskHealthInfo.smartCtlInfo)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.smartCtlInfo)
   return smartctlinfo_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleDiskHealthInfo::release_smartctlinfo() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleDiskHealthInfo.smartCtlInfo)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.smartCtlInfo)
   
   return smartctlinfo_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3675,40 +3684,40 @@ inline void RealSingleDiskHealthInfo::set_allocated_smartctlinfo(::std::string* 
     
   }
   smartctlinfo_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), smartctlinfo);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleDiskHealthInfo.smartCtlInfo)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleDiskHealthInfo.smartCtlInfo)
 }
 
 // -------------------------------------------------------------------
 
 // RealNicStatusInfo
 
-// repeated .proto.SingleNicPerfData singleNicInfo = 1;
+// repeated .com.fiberhome.fums.proto.SingleNicPerfData singleNicInfo = 1;
 inline int RealNicStatusInfo::singlenicinfo_size() const {
   return singlenicinfo_.size();
 }
 inline void RealNicStatusInfo::clear_singlenicinfo() {
   singlenicinfo_.Clear();
 }
-inline const ::proto::SingleNicPerfData& RealNicStatusInfo::singlenicinfo(int index) const {
-  // @@protoc_insertion_point(field_get:proto.RealNicStatusInfo.singleNicInfo)
+inline const ::com::fiberhome::fums::proto::SingleNicPerfData& RealNicStatusInfo::singlenicinfo(int index) const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealNicStatusInfo.singleNicInfo)
   return singlenicinfo_.Get(index);
 }
-inline ::proto::SingleNicPerfData* RealNicStatusInfo::mutable_singlenicinfo(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.RealNicStatusInfo.singleNicInfo)
+inline ::com::fiberhome::fums::proto::SingleNicPerfData* RealNicStatusInfo::mutable_singlenicinfo(int index) {
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealNicStatusInfo.singleNicInfo)
   return singlenicinfo_.Mutable(index);
 }
-inline ::proto::SingleNicPerfData* RealNicStatusInfo::add_singlenicinfo() {
-  // @@protoc_insertion_point(field_add:proto.RealNicStatusInfo.singleNicInfo)
+inline ::com::fiberhome::fums::proto::SingleNicPerfData* RealNicStatusInfo::add_singlenicinfo() {
+  // @@protoc_insertion_point(field_add:com.fiberhome.fums.proto.RealNicStatusInfo.singleNicInfo)
   return singlenicinfo_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::proto::SingleNicPerfData >*
+inline ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::SingleNicPerfData >*
 RealNicStatusInfo::mutable_singlenicinfo() {
-  // @@protoc_insertion_point(field_mutable_list:proto.RealNicStatusInfo.singleNicInfo)
+  // @@protoc_insertion_point(field_mutable_list:com.fiberhome.fums.proto.RealNicStatusInfo.singleNicInfo)
   return &singlenicinfo_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::proto::SingleNicPerfData >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::SingleNicPerfData >&
 RealNicStatusInfo::singlenicinfo() const {
-  // @@protoc_insertion_point(field_list:proto.RealNicStatusInfo.singleNicInfo)
+  // @@protoc_insertion_point(field_list:com.fiberhome.fums.proto.RealNicStatusInfo.singleNicInfo)
   return singlenicinfo_;
 }
 
@@ -3716,33 +3725,33 @@ RealNicStatusInfo::singlenicinfo() const {
 
 // RealProcessStatusInfo
 
-// repeated .proto.RealSingleProcessStatusInfo singleProcessInfo = 1;
+// repeated .com.fiberhome.fums.proto.RealSingleProcessStatusInfo singleProcessInfo = 1;
 inline int RealProcessStatusInfo::singleprocessinfo_size() const {
   return singleprocessinfo_.size();
 }
 inline void RealProcessStatusInfo::clear_singleprocessinfo() {
   singleprocessinfo_.Clear();
 }
-inline const ::proto::RealSingleProcessStatusInfo& RealProcessStatusInfo::singleprocessinfo(int index) const {
-  // @@protoc_insertion_point(field_get:proto.RealProcessStatusInfo.singleProcessInfo)
+inline const ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo& RealProcessStatusInfo::singleprocessinfo(int index) const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealProcessStatusInfo.singleProcessInfo)
   return singleprocessinfo_.Get(index);
 }
-inline ::proto::RealSingleProcessStatusInfo* RealProcessStatusInfo::mutable_singleprocessinfo(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.RealProcessStatusInfo.singleProcessInfo)
+inline ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo* RealProcessStatusInfo::mutable_singleprocessinfo(int index) {
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealProcessStatusInfo.singleProcessInfo)
   return singleprocessinfo_.Mutable(index);
 }
-inline ::proto::RealSingleProcessStatusInfo* RealProcessStatusInfo::add_singleprocessinfo() {
-  // @@protoc_insertion_point(field_add:proto.RealProcessStatusInfo.singleProcessInfo)
+inline ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo* RealProcessStatusInfo::add_singleprocessinfo() {
+  // @@protoc_insertion_point(field_add:com.fiberhome.fums.proto.RealProcessStatusInfo.singleProcessInfo)
   return singleprocessinfo_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::proto::RealSingleProcessStatusInfo >*
+inline ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo >*
 RealProcessStatusInfo::mutable_singleprocessinfo() {
-  // @@protoc_insertion_point(field_mutable_list:proto.RealProcessStatusInfo.singleProcessInfo)
+  // @@protoc_insertion_point(field_mutable_list:com.fiberhome.fums.proto.RealProcessStatusInfo.singleProcessInfo)
   return &singleprocessinfo_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::proto::RealSingleProcessStatusInfo >&
+inline const ::google::protobuf::RepeatedPtrField< ::com::fiberhome::fums::proto::RealSingleProcessStatusInfo >&
 RealProcessStatusInfo::singleprocessinfo() const {
-  // @@protoc_insertion_point(field_list:proto.RealProcessStatusInfo.singleProcessInfo)
+  // @@protoc_insertion_point(field_list:com.fiberhome.fums.proto.RealProcessStatusInfo.singleProcessInfo)
   return singleprocessinfo_;
 }
 
@@ -3755,13 +3764,13 @@ inline void RealSingleProcessStatusInfo::clear_processid() {
   processid_ = 0;
 }
 inline ::google::protobuf::int32 RealSingleProcessStatusInfo::processid() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleProcessStatusInfo.processId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processId)
   return processid_;
 }
 inline void RealSingleProcessStatusInfo::set_processid(::google::protobuf::int32 value) {
   
   processid_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSingleProcessStatusInfo.processId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processId)
 }
 
 // string processAppName = 2;
@@ -3769,41 +3778,41 @@ inline void RealSingleProcessStatusInfo::clear_processappname() {
   processappname_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleProcessStatusInfo::processappname() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleProcessStatusInfo.processAppName)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processAppName)
   return processappname_.GetNoArena();
 }
 inline void RealSingleProcessStatusInfo::set_processappname(const ::std::string& value) {
   
   processappname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleProcessStatusInfo.processAppName)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processAppName)
 }
 #if LANG_CXX11
 inline void RealSingleProcessStatusInfo::set_processappname(::std::string&& value) {
   
   processappname_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleProcessStatusInfo.processAppName)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processAppName)
 }
 #endif
 inline void RealSingleProcessStatusInfo::set_processappname(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   processappname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleProcessStatusInfo.processAppName)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processAppName)
 }
 inline void RealSingleProcessStatusInfo::set_processappname(const char* value, size_t size) {
   
   processappname_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleProcessStatusInfo.processAppName)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processAppName)
 }
 inline ::std::string* RealSingleProcessStatusInfo::mutable_processappname() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleProcessStatusInfo.processAppName)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processAppName)
   return processappname_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleProcessStatusInfo::release_processappname() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleProcessStatusInfo.processAppName)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processAppName)
   
   return processappname_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3814,7 +3823,7 @@ inline void RealSingleProcessStatusInfo::set_allocated_processappname(::std::str
     
   }
   processappname_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), processappname);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleProcessStatusInfo.processAppName)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processAppName)
 }
 
 // int64 processPid = 3;
@@ -3822,13 +3831,13 @@ inline void RealSingleProcessStatusInfo::clear_processpid() {
   processpid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 RealSingleProcessStatusInfo::processpid() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleProcessStatusInfo.processPid)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processPid)
   return processpid_;
 }
 inline void RealSingleProcessStatusInfo::set_processpid(::google::protobuf::int64 value) {
   
   processpid_ = value;
-  // @@protoc_insertion_point(field_set:proto.RealSingleProcessStatusInfo.processPid)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processPid)
 }
 
 // string processState = 4;
@@ -3836,41 +3845,41 @@ inline void RealSingleProcessStatusInfo::clear_processstate() {
   processstate_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleProcessStatusInfo::processstate() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleProcessStatusInfo.processState)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processState)
   return processstate_.GetNoArena();
 }
 inline void RealSingleProcessStatusInfo::set_processstate(const ::std::string& value) {
   
   processstate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleProcessStatusInfo.processState)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processState)
 }
 #if LANG_CXX11
 inline void RealSingleProcessStatusInfo::set_processstate(::std::string&& value) {
   
   processstate_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleProcessStatusInfo.processState)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processState)
 }
 #endif
 inline void RealSingleProcessStatusInfo::set_processstate(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   processstate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleProcessStatusInfo.processState)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processState)
 }
 inline void RealSingleProcessStatusInfo::set_processstate(const char* value, size_t size) {
   
   processstate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleProcessStatusInfo.processState)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processState)
 }
 inline ::std::string* RealSingleProcessStatusInfo::mutable_processstate() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleProcessStatusInfo.processState)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processState)
   return processstate_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleProcessStatusInfo::release_processstate() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleProcessStatusInfo.processState)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processState)
   
   return processstate_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3881,7 +3890,7 @@ inline void RealSingleProcessStatusInfo::set_allocated_processstate(::std::strin
     
   }
   processstate_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), processstate);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleProcessStatusInfo.processState)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processState)
 }
 
 // string processCpuUsage = 5;
@@ -3889,41 +3898,41 @@ inline void RealSingleProcessStatusInfo::clear_processcpuusage() {
   processcpuusage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleProcessStatusInfo::processcpuusage() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleProcessStatusInfo.processCpuUsage)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processCpuUsage)
   return processcpuusage_.GetNoArena();
 }
 inline void RealSingleProcessStatusInfo::set_processcpuusage(const ::std::string& value) {
   
   processcpuusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleProcessStatusInfo.processCpuUsage)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processCpuUsage)
 }
 #if LANG_CXX11
 inline void RealSingleProcessStatusInfo::set_processcpuusage(::std::string&& value) {
   
   processcpuusage_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleProcessStatusInfo.processCpuUsage)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processCpuUsage)
 }
 #endif
 inline void RealSingleProcessStatusInfo::set_processcpuusage(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   processcpuusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleProcessStatusInfo.processCpuUsage)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processCpuUsage)
 }
 inline void RealSingleProcessStatusInfo::set_processcpuusage(const char* value, size_t size) {
   
   processcpuusage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleProcessStatusInfo.processCpuUsage)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processCpuUsage)
 }
 inline ::std::string* RealSingleProcessStatusInfo::mutable_processcpuusage() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleProcessStatusInfo.processCpuUsage)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processCpuUsage)
   return processcpuusage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleProcessStatusInfo::release_processcpuusage() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleProcessStatusInfo.processCpuUsage)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processCpuUsage)
   
   return processcpuusage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3934,7 +3943,7 @@ inline void RealSingleProcessStatusInfo::set_allocated_processcpuusage(::std::st
     
   }
   processcpuusage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), processcpuusage);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleProcessStatusInfo.processCpuUsage)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processCpuUsage)
 }
 
 // string processMemory = 6;
@@ -3942,41 +3951,41 @@ inline void RealSingleProcessStatusInfo::clear_processmemory() {
   processmemory_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& RealSingleProcessStatusInfo::processmemory() const {
-  // @@protoc_insertion_point(field_get:proto.RealSingleProcessStatusInfo.processMemory)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processMemory)
   return processmemory_.GetNoArena();
 }
 inline void RealSingleProcessStatusInfo::set_processmemory(const ::std::string& value) {
   
   processmemory_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.RealSingleProcessStatusInfo.processMemory)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processMemory)
 }
 #if LANG_CXX11
 inline void RealSingleProcessStatusInfo::set_processmemory(::std::string&& value) {
   
   processmemory_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.RealSingleProcessStatusInfo.processMemory)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processMemory)
 }
 #endif
 inline void RealSingleProcessStatusInfo::set_processmemory(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   processmemory_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.RealSingleProcessStatusInfo.processMemory)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processMemory)
 }
 inline void RealSingleProcessStatusInfo::set_processmemory(const char* value, size_t size) {
   
   processmemory_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.RealSingleProcessStatusInfo.processMemory)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processMemory)
 }
 inline ::std::string* RealSingleProcessStatusInfo::mutable_processmemory() {
   
-  // @@protoc_insertion_point(field_mutable:proto.RealSingleProcessStatusInfo.processMemory)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processMemory)
   return processmemory_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* RealSingleProcessStatusInfo::release_processmemory() {
-  // @@protoc_insertion_point(field_release:proto.RealSingleProcessStatusInfo.processMemory)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processMemory)
   
   return processmemory_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -3987,7 +3996,7 @@ inline void RealSingleProcessStatusInfo::set_allocated_processmemory(::std::stri
     
   }
   processmemory_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), processmemory);
-  // @@protoc_insertion_point(field_set_allocated:proto.RealSingleProcessStatusInfo.processMemory)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.RealSingleProcessStatusInfo.processMemory)
 }
 
 #ifdef __GNUC__
@@ -4023,14 +4032,17 @@ inline void RealSingleProcessStatusInfo::set_allocated_processmemory(::std::stri
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::RealQueryHostStatusData_HostCfgTypeEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::RealQueryHostStatusData_HostCfgTypeEnum>() {
-  return ::proto::RealQueryHostStatusData_HostCfgTypeEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum>() {
+  return ::com::fiberhome::fums::proto::RealQueryHostStatusData_HostCfgTypeEnum_descriptor();
 }
 
 }  // namespace protobuf

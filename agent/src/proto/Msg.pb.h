@@ -31,6 +31,9 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class Header;
 class HeaderDefaultTypeInternal;
@@ -39,7 +42,13 @@ class Major;
 class MajorDefaultTypeInternal;
 extern MajorDefaultTypeInternal _Major_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_Msg_2eproto {
@@ -114,7 +123,7 @@ inline bool Header_DataType_Parse(
 }
 // ===================================================================
 
-class Major : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.Major) */ {
+class Major : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.Major) */ {
  public:
   Major();
   virtual ~Major();
@@ -209,27 +218,27 @@ class Major : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   ::std::string* release_body();
   void set_allocated_body(::std::string* body);
 
-  // .proto.Header header = 1;
+  // .com.fiberhome.fums.proto.Header header = 1;
   bool has_header() const;
   void clear_header();
   static const int kHeaderFieldNumber = 1;
-  const ::proto::Header& header() const;
-  ::proto::Header* mutable_header();
-  ::proto::Header* release_header();
-  void set_allocated_header(::proto::Header* header);
+  const ::com::fiberhome::fums::proto::Header& header() const;
+  ::com::fiberhome::fums::proto::Header* mutable_header();
+  ::com::fiberhome::fums::proto::Header* release_header();
+  void set_allocated_header(::com::fiberhome::fums::proto::Header* header);
 
-  // @@protoc_insertion_point(class_scope:proto.Major)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.Major)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr body_;
-  ::proto::Header* header_;
+  ::com::fiberhome::fums::proto::Header* header_;
   mutable int _cached_size_;
   friend struct protobuf_Msg_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.Header) */ {
+class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.Header) */ {
  public:
   Header();
   virtual ~Header();
@@ -442,19 +451,19 @@ class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   ::google::protobuf::int32 seq() const;
   void set_seq(::google::protobuf::int32 value);
 
-  // .proto.Header.DIRECTION direction = 5;
+  // .com.fiberhome.fums.proto.Header.DIRECTION direction = 5;
   void clear_direction();
   static const int kDirectionFieldNumber = 5;
-  ::proto::Header_DIRECTION direction() const;
-  void set_direction(::proto::Header_DIRECTION value);
+  ::com::fiberhome::fums::proto::Header_DIRECTION direction() const;
+  void set_direction(::com::fiberhome::fums::proto::Header_DIRECTION value);
 
-  // .proto.Header.DataType type = 6;
+  // .com.fiberhome.fums.proto.Header.DataType type = 6;
   void clear_type();
   static const int kTypeFieldNumber = 6;
-  ::proto::Header_DataType type() const;
-  void set_type(::proto::Header_DataType value);
+  ::com::fiberhome::fums::proto::Header_DataType type() const;
+  void set_type(::com::fiberhome::fums::proto::Header_DataType value);
 
-  // @@protoc_insertion_point(class_scope:proto.Header)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.Header)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -480,7 +489,7 @@ class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 #endif  // __GNUC__
 // Major
 
-// .proto.Header header = 1;
+// .com.fiberhome.fums.proto.Header header = 1;
 inline bool Major::has_header() const {
   return this != internal_default_instance() && header_ != NULL;
 }
@@ -488,28 +497,28 @@ inline void Major::clear_header() {
   if (GetArenaNoVirtual() == NULL && header_ != NULL) delete header_;
   header_ = NULL;
 }
-inline const ::proto::Header& Major::header() const {
-  const ::proto::Header* p = header_;
-  // @@protoc_insertion_point(field_get:proto.Major.header)
-  return p != NULL ? *p : *reinterpret_cast<const ::proto::Header*>(
-      &::proto::_Header_default_instance_);
+inline const ::com::fiberhome::fums::proto::Header& Major::header() const {
+  const ::com::fiberhome::fums::proto::Header* p = header_;
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Major.header)
+  return p != NULL ? *p : *reinterpret_cast<const ::com::fiberhome::fums::proto::Header*>(
+      &::com::fiberhome::fums::proto::_Header_default_instance_);
 }
-inline ::proto::Header* Major::mutable_header() {
+inline ::com::fiberhome::fums::proto::Header* Major::mutable_header() {
   
   if (header_ == NULL) {
-    header_ = new ::proto::Header;
+    header_ = new ::com::fiberhome::fums::proto::Header;
   }
-  // @@protoc_insertion_point(field_mutable:proto.Major.header)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.Major.header)
   return header_;
 }
-inline ::proto::Header* Major::release_header() {
-  // @@protoc_insertion_point(field_release:proto.Major.header)
+inline ::com::fiberhome::fums::proto::Header* Major::release_header() {
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.Major.header)
   
-  ::proto::Header* temp = header_;
+  ::com::fiberhome::fums::proto::Header* temp = header_;
   header_ = NULL;
   return temp;
 }
-inline void Major::set_allocated_header(::proto::Header* header) {
+inline void Major::set_allocated_header(::com::fiberhome::fums::proto::Header* header) {
   delete header_;
   header_ = header;
   if (header) {
@@ -517,7 +526,7 @@ inline void Major::set_allocated_header(::proto::Header* header) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.Major.header)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.Major.header)
 }
 
 // string body = 2;
@@ -525,41 +534,41 @@ inline void Major::clear_body() {
   body_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Major::body() const {
-  // @@protoc_insertion_point(field_get:proto.Major.body)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Major.body)
   return body_.GetNoArena();
 }
 inline void Major::set_body(const ::std::string& value) {
   
   body_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.Major.body)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.Major.body)
 }
 #if LANG_CXX11
 inline void Major::set_body(::std::string&& value) {
   
   body_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.Major.body)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.Major.body)
 }
 #endif
 inline void Major::set_body(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   body_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.Major.body)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.Major.body)
 }
 inline void Major::set_body(const char* value, size_t size) {
   
   body_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.Major.body)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.Major.body)
 }
 inline ::std::string* Major::mutable_body() {
   
-  // @@protoc_insertion_point(field_mutable:proto.Major.body)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.Major.body)
   return body_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Major::release_body() {
-  // @@protoc_insertion_point(field_release:proto.Major.body)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.Major.body)
   
   return body_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -570,7 +579,7 @@ inline void Major::set_allocated_body(::std::string* body) {
     
   }
   body_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), body);
-  // @@protoc_insertion_point(field_set_allocated:proto.Major.body)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.Major.body)
 }
 
 // -------------------------------------------------------------------
@@ -582,41 +591,41 @@ inline void Header::clear_host() {
   host_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Header::host() const {
-  // @@protoc_insertion_point(field_get:proto.Header.host)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Header.host)
   return host_.GetNoArena();
 }
 inline void Header::set_host(const ::std::string& value) {
   
   host_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.Header.host)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.Header.host)
 }
 #if LANG_CXX11
 inline void Header::set_host(::std::string&& value) {
   
   host_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.Header.host)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.Header.host)
 }
 #endif
 inline void Header::set_host(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   host_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.Header.host)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.Header.host)
 }
 inline void Header::set_host(const char* value, size_t size) {
   
   host_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.Header.host)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.Header.host)
 }
 inline ::std::string* Header::mutable_host() {
   
-  // @@protoc_insertion_point(field_mutable:proto.Header.host)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.Header.host)
   return host_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Header::release_host() {
-  // @@protoc_insertion_point(field_release:proto.Header.host)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.Header.host)
   
   return host_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -627,7 +636,7 @@ inline void Header::set_allocated_host(::std::string* host) {
     
   }
   host_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), host);
-  // @@protoc_insertion_point(field_set_allocated:proto.Header.host)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.Header.host)
 }
 
 // string ip = 2;
@@ -635,41 +644,41 @@ inline void Header::clear_ip() {
   ip_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Header::ip() const {
-  // @@protoc_insertion_point(field_get:proto.Header.ip)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Header.ip)
   return ip_.GetNoArena();
 }
 inline void Header::set_ip(const ::std::string& value) {
   
   ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.Header.ip)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.Header.ip)
 }
 #if LANG_CXX11
 inline void Header::set_ip(::std::string&& value) {
   
   ip_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.Header.ip)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.Header.ip)
 }
 #endif
 inline void Header::set_ip(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.Header.ip)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.Header.ip)
 }
 inline void Header::set_ip(const char* value, size_t size) {
   
   ip_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.Header.ip)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.Header.ip)
 }
 inline ::std::string* Header::mutable_ip() {
   
-  // @@protoc_insertion_point(field_mutable:proto.Header.ip)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.Header.ip)
   return ip_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Header::release_ip() {
-  // @@protoc_insertion_point(field_release:proto.Header.ip)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.Header.ip)
   
   return ip_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -680,7 +689,7 @@ inline void Header::set_allocated_ip(::std::string* ip) {
     
   }
   ip_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ip);
-  // @@protoc_insertion_point(field_set_allocated:proto.Header.ip)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.Header.ip)
 }
 
 // int32 seq = 3;
@@ -688,13 +697,13 @@ inline void Header::clear_seq() {
   seq_ = 0;
 }
 inline ::google::protobuf::int32 Header::seq() const {
-  // @@protoc_insertion_point(field_get:proto.Header.seq)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Header.seq)
   return seq_;
 }
 inline void Header::set_seq(::google::protobuf::int32 value) {
   
   seq_ = value;
-  // @@protoc_insertion_point(field_set:proto.Header.seq)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.Header.seq)
 }
 
 // int64 timestamp = 4;
@@ -702,41 +711,41 @@ inline void Header::clear_timestamp() {
   timestamp_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 Header::timestamp() const {
-  // @@protoc_insertion_point(field_get:proto.Header.timestamp)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Header.timestamp)
   return timestamp_;
 }
 inline void Header::set_timestamp(::google::protobuf::int64 value) {
   
   timestamp_ = value;
-  // @@protoc_insertion_point(field_set:proto.Header.timestamp)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.Header.timestamp)
 }
 
-// .proto.Header.DIRECTION direction = 5;
+// .com.fiberhome.fums.proto.Header.DIRECTION direction = 5;
 inline void Header::clear_direction() {
   direction_ = 0;
 }
-inline ::proto::Header_DIRECTION Header::direction() const {
-  // @@protoc_insertion_point(field_get:proto.Header.direction)
-  return static_cast< ::proto::Header_DIRECTION >(direction_);
+inline ::com::fiberhome::fums::proto::Header_DIRECTION Header::direction() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Header.direction)
+  return static_cast< ::com::fiberhome::fums::proto::Header_DIRECTION >(direction_);
 }
-inline void Header::set_direction(::proto::Header_DIRECTION value) {
+inline void Header::set_direction(::com::fiberhome::fums::proto::Header_DIRECTION value) {
   
   direction_ = value;
-  // @@protoc_insertion_point(field_set:proto.Header.direction)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.Header.direction)
 }
 
-// .proto.Header.DataType type = 6;
+// .com.fiberhome.fums.proto.Header.DataType type = 6;
 inline void Header::clear_type() {
   type_ = 0;
 }
-inline ::proto::Header_DataType Header::type() const {
-  // @@protoc_insertion_point(field_get:proto.Header.type)
-  return static_cast< ::proto::Header_DataType >(type_);
+inline ::com::fiberhome::fums::proto::Header_DataType Header::type() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Header.type)
+  return static_cast< ::com::fiberhome::fums::proto::Header_DataType >(type_);
 }
-inline void Header::set_type(::proto::Header_DataType value) {
+inline void Header::set_type(::com::fiberhome::fums::proto::Header_DataType value) {
   
   type_ = value;
-  // @@protoc_insertion_point(field_set:proto.Header.type)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.Header.type)
 }
 
 // string rabbitmqInfo = 7;
@@ -744,41 +753,41 @@ inline void Header::clear_rabbitmqinfo() {
   rabbitmqinfo_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& Header::rabbitmqinfo() const {
-  // @@protoc_insertion_point(field_get:proto.Header.rabbitmqInfo)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.Header.rabbitmqInfo)
   return rabbitmqinfo_.GetNoArena();
 }
 inline void Header::set_rabbitmqinfo(const ::std::string& value) {
   
   rabbitmqinfo_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.Header.rabbitmqInfo)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.Header.rabbitmqInfo)
 }
 #if LANG_CXX11
 inline void Header::set_rabbitmqinfo(::std::string&& value) {
   
   rabbitmqinfo_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.Header.rabbitmqInfo)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.Header.rabbitmqInfo)
 }
 #endif
 inline void Header::set_rabbitmqinfo(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   rabbitmqinfo_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.Header.rabbitmqInfo)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.Header.rabbitmqInfo)
 }
 inline void Header::set_rabbitmqinfo(const char* value, size_t size) {
   
   rabbitmqinfo_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.Header.rabbitmqInfo)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.Header.rabbitmqInfo)
 }
 inline ::std::string* Header::mutable_rabbitmqinfo() {
   
-  // @@protoc_insertion_point(field_mutable:proto.Header.rabbitmqInfo)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.Header.rabbitmqInfo)
   return rabbitmqinfo_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Header::release_rabbitmqinfo() {
-  // @@protoc_insertion_point(field_release:proto.Header.rabbitmqInfo)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.Header.rabbitmqInfo)
   
   return rabbitmqinfo_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -789,7 +798,7 @@ inline void Header::set_allocated_rabbitmqinfo(::std::string* rabbitmqinfo) {
     
   }
   rabbitmqinfo_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), rabbitmqinfo);
-  // @@protoc_insertion_point(field_set_allocated:proto.Header.rabbitmqInfo)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.Header.rabbitmqInfo)
 }
 
 #ifdef __GNUC__
@@ -803,19 +812,22 @@ inline void Header::set_allocated_rabbitmqinfo(::std::string* rabbitmqinfo) {
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::Header_DIRECTION> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::Header_DIRECTION> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::Header_DIRECTION>() {
-  return ::proto::Header_DIRECTION_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::Header_DIRECTION>() {
+  return ::com::fiberhome::fums::proto::Header_DIRECTION_descriptor();
 }
-template <> struct is_proto_enum< ::proto::Header_DataType> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::Header_DataType> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::Header_DataType>() {
-  return ::proto::Header_DataType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::Header_DataType>() {
+  return ::com::fiberhome::fums::proto::Header_DataType_descriptor();
 }
 
 }  // namespace protobuf

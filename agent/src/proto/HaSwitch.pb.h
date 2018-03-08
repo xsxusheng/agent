@@ -32,6 +32,9 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "CommonDefine.pb.h"
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class HaSwitchData;
 class HaSwitchDataDefaultTypeInternal;
@@ -40,7 +43,13 @@ class HaSwitchResponse;
 class HaSwitchResponseDefaultTypeInternal;
 extern HaSwitchResponseDefaultTypeInternal _HaSwitchResponse_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_HaSwitch_2eproto {
@@ -81,7 +90,7 @@ inline bool HaSwitchData_HaSwitchTypeEnum_Parse(
 }
 // ===================================================================
 
-class HaSwitchData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.HaSwitchData) */ {
+class HaSwitchData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.HaSwitchData) */ {
  public:
   HaSwitchData();
   virtual ~HaSwitchData();
@@ -208,19 +217,19 @@ class HaSwitchData : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::int64 uniqueid() const;
   void set_uniqueid(::google::protobuf::int64 value);
 
-  // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+  // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
   void clear_haswitchtype();
   static const int kHaSwitchTypeFieldNumber = 2;
-  ::proto::HaSwitchData_HaSwitchTypeEnum haswitchtype() const;
-  void set_haswitchtype(::proto::HaSwitchData_HaSwitchTypeEnum value);
+  ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum haswitchtype() const;
+  void set_haswitchtype(::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum value);
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
   void clear_apptypecode();
   static const int kAppTypeCodeFieldNumber = 4;
-  ::proto::EnumDefineData_AppTypeEnum apptypecode() const;
-  void set_apptypecode(::proto::EnumDefineData_AppTypeEnum value);
+  ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum apptypecode() const;
+  void set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value);
 
-  // @@protoc_insertion_point(class_scope:proto.HaSwitchData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.HaSwitchData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -233,7 +242,7 @@ class HaSwitchData : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // -------------------------------------------------------------------
 
-class HaSwitchResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.HaSwitchResponse) */ {
+class HaSwitchResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.HaSwitchResponse) */ {
  public:
   HaSwitchResponse();
   virtual ~HaSwitchResponse();
@@ -320,11 +329,11 @@ class HaSwitchResponse : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::int64 uniqueid() const;
   void set_uniqueid(::google::protobuf::int64 value);
 
-  // .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+  // .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
   void clear_haswitchtype();
   static const int kHaSwitchTypeFieldNumber = 2;
-  ::proto::HaSwitchData_HaSwitchTypeEnum haswitchtype() const;
-  void set_haswitchtype(::proto::HaSwitchData_HaSwitchTypeEnum value);
+  ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum haswitchtype() const;
+  void set_haswitchtype(::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum value);
 
   // int32 haStatus = 3;
   void clear_hastatus();
@@ -332,7 +341,7 @@ class HaSwitchResponse : public ::google::protobuf::Message /* @@protoc_insertio
   ::google::protobuf::int32 hastatus() const;
   void set_hastatus(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:proto.HaSwitchResponse)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.HaSwitchResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -359,27 +368,27 @@ inline void HaSwitchData::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 HaSwitchData::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchData.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchData.uniqueId)
   return uniqueid_;
 }
 inline void HaSwitchData::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchData.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchData.uniqueId)
 }
 
-// .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+// .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
 inline void HaSwitchData::clear_haswitchtype() {
   haswitchtype_ = 0;
 }
-inline ::proto::HaSwitchData_HaSwitchTypeEnum HaSwitchData::haswitchtype() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchData.haSwitchType)
-  return static_cast< ::proto::HaSwitchData_HaSwitchTypeEnum >(haswitchtype_);
+inline ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum HaSwitchData::haswitchtype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchData.haSwitchType)
+  return static_cast< ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum >(haswitchtype_);
 }
-inline void HaSwitchData::set_haswitchtype(::proto::HaSwitchData_HaSwitchTypeEnum value) {
+inline void HaSwitchData::set_haswitchtype(::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum value) {
   
   haswitchtype_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchData.haSwitchType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchData.haSwitchType)
 }
 
 // string appType = 3;
@@ -387,41 +396,41 @@ inline void HaSwitchData::clear_apptype() {
   apptype_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& HaSwitchData::apptype() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchData.appType)
   return apptype_.GetNoArena();
 }
 inline void HaSwitchData::set_apptype(const ::std::string& value) {
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 #if LANG_CXX11
 inline void HaSwitchData::set_apptype(::std::string&& value) {
   
   apptype_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 #endif
 inline void HaSwitchData::set_apptype(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 inline void HaSwitchData::set_apptype(const char* value, size_t size) {
   
   apptype_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 inline ::std::string* HaSwitchData::mutable_apptype() {
   
-  // @@protoc_insertion_point(field_mutable:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.HaSwitchData.appType)
   return apptype_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* HaSwitchData::release_apptype() {
-  // @@protoc_insertion_point(field_release:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.HaSwitchData.appType)
   
   return apptype_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -432,21 +441,21 @@ inline void HaSwitchData::set_allocated_apptype(::std::string* apptype) {
     
   }
   apptype_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), apptype);
-  // @@protoc_insertion_point(field_set_allocated:proto.HaSwitchData.appType)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.HaSwitchData.appType)
 }
 
-// .proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
+// .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 4;
 inline void HaSwitchData::clear_apptypecode() {
   apptypecode_ = 0;
 }
-inline ::proto::EnumDefineData_AppTypeEnum HaSwitchData::apptypecode() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchData.appTypeCode)
-  return static_cast< ::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
+inline ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum HaSwitchData::apptypecode() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchData.appTypeCode)
+  return static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
 }
-inline void HaSwitchData::set_apptypecode(::proto::EnumDefineData_AppTypeEnum value) {
+inline void HaSwitchData::set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value) {
   
   apptypecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchData.appTypeCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchData.appTypeCode)
 }
 
 // -------------------------------------------------------------------
@@ -458,27 +467,27 @@ inline void HaSwitchResponse::clear_uniqueid() {
   uniqueid_ = GOOGLE_LONGLONG(0);
 }
 inline ::google::protobuf::int64 HaSwitchResponse::uniqueid() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchResponse.uniqueId)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchResponse.uniqueId)
   return uniqueid_;
 }
 inline void HaSwitchResponse::set_uniqueid(::google::protobuf::int64 value) {
   
   uniqueid_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchResponse.uniqueId)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchResponse.uniqueId)
 }
 
-// .proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
+// .com.fiberhome.fums.proto.HaSwitchData.HaSwitchTypeEnum haSwitchType = 2;
 inline void HaSwitchResponse::clear_haswitchtype() {
   haswitchtype_ = 0;
 }
-inline ::proto::HaSwitchData_HaSwitchTypeEnum HaSwitchResponse::haswitchtype() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchResponse.haSwitchType)
-  return static_cast< ::proto::HaSwitchData_HaSwitchTypeEnum >(haswitchtype_);
+inline ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum HaSwitchResponse::haswitchtype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchResponse.haSwitchType)
+  return static_cast< ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum >(haswitchtype_);
 }
-inline void HaSwitchResponse::set_haswitchtype(::proto::HaSwitchData_HaSwitchTypeEnum value) {
+inline void HaSwitchResponse::set_haswitchtype(::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum value) {
   
   haswitchtype_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchResponse.haSwitchType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchResponse.haSwitchType)
 }
 
 // int32 haStatus = 3;
@@ -486,13 +495,13 @@ inline void HaSwitchResponse::clear_hastatus() {
   hastatus_ = 0;
 }
 inline ::google::protobuf::int32 HaSwitchResponse::hastatus() const {
-  // @@protoc_insertion_point(field_get:proto.HaSwitchResponse.haStatus)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.HaSwitchResponse.haStatus)
   return hastatus_;
 }
 inline void HaSwitchResponse::set_hastatus(::google::protobuf::int32 value) {
   
   hastatus_ = value;
-  // @@protoc_insertion_point(field_set:proto.HaSwitchResponse.haStatus)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.HaSwitchResponse.haStatus)
 }
 
 #ifdef __GNUC__
@@ -506,14 +515,17 @@ inline void HaSwitchResponse::set_hastatus(::google::protobuf::int32 value) {
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::HaSwitchData_HaSwitchTypeEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::HaSwitchData_HaSwitchTypeEnum>() {
-  return ::proto::HaSwitchData_HaSwitchTypeEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum>() {
+  return ::com::fiberhome::fums::proto::HaSwitchData_HaSwitchTypeEnum_descriptor();
 }
 
 }  // namespace protobuf

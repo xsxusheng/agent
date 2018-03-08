@@ -6,6 +6,7 @@
  ************************************************************************/
 
 #include <iostream>
+#include "sv_log.h"
 #include "AgentUtils.h"
 using namespace std;
 
@@ -18,14 +19,46 @@ using namespace std;
     #include <stddef.h>
 #endif  
   
+string AgentUtils::sm_etcPath("/opt/fonsview/NE/agent/etc/");
+string AgentUtils::sm_rabbitmqConfFile("rabbitmq.properties");
+string AgentUtils::sm_systemConfigFile("SystemConfig.properties");
+string AgentUtils::sm_agentVersionFile("version.properties");
+
 
 string AgentUtils::GetRabbitmqConfFile()
 {
-    return rabbitmqConfFile;
+    return sm_rabbitmqConfFile;
 }
 
-const int AgentUtils::ALARM_FILTER_TIMES;
-const string AgentUtils::rabbitmqConfFile("rabbitmq.properties");
+
+int AgentUtils::Init()
+{
+    string systemConfigPath = sm_etcPath + sm_systemConfigFile;
+    if(__LoadSystemConfig(systemConfigPath) < 0)
+    {
+        SV_ERROR("Load Agent System Config Error");
+        return -1;
+    }
+
+    string versionFilePath = sm_etcPath + sm_agentVersionFile;
+    if(__LoadAgentVersion(versionFilePath) < 0)
+    {
+        SV_ERROR("Load Agent System Version Error");
+    }
+
+    return 0;
+}
+
+int AgentUtils::__LoadSystemConfig(string &fileName)
+{
+
+    return 0;
+}
+
+int AgentUtils::__LoadAgentVersion(string &fileName)
+{
+    return 0;
+}
 
 unsigned long long AgentUtils::GetCurrentTimeMsec()  
 {  

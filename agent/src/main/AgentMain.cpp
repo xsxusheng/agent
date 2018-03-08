@@ -8,15 +8,17 @@
 #include <iostream>
 #include <stdlib.h> 
 #include <unistd.h>
-#include "../msg/amqp_sendstring.h"
-#include "../msg/amqp_receive_msg.h"
+#include <string>
 #include "../msg/RabbitmqConfig.h"
 #include "ThreadPool.h"
 #include "../msg/AmqpReceiveBuilder.h"
+#include "../msg/AmqpMessageReceiveProcessor.h"
+#include "../msg/AmqpMessageSendProcessor.h"
+#include "../proto/Msg.pb.h"
 #include "../utils/AgentUtils.h"
 #include "../utils/sv_log.h"
-#include <string>
 using namespace std;
+using namespace com::fiberhome::fums::proto;
 
 
 
@@ -37,38 +39,53 @@ int fun1(int s, char *q)
 
 int log_init()
 {
-    string logFile("/root/agent_demo/agent/etc/log.conf");
+    string logFile("/opt/fonsview/NE/agentd/etc/log.conf");
     if(sv_log_init(logFile.c_str(), 5) < 0)
-            return -1;
+    {
+        return -1;
+    }
     SV_LOG("%s", "init log");
     
     return 0;
 }
 
-int rabbitmq_init()
+int RabbitmqInit()
 {
+    SV_LOG("初始化MQ配置");
     RabbitmqConfig::Init();
+
+    SV_LOG("启动MQ消息接收");
+    AmqpReceiveBuilder* messageReceiver = AmqpReceiveBuilder::GetInstance();
+    if(messageReceiver->Stop() == true)
+    {
+        messageReceiver->Start();
+    }
+
+    SV_LOG("初始化MQ消息发送处理器");
+    AmqpMessageSendProcessor* messageProcessor = AmqpMessageSendProcessor::GetInstance();
+    if(messageProcessor == NULL || messageProcessor->CheckSender() < 0)
+    {
+        SV_ERROR("AmqpMessageReceiveProcessor init error");
+        return -1;
+    }
+
     return 0;
 }
 
 int InitAgent()
 {
-    SV_LOG("init rabbitmq");
-    rabbitmq_init();
-    AmqpReceiveBuilder* messageAccess = AmqpReceiveBuilder::GetInstance();
-    if(messageAccess == NULL)
+    if(log_init() < 0)
     {
-        SV_ERROR("Fail to get AmqpReceiveBuilder");
+    	SV_ERROR("log init error");
+	return -1;
+    }
+
+    if(RabbitmqInit() < 0)
+    {
+        SV_ERROR("RabbitmqInit error");
         return -1;
     }
     
-    SV_LOG("init channel");
-    if(messageAccess->InitAmqpMessageChannel() < 0)
-    {
-        SV_ERROR("Fail to init MQ channel");
-        return -1;
-    }
-
     return 0;
 }
 
@@ -76,12 +93,20 @@ int InitAgent()
 int main(int argc, char *argv[])
 {
     std::cout<<argv[0]<<std::endl;
-    log_init();
-    InitAgent();
+    if(InitAgent() < 0)
+    {
+	SV_ERROR("init agent error");
+	return 0;
+    }
 
-    char aa[] = "abcde";
-    int g = 2;
-
+    //test
+    Major major;
+    Header* header = major.mutable_header();
+    header->set_type(Header::ALARM);
+    AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
+    //char aa[] = "abcde";
+	
+    /*
     std::ThreadPool *executor = new (std::nothrow) ThreadPool{4};
     if(executor == NULL)
     {
@@ -100,7 +125,12 @@ int main(int argc, char *argv[])
     std::cout << " =======  sleep ========= " << std::this_thread::get_id() << std::endl;
     sleep(5);
     SV_LOG("%s", "aaaa");
-
-    delete executor;
+    */
+    while(1)
+    {
+        sleep(10);
+        printf("运行中。。。");
+    }
+    //delete executor;
     return 0;
 }

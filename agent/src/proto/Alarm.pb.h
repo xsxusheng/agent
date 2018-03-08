@@ -32,6 +32,9 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "CommonDefine.pb.h"
 // @@protoc_insertion_point(includes)
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 class AlarmData;
 class AlarmDataDefaultTypeInternal;
@@ -40,7 +43,13 @@ class AlarmResponse;
 class AlarmResponseDefaultTypeInternal;
 extern AlarmResponseDefaultTypeInternal _AlarmResponse_default_instance_;
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
+namespace com {
+namespace fiberhome {
+namespace fums {
 namespace proto {
 
 namespace protobuf_Alarm_2eproto {
@@ -155,7 +164,7 @@ inline bool AlarmData_AlarmTypeEnum_Parse(
 }
 // ===================================================================
 
-class AlarmData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.AlarmData) */ {
+class AlarmData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.AlarmData) */ {
  public:
   AlarmData();
   virtual ~AlarmData();
@@ -474,11 +483,11 @@ class AlarmData : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::std::string* release_alarmtypestr();
   void set_allocated_alarmtypestr(::std::string* alarmtypestr);
 
-  // .proto.AlarmData.ALARM_OP_TYPE op_type = 1;
+  // .com.fiberhome.fums.proto.AlarmData.ALARM_OP_TYPE op_type = 1;
   void clear_op_type();
   static const int kOpTypeFieldNumber = 1;
-  ::proto::AlarmData_ALARM_OP_TYPE op_type() const;
-  void set_op_type(::proto::AlarmData_ALARM_OP_TYPE value);
+  ::com::fiberhome::fums::proto::AlarmData_ALARM_OP_TYPE op_type() const;
+  void set_op_type(::com::fiberhome::fums::proto::AlarmData_ALARM_OP_TYPE value);
 
   // int32 alarmSeqNo = 2;
   void clear_alarmseqno();
@@ -498,31 +507,31 @@ class AlarmData : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::int32 alarmspecificreasoncode() const;
   void set_alarmspecificreasoncode(::google::protobuf::int32 value);
 
-  // .proto.EnumDefineData.AppTypeEnum appTypeCode = 8;
+  // .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 8;
   void clear_apptypecode();
   static const int kAppTypeCodeFieldNumber = 8;
-  ::proto::EnumDefineData_AppTypeEnum apptypecode() const;
-  void set_apptypecode(::proto::EnumDefineData_AppTypeEnum value);
+  ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum apptypecode() const;
+  void set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value);
 
-  // .proto.AlarmData.AlarmEntityTypeEnum alarmEntityType = 11;
+  // .com.fiberhome.fums.proto.AlarmData.AlarmEntityTypeEnum alarmEntityType = 11;
   void clear_alarmentitytype();
   static const int kAlarmEntityTypeFieldNumber = 11;
-  ::proto::AlarmData_AlarmEntityTypeEnum alarmentitytype() const;
-  void set_alarmentitytype(::proto::AlarmData_AlarmEntityTypeEnum value);
+  ::com::fiberhome::fums::proto::AlarmData_AlarmEntityTypeEnum alarmentitytype() const;
+  void set_alarmentitytype(::com::fiberhome::fums::proto::AlarmData_AlarmEntityTypeEnum value);
 
-  // .proto.AlarmData.AlarmSeverityEnum alarmSeverity = 13;
+  // .com.fiberhome.fums.proto.AlarmData.AlarmSeverityEnum alarmSeverity = 13;
   void clear_alarmseverity();
   static const int kAlarmSeverityFieldNumber = 13;
-  ::proto::AlarmData_AlarmSeverityEnum alarmseverity() const;
-  void set_alarmseverity(::proto::AlarmData_AlarmSeverityEnum value);
+  ::com::fiberhome::fums::proto::AlarmData_AlarmSeverityEnum alarmseverity() const;
+  void set_alarmseverity(::com::fiberhome::fums::proto::AlarmData_AlarmSeverityEnum value);
 
-  // .proto.AlarmData.AlarmTypeEnum alarmType = 15;
+  // .com.fiberhome.fums.proto.AlarmData.AlarmTypeEnum alarmType = 15;
   void clear_alarmtype();
   static const int kAlarmTypeFieldNumber = 15;
-  ::proto::AlarmData_AlarmTypeEnum alarmtype() const;
-  void set_alarmtype(::proto::AlarmData_AlarmTypeEnum value);
+  ::com::fiberhome::fums::proto::AlarmData_AlarmTypeEnum alarmtype() const;
+  void set_alarmtype(::com::fiberhome::fums::proto::AlarmData_AlarmTypeEnum value);
 
-  // @@protoc_insertion_point(class_scope:proto.AlarmData)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.AlarmData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -547,7 +556,7 @@ class AlarmData : public ::google::protobuf::Message /* @@protoc_insertion_point
 };
 // -------------------------------------------------------------------
 
-class AlarmResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:proto.AlarmResponse) */ {
+class AlarmResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.fiberhome.fums.proto.AlarmResponse) */ {
  public:
   AlarmResponse();
   virtual ~AlarmResponse();
@@ -628,20 +637,20 @@ class AlarmResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // .proto.CommonResponse res = 1;
+  // .com.fiberhome.fums.proto.CommonResponse res = 1;
   bool has_res() const;
   void clear_res();
   static const int kResFieldNumber = 1;
-  const ::proto::CommonResponse& res() const;
-  ::proto::CommonResponse* mutable_res();
-  ::proto::CommonResponse* release_res();
-  void set_allocated_res(::proto::CommonResponse* res);
+  const ::com::fiberhome::fums::proto::CommonResponse& res() const;
+  ::com::fiberhome::fums::proto::CommonResponse* mutable_res();
+  ::com::fiberhome::fums::proto::CommonResponse* release_res();
+  void set_allocated_res(::com::fiberhome::fums::proto::CommonResponse* res);
 
-  // @@protoc_insertion_point(class_scope:proto.AlarmResponse)
+  // @@protoc_insertion_point(class_scope:com.fiberhome.fums.proto.AlarmResponse)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::proto::CommonResponse* res_;
+  ::com::fiberhome::fums::proto::CommonResponse* res_;
   mutable int _cached_size_;
   friend struct protobuf_Alarm_2eproto::TableStruct;
 };
@@ -657,18 +666,18 @@ class AlarmResponse : public ::google::protobuf::Message /* @@protoc_insertion_p
 #endif  // __GNUC__
 // AlarmData
 
-// .proto.AlarmData.ALARM_OP_TYPE op_type = 1;
+// .com.fiberhome.fums.proto.AlarmData.ALARM_OP_TYPE op_type = 1;
 inline void AlarmData::clear_op_type() {
   op_type_ = 0;
 }
-inline ::proto::AlarmData_ALARM_OP_TYPE AlarmData::op_type() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.op_type)
-  return static_cast< ::proto::AlarmData_ALARM_OP_TYPE >(op_type_);
+inline ::com::fiberhome::fums::proto::AlarmData_ALARM_OP_TYPE AlarmData::op_type() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.op_type)
+  return static_cast< ::com::fiberhome::fums::proto::AlarmData_ALARM_OP_TYPE >(op_type_);
 }
-inline void AlarmData::set_op_type(::proto::AlarmData_ALARM_OP_TYPE value) {
+inline void AlarmData::set_op_type(::com::fiberhome::fums::proto::AlarmData_ALARM_OP_TYPE value) {
   
   op_type_ = value;
-  // @@protoc_insertion_point(field_set:proto.AlarmData.op_type)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.op_type)
 }
 
 // int32 alarmSeqNo = 2;
@@ -676,13 +685,13 @@ inline void AlarmData::clear_alarmseqno() {
   alarmseqno_ = 0;
 }
 inline ::google::protobuf::int32 AlarmData::alarmseqno() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmSeqNo)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmSeqNo)
   return alarmseqno_;
 }
 inline void AlarmData::set_alarmseqno(::google::protobuf::int32 value) {
   
   alarmseqno_ = value;
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmSeqNo)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmSeqNo)
 }
 
 // string alarmProbableCause = 3;
@@ -690,41 +699,41 @@ inline void AlarmData::clear_alarmprobablecause() {
   alarmprobablecause_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AlarmData::alarmprobablecause() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmProbableCause)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmProbableCause)
   return alarmprobablecause_.GetNoArena();
 }
 inline void AlarmData::set_alarmprobablecause(const ::std::string& value) {
   
   alarmprobablecause_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmProbableCause)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmProbableCause)
 }
 #if LANG_CXX11
 inline void AlarmData::set_alarmprobablecause(::std::string&& value) {
   
   alarmprobablecause_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AlarmData.alarmProbableCause)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AlarmData.alarmProbableCause)
 }
 #endif
 inline void AlarmData::set_alarmprobablecause(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   alarmprobablecause_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AlarmData.alarmProbableCause)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AlarmData.alarmProbableCause)
 }
 inline void AlarmData::set_alarmprobablecause(const char* value, size_t size) {
   
   alarmprobablecause_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AlarmData.alarmProbableCause)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AlarmData.alarmProbableCause)
 }
 inline ::std::string* AlarmData::mutable_alarmprobablecause() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AlarmData.alarmProbableCause)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmData.alarmProbableCause)
   return alarmprobablecause_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AlarmData::release_alarmprobablecause() {
-  // @@protoc_insertion_point(field_release:proto.AlarmData.alarmProbableCause)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmData.alarmProbableCause)
   
   return alarmprobablecause_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -735,7 +744,7 @@ inline void AlarmData::set_allocated_alarmprobablecause(::std::string* alarmprob
     
   }
   alarmprobablecause_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), alarmprobablecause);
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmData.alarmProbableCause)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmData.alarmProbableCause)
 }
 
 // int32 alarmProbableCauseCode = 4;
@@ -743,13 +752,13 @@ inline void AlarmData::clear_alarmprobablecausecode() {
   alarmprobablecausecode_ = 0;
 }
 inline ::google::protobuf::int32 AlarmData::alarmprobablecausecode() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmProbableCauseCode)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmProbableCauseCode)
   return alarmprobablecausecode_;
 }
 inline void AlarmData::set_alarmprobablecausecode(::google::protobuf::int32 value) {
   
   alarmprobablecausecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmProbableCauseCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmProbableCauseCode)
 }
 
 // string alarmSpecificReason = 5;
@@ -757,41 +766,41 @@ inline void AlarmData::clear_alarmspecificreason() {
   alarmspecificreason_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AlarmData::alarmspecificreason() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmSpecificReason)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmSpecificReason)
   return alarmspecificreason_.GetNoArena();
 }
 inline void AlarmData::set_alarmspecificreason(const ::std::string& value) {
   
   alarmspecificreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmSpecificReason)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmSpecificReason)
 }
 #if LANG_CXX11
 inline void AlarmData::set_alarmspecificreason(::std::string&& value) {
   
   alarmspecificreason_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AlarmData.alarmSpecificReason)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AlarmData.alarmSpecificReason)
 }
 #endif
 inline void AlarmData::set_alarmspecificreason(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   alarmspecificreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AlarmData.alarmSpecificReason)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AlarmData.alarmSpecificReason)
 }
 inline void AlarmData::set_alarmspecificreason(const char* value, size_t size) {
   
   alarmspecificreason_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AlarmData.alarmSpecificReason)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AlarmData.alarmSpecificReason)
 }
 inline ::std::string* AlarmData::mutable_alarmspecificreason() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AlarmData.alarmSpecificReason)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmData.alarmSpecificReason)
   return alarmspecificreason_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AlarmData::release_alarmspecificreason() {
-  // @@protoc_insertion_point(field_release:proto.AlarmData.alarmSpecificReason)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmData.alarmSpecificReason)
   
   return alarmspecificreason_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -802,7 +811,7 @@ inline void AlarmData::set_allocated_alarmspecificreason(::std::string* alarmspe
     
   }
   alarmspecificreason_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), alarmspecificreason);
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmData.alarmSpecificReason)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmData.alarmSpecificReason)
 }
 
 // int32 alarmSpecificReasonCode = 6;
@@ -810,13 +819,13 @@ inline void AlarmData::clear_alarmspecificreasoncode() {
   alarmspecificreasoncode_ = 0;
 }
 inline ::google::protobuf::int32 AlarmData::alarmspecificreasoncode() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmSpecificReasonCode)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmSpecificReasonCode)
   return alarmspecificreasoncode_;
 }
 inline void AlarmData::set_alarmspecificreasoncode(::google::protobuf::int32 value) {
   
   alarmspecificreasoncode_ = value;
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmSpecificReasonCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmSpecificReasonCode)
 }
 
 // string alarmEntityInstance = 7;
@@ -824,41 +833,41 @@ inline void AlarmData::clear_alarmentityinstance() {
   alarmentityinstance_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AlarmData::alarmentityinstance() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmEntityInstance)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmEntityInstance)
   return alarmentityinstance_.GetNoArena();
 }
 inline void AlarmData::set_alarmentityinstance(const ::std::string& value) {
   
   alarmentityinstance_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmEntityInstance)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmEntityInstance)
 }
 #if LANG_CXX11
 inline void AlarmData::set_alarmentityinstance(::std::string&& value) {
   
   alarmentityinstance_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AlarmData.alarmEntityInstance)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AlarmData.alarmEntityInstance)
 }
 #endif
 inline void AlarmData::set_alarmentityinstance(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   alarmentityinstance_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AlarmData.alarmEntityInstance)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AlarmData.alarmEntityInstance)
 }
 inline void AlarmData::set_alarmentityinstance(const char* value, size_t size) {
   
   alarmentityinstance_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AlarmData.alarmEntityInstance)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AlarmData.alarmEntityInstance)
 }
 inline ::std::string* AlarmData::mutable_alarmentityinstance() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AlarmData.alarmEntityInstance)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmData.alarmEntityInstance)
   return alarmentityinstance_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AlarmData::release_alarmentityinstance() {
-  // @@protoc_insertion_point(field_release:proto.AlarmData.alarmEntityInstance)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmData.alarmEntityInstance)
   
   return alarmentityinstance_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -869,21 +878,21 @@ inline void AlarmData::set_allocated_alarmentityinstance(::std::string* alarment
     
   }
   alarmentityinstance_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), alarmentityinstance);
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmData.alarmEntityInstance)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmData.alarmEntityInstance)
 }
 
-// .proto.EnumDefineData.AppTypeEnum appTypeCode = 8;
+// .com.fiberhome.fums.proto.EnumDefineData.AppTypeEnum appTypeCode = 8;
 inline void AlarmData::clear_apptypecode() {
   apptypecode_ = 0;
 }
-inline ::proto::EnumDefineData_AppTypeEnum AlarmData::apptypecode() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.appTypeCode)
-  return static_cast< ::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
+inline ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum AlarmData::apptypecode() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.appTypeCode)
+  return static_cast< ::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum >(apptypecode_);
 }
-inline void AlarmData::set_apptypecode(::proto::EnumDefineData_AppTypeEnum value) {
+inline void AlarmData::set_apptypecode(::com::fiberhome::fums::proto::EnumDefineData_AppTypeEnum value) {
   
   apptypecode_ = value;
-  // @@protoc_insertion_point(field_set:proto.AlarmData.appTypeCode)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.appTypeCode)
 }
 
 // string alarmOccurTime = 9;
@@ -891,41 +900,41 @@ inline void AlarmData::clear_alarmoccurtime() {
   alarmoccurtime_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AlarmData::alarmoccurtime() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmOccurTime)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmOccurTime)
   return alarmoccurtime_.GetNoArena();
 }
 inline void AlarmData::set_alarmoccurtime(const ::std::string& value) {
   
   alarmoccurtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmOccurTime)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmOccurTime)
 }
 #if LANG_CXX11
 inline void AlarmData::set_alarmoccurtime(::std::string&& value) {
   
   alarmoccurtime_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AlarmData.alarmOccurTime)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AlarmData.alarmOccurTime)
 }
 #endif
 inline void AlarmData::set_alarmoccurtime(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   alarmoccurtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AlarmData.alarmOccurTime)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AlarmData.alarmOccurTime)
 }
 inline void AlarmData::set_alarmoccurtime(const char* value, size_t size) {
   
   alarmoccurtime_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AlarmData.alarmOccurTime)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AlarmData.alarmOccurTime)
 }
 inline ::std::string* AlarmData::mutable_alarmoccurtime() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AlarmData.alarmOccurTime)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmData.alarmOccurTime)
   return alarmoccurtime_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AlarmData::release_alarmoccurtime() {
-  // @@protoc_insertion_point(field_release:proto.AlarmData.alarmOccurTime)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmData.alarmOccurTime)
   
   return alarmoccurtime_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -936,7 +945,7 @@ inline void AlarmData::set_allocated_alarmoccurtime(::std::string* alarmoccurtim
     
   }
   alarmoccurtime_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), alarmoccurtime);
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmData.alarmOccurTime)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmData.alarmOccurTime)
 }
 
 // string alarmMessage = 10;
@@ -944,41 +953,41 @@ inline void AlarmData::clear_alarmmessage() {
   alarmmessage_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AlarmData::alarmmessage() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmMessage)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmMessage)
   return alarmmessage_.GetNoArena();
 }
 inline void AlarmData::set_alarmmessage(const ::std::string& value) {
   
   alarmmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmMessage)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmMessage)
 }
 #if LANG_CXX11
 inline void AlarmData::set_alarmmessage(::std::string&& value) {
   
   alarmmessage_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AlarmData.alarmMessage)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AlarmData.alarmMessage)
 }
 #endif
 inline void AlarmData::set_alarmmessage(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   alarmmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AlarmData.alarmMessage)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AlarmData.alarmMessage)
 }
 inline void AlarmData::set_alarmmessage(const char* value, size_t size) {
   
   alarmmessage_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AlarmData.alarmMessage)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AlarmData.alarmMessage)
 }
 inline ::std::string* AlarmData::mutable_alarmmessage() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AlarmData.alarmMessage)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmData.alarmMessage)
   return alarmmessage_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AlarmData::release_alarmmessage() {
-  // @@protoc_insertion_point(field_release:proto.AlarmData.alarmMessage)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmData.alarmMessage)
   
   return alarmmessage_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -989,21 +998,21 @@ inline void AlarmData::set_allocated_alarmmessage(::std::string* alarmmessage) {
     
   }
   alarmmessage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), alarmmessage);
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmData.alarmMessage)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmData.alarmMessage)
 }
 
-// .proto.AlarmData.AlarmEntityTypeEnum alarmEntityType = 11;
+// .com.fiberhome.fums.proto.AlarmData.AlarmEntityTypeEnum alarmEntityType = 11;
 inline void AlarmData::clear_alarmentitytype() {
   alarmentitytype_ = 0;
 }
-inline ::proto::AlarmData_AlarmEntityTypeEnum AlarmData::alarmentitytype() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmEntityType)
-  return static_cast< ::proto::AlarmData_AlarmEntityTypeEnum >(alarmentitytype_);
+inline ::com::fiberhome::fums::proto::AlarmData_AlarmEntityTypeEnum AlarmData::alarmentitytype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmEntityType)
+  return static_cast< ::com::fiberhome::fums::proto::AlarmData_AlarmEntityTypeEnum >(alarmentitytype_);
 }
-inline void AlarmData::set_alarmentitytype(::proto::AlarmData_AlarmEntityTypeEnum value) {
+inline void AlarmData::set_alarmentitytype(::com::fiberhome::fums::proto::AlarmData_AlarmEntityTypeEnum value) {
   
   alarmentitytype_ = value;
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmEntityType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmEntityType)
 }
 
 // string alarmEntityTypeStr = 12;
@@ -1011,41 +1020,41 @@ inline void AlarmData::clear_alarmentitytypestr() {
   alarmentitytypestr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AlarmData::alarmentitytypestr() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmEntityTypeStr)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmEntityTypeStr)
   return alarmentitytypestr_.GetNoArena();
 }
 inline void AlarmData::set_alarmentitytypestr(const ::std::string& value) {
   
   alarmentitytypestr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmEntityTypeStr)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmEntityTypeStr)
 }
 #if LANG_CXX11
 inline void AlarmData::set_alarmentitytypestr(::std::string&& value) {
   
   alarmentitytypestr_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AlarmData.alarmEntityTypeStr)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AlarmData.alarmEntityTypeStr)
 }
 #endif
 inline void AlarmData::set_alarmentitytypestr(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   alarmentitytypestr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AlarmData.alarmEntityTypeStr)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AlarmData.alarmEntityTypeStr)
 }
 inline void AlarmData::set_alarmentitytypestr(const char* value, size_t size) {
   
   alarmentitytypestr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AlarmData.alarmEntityTypeStr)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AlarmData.alarmEntityTypeStr)
 }
 inline ::std::string* AlarmData::mutable_alarmentitytypestr() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AlarmData.alarmEntityTypeStr)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmData.alarmEntityTypeStr)
   return alarmentitytypestr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AlarmData::release_alarmentitytypestr() {
-  // @@protoc_insertion_point(field_release:proto.AlarmData.alarmEntityTypeStr)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmData.alarmEntityTypeStr)
   
   return alarmentitytypestr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1056,21 +1065,21 @@ inline void AlarmData::set_allocated_alarmentitytypestr(::std::string* alarmenti
     
   }
   alarmentitytypestr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), alarmentitytypestr);
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmData.alarmEntityTypeStr)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmData.alarmEntityTypeStr)
 }
 
-// .proto.AlarmData.AlarmSeverityEnum alarmSeverity = 13;
+// .com.fiberhome.fums.proto.AlarmData.AlarmSeverityEnum alarmSeverity = 13;
 inline void AlarmData::clear_alarmseverity() {
   alarmseverity_ = 0;
 }
-inline ::proto::AlarmData_AlarmSeverityEnum AlarmData::alarmseverity() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmSeverity)
-  return static_cast< ::proto::AlarmData_AlarmSeverityEnum >(alarmseverity_);
+inline ::com::fiberhome::fums::proto::AlarmData_AlarmSeverityEnum AlarmData::alarmseverity() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmSeverity)
+  return static_cast< ::com::fiberhome::fums::proto::AlarmData_AlarmSeverityEnum >(alarmseverity_);
 }
-inline void AlarmData::set_alarmseverity(::proto::AlarmData_AlarmSeverityEnum value) {
+inline void AlarmData::set_alarmseverity(::com::fiberhome::fums::proto::AlarmData_AlarmSeverityEnum value) {
   
   alarmseverity_ = value;
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmSeverity)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmSeverity)
 }
 
 // string alarmSeverityStr = 14;
@@ -1078,41 +1087,41 @@ inline void AlarmData::clear_alarmseveritystr() {
   alarmseveritystr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AlarmData::alarmseveritystr() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmSeverityStr)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmSeverityStr)
   return alarmseveritystr_.GetNoArena();
 }
 inline void AlarmData::set_alarmseveritystr(const ::std::string& value) {
   
   alarmseveritystr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmSeverityStr)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmSeverityStr)
 }
 #if LANG_CXX11
 inline void AlarmData::set_alarmseveritystr(::std::string&& value) {
   
   alarmseveritystr_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AlarmData.alarmSeverityStr)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AlarmData.alarmSeverityStr)
 }
 #endif
 inline void AlarmData::set_alarmseveritystr(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   alarmseveritystr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AlarmData.alarmSeverityStr)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AlarmData.alarmSeverityStr)
 }
 inline void AlarmData::set_alarmseveritystr(const char* value, size_t size) {
   
   alarmseveritystr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AlarmData.alarmSeverityStr)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AlarmData.alarmSeverityStr)
 }
 inline ::std::string* AlarmData::mutable_alarmseveritystr() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AlarmData.alarmSeverityStr)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmData.alarmSeverityStr)
   return alarmseveritystr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AlarmData::release_alarmseveritystr() {
-  // @@protoc_insertion_point(field_release:proto.AlarmData.alarmSeverityStr)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmData.alarmSeverityStr)
   
   return alarmseveritystr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1123,21 +1132,21 @@ inline void AlarmData::set_allocated_alarmseveritystr(::std::string* alarmseveri
     
   }
   alarmseveritystr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), alarmseveritystr);
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmData.alarmSeverityStr)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmData.alarmSeverityStr)
 }
 
-// .proto.AlarmData.AlarmTypeEnum alarmType = 15;
+// .com.fiberhome.fums.proto.AlarmData.AlarmTypeEnum alarmType = 15;
 inline void AlarmData::clear_alarmtype() {
   alarmtype_ = 0;
 }
-inline ::proto::AlarmData_AlarmTypeEnum AlarmData::alarmtype() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmType)
-  return static_cast< ::proto::AlarmData_AlarmTypeEnum >(alarmtype_);
+inline ::com::fiberhome::fums::proto::AlarmData_AlarmTypeEnum AlarmData::alarmtype() const {
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmType)
+  return static_cast< ::com::fiberhome::fums::proto::AlarmData_AlarmTypeEnum >(alarmtype_);
 }
-inline void AlarmData::set_alarmtype(::proto::AlarmData_AlarmTypeEnum value) {
+inline void AlarmData::set_alarmtype(::com::fiberhome::fums::proto::AlarmData_AlarmTypeEnum value) {
   
   alarmtype_ = value;
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmType)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmType)
 }
 
 // string alarmTypeStr = 16;
@@ -1145,41 +1154,41 @@ inline void AlarmData::clear_alarmtypestr() {
   alarmtypestr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline const ::std::string& AlarmData::alarmtypestr() const {
-  // @@protoc_insertion_point(field_get:proto.AlarmData.alarmTypeStr)
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmData.alarmTypeStr)
   return alarmtypestr_.GetNoArena();
 }
 inline void AlarmData::set_alarmtypestr(const ::std::string& value) {
   
   alarmtypestr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:proto.AlarmData.alarmTypeStr)
+  // @@protoc_insertion_point(field_set:com.fiberhome.fums.proto.AlarmData.alarmTypeStr)
 }
 #if LANG_CXX11
 inline void AlarmData::set_alarmtypestr(::std::string&& value) {
   
   alarmtypestr_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:proto.AlarmData.alarmTypeStr)
+  // @@protoc_insertion_point(field_set_rvalue:com.fiberhome.fums.proto.AlarmData.alarmTypeStr)
 }
 #endif
 inline void AlarmData::set_alarmtypestr(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   alarmtypestr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:proto.AlarmData.alarmTypeStr)
+  // @@protoc_insertion_point(field_set_char:com.fiberhome.fums.proto.AlarmData.alarmTypeStr)
 }
 inline void AlarmData::set_alarmtypestr(const char* value, size_t size) {
   
   alarmtypestr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:proto.AlarmData.alarmTypeStr)
+  // @@protoc_insertion_point(field_set_pointer:com.fiberhome.fums.proto.AlarmData.alarmTypeStr)
 }
 inline ::std::string* AlarmData::mutable_alarmtypestr() {
   
-  // @@protoc_insertion_point(field_mutable:proto.AlarmData.alarmTypeStr)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmData.alarmTypeStr)
   return alarmtypestr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* AlarmData::release_alarmtypestr() {
-  // @@protoc_insertion_point(field_release:proto.AlarmData.alarmTypeStr)
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmData.alarmTypeStr)
   
   return alarmtypestr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1190,14 +1199,14 @@ inline void AlarmData::set_allocated_alarmtypestr(::std::string* alarmtypestr) {
     
   }
   alarmtypestr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), alarmtypestr);
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmData.alarmTypeStr)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmData.alarmTypeStr)
 }
 
 // -------------------------------------------------------------------
 
 // AlarmResponse
 
-// .proto.CommonResponse res = 1;
+// .com.fiberhome.fums.proto.CommonResponse res = 1;
 inline bool AlarmResponse::has_res() const {
   return this != internal_default_instance() && res_ != NULL;
 }
@@ -1205,28 +1214,28 @@ inline void AlarmResponse::clear_res() {
   if (GetArenaNoVirtual() == NULL && res_ != NULL) delete res_;
   res_ = NULL;
 }
-inline const ::proto::CommonResponse& AlarmResponse::res() const {
-  const ::proto::CommonResponse* p = res_;
-  // @@protoc_insertion_point(field_get:proto.AlarmResponse.res)
-  return p != NULL ? *p : *reinterpret_cast<const ::proto::CommonResponse*>(
-      &::proto::_CommonResponse_default_instance_);
+inline const ::com::fiberhome::fums::proto::CommonResponse& AlarmResponse::res() const {
+  const ::com::fiberhome::fums::proto::CommonResponse* p = res_;
+  // @@protoc_insertion_point(field_get:com.fiberhome.fums.proto.AlarmResponse.res)
+  return p != NULL ? *p : *reinterpret_cast<const ::com::fiberhome::fums::proto::CommonResponse*>(
+      &::com::fiberhome::fums::proto::_CommonResponse_default_instance_);
 }
-inline ::proto::CommonResponse* AlarmResponse::mutable_res() {
+inline ::com::fiberhome::fums::proto::CommonResponse* AlarmResponse::mutable_res() {
   
   if (res_ == NULL) {
-    res_ = new ::proto::CommonResponse;
+    res_ = new ::com::fiberhome::fums::proto::CommonResponse;
   }
-  // @@protoc_insertion_point(field_mutable:proto.AlarmResponse.res)
+  // @@protoc_insertion_point(field_mutable:com.fiberhome.fums.proto.AlarmResponse.res)
   return res_;
 }
-inline ::proto::CommonResponse* AlarmResponse::release_res() {
-  // @@protoc_insertion_point(field_release:proto.AlarmResponse.res)
+inline ::com::fiberhome::fums::proto::CommonResponse* AlarmResponse::release_res() {
+  // @@protoc_insertion_point(field_release:com.fiberhome.fums.proto.AlarmResponse.res)
   
-  ::proto::CommonResponse* temp = res_;
+  ::com::fiberhome::fums::proto::CommonResponse* temp = res_;
   res_ = NULL;
   return temp;
 }
-inline void AlarmResponse::set_allocated_res(::proto::CommonResponse* res) {
+inline void AlarmResponse::set_allocated_res(::com::fiberhome::fums::proto::CommonResponse* res) {
   delete res_;
   res_ = res;
   if (res) {
@@ -1234,7 +1243,7 @@ inline void AlarmResponse::set_allocated_res(::proto::CommonResponse* res) {
   } else {
     
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.AlarmResponse.res)
+  // @@protoc_insertion_point(field_set_allocated:com.fiberhome.fums.proto.AlarmResponse.res)
 }
 
 #ifdef __GNUC__
@@ -1248,29 +1257,32 @@ inline void AlarmResponse::set_allocated_res(::proto::CommonResponse* res) {
 
 
 }  // namespace proto
+}  // namespace fums
+}  // namespace fiberhome
+}  // namespace com
 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::AlarmData_ALARM_OP_TYPE> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::AlarmData_ALARM_OP_TYPE> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::AlarmData_ALARM_OP_TYPE>() {
-  return ::proto::AlarmData_ALARM_OP_TYPE_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::AlarmData_ALARM_OP_TYPE>() {
+  return ::com::fiberhome::fums::proto::AlarmData_ALARM_OP_TYPE_descriptor();
 }
-template <> struct is_proto_enum< ::proto::AlarmData_AlarmEntityTypeEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::AlarmData_AlarmEntityTypeEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::AlarmData_AlarmEntityTypeEnum>() {
-  return ::proto::AlarmData_AlarmEntityTypeEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::AlarmData_AlarmEntityTypeEnum>() {
+  return ::com::fiberhome::fums::proto::AlarmData_AlarmEntityTypeEnum_descriptor();
 }
-template <> struct is_proto_enum< ::proto::AlarmData_AlarmSeverityEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::AlarmData_AlarmSeverityEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::AlarmData_AlarmSeverityEnum>() {
-  return ::proto::AlarmData_AlarmSeverityEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::AlarmData_AlarmSeverityEnum>() {
+  return ::com::fiberhome::fums::proto::AlarmData_AlarmSeverityEnum_descriptor();
 }
-template <> struct is_proto_enum< ::proto::AlarmData_AlarmTypeEnum> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::com::fiberhome::fums::proto::AlarmData_AlarmTypeEnum> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::AlarmData_AlarmTypeEnum>() {
-  return ::proto::AlarmData_AlarmTypeEnum_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::com::fiberhome::fums::proto::AlarmData_AlarmTypeEnum>() {
+  return ::com::fiberhome::fums::proto::AlarmData_AlarmTypeEnum_descriptor();
 }
 
 }  // namespace protobuf
