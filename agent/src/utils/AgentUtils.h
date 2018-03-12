@@ -34,7 +34,7 @@ private:
     static string sm_rabbitmqConfFile;
     static string sm_systemConfigFile;
     static string sm_agentVersionFile;
-    static string m_agentIP;
-    static int m_AppMsgPort;
+    static string sm_agentIP;
+    static string sm_appMsgPort;
     static string sm_etcPath;
 };

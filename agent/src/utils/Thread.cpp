@@ -32,6 +32,7 @@ void* Thread::__ThreadRoutine(void* arg)//
 	thread->__DoRun();
 	if (thread->m_autoDelete)
 		delete thread;
+	exit(1);
 	return NULL;
 }
 

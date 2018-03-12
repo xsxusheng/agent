@@ -1,8 +1,11 @@
 /*************************************************************************
-	> File Name: AmqpMessage.cpp
-	> Author: 
-	> Mail: 
-	> Created Time: 2018年02月23日 星期五 16时38分53秒
+* File Name : AmqpMessage.cpp
+* Author : xus103
+* Created Time : 2018年03月01日
+* Description : rabbitmq client operation function
+* CopyRight : Copyright(c) 2000-2020 fiberhome
+* OtherInfo :
+* ModifyLog :
  ************************************************************************/
 
 #include <iostream>
@@ -24,6 +27,18 @@ AmqpMessage::~AmqpMessage()
     SV_LOG("析构函数 AmqpMessage");
 }
 
+/***********************************************************************
+ * FunctionName : DieOnAmqpError
+ * Author : xus103
+ * CreateDate : 2018/03/09
+ * Description : 获取MQ操作的返回状态
+ * InputParam : x - rpc reply
+ 				context - description
+ * OutputParam :
+ * Return Value : err type
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 int DieOnAmqpError(amqp_rpc_reply_t x, char const *context)
 {
     switch (x.reply_type)
@@ -32,12 +47,12 @@ int DieOnAmqpError(amqp_rpc_reply_t x, char const *context)
             return AMQP_RESPONSE_NORMAL;
 
         case AMQP_RESPONSE_NONE:
-            fprintf(stderr, "%s: missing RPC reply type!\n", context);
+            //fprintf(stderr, "%s: missing RPC reply type!\n", context);
             SV_ERROR("%s: missing RPC reply type!\n", context);
             break;
 
         case AMQP_RESPONSE_LIBRARY_EXCEPTION:
-            fprintf(stderr, "%s: %s\n", context, amqp_error_string2(x.library_error));
+            //fprintf(stderr, "%s: %s\n", context, amqp_error_string2(x.library_error));
             SV_ERROR("%s: %s\n", context, amqp_error_string2(x.library_error));
         break;
 
@@ -47,7 +62,7 @@ int DieOnAmqpError(amqp_rpc_reply_t x, char const *context)
                 case AMQP_CONNECTION_CLOSE_METHOD:
                 {
                     amqp_connection_close_t *m = (amqp_connection_close_t *)x.reply.decoded;
-                    fprintf(stderr, "%s: server connection error %uh, message: %.*s\n", context, m->reply_code, (int)m->reply_text.len, (char *)m->reply_text.bytes);
+                    //fprintf(stderr, "%s: server connection error %uh, message: %.*s\n", context, m->reply_code, (int)m->reply_text.len, (char *)m->reply_text.bytes);
                     SV_ERROR("%s: server connection error %uh, message: %.*s\n", context, m->reply_code, (int)m->reply_text.len, (char *)m->reply_text.bytes);
                      break;
                             
@@ -55,12 +70,12 @@ int DieOnAmqpError(amqp_rpc_reply_t x, char const *context)
                 case AMQP_CHANNEL_CLOSE_METHOD:
                 {
                     amqp_channel_close_t *m = (amqp_channel_close_t *)x.reply.decoded;
-                    fprintf(stderr, "%s: server channel error %uh, message: %.*s\n",context, m->reply_code, (int)m->reply_text.len, (char *)m->reply_text.bytes);
+                    //fprintf(stderr, "%s: server channel error %uh, message: %.*s\n",context, m->reply_code, (int)m->reply_text.len, (char *)m->reply_text.bytes);
                     SV_ERROR("%s: server channel error %uh, message: %.*s\n",context, m->reply_code, (int)m->reply_text.len, (char *)m->reply_text.bytes);
                     return AMQP_CHANNEL_CLOSE_METHOD;  
                 }
                 default:
-                    fprintf(stderr, "%s: unknown server error, method id 0x%08X\n", context, x.reply.id);
+                    //fprintf(stderr, "%s: unknown server error, method id 0x%08X\n", context, x.reply.id);
                     SV_ERROR("%s: unknown server error, method id 0x%08X\n", context, x.reply.id);
                     break;    
             }
@@ -71,7 +86,21 @@ int DieOnAmqpError(amqp_rpc_reply_t x, char const *context)
 }
 
 
-
+/***********************************************************************
+ * FunctionName : Connection
+ * Author : xus103
+ * CreateDate : 2018/03/09
+ * Description : 新建一个连接到mq server
+ * InputParam : ip - rabbitmq server ip
+ 				port - rabbitmq port
+ 				virtualHost - vitual host "/"
+ 				userName - rabbitmq server user name
+ 				password - rabbitmq server user password
+ * OutputParam : 无
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 void AmqpMessage::Connection(string &ip, int port, string &virtualHost, string &userName, string &password) 
 {
 	amqp_socket_t *socket = NULL;
@@ -110,6 +139,19 @@ void AmqpMessage::Connection(string &ip, int port, string &virtualHost, string &
         throw -1;
     }
 }
+
+
+/***********************************************************************
+ * FunctionName : CreateChannel
+ * Author : xus103
+ * CreateDate : 2018/03/09
+ * Description : 创建 mq channel
+ * InputParam : 无
+ * OutputParam : 无
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 
 void AmqpMessage::CreateChannel()
 {
@@ -407,7 +449,7 @@ void AmqpMessage::ReceiveMessage(string &message)
 	free(buffer);
 }
 
-void AmqpMessage::StartConsume()
+void AmqpMessage::__StartConsume()
 {
     string message;
     

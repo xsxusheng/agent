@@ -7,6 +7,8 @@
 
 #include<iostream>
 #include "../utils/sv_log.h"
+#include "../utils/base64.h"
+#include "../utils/ProtoBufPacker.h"
 #include "RabbitmqConfig.h"
 #include "AmqpSendBuilder.h"
 
@@ -114,20 +116,29 @@ string AmqpSendBuilder::GetSendRoutingKey(int msgType)
     return routingKey;
 }
 
-int AmqpSendBuilder::SendMessageToFums(Major &msg)
+int AmqpSendBuilder::SendMessageToFums(Major &major)
 {
     int msgType = 0;
     string queuename;
     string routingKey;
     string exchange;
-    string message("hello");
+
+	if(major.has_header())
+	{
+		SV_ERROR("parse message error");
+		return -1;
+	}
 
     try
     {
-        msgType = msg.header().type();
+    	/* 获取消息类型 */
+        msgType =  major.header().type();
+	string message(base64_encode(ProtoBufPacker::SerializeToArray(major)));
+		
         queuename = GetSendQueuename(msgType);
         routingKey = GetSendRoutingKey(msgType);
         exchange = RabbitmqConfig::GetExchangeNmr();
+		
 
         QueueDeclare(queuename, 0, 1, 0, 0);
         QueueBind(queuename, exchange, routingKey);

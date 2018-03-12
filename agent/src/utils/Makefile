@@ -1,8 +1,8 @@
 ##c/c++代码编译Makefile
 ###########################################################
 
-TARGET = libutils
-DIR:=$(shell pwd)
+TARGET = utils
+#DIR:=$(shell pwd)
 CFLAGS = -Wall -O -g -Wno-write-strings
 INC_DIR = -I../../3rd/log4cplus/include -I../../3rd/protobuf/include
 ###########################################################
@@ -16,11 +16,9 @@ CXX_OBJS = $(subst .cpp,.o,$(CXX_SRC))
 ALL_OBJ = $(C_OBJS) $(CXX_OBJS)
 ###########################################################
 %.o:%.c
-	echo $(DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC_DIR) -std=c99
 %.o:%.cpp 
-	echo $(DIR)
-	$(XX) $(CFLAGS) -c $< -o $@ $(INC_DIR) 
+	$(XX) $(CFLAGS) -c $< -o $@ $(INC_DIR) -std=c++11
 ###########################################################
 all: $(TARGET)
 $(TARGET): $(ALL_OBJ)

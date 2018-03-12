@@ -6,52 +6,73 @@
  ************************************************************************/
 
 #include<iostream>
+#include "../msg/RabbitmqConfig.h"
+#include "AgentUtils.h"
+#include "base64.h"
 #include "ProtoBufPacker.h"
 
-Major* ProtoBufPacker::PackMsgMajor(string &body, Header::DataType type, Header::DIRECTION direction)
+Major ProtoBufPacker::PackMsgMajor(string &body, Header::DataType type, Header::DIRECTION direction)
 {
-    return NULL;
+	Major major;
+	Header *header = major.mutable_header();
+	int port = RabbitmqConfig::GetPort();
+	header->set_rabbitmqinfo("rabbitmq:" + RabbitmqConfig::GetHost() + "/" + to_string(port));
+	header->set_ip(AgentUtils::GetLocalIP());
+	header->set_type(type);
+	header->set_direction(direction);
+	major.set_body(base64_encode(body));
+	
+	return major;
 }
 
-Major* ProtoBufPacker::PackPerfEntity(string &body, PerfData::PERFDATATYPE type)
+Major ProtoBufPacker::PackPerfEntity(string &body, PerfData::PERFDATATYPE type)
 {
-
-    return NULL;
+	Major major;
+    return major;
 }
 
-Major* ProtoBufPacker::PackAppEntity(string &body)
+Major ProtoBufPacker::PackAppEntity(string &body)
 {
-    
-    return NULL;
+    Major major;
+    return major;
 }
 
-Major* ProtoBufPacker::PackAlarmEntity(string &body)
+Major ProtoBufPacker::PackAlarmEntity(string &body)
 {
-    
-    return NULL;
+    Major major;
+    return major;
 }
 
-Major* ProtoBufPacker::PackEventEntity(string &body)
+Major ProtoBufPacker::PackEventEntity(string &body)
 {
-    
-    return NULL;
+    Major major;
+    return major;
 }
 
-Major* ProtoBufPacker::PackAcsEventEntity(string &body)
+Major ProtoBufPacker::PackAcsEventEntity(string &body)
 {
-    
-    return NULL;
+    Major major;
+    return major;
 }
 
-Major* ProtoBufPacker::PackStbInspectEntity(string &body)
+Major ProtoBufPacker::PackStbInspectEntity(string &body)
 {
-    
-    return NULL;
+    Major major;
+    return major;
 }
 
-Major* ProtoBufPacker::PackResponseDate(string &body, Header::DataType type, long uniqueId)
+Major ProtoBufPacker::PackHeartBeatData(string data)
 {
-    
-    return NULL;
+	Major major = PackMsgMajor(data, Header::HEART, Header::AGENTOFUMS);
+	return major;
 }
+
+
+Major ProtoBufPacker::PackResponseDate(string &body, Header::DataType type, long uniqueId)
+{
+    Major major;
+    return major;
+}
+
+
 

@@ -39,9 +39,9 @@ protected:
     void BasicQos(int prefetchCount);
     void SetConsumer(string &queuename, int noAck);
     void ReceiveMessage(string &message);
-    virtual void StartConsume();
-
+    
 private:
+	virtual void __StartConsume();
     int m_type;
     amqp_basic_properties_t m_props;
     amqp_connection_state_t m_conn;

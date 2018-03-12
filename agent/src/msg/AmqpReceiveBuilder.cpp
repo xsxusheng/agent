@@ -21,7 +21,8 @@ Locker AmqpReceiveBuilder::sm_lock;
 
 AmqpReceiveBuilder::AmqpReceiveBuilder() : m_stop(true)
 {
-    ;
+
+    SV_LOG("构造函数 AmqpReceiveBuilder");
 }
 
 /*
@@ -34,7 +35,7 @@ AmqpReceiveBuilder* AmqpReceiveBuilder::GetInstance()
         sm_lock.lock();
         if(sm_amqpReceiveBuilder == NULL)
         {
-            sm_amqpReceiveBuilder = new AmqpReceiveBuilder();
+            sm_amqpReceiveBuilder = new (std::nothrow) AmqpReceiveBuilder();
         }
         sm_lock.unlock();
     }
@@ -98,7 +99,7 @@ int AmqpReceiveBuilder::InitMessageChannel()
         QueueBind(commQueue, commExchage, commRoutingKey);
         BasicQos(10);
         SetConsumer(commQueue, 1);
-        StartConsume();
+        __StartConsume();
     }catch(...){
         SV_ERROR("CreateAmqpReceiveMessageChannel error");
     }

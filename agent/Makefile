@@ -14,6 +14,7 @@ pkg:agent
 	[[ ! -d $(TARGET_DIR) ]] || rm -rf $(TARGET_DIR)/*
 	[[ -d $(TARGET_DIR) ]] || mkdir $(TARGET_DIR)
 	mkdir -p $(AGENT_DIR)/lib
+	chmod +x install.sh bin/*
 	
 	\cp -rf bin $(AGENT_DIR)
 	\cp -rf etc $(AGENT_DIR)

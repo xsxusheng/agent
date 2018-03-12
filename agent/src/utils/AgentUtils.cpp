@@ -23,6 +23,8 @@ string AgentUtils::sm_etcPath("/opt/fonsview/NE/agent/etc/");
 string AgentUtils::sm_rabbitmqConfFile("rabbitmq.properties");
 string AgentUtils::sm_systemConfigFile("SystemConfig.properties");
 string AgentUtils::sm_agentVersionFile("version.properties");
+string AgentUtils::sm_agentIP("127.0.0.1");
+string AgentUtils::sm_appMsgPort("5672");
 
 
 string AgentUtils::GetRabbitmqConfFile()
@@ -48,6 +50,12 @@ int AgentUtils::Init()
 
     return 0;
 }
+
+string AgentUtils::GetLocalIP()
+{
+	return sm_agentIP;
+}
+
 
 int AgentUtils::__LoadSystemConfig(string &fileName)
 {

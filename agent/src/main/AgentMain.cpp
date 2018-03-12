@@ -1,8 +1,11 @@
 /*************************************************************************
-	> File Name: agent_main.cpp
-	> Author: 
-	> Mail: 
-	> Created Time: 2018年02月02日 星期五 15时05分14秒
+* File Name : agent_main.cpp
+* Author : xus103
+* Created Time : 2018年03月01日
+* Description : main function
+* CopyRight : Copyright(c) 2000-2020 firberhome
+* OtherInfo :
+* ModifyLog :
  ************************************************************************/
 
 #include <iostream>
@@ -17,27 +20,14 @@
 #include "../proto/Msg.pb.h"
 #include "../utils/AgentUtils.h"
 #include "../utils/sv_log.h"
+#include "../utils/ProtoBufPacker.h"
+#include "../proto/HeartProto.pb.h"
 using namespace std;
 using namespace com::fiberhome::fums::proto;
 
 
-
-int fun1(int s, char *q)
-{
-    printf("s = %d\n", s);
-    printf("q = %s\n", q);
-
-    for(int i = 0; i<10; i++)
-    {
-        printf("sleep %d\n", i);
-        sleep(1);
-    }
-
-    return 1;
-}
-
-
-int log_init()
+//日志系统初始化
+static int log_init()
 {
     string logFile("/opt/fonsview/NE/agentd/etc/log.conf");
     if(sv_log_init(logFile.c_str(), 5) < 0)
@@ -49,17 +39,21 @@ int log_init()
     return 0;
 }
 
-int RabbitmqInit()
+//Rabbitmq 客户端初始化
+static int RabbitmqInit()
 {
     SV_LOG("初始化MQ配置");
     RabbitmqConfig::Init();
 
     SV_LOG("启动MQ消息接收");
     AmqpReceiveBuilder* messageReceiver = AmqpReceiveBuilder::GetInstance();
-    if(messageReceiver->Stop() == true)
+    if(messageReceiver == NULL || messageReceiver->Stop() == false)
     {
-        messageReceiver->Start();
+	SV_ERROR("get messageReceiver error");
+	return -1;
     }
+    SV_LOG("start messageReceiver");
+    messageReceiver->Start();
 
     SV_LOG("初始化MQ消息发送处理器");
     AmqpMessageSendProcessor* messageProcessor = AmqpMessageSendProcessor::GetInstance();
@@ -72,7 +66,9 @@ int RabbitmqInit()
     return 0;
 }
 
-int InitAgent()
+
+//初始化agent
+static int InitAgent()
 {
     if(log_init() < 0)
     {
@@ -89,21 +85,18 @@ int InitAgent()
     return 0;
 }
 
-
+//agent 程序入口
 int main(int argc, char *argv[])
 {
     std::cout<<argv[0]<<std::endl;
     if(InitAgent() < 0)
     {
-	SV_ERROR("init agent error");
-	return 0;
+		SV_ERROR("init agent error");
+		return 0;
     }
 
     //test
-    Major major;
-    Header* header = major.mutable_header();
-    header->set_type(Header::ALARM);
-    AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
+    
     //char aa[] = "abcde";
 	
     /*
@@ -128,7 +121,15 @@ int main(int argc, char *argv[])
     */
     while(1)
     {
-        sleep(10);
+	//heart test
+        sleep(5);
+	HeartData heartData;
+	heartData.set_hearttype(HeartData::AGENT);
+	heartData.set_msg("Hello, World!");
+	heartData.set_uniqueid(AgentUtils::GetCurrentTimeMsec());
+	Major major = ProtoBufPacker::PackHeartBeatData(ProtoBufPacker::SerializeToArray<HeartData>(heartData));
+
+    	AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
         printf("运行中。。。");
     }
     //delete executor;
