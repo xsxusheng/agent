@@ -11,6 +11,7 @@
 #include "AmqpReceiveBuilder.h"
 #include "../utils/sv_log.h"
 #include "RabbitmqConfig.h"
+#include "AmqpMessageReceiveProcessor.h"
 using namespace std;
 
 /*
@@ -81,9 +82,9 @@ int AmqpReceiveBuilder::InitMessageChannel()
         vnmhost = RabbitmqConfig::GetVnmhost();
         userName = RabbitmqConfig::GetUserName();
         password = RabbitmqConfig::GetPassword();
-        commQueue = RabbitmqConfig::GetCommQueue();
+        commQueue = RabbitmqConfig::GetRecvCommQueue();
         commExchage = RabbitmqConfig::GetExchangeNms();
-        commRoutingKey = RabbitmqConfig::GetCommRoutingKey();
+        commRoutingKey = commQueue;
     }catch(exception& e){
         SV_LOG("CreateAmqpReceiveMessageChannel parameter error");
         return -1;
@@ -114,11 +115,11 @@ void AmqpReceiveBuilder::__StartConsume()
     SV_LOG("start consume");
     while(1)
     {
-        SV_LOG("start consume i");
-        message = "";
+    	message = "";
+        SV_LOG("start consume i l = %d", message.length());
         AmqpMessage::ReceiveMessage(message);
-        cout<<message<<endl;
-        SV_LOG(const_cast <char *>(message.c_str()));
+	AmqpMessageReceiveProcessor *processor = new AmqpMessageReceiveProcessor(message);
+	processor->Start();
         sleep(1);
     }
 }

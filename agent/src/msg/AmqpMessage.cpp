@@ -201,7 +201,6 @@ void AmqpMessage::QueueDeclare(string &queuename, int passive, int durable, int 
 {
     int error = AMQP_RESPONSE_NONE;
 
-    SV_LOG("queue declare");
 	if(m_conn == NULL)
 	{
 		SV_ERROR("Can not declare queue, m_conn is null");
@@ -222,12 +221,10 @@ void AmqpMessage::QueueDeclare(string &queuename, int passive, int durable, int 
 		SV_ERROR("queue declare error");
         throw -1;
     }
-    SV_LOG("queue declare end");
 }
 
 void AmqpMessage::QueueBind(string &queuename, string &exchange, string &routingKey)
 {
-    SV_LOG("queue bind");
     int error = AMQP_RESPONSE_NONE;
 	
 	if(queuename.empty() || exchange.empty() || routingKey.empty())

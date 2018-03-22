@@ -23,7 +23,8 @@ public:
     static int    GetPort();
     static string GetExchangeNmr();
     static string GetExchangeNms();
-    static string GetCommQueue();
+    static string GetSendCommQueue();
+    static string GetRecvCommQueue();
     static string GetHeartQueue();
     static string GetAlarmQueue();
     static string GetPerfQueue();

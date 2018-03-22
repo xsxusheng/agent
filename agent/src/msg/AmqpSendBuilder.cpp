@@ -82,7 +82,7 @@ string AmqpSendBuilder::GetSendQueuename(int msgType)
     }
     else
     {
-        queuename = RabbitmqConfig::GetCommQueue();
+        queuename = RabbitmqConfig::GetSendCommQueue();
     }
 
     return queuename;
@@ -123,11 +123,11 @@ int AmqpSendBuilder::SendMessageToFums(Major &major)
     string routingKey;
     string exchange;
 
-	if(major.has_header())
-	{
-		SV_ERROR("parse message error");
-		return -1;
-	}
+    if(!major.has_header())
+    {
+	SV_ERROR("parse message error");
+	return -1;
+    }
 
     try
     {

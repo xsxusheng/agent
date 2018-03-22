@@ -8,6 +8,7 @@
 #include <iostream>
 #include "../utils/base64.h"
 #include "../utils/sv_log.h"
+#include "../conf/ConfManager.h"
 #include "AmqpMessageReceiveProcessor.h"
 
 
@@ -42,15 +43,17 @@ int AmqpMessageReceiveProcessor::MessageProcess()
 
 	Major major;
 	major.ParseFromString(base64_decode(m_message));
-	if(major.has_header())
+	if(!major.has_header())
 	{
 		SV_ERROR("parse message error");
 		return -1;
 	}
 	Header header = major.header();
 	if(header.direction() != Header::FUMSTOAGEN)
-	{
-		SV_ERROR("message direction error");
+	{	
+		if(Header::CONFIG == header.type())
+			SV_ERROR("config        -----------------------------");
+		SV_ERROR("message direction error : %d, %d", header.direction(), header.type());
 		return -1;
 	}
 
@@ -135,6 +138,7 @@ int AmqpMessageReceiveProcessor::ProcessConfig(const string &body)
 	}
 
 	configData.ParseFromString(base64_decode(body));
+	ConfManager::GetInstance()->Analyse(configData);
     return 0;
 }
 

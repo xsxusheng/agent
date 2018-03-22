@@ -10,6 +10,7 @@
 #include <string>
 #include <stdlib.h>
 #include "../utils/sv_log.h"
+#include "../utils/AgentUtils.h"
 #include "RabbitmqConfig.h"
 using namespace std;
 
@@ -167,31 +168,44 @@ string RabbitmqConfig::GetExchangeNms()
         
 }
 
-string RabbitmqConfig::GetCommQueue()
+string RabbitmqConfig::GetSendCommQueue()
 {
-    string commQueue = "";
+    string sendCommQueue = "";
 
     if(sm_props == NULL)
     {
         SV_ERROR("sm_props is NULL");
         throw -1;
     }
-    //commQueue = sm_props->GetValue("rabbitmq.queue_comm");
-    commQueue = sm_props->GetValue("rabbitmq.host");
-    if(commQueue.empty())
+    sendCommQueue = sm_props->GetValue("rabbitmq.queue_comm");
+    if(sendCommQueue.empty())
     {
         SV_ERROR("Fail to get host");
         throw -1;
     }
 
-    SV_ERROR("%s", commQueue.c_str());
+    return sendCommQueue;
+}
+
+string RabbitmqConfig::GetRecvCommQueue()
+{
+    string recvCommQueue = "";
+
+    recvCommQueue = AgentUtils::GetLocalIP();
+    if(recvCommQueue.empty())
+    {
+        SV_ERROR("Fail to get host");
+        throw -1;
+    }
+
+    SV_ERROR("%s", recvCommQueue.c_str());
     //127.0.0.1 --> 127_0_0_1
     while(1)
     {
         string::size_type pos(0);
-        if((pos = commQueue.find(".")) != string::npos)
+        if((pos = recvCommQueue.find(".")) != string::npos)
         {
-            commQueue.replace(pos, 1, "_");
+            recvCommQueue.replace(pos, 1, "_");
         }
         else
         {
@@ -199,7 +213,7 @@ string RabbitmqConfig::GetCommQueue()
         }
     }
     
-    return commQueue;
+    return recvCommQueue;
 }
 
 string RabbitmqConfig::GetHeartQueue()

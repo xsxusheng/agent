@@ -3,7 +3,7 @@
 
 TARGET = conf
 CFLAGS = -Wall -O -g -Wno-write-strings
-INC_DIR = 
+INC_DIR = -I../../3rd/protobuf/include -I../../3rd/rabbitmq/include
 ###########################################################
 CC = gcc
 XX = g++

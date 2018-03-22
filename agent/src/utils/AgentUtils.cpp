@@ -8,6 +8,7 @@
 #include <iostream>
 #include "sv_log.h"
 #include "AgentUtils.h"
+#include "Properties.h"
 using namespace std;
 
 
@@ -19,12 +20,12 @@ using namespace std;
     #include <stddef.h>
 #endif  
   
-string AgentUtils::sm_etcPath("/opt/fonsview/NE/agent/etc/");
+string AgentUtils::sm_etcPath("/opt/fonsview/NE/agentd/etc/");
 string AgentUtils::sm_rabbitmqConfFile("rabbitmq.properties");
 string AgentUtils::sm_systemConfigFile("SystemConfig.properties");
 string AgentUtils::sm_agentVersionFile("version.properties");
-string AgentUtils::sm_agentIP("127.0.0.1");
-string AgentUtils::sm_appMsgPort("5672");
+string AgentUtils::sm_agentIP("");
+string AgentUtils::sm_appMsgPort("8004");
 
 
 string AgentUtils::GetRabbitmqConfFile()
@@ -51,14 +52,37 @@ int AgentUtils::Init()
     return 0;
 }
 
+string AgentUtils::GetAgentEtcPath()
+{
+	return sm_etcPath;
+}
+
+
 string AgentUtils::GetLocalIP()
 {
-	return sm_agentIP;
+    return sm_agentIP;
 }
 
 
 int AgentUtils::__LoadSystemConfig(string &fileName)
 {
+    if(fileName.empty())
+    {
+	SV_ERROR("parameter error");
+        return -1;
+    }
+
+    Properties props;
+
+    props.Load(fileName);
+    sm_agentIP = props.GetValue("AGENT_IP");
+    sm_appMsgPort = props.GetValue("APP_MSG_PORT");
+    if(sm_agentIP.empty() || sm_appMsgPort.empty())
+    {
+	SV_ERROR("get agent ip or app msg port error");
+	return -1;
+    }
+    SV_LOG("agent IP : %s, APP_MSG_PORT : %s", sm_agentIP.c_str(), sm_appMsgPort.c_str());
 
     return 0;
 }

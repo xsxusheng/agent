@@ -139,7 +139,7 @@ void sv_log_printf(unsigned int logger, unsigned int level, const char *filename
 {
 
 	va_list ap;
-	char buf[2048] = {0};
+	char buf[4096] = {0};
     char file[1024] = {0};
     strcpy(file, filename);
 
@@ -159,7 +159,7 @@ void sv_log_printf(unsigned int logger, unsigned int level, const char *filename
 		return;
 
 	va_start(ap, fmt);
-	vsnprintf(buf,2048,fmt, ap);
+	vsnprintf(buf,4096,fmt, ap);
 	va_end(ap);
 	loggers[logger]->forcedLog(levels[level],buf, basename(file), line);
 }

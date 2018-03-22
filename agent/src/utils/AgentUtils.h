@@ -16,6 +16,8 @@ public:
     static string GetAgentVersion();
     //获取当前时间
     static unsigned long long GetCurrentTimeMsec();
+	//获取Agent主机配置门限脚本
+	static string GetAgentEtcPath();
     //获取脚本路径
     static string GetScripPath();
     //获取文件绝对路径

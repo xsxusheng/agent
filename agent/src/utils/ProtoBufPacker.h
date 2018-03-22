@@ -9,21 +9,28 @@
 #define _PROTOBUFPACKER_H
 #include <string>
 #include "../proto/Msg.pb.h"
+#include "../proto/App.pb.h"
 #include "../proto/Perf.pb.h"
+#include "../proto/Config.pb.h"
+#include "../proto/Response.pb.h"
+#include "../proto/CommonDefine.pb.h"
 using namespace com::fiberhome::fums::proto;
 using namespace std;
 class ProtoBufPacker
 {
 public:
     static Major PackMsgMajor(string &body, Header::DataType type, Header::DIRECTION direction);
-    static Major PackPerfEntity(string &body, PerfData::PERFDATATYPE type);
+    static Major PackResponseData(string &body, Header::DataType type, long uniqueId);
+    static Major PackPerfEntity(string data, PerfData::PERFDATATYPE type);
+    static Major PackPerfEntity(string &data, PerfData::PERFDATATYPE type);
+    static Major PackHeartBeatData(string data);
+    static Major PackHeartBeatData(string &data);
     static Major PackAppEntity(string &body);
     static Major PackAlarmEntity(string &body);
     static Major PackEventEntity(string &body);
-	static Major PackHeartBeatData(string data);
     static Major PackAcsEventEntity(string &body);
     static Major PackStbInspectEntity(string &body);
-    static Major PackResponseDate(string &body, Header::DataType type, long uniqueId);
+	
     template <typename T>
     static string SerializeToArray(T t);
 };
