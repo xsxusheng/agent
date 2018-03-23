@@ -4,8 +4,6 @@
  *********************************************************/
 #include "TimeUtils.h"
 
-#include <sys/time.h>
-
 
 
 
@@ -16,7 +14,7 @@ CTime::CTime()
 }
 
 
-CTime::CTime(time_t time)
+CTime::CTime(long time)
 {
     _tv.tv_sec = time;
     _tv.tv_usec = 0;
@@ -159,6 +157,21 @@ void CTime::usecSleep(int usec)
     tv.tv_sec = usec / 1000000;
     tv.tv_usec = usec % 1000000;
     select(0, NULL, NULL, NULL, &tv);
+}
+
+
+void CTime::GetTimeNowStr(string& timeNow)
+{
+    char tStr[64] = {0};
+    time_t tTime;
+    struct tm tmTime;
+
+    time(&tTime);
+    localtime_r(&tTime, &tmTime);
+
+    snprintf(tStr, (sizeof(tStr) - 1), "%04d-%02d-%02d %02d:%02d:%02d",
+        tmTime.tm_year+1900, tmTime.tm_mon+1, tmTime.tm_mday, tmTime.tm_hour, tmTime.tm_min, tmTime.tm_sec);
+    timeNow.assign(tStr);
 }
 
 

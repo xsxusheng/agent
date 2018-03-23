@@ -3,12 +3,12 @@
 
 TARGET = agentd
 INSTALL_DIR = ../bin
-#INC_DIR = -I../rabbitmq/include -I../../log4cplus/include -I./msg -I./utils 
-LIB_DIR = -L../3rd/rabbitmq/lib -L../3rd/log4cplus/lib -L../3rd/protobuf/lib
+INC_DIR = -I./include 
+LIB_DIR = -L../3rd/rabbitmq/lib -L../3rd/log4cplus/lib -L../3rd/protobuf/lib -L../3rd/sigar/lib
 LIB_SF = softlink
-LIB_DEPENDS = -llog4cplus  -lrabbitmq  -lpthread -lprotobuf
+LIB_DEPENDS = -llog4cplus  -lrabbitmq  -lpthread -lprotobuf -lsigar
 CFLAGS = -Wall -O -g -Wno-write-strings
-ALL_OBJ = main/*.o utils/*.o msg/*.o proto/*.o conf/*.o 
+ALL_OBJ = main/*.o utils/*.o msg/*.o proto/*.o perf/*.o
 ###########################################################
 CC = gcc
 XX = g++ 
@@ -22,6 +22,7 @@ all:
 	$(MAKE) -C app
 	$(MAKE) -C conf
 	$(MAKE) -C host
+	$(MAKE) -C perf
 	$(MAKE) -C main
 	$(MAKE) $(LIB_SF)
 	$(MAKE) $(TARGET)
@@ -42,6 +43,9 @@ $(LIB_SF):
 	ln -sf libprotobuf-lite.so.14.0.0 libprotobuf-lite.so && \
 	ln -sf libprotobuf.so.14.0.0 libprotobuf.so.14 && \
 	ln -sf libprotobuf.so.14.0.0 libprotobuf.so
+	@cd ../3rd/sigar/lib && \
+	ln -sf libsigar.so.0.0.0 libsigar.so && \
+	ln -sf libsigar.so.0.0.0 libsigar.so.0
 	
 clean:
 	$(MAKE) clean -C proto
@@ -51,6 +55,7 @@ clean:
 	$(MAKE) clean -C app
 	$(MAKE) clean -C conf
 	$(MAKE) clean -C host
+	$(MAKE) clean -C perf
 	$(MAKE) clean -C main
 	rm -rf *.o $(TARGET)
 

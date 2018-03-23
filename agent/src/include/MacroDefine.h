@@ -24,11 +24,11 @@ typedef double DOUBLE;
 typedef bool BOOL;
 
 #ifndef TRUE
-#define TRUE (1)
+#define TRUE true
 #endif
 
 #ifndef FALSE
-#define FALSE (0)
+#define FALSE false
 #endif
 
 

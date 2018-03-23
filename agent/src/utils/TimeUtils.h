@@ -5,6 +5,7 @@
 #pragma once
 
 #include <sys/time.h>
+#include <string>
 
 #include "MacroDefine.h"
 
@@ -22,11 +23,14 @@ public:
 	~CTime();
     
 	/** 以时间戳构造 */
-	CTime(time_t stamp);
+	CTime(long stamp);
 
 
     /*重新获取时间*/
     int GetTimeNow();
+    long GetTimeSec(){return _tv.tv_sec;}
+    long GetTimeUsec(){return _tv.tv_usec;}
+
 
 
 	/** 比较两时间之间的差异 */
@@ -53,6 +57,8 @@ public:
     static void secSleep(int sec);
     static void msecSleep(int msec);
     static void usecSleep(int usec);
+
+    static void GetTimeNowStr(string& timeNow);
 
 
 private:
