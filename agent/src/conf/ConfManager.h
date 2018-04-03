@@ -15,6 +15,8 @@
 #include "../proto/Msg.pb.h"
 #include "AgentConfFile.h"
 #include "AppConfFile.h"
+#include "NtpConfFile.h"
+#include "AppRegisteredConfFile.h"
 
 using namespace com::fiberhome::fums::proto;
 using namespace std;
@@ -26,15 +28,15 @@ public:
 	int InitConfManager();
 	int Analyse(ConfigData &config);
 	
-	//RegisterAppConfFile registerAppConfFile;
-	AgentConfFile* agentConfFile;
-	AppConfFile* appConfFile;
-	//NtpConfFile ntpConfFile;
 protected:
 	ConfManager();
 	~ConfManager();
 	
 private:
+	AgentConfFile* agentConfFile;
+	AppConfFile* appConfFile;
+	NtpConfFile* ntpConfFile;
+	AppRegisteredConfFile *appRegisteredConfFile;
 	static Locker sm_lock;
 	static ConfManager* sm_confManager;
 

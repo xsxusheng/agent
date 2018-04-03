@@ -19,7 +19,7 @@ Properties* RabbitmqConfig::sm_props = NULL;
 int RabbitmqConfig::Init()
 {
     try {
-        string rabbitmqConfFile("/opt/fonsview/NE/agentd/etc/rabbitmq.properties");
+        string rabbitmqConfFile("/opt/fonsview/NE/agent/etc/rabbitmq.properties");
         if(sm_props != NULL)
         {
             delete sm_props;

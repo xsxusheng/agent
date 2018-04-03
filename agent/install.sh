@@ -1,8 +1,8 @@
 #!/bin/sh
 
 #force install
-agent_dir=/opt/fonsview/NE/agentd
-lib_dir=/opt/fonsview/NE/agentd/lib
+agent_dir=/opt/fonsview/NE/agent
+lib_dir=/opt/fonsview/NE/agent/lib
 
 if [ -d ${install_dir} ];then
 	rm -rf ${agent_dir}

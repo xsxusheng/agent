@@ -28,7 +28,6 @@ AmqpMessageSendProcessor::AmqpMessageSendProcessor()
             delete m_messageSender;
             m_messageSender = NULL;
         }
-        
     }
 
 }

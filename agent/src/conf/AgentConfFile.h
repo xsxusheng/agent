@@ -19,6 +19,9 @@ using namespace std;
 class AgentConfFile
 {
 public:
+	AgentConfFile();
+	~AgentConfFile();
+	
 	int Init();
 	string GetAgentConfFile();
 	int Analyse(ConfigData &config, ConfigUpdateResponse &response);

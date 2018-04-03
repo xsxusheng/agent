@@ -23,11 +23,10 @@ using namespace std;
 class AmqpMessageReceiveProcessor : public Thread
 {
 public:
-    AmqpMessageReceiveProcessor(string message);
+    AmqpMessageReceiveProcessor();
     ~AmqpMessageReceiveProcessor();
-    int ReceiveFromFUMS(string message);
-	int MessageProcess();
-    int MessageDispatcher(Header::DataType type, const string &body);
+    int TaskProcess(const string &message);
+    int TaskDispatcher(Header::DataType type, const string &body);
     int ProcessCommand(const string &body);
     int ProcessRealQuery(const string &body);
     int ProcessConfig(const string &body);
@@ -37,7 +36,6 @@ private:
     void __DoRun();
 
 	int m_startTime;
-	string m_message;
 
 };
 #endif

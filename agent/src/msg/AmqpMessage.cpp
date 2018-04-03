@@ -232,7 +232,7 @@ void AmqpMessage::QueueBind(string &queuename, string &exchange, string &routing
 		SV_LOG("parameter error: queuename = %s, exchange = %s, routingKey = %s", queuename.c_str(), exchange.c_str(), routingKey.c_str());
 		throw -1;
 	}
-	SV_LOG("bind queue : queue = %s, exchange = %s, routing_key = %s", queuename.c_str(), exchange.c_str(), routingKey.c_str());
+	//SV_LOG("bind queue : queue = %s, exchange = %s, routing_key = %s", queuename.c_str(), exchange.c_str(), routingKey.c_str());
 
     if(m_conn == NULL)
     {

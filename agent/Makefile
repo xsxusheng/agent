@@ -22,7 +22,7 @@ pkg:agent
 	\cp -f 3rd/log4cplus/lib/* $(AGENT_DIR)/lib/
 	\cp -f 3rd/protobuf/lib/libprotobuf*.so* $(AGENT_DIR)/lib
 	\cp -f 3rd/rabbitmq/lib/* $(AGENT_DIR)/lib
-	#\cp 3rd/sigar/lib $(AGENT_DIR)/lib
+	\cp 3rd/sigar/lib/* $(AGENT_DIR)/lib
 	
 	\cp -f install.sh $(TARGET_DIR)
 

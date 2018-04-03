@@ -11,16 +11,8 @@
 #include "Properties.h"
 using namespace std;
 
-
-#ifdef _WIN32  
-    #include <winsock2.h>  
-    #include <time.h>  
-#else  
-    #include <sys/time.h>  
-    #include <stddef.h>
-#endif  
-  
-string AgentUtils::sm_etcPath("/opt/fonsview/NE/agentd/etc/");
+string AgentUtils::sm_agentPath("/opt/fonsview/NE/agent/");
+string AgentUtils::sm_logConfFile("log.conf");
 string AgentUtils::sm_rabbitmqConfFile("rabbitmq.properties");
 string AgentUtils::sm_systemConfigFile("SystemConfig.properties");
 string AgentUtils::sm_agentVersionFile("version.properties");
@@ -28,22 +20,18 @@ string AgentUtils::sm_agentIP("");
 string AgentUtils::sm_appMsgPort("8004");
 
 
-string AgentUtils::GetRabbitmqConfFile()
-{
-    return sm_rabbitmqConfFile;
-}
-
-
 int AgentUtils::Init()
 {
-    string systemConfigPath = sm_etcPath + sm_systemConfigFile;
+    string etcPath = GetAgentEtcPath();
+    string systemConfigPath =  etcPath + sm_systemConfigFile;
+
     if(__LoadSystemConfig(systemConfigPath) < 0)
     {
         SV_ERROR("Load Agent System Config Error");
         return -1;
     }
 
-    string versionFilePath = sm_etcPath + sm_agentVersionFile;
+    string versionFilePath = etcPath + sm_agentVersionFile;
     if(__LoadAgentVersion(versionFilePath) < 0)
     {
         SV_ERROR("Load Agent System Version Error");
@@ -52,9 +40,34 @@ int AgentUtils::Init()
     return 0;
 }
 
+string AgentUtils::GetLogConfFile()
+{
+    return sm_logConfFile;
+}
+
+string AgentUtils::GetRabbitmqConfFile()
+{
+    return sm_rabbitmqConfFile;
+}
+
 string AgentUtils::GetAgentEtcPath()
 {
-	return sm_etcPath;
+	return sm_agentPath + "etc/";
+}
+
+string AgentUtils::GetAgentScriptPath()
+{
+	return sm_agentPath + "script/";
+}
+
+string AgentUtils::GetAgentLogPath()
+{
+	return sm_agentPath + "log/";
+}
+
+string AgentUtils::GetAgentPath()
+{
+	return sm_agentPath;
 }
 
 
@@ -82,7 +95,6 @@ int AgentUtils::__LoadSystemConfig(string &fileName)
 	SV_ERROR("get agent ip or app msg port error");
 	return -1;
     }
-    SV_LOG("agent IP : %s, APP_MSG_PORT : %s", sm_agentIP.c_str(), sm_appMsgPort.c_str());
 
     return 0;
 }
@@ -92,6 +104,14 @@ int AgentUtils::__LoadAgentVersion(string &fileName)
     return 0;
 }
 
+
+#ifdef _WIN32  
+    #include <winsock2.h>  
+    #include <time.h>  
+#else  
+    #include <sys/time.h>  
+    #include <stddef.h>
+#endif  
 unsigned long long AgentUtils::GetCurrentTimeMsec()  
 {  
 #ifdef _WIN32  

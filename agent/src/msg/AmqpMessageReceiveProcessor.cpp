@@ -6,13 +6,16 @@
  ************************************************************************/
 
 #include <iostream>
+#include <unistd.h>
 #include "../utils/base64.h"
 #include "../utils/sv_log.h"
 #include "../conf/ConfManager.h"
+#include "TaskManager.h"
+#include "Task.h"
 #include "AmqpMessageReceiveProcessor.h"
 
 
-AmqpMessageReceiveProcessor::AmqpMessageReceiveProcessor(string message) : m_message(message)
+AmqpMessageReceiveProcessor::AmqpMessageReceiveProcessor()
 {
     
 }
@@ -20,29 +23,80 @@ AmqpMessageReceiveProcessor::AmqpMessageReceiveProcessor(string message) : m_mes
 
 AmqpMessageReceiveProcessor::~AmqpMessageReceiveProcessor()
 {
-	
+	SV_LOG("~AmqpMessageReceiveProcessor");
 }
 
 void AmqpMessageReceiveProcessor::__DoRun()
 {
-	MessageProcess();
-    SV_LOG("MQ接收器线程结束");
+	int ret = 0;
+	int waitCount = 0;
+	int restart = 0;
+	TaskManager* taskManager = NULL;
+	Task* task = NULL;
+
+	while(1)
+	{
+		usleep(5000);
+		taskManager = TaskManager::GetInstance();
+		if(taskManager == NULL)
+		{
+			SV_LOG("get task manager instance error");
+		}
+		task = taskManager->GetTaskByThreadId(GetThreadId());
+		if(task == NULL && waitCount++ <= 3)
+		{
+			SV_LOG("NULL");
+			continue;
+		}
+		else if(waitCount > 3)
+		{
+			SV_LOG("no task no do, thread exit!!!");
+			break;
+		}
+		
+		
+		if(task->GetState() == Task::TASK_IDLE)
+		{
+			SV_LOG("start task");	
+			task->SetState(Task::TASK_RUNNING);
+			ret = TaskProcess(task->GetMessage());
+			if(ret == 0)
+			{
+				task->SetState(Task::TASK_SUCCESS);
+			}
+			else
+			{
+				task->SetState(Task::TASK_FAILED);
+			}
+		}
+		
+		if(task->GetState() == Task::TASK_FAILED && restart < 1)
+		{
+			//任务失败，可以尝试再来一次
+			restart++;
+			SV_LOG("restart --------------- %d", restart);
+			task->SetState(Task::TASK_IDLE);
+			continue;
+		}
+		break;
+	}
+
+	this->Detach();
 }
 
 
 /*
  * MQ消息处理
  */
-int AmqpMessageReceiveProcessor::MessageProcess()
+int AmqpMessageReceiveProcessor::TaskProcess(const string &message)
 {	
-	if(m_message.empty())
+	if(message.empty())
 	{
-		SV_ERROR("receive meessage is null, cant not to process");
 		return -1;
 	}
-
+	
 	Major major;
-	major.ParseFromString(base64_decode(m_message));
+	major.ParseFromString(base64_decode(message));
 	if(!major.has_header())
 	{
 		SV_ERROR("parse message error");
@@ -51,42 +105,40 @@ int AmqpMessageReceiveProcessor::MessageProcess()
 	Header header = major.header();
 	if(header.direction() != Header::FUMSTOAGEN)
 	{	
-		if(Header::CONFIG == header.type())
-			SV_ERROR("config        -----------------------------");
-		SV_ERROR("message direction error : %d, %d", header.direction(), header.type());
+		SV_ERROR("message director error");
 		return -1;
 	}
 
-	MessageDispatcher(header.type(), major.body());
-
-	
-    return 0;
+    return TaskDispatcher(header.type(), major.body());
 }
 
 /*
  * 根据消息类型分发处理
  */
-int AmqpMessageReceiveProcessor::MessageDispatcher(Header::DataType type, const string &body)
+int AmqpMessageReceiveProcessor::TaskDispatcher(Header::DataType type, const string &body)
 {
+	int ret = 0;
+
 	switch(type)
 	{
 		case Header::CTRL_APP:
-			ProcessCommand(body);
+			ret = ProcessCommand(body);
 			break;
 		case Header::CONFIG:
-			ProcessConfig(body);
+			ret = ProcessConfig(body);
 			break;
 		case Header::SOFTWARE:
-			ProcessSoftwareInstall(body);
+			ret = ProcessSoftwareInstall(body);
 			break;
 		case Header::REALQUERYHOSTCFG:
-			ProcessRealQuery(body);
+			ret = ProcessRealQuery(body);
+			break;
 		default:
 			SV_ERROR("unkonw type : %d", type);
-			return -1;
+			ret = -1;
 	}
 	
-    return 0;
+    return ret;
 }
 
 /*
@@ -121,6 +173,52 @@ int AmqpMessageReceiveProcessor::ProcessRealQuery(const string &body)
 	}
 	
 	realQueryHostStatusData.ParseFromString(base64_decode(body));
+
+	switch(realQueryHostStatusData.querycfgtype())
+	{
+		case RealQueryHostStatusData::SYSTEM:
+		{
+			SV_LOG("--- query type : SYSTEM ---");
+			break;
+		}
+		case RealQueryHostStatusData::DISKSTATUS:
+		{
+			SV_LOG("--- query type : DISKSTATUS ---");
+			break;
+		}
+		case RealQueryHostStatusData::DISKCFG:
+		{
+			SV_LOG("--- query type : DISKCFG ---");
+			break;
+		}
+		case RealQueryHostStatusData::DISKHEALTH:
+		{
+			SV_LOG("--- query type : DISKHEALTH ---");
+			break;
+		}
+		case RealQueryHostStatusData::DISKRAID:
+		{
+			SV_LOG("--- query type : DISKRAID ---");
+			break;
+		}
+		case RealQueryHostStatusData::NIC:
+		{
+			SV_LOG("--- query type : NIC ---");
+			break;
+		}
+		case RealQueryHostStatusData::PROCESS:
+		{
+			SV_LOG("--- query type : PROCESS ---");
+			break;
+		}
+		default:
+		{
+			SV_ERROR("unknown query type:%d", realQueryHostStatusData.querycfgtype());
+			return -1;
+		}
+		
+	}
+	
     return 0;
 }
 
@@ -139,6 +237,8 @@ int AmqpMessageReceiveProcessor::ProcessConfig(const string &body)
 
 	configData.ParseFromString(base64_decode(body));
 	ConfManager::GetInstance()->Analyse(configData);
+	SV_LOG("config");
+	
     return 0;
 }
 
@@ -156,6 +256,7 @@ int AmqpMessageReceiveProcessor::ProcessSoftwareInstall(const string &body)
 	}
 
 	softwareData.ParseFromString(base64_decode(body));
+	
     return 0;
 }
 

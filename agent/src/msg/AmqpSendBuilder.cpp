@@ -78,7 +78,6 @@ string AmqpSendBuilder::GetSendQueuename(int msgType)
     else if(msgType == Header::HEART)
     {
         queuename = RabbitmqConfig::GetHeartQueue();
-        SV_LOG("msgType HEART");
     }
     else
     {
@@ -106,7 +105,6 @@ string AmqpSendBuilder::GetSendRoutingKey(int msgType)
     else if(msgType == Header::HEART)
     {
         routingKey = RabbitmqConfig::GetHeartRoutingKey();
-        SV_LOG("msgType HEART");
     }
     else
     {

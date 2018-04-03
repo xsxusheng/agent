@@ -8,7 +8,7 @@ LIB_DIR = -L../3rd/rabbitmq/lib -L../3rd/log4cplus/lib -L../3rd/protobuf/lib -L.
 LIB_SF = softlink
 LIB_DEPENDS = -llog4cplus  -lrabbitmq  -lpthread -lprotobuf -lsigar
 CFLAGS = -Wall -O -g -Wno-write-strings
-ALL_OBJ = main/*.o utils/*.o msg/*.o proto/*.o perf/*.o
+ALL_OBJ = main/*.o utils/*.o msg/*.o proto/*.o perf/*.o conf/*.o app/*.o 
 ###########################################################
 CC = gcc
 XX = g++ 

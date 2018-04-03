@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Thread::Thread() : m_autoDelete(true)//构造函数
+Thread::Thread() : m_autoDelete(false)//构造函数
 {
 	//SV_LOG("Thread ...");
 }
@@ -26,6 +26,11 @@ void Thread::Join() //等待线程执行结束并且收回被等待线程的资�
 	pthread_join(m_threadId, NULL);
 }
 
+void Thread::Detach()
+{
+	pthread_detach(pthread_self());
+}
+
 void* Thread::__ThreadRoutine(void* arg)//
 {
 	Thread* thread = static_cast<Thread*>(arg);//派生类指针转换成基类指针
@@ -39,4 +44,9 @@ void* Thread::__ThreadRoutine(void* arg)//
 void Thread::SetAutoDelete(bool autoDelete)
 {
 	m_autoDelete = autoDelete;
+}
+
+pthread_t Thread::GetThreadId()
+{
+	return m_threadId;
 }

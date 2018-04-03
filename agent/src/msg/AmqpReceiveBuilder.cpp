@@ -12,6 +12,7 @@
 #include "../utils/sv_log.h"
 #include "RabbitmqConfig.h"
 #include "AmqpMessageReceiveProcessor.h"
+#include "TaskManager.h"
 using namespace std;
 
 /*
@@ -110,16 +111,25 @@ int AmqpReceiveBuilder::InitMessageChannel()
 
 void AmqpReceiveBuilder::__StartConsume()
 {
+    TaskManager* taskManager = NULL;;
     string message;
+    bool ready = true;
     
     SV_LOG("start consume");
     while(1)
-    {
+    {	
     	message = "";
         SV_LOG("start consume i l = %d", message.length());
         AmqpMessage::ReceiveMessage(message);
-	AmqpMessageReceiveProcessor *processor = new AmqpMessageReceiveProcessor(message);
-	processor->Start();
-        sleep(1);
+	taskManager = TaskManager::GetInstance();
+	taskManager->MessageProcess(message);
+	ready = false;
+	while(!ready)
+	{
+       		usleep(100000);
+        	taskManager = TaskManager::GetInstance();
+		taskManager->CheckTask();
+		ready = !taskManager->TaskIsFull();
+	}
     }
 }

@@ -19,7 +19,9 @@ public:
 	AppConfFile();
 	~AppConfFile();
 	int Init();
+	string GetAppRegisteredConfFile(string &path);
 	int Analyse(ConfigData &config, ConfigUpdateResponse &response);
+	int DownloadFile(ConfigData &config, ConfigUpdateResponse &response);
 };
 
 

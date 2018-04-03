@@ -29,7 +29,7 @@ using namespace com::fiberhome::fums::proto;
 //日志系统初始化
 static int log_init()
 {
-    string logFile("/opt/fonsview/NE/agentd/etc/log.conf");
+    string logFile(AgentUtils::GetAgentEtcPath() + AgentUtils::GetLogConfFile());
     if(sv_log_init(logFile.c_str(), 5) < 0)
     {
         return -1;
@@ -70,9 +70,10 @@ static int RabbitmqInit()
 //初始化agent
 static int InitAgent()
 {
+    AgentUtils::Init();
+
     if(log_init() < 0)
     {
-    	SV_ERROR("log init error");
 	return -1;
     }
 
@@ -88,7 +89,6 @@ static int InitAgent()
 //agent 程序入口
 int main(int argc, char *argv[])
 {
-    std::cout<<argv[0]<<std::endl;
     if(InitAgent() < 0)
     {
 		SV_ERROR("init agent error");

@@ -22,7 +22,7 @@ Major ProtoBufPacker::PackMsgMajor(string &body, Header::DataType type, Header::
 	header->set_type(type);
 	header->set_direction(direction);
 	major.set_body(base64_encode(body));
-	SV_LOG("ip %s, info %s", header->ip().c_str(), header->rabbitmqinfo().c_str());
+	//SV_LOG("ip %s, info %s", header->ip().c_str(), header->rabbitmqinfo().c_str());
 	return major;
 }
 

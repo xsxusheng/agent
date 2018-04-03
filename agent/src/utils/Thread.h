@@ -12,8 +12,10 @@ public:
 
 	void Start();//线程的启动方法
 	void Join();//等待线程结束并且收回被等待线程的资源
+	void Detach();//分离线程
 
 	void SetAutoDelete(bool autoDelete);
+	pthread_t GetThreadId();
 
 private:
 	static void* __ThreadRoutine(void* arg);//线程入口函数  也是静态全局函数

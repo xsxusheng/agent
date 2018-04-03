@@ -13,6 +13,19 @@
 #include "AgentConfFile.h"
 
 
+
+AgentConfFile::AgentConfFile()
+{
+
+}
+
+AgentConfFile::~AgentConfFile()
+{
+
+}
+
+
+
 int AgentConfFile::Init()
 {
 	return 0;
@@ -23,7 +36,8 @@ string AgentConfFile::GetAgentConfFile()
 	string tail(".xml");
 	string path = AgentUtils::GetAgentEtcPath();
 	path = "/opt/fonsview/NE/agent/";
-	vector<string> files = Common::GetAllFiles(path);
+	
+	;vector<string> files = Common::GetAllFiles(path);
 	string agentConfFile = Common::GetLatestFile(files, head, tail);
 	if(!agentConfFile.empty())
 	{
@@ -39,7 +53,7 @@ int AgentConfFile::Analyse(ConfigData &config, ConfigUpdateResponse &response)
 	string newFileName = config.configfilename();
 	/* 当前正在使用的配置文件 */
 	string usingFileName = GetAgentConfFile();
-	
+
 	if(!newFileName.compare(usingFileName))
 	{
 		string errMsg = "the same file name, newFileName:" + newFileName + ", usingFileName:" + usingFileName;
