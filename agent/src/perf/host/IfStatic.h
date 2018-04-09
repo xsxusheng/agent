@@ -14,7 +14,7 @@ using namespace std;
 #define DEF_NETIF_REPORT (15 * 60)
 
 
-class CIfStatic : CTimerBase
+class CIfStatic : public CTimerBase
 {
 public:
     CIfStatic();

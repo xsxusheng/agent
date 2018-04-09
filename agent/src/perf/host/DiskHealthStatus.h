@@ -17,7 +17,7 @@ using namespace std;
 #define DEF_DISK_HEALTH_REPORT (15 * 60)
 
 
-class CDiskHealthStatus : CTimerBase
+class CDiskHealthStatus : public CTimerBase
 {
 public:
     CDiskHealthStatus();

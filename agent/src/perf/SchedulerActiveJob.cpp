@@ -9,7 +9,12 @@
 #include "MemoryUsageScalar.h"
 #include "SwapUsageScalar.h"
 #include "HostStatic.h"
-
+#include "ProcessStatic.h"
+#include "DiskStatic.h"
+#include "IfStatic.h"
+#include "DiskHealthStatus.h"
+#include "PerformanceDataCollect.h"
+#include "DnsRedirectRequest.h"
 
 
 
@@ -49,6 +54,12 @@ int CSchedulerActiveJob::InitJob()
 
     /*JOB信息*/
     AddJob(new CHostStatic(), DEF_JOB_PERIOD);
+    AddJob(new CProcessStatic(), DEF_JOB_PERIOD);
+    AddJob(new CDiskStatic(), DEF_JOB_PERIOD);
+    AddJob(new CIfStatic(), DEF_JOB_PERIOD);
+    AddJob(new CDiskHealthStatus(), DEF_JOB_PERIOD);
+    AddJob(new CPerformanceDataCollect(), DEF_JOB_PERIOD);
+    AddJob(new CDnsRedirectRequest(), DEF_JOB_PERIOD);
 
     return 0;
 }

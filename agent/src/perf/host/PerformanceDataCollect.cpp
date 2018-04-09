@@ -32,6 +32,22 @@ int CPerformanceDataCollect::GetSeq()
 
 
 
+CPerformanceDataCollect::CPerformanceDataCollect()
+{
+    m_lastReportFums.GetTimeNow();
+}
+
+
+
+CPerformanceDataCollect::~CPerformanceDataCollect()
+{
+}
+
+
+
+
+
+
 void CPerformanceDataCollect::Run()
 {
     list<string>::iterator itList;

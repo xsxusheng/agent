@@ -21,6 +21,8 @@ CProcessStatic::CProcessStatic()
     m_listProc.push_back("/usr/local/bin/python csvagent.py");
     m_listProc.push_back("/usr/bin/java -jar /opt/fonsview/NE/lcm/lcm.jar");
     m_listProc.push_back("/usr/local/squid/sbin/squid -s");
+
+    m_lastReportFums.GetTimeNow();
 }
 
 

@@ -51,6 +51,27 @@ CDisk::~CDisk()
 
 
 
+CDiskStatic::CDiskStatic()
+{
+    m_listDisk.clear();
+}
+
+
+
+CDiskStatic::~CDiskStatic()
+{
+    m_listDisk.clear();
+}
+
+
+
+void CDiskStatic::Run()
+{
+    Sample();
+}
+
+
+
 void CDiskStatic::Sample()
 {
     unsigned int i = 0;

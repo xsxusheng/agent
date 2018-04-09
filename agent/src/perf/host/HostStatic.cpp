@@ -17,6 +17,7 @@ CHostStatic::CHostStatic()
     m_memTotalList.clear();
     m_rxUsageList.clear();
     m_txUsageList.clear();
+    m_lastReportFums.GetTimeNow();
 }
 
 

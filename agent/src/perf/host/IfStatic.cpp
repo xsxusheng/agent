@@ -15,6 +15,20 @@
 
 
 
+CIfStatic::CIfStatic()
+{
+    m_lastReportFums.GetTimeNow();
+}
+
+
+
+CIfStatic::~CIfStatic()
+{
+}
+
+
+
+
 bool CIfStatic::NeedReportFums()
 {
     CTime tNow;

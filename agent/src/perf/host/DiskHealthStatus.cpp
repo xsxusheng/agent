@@ -18,6 +18,19 @@
 
 
 
+CDiskHealthStatus::CDiskHealthStatus()
+{
+    m_lastReportFums.GetTimeNow();
+}
+
+
+
+CDiskHealthStatus::~CDiskHealthStatus()
+{
+}
+
+
+
 bool CDiskHealthStatus::NeedReportFums()
 {
     CTime tNow;
