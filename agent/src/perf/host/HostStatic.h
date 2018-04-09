@@ -12,10 +12,10 @@ using namespace std;
 
 
 #define CPU_PEROID 5
-#define DEF_FUMS_REPORT (15 * 60)
 
 
 
+#define DEF_HOST_STATIC_REPORT (15 * 60)
 
 class CHostStatic : public CTimerBase
 {
@@ -25,11 +25,11 @@ public:
 
 
     void Run();
+    bool NeedReportFums();
 
 
     void StartFetchData();
     void SendToFums();
-    bool NeedReportFums();
 
 
     void AddCpuUsage(double usage);

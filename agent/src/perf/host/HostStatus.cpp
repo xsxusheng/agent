@@ -8,6 +8,11 @@
 #include "SwapUsage.h"
 #include "FileSystem.h"
 #include "NetInterface.h"
+#include "ProcInfo.h"
+
+
+
+
 
 
 
@@ -53,7 +58,7 @@ double CHostStatus::GetMemUsage()
 
 
 
-int CHostStatus::FetchMemorySize()
+long CHostStatus::FetchMemorySize()
 {
     unsigned long long total = 0;
     CMemUsage tMemUsage;
@@ -61,7 +66,20 @@ int CHostStatus::FetchMemorySize()
     tMemUsage.GetMemUsage();
     total = tMemUsage.GetMemTotal();
     total = total / (1024 * 1024);//MB
-    return (int)total;
+    return (long)total;
+}
+
+
+
+long CHostStatus::FetchMemoryUsed()
+{
+    unsigned long long used = 0;
+    CMemUsage tMemUsage;
+
+    tMemUsage.GetMemUsage();
+    used = tMemUsage.GetMemUsed();
+    used = used / (1024 * 1024);//MB
+    return (long)used;
 }
 
 
@@ -106,7 +124,21 @@ double CHostStatus::GetDiskUsage()
 
 
 
-int CHostStatus::FetchMainFSDiskSize()
+long CHostStatus::FetchMainFSDiskSize()
+{
+    return 0;
+}
+
+
+
+long CHostStatus::FetchDiskAvailableSize()
+{
+    return 0;
+}
+
+
+
+long CHostStatus::FetchDiskUsedSize()
 {
     return 0;
 }
@@ -139,6 +171,106 @@ int CHostStatus::FetchNicUsage(long& rxSum, long& txSum)
     txSum = (long)(tx / cnt) / 1024L;
     return 0;
 }
+
+
+
+string CHostStatus::GetProcArgs(long pid)
+{
+    unsigned long i = 0;
+    unsigned long num = 0;
+    string args("");
+    CProcArgs procArgs;
+
+    if (procArgs.GetProcArgs(pid) < 0)
+    {
+        return args;
+    }
+
+    num = procArgs.GetArgsNum();
+    for (i = 0; i < num; i++)
+    {
+        args.append(procArgs.GetArgs(i));
+        if (i < (num -1))
+        {
+            args.append(" ");
+        }
+    }
+    return args;
+}
+
+
+
+string CHostStatus::GetProcState(long pid)
+{
+    char tState = 0;
+    string state("STOP"); 
+    CProcState procStat;
+
+    if (procStat.GetProcState(pid) < 0)
+    {
+        state.assign("STOP");
+        return state;
+    }
+    
+    tState = procStat.GetState();
+    switch(tState)
+    {
+        case PROC_STATE_SLEEP:
+        {
+            state.assign("SLEEP");
+            break;
+        }
+        case PROC_STATE_RUN:
+        {
+            state.assign("RUN");
+            break;
+        }
+        case PROC_STATE_STOP:
+        {
+            state.assign("STOP");
+            break;
+        }
+        case PROC_STATE_ZOMBIE:
+        {
+            state.assign("ZOMBIE");
+            break;
+        }
+        case PROC_STATE_IDLE:
+        {
+            state.assign("IDLE");
+            break;
+        }
+        default:
+        {
+            state.assign("STOP");
+            break;
+        }
+    }
+
+    return state;
+}
+
+
+
+CProcCpu CHostStatus::GetProcCpu(long pid)
+{
+    CProcCpu tProcCpu;
+
+    tProcCpu.GetProcCpu(pid);
+    return tProcCpu;
+}
+
+
+
+CProcMem CHostStatus::GetProcMem(long pid)
+{
+    CProcMem tProcMem;
+
+    tProcMem.GetProcMem(pid);
+    return tProcMem;
+}
+
+
 
 
 

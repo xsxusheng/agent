@@ -26,7 +26,6 @@ $(TARGET): $(ALL_OBJ)
 
 clean:
 	rm -rf *.o
-	rm -rf ../*.o
 
 .PHONY: all clean distclean 
 

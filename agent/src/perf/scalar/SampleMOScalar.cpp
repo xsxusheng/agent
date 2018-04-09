@@ -8,15 +8,6 @@
 
 
 
-CTimer CSampleMOScalar::m_sTimer;
-
-
-CTimer* CSampleMOScalar::GetSampleTimer()
-{
-    return &m_sTimer;
-}
-
-
 
 CSampleMOScalar::CSampleMOScalar()
 {

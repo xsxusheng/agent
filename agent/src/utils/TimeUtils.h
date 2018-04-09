@@ -13,6 +13,13 @@ using namespace std;
 
 
 
+typedef enum {
+    TIME_FMT_YYYYMMDDHHMMSS, /*yyyyMMddHHmmss*/
+    TIME_FMT_YYYY_MM_DD_HH_MM_SS, /*yyyy-MM-dd HH:mm:ss*/
+    TIME_FMT_YYYYMMDD, /*yyyyMMdd*/
+    TIME_FMT_YYYY_MM_DD, /*yyyy-MM-dd*/
+}ETIME_FMT_TYPE;
+
 
 
 
@@ -59,6 +66,7 @@ public:
     static void usecSleep(int usec);
 
     static void GetTimeNowStr(string& timeNow);
+    static string GetCurTimeStr(ETIME_FMT_TYPE type = TIME_FMT_YYYY_MM_DD_HH_MM_SS);
 
 
 private:

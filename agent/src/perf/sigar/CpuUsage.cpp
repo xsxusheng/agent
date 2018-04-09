@@ -203,7 +203,7 @@ int CCpuUsage::GetCpuUsage(CCpuPerc **pCpuPers, unsigned long *pOutCpuNum)
 
     /*CPU需要获取2次，取其中差值*/
     tOldCpuUsage.GetCpuStat();
-    CTime::msecSleep(1);
+    CTime::msecSleep(100);
     tCurCpuUsage.GetCpuStat();
 
     tCpuNum = tOldCpuUsage.m_nCpuNum < tCurCpuUsage.m_nCpuNum ? tOldCpuUsage.m_nCpuNum : tCurCpuUsage.m_nCpuNum;

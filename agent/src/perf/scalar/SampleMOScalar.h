@@ -8,7 +8,7 @@
 
 
 
-
+#define DEF_SCALAR_PERIOD 10
 
 
 class CSampleMOScalar : public CTimerBase
@@ -51,8 +51,6 @@ public:
     void ReportAlarm(int val);
 
 
-    static CTimer* GetSampleTimer();
-
 
 private:
     bool m_bIsAlarm;
@@ -65,8 +63,6 @@ private:
     int m_nMinTimes;
     int m_nMidTimes;
 
-
-    static CTimer m_sTimer;
 
 };
 

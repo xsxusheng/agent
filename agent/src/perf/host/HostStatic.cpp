@@ -49,7 +49,7 @@ bool CHostStatic::NeedReportFums()
 {
     CTime tNow;
 
-    if (m_lastReportFums.DiffSec(tNow) >= DEF_FUMS_REPORT)
+    if (m_lastReportFums.DiffSec(tNow) >= DEF_HOST_STATIC_REPORT)
     {
         /*重置上次上报时间*/
         m_lastReportFums = tNow;
@@ -60,6 +60,7 @@ bool CHostStatic::NeedReportFums()
 
 
 
+
 void CHostStatic::StartFetchData()
 {
     long rxSum = 0;
@@ -67,7 +68,7 @@ void CHostStatic::StartFetchData()
 
     AddCpuUsage(CHostStatus::GetCpuUsage());
     AddMemUsage(CHostStatus::GetMemUsage());
-    AddMemTotal(CHostStatus::FetchMemorySize());
+    AddMemTotal((int)CHostStatus::FetchMemorySize());
 
     CHostStatus::FetchNicUsage(rxSum,  txSum);
     AddIfUsage(rxSum, txSum);

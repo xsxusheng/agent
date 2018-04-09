@@ -6,10 +6,15 @@
 
 #include <string>
 
+#include "ProcInfo.h"
+#include "TimeUtils.h"
+
 using namespace std;
 
 
 
+
+#define DEF_FUMS_REPORT (15 * 60)
 
 
 
@@ -17,6 +22,9 @@ using namespace std;
 class CHostStatus
 {
 public:
+
+    static bool NeedReportFums();
+
 
     static double GetCpuUsage();
     static string GetCpuUsageString();
@@ -26,8 +34,16 @@ public:
     static double GetSwapUsage();
     static double GetDiskUsage();
 
-    static int FetchMemorySize();
-    static int FetchMainFSDiskSize();
+    static long FetchMemorySize();
+    static long FetchMemoryUsed();
+    static long FetchMainFSDiskSize();
+    static long FetchDiskAvailableSize();
+    static long FetchDiskUsedSize();
+
+    static string GetProcArgs(long pid);
+    static string GetProcState(long pid);
+    static CProcCpu GetProcCpu(long pid);
+    static CProcMem GetProcMem(long pid);
 
     static int FetchNicUsage(long& rxSum, long& txSum);
 

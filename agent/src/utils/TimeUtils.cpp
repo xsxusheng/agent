@@ -177,6 +177,52 @@ void CTime::GetTimeNowStr(string& timeNow)
 
 
 
+string CTime::GetCurTimeStr(ETIME_FMT_TYPE type)
+{
+    char tStr[64] = {0};
+    time_t tTime;
+    struct tm tmTime;
+
+    time(&tTime);
+    localtime_r(&tTime, &tmTime);
+
+    switch(type)
+    {
+        case TIME_FMT_YYYYMMDDHHMMSS:
+        {
+            snprintf(tStr, (sizeof(tStr) - 1), "%04d%02d%02d%02d%02d%02d",
+                tmTime.tm_year+1900, tmTime.tm_mon+1, tmTime.tm_mday, tmTime.tm_hour, tmTime.tm_min, tmTime.tm_sec);
+            break;
+        }
+        case TIME_FMT_YYYY_MM_DD_HH_MM_SS:
+        {
+            snprintf(tStr, (sizeof(tStr) - 1), "%04d-%02d-%02d %02d:%02d:%02d",
+                tmTime.tm_year+1900, tmTime.tm_mon+1, tmTime.tm_mday, tmTime.tm_hour, tmTime.tm_min, tmTime.tm_sec);
+            break;
+        }
+        case TIME_FMT_YYYYMMDD:
+        {
+            snprintf(tStr, (sizeof(tStr) - 1), "%04d%02d%02d",
+                tmTime.tm_year+1900, tmTime.tm_mon+1, tmTime.tm_mday);
+            break;
+        }
+        case TIME_FMT_YYYY_MM_DD:
+        {
+            snprintf(tStr, (sizeof(tStr) - 1), "%04d-%02d-%02d",
+                tmTime.tm_year+1900, tmTime.tm_mon+1, tmTime.tm_mday);
+            break;
+        }
+        default:
+        {
+            snprintf(tStr, (sizeof(tStr) - 1), "%04d-%02d-%02d %02d:%02d:%02d",
+                tmTime.tm_year+1900, tmTime.tm_mon+1, tmTime.tm_mday, tmTime.tm_hour, tmTime.tm_min, tmTime.tm_sec);
+            break;
+        }
+    }
+
+    string timeNow(tStr);
+    return timeNow;
+}
 
 
 

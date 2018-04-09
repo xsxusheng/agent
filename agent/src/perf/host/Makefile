@@ -3,7 +3,7 @@
 
 TARGET = perf
 CFLAGS = -Wall -O -g -Wno-write-strings
-INC_DIR = -I../../include -I../sigar -I../scalar -I../../utils -I../../proto -I../../../3rd/protobuf/include -I../../../3rd/sigar/include
+INC_DIR = -I/usr/include/libxml2 -I../../include -I../sigar -I../scalar -I../../utils -I../../proto -I../../../3rd/protobuf/include -I../../../3rd/sigar/include
 ###########################################################
 CC = gcc
 XX = g++
@@ -25,7 +25,6 @@ $(TARGET): $(ALL_OBJ)
 
 clean:
 	rm -rf *.o
-	rm -rf ../*.o
 
 .PHONY: all clean
 

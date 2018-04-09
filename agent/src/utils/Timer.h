@@ -86,13 +86,17 @@ public:
     int GetFreeTimerId();
     int ReleaseTimerId(int tid);
 
-    int TimerLock();
-    int TimerUnLock();
-
     int TimerStart(CTimerBase *pObj, long timeout);
     int TimerDelete(int tid);
 
     void __DoRun();
+
+
+protected:
+
+    int TimerLock();
+    int TimerUnLock();
+
 
 private:
     CMutex m_lock;
