@@ -8,13 +8,13 @@ class Thread
 {
 public:
 	Thread();
+	Thread(bool autoDelete);
 	virtual ~Thread();//虚析构函数
 
 	void Start();//线程的启动方法
 	void Join();//等待线程结束并且收回被等待线程的资源
 	void Detach();//分离线程
 
-	void SetAutoDelete(bool autoDelete);
 	pthread_t GetThreadId();
 
 private:

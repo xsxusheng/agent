@@ -60,6 +60,9 @@ public:
     virtual int TryLock();
     virtual int TryWrLock();
     virtual int TryRdLock();
+    virtual int TimeRdLock(long ms);
+    virtual int TimeWrLock(long ms);
+  
 
 private:
     pthread_rwlock_t m_lock;

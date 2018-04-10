@@ -15,13 +15,17 @@
 
 
 ConfManager* ConfManager::sm_confManager = NULL;
+CRWLock ConfManager::agentConfFileRWLock;
+CRWLock ConfManager::appRegisteredConfFileRWLoc;
+CRWLock ConfManager::appConfFileRWLock;
+CRWLock ConfManager::ntpConfFileRWLock;
 
 Locker ConfManager::sm_lock;
 
 
 ConfManager::ConfManager()
 {
-
+	InitConfManager();
 }
 
 
@@ -132,10 +136,10 @@ int ConfManager::Analyse(ConfigData &config)
 	}
 	else
 	{
-		appConfFile->Analyse(config, response);
+		//appConfFile->Analyse(config, response);
 		SV_ERROR("unknown config type %d", config.configfiletype());
 	}
-
+	
 	string data = ProtoBufPacker::SerializeToArray<ConfigUpdateResponse>(response);
 	Major major = ProtoBufPacker::PackResponseData(data, Header::CONFIG, config.uniqueid());
 	AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);

@@ -98,6 +98,19 @@ int CRWLock::TryRdLock()
     return pthread_rwlock_tryrdlock(&m_lock);
 }
 
+int CRWLock::TimeRdLock(long ms)
+{
+	struct timespec timeout;
+	timeout.tv_nsec = ms*1000;
+	return pthread_rwlock_timedrdlock(&m_lock, &timeout);
+}
+
+int CRWLock::TimeWrLock(long ms)
+{
+	struct timespec timeout;
+	timeout.tv_nsec = ms*1000;
+	return pthread_rwlock_timedwrlock(&m_lock, &timeout);
+}
 
 
 #if 0

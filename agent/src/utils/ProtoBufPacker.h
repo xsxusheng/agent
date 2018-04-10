@@ -25,6 +25,7 @@ public:
     static Major PackPerfEntity(string &data, PerfData::PERFDATATYPE type);
     static Major PackHeartBeatData(string data);
     static Major PackHeartBeatData(string &data);
+    static Major PackAppEntity(string body);
     static Major PackAppEntity(string &body);
     static Major PackAlarmEntity(string &body);
     static Major PackEventEntity(string &body);

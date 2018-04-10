@@ -28,6 +28,19 @@ Common::~Common()
 
 }
 
+bool Common::FileExist(string &filename)
+{
+	if(filename.empty())
+	{
+		return false;
+	}
+	if(!access(filename.c_str(), F_OK))
+	{
+		return true;
+	}	
+	return false;
+}
+
 /***********************************************************************
  * FunctionName : SaveToFile
  * Author : xus103
@@ -64,6 +77,11 @@ bool Common::SaveToFile(string &filename, string &content)
 bool Common::DeleteFile(string &fileName)
 {
 	if(fileName.empty())
+	{
+		return false;
+	}
+
+	if(!FileExist(fileName))
 	{
 		return false;
 	}
@@ -145,6 +163,11 @@ string Common::GetLatestFile(vector<string> &files, string &head, string &tail)
 	string latestFile("");
 	string date("0");
 
+	if(files.empty() || head.empty() || tail.empty())
+	{
+		return "";
+	}
+
 	vector<string>::iterator it = files.begin();  
     for(; it != files.end(); ++it)  
     {
@@ -186,6 +209,44 @@ string Common::GetLatestFile(vector<string> &files, string &head, string &tail)
  	return latestFile;
 }
 
+/***********************************************************************
+ * FunctionName : GetLatestFile
+ * Author : xus103
+ * CreateDate : 2018/04/09
+ * Description : 获取最新的文件并返回文件名,且该文件名的首尾串需等于指定的相似文件一致
+		例如: app_123456789.xml, 首串app_,尾串.xml
+ * InputParam : files : 所有文件
+		similarFile : 相似文件
+ * OutputParam :
+ * Return Value : 找到返回文件名,未找到返回空串
+ * Relation :
+ * OtherInfo : 无
+ ***********************************************************************/
+string Common::GetLatestFile(vector<string> &files, string &similarFile)
+{
+	unsigned int pos;
+
+	if(files.empty() || similarFile.empty())
+	{
+		return "";
+	}	
+
+	pos = similarFile.rfind('_', similarFile.length());
+	if(pos == string::npos)
+        {
+		return "";
+        }
+	string head = similarFile.substr(0,pos);
+
+	pos = similarFile.find('.', pos);
+	if(pos == string::npos)
+	{
+		return "";
+	}
+	string tail = similarFile.substr(pos, similarFile.length());
+
+	return GetLatestFile(files, head, tail);
+}
 
 string Common::GetAbsolutePathFileName(string &path, string &fileName)
 {

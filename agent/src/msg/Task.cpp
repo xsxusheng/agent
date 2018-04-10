@@ -16,12 +16,7 @@ Task::Task(const string &message)
 
 Task::~Task()
 {
-	if(m_processor != NULL)
-	{
-		delete m_processor;
-		m_processor = NULL;
-	}
-	SV_LOG("~Task");
+	//SV_LOG("~Task");
 }
 
 void Task::SetTaskType(Header::DataType type)
@@ -49,13 +44,13 @@ long Task::GetTaskCostMSecTime()
 bool Task::IsTimeout()
 {
 	long costTime = -GetTaskCostMSecTime();
-	SV_LOG("cost %ld, timeout %ld", costTime, m_mSecTimeout);
+	//SV_LOG("cost %ld, timeout %ld", costTime, m_mSecTimeout);
 	if(costTime <= m_mSecTimeout)
 	{
 		return false;
 	}
 	SetState(TASK_TIMEOUT);
-	SV_LOG("status %d,   %d", GetState(), TASK_TIMEOUT);
+	//SV_LOG("status %d,   %d", GetState(), TASK_TIMEOUT);
 
 	return true;
 }
@@ -68,12 +63,17 @@ void Task::SetMSecTimeout(long timeout)
 
 void Task::SetState(State state)
 {
+	m_locker.lock();
 	m_state = state;
+	m_locker.unlock();
 }
 
 int Task::GetState()
 {
-	return m_state;
+	m_locker.lock();
+	int state = m_state;
+	m_locker.unlock();
+	return state;
 }
 
 void Task::SetErrMessage(string &message)
