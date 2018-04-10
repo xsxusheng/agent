@@ -55,6 +55,11 @@ Major ProtoBufPacker::PackAppEntity(string &body)
     return major;
 }
 
+Major ProtoBufPacker::PackAppEntity(string body)
+{
+    Major major = PackMsgMajor(body, Header::APP, Header::AGENTOFUMS);;
+    return major;
+}
 Major ProtoBufPacker::PackAlarmEntity(string &body)
 {
     Major major = PackMsgMajor(body, Header::ALARM, Header::AGENTOFUMS);;

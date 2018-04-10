@@ -10,12 +10,13 @@
 #include "../utils/base64.h"
 #include "../utils/sv_log.h"
 #include "../conf/ConfManager.h"
+#include "../app/AppControlProcess.h"
 #include "TaskManager.h"
 #include "Task.h"
 #include "AmqpMessageReceiveProcessor.h"
 
 
-AmqpMessageReceiveProcessor::AmqpMessageReceiveProcessor()
+AmqpMessageReceiveProcessor::AmqpMessageReceiveProcessor():Thread(true)
 {
     
 }
@@ -29,35 +30,28 @@ AmqpMessageReceiveProcessor::~AmqpMessageReceiveProcessor()
 void AmqpMessageReceiveProcessor::__DoRun()
 {
 	int ret = 0;
-	int waitCount = 0;
-	int restart = 0;
 	TaskManager* taskManager = NULL;
 	Task* task = NULL;
 
+	usleep(5000);
 	while(1)
 	{
-		usleep(5000);
 		taskManager = TaskManager::GetInstance();
 		if(taskManager == NULL)
 		{
 			SV_LOG("get task manager instance error");
+			break;
 		}
 		task = taskManager->GetTaskByThreadId(GetThreadId());
-		if(task == NULL && waitCount++ <= 3)
+		if(task == NULL)
 		{
 			SV_LOG("NULL");
-			continue;
-		}
-		else if(waitCount > 3)
-		{
-			SV_LOG("no task no do, thread exit!!!");
 			break;
 		}
 		
 		
 		if(task->GetState() == Task::TASK_IDLE)
 		{
-			SV_LOG("start task");	
 			task->SetState(Task::TASK_RUNNING);
 			ret = TaskProcess(task->GetMessage());
 			if(ret == 0)
@@ -68,15 +62,6 @@ void AmqpMessageReceiveProcessor::__DoRun()
 			{
 				task->SetState(Task::TASK_FAILED);
 			}
-		}
-		
-		if(task->GetState() == Task::TASK_FAILED && restart < 1)
-		{
-			//任务失败，可以尝试再来一次
-			restart++;
-			SV_LOG("restart --------------- %d", restart);
-			task->SetState(Task::TASK_IDLE);
-			continue;
 		}
 		break;
 	}
@@ -155,6 +140,7 @@ int AmqpMessageReceiveProcessor::ProcessCommand(const string &body)
 	}
 
 	ctrlAppData.ParseFromString(base64_decode(body));
+	AppControlProcess::ControlProcess(ctrlAppData);
 	
     return 0;
 }
@@ -237,7 +223,6 @@ int AmqpMessageReceiveProcessor::ProcessConfig(const string &body)
 
 	configData.ParseFromString(base64_decode(body));
 	ConfManager::GetInstance()->Analyse(configData);
-	SV_LOG("config");
 	
     return 0;
 }

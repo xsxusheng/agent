@@ -11,6 +11,9 @@
 #define _APPREGISTEREDCONFFILE_H_
 #include <iostream>
 #include <string>
+#include <list>
+#include "../app/App.h"
+#include "../app/RegisterAppTable.h"
 #include "../proto/Config.pb.h"
 using namespace com::fiberhome::fums::proto;
 using namespace std;
@@ -21,6 +24,7 @@ public:
         AppRegisteredConfFile();
         ~AppRegisteredConfFile();
         int Init();
+	list<App>* ParseConfFile(string &fileName);
         string GetAppRegisteredConfFile(string &path);
         int Analyse(ConfigData &config, ConfigUpdateResponse &response);
 };

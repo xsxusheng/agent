@@ -15,6 +15,7 @@
 #include <string>
 #include <memory>
 #include <pthread.h>
+#include "Locker.h"
 #include "../proto/Msg.pb.h"
 #include "../proto/CtrlApp.pb.h"
 #include "../proto/RealQueryHostStatus.pb.h"
@@ -102,6 +103,8 @@ private:
 	string m_message;
 	/* 执行该任务的线程ID */
 	pthread_t m_taskThreadId;
+	//
+	Locker m_locker;
 	/* 处理器 */
 	AmqpMessageReceiveProcessor* m_processor;
 };

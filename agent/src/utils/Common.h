@@ -19,12 +19,14 @@ public:
 	Common();
 	~Common();
 	
+	static bool FileExist(string &filename);
 	static bool SaveToFile(string &filename, string &content);
 	static string GetCompleteFileName();
 	static vector<string> GetAllFiles(string &path);
 	static bool AllIsNum(const string &str);
 	static bool DeleteFile(string &fileName);
 	static string GetLatestFile(vector<string> &files, string &head, string &tail);
+	static string GetLatestFile(vector<string> &files, string &similarFile);
 	static string GetAbsolutePathFileName(string &path, string &fileName);
 	//static string GetAlarmMd5(Alarm alarm);
 	//static String GetMD5(String message);

@@ -13,6 +13,7 @@
 #include "../proto/Config.pb.h"
 #include "../proto/CommonDefine.pb.h"
 #include "../proto/Msg.pb.h"
+#include "../utils/Lock.h"
 #include "AgentConfFile.h"
 #include "AppConfFile.h"
 #include "NtpConfFile.h"
@@ -27,6 +28,11 @@ public:
 	static ConfManager* GetInstance();
 	int InitConfManager();
 	int Analyse(ConfigData &config);
+
+	static CRWLock appRegisteredConfFileRWLoc;
+	static CRWLock agentConfFileRWLock;
+	static CRWLock appConfFileRWLock;
+	static CRWLock ntpConfFileRWLock;
 	
 protected:
 	ConfManager();

@@ -12,11 +12,13 @@
 #include <stdlib.h> 
 #include <unistd.h>
 #include <string>
+#include "../conf/ConfManager.h"
 #include "../msg/RabbitmqConfig.h"
 #include "ThreadPool.h"
 #include "../msg/AmqpReceiveBuilder.h"
 #include "../msg/AmqpMessageReceiveProcessor.h"
 #include "../msg/AmqpMessageSendProcessor.h"
+#include "../app/AppManager.h"
 #include "../proto/Msg.pb.h"
 #include "../utils/AgentUtils.h"
 #include "../utils/sv_log.h"
@@ -66,6 +68,19 @@ static int RabbitmqInit()
     return 0;
 }
 
+int AppManagerInit()
+{
+    AppManager *appManager = new (std::nothrow) AppManager();
+    if(appManager == NULL)
+    {
+	SV_ERROR("new error");
+	return -1;
+    }
+    appManager->Start();
+
+    return 0;
+}
+
 
 //初始化agent
 static int InitAgent()
@@ -82,7 +97,17 @@ static int InitAgent()
         SV_ERROR("RabbitmqInit error");
         return -1;
     }
+
+    ConfManager::GetInstance();
     
+    if(AppManagerInit() < 0)
+    {
+	SV_ERROR("AppManagerInit error");
+	return -1;
+    }
+
+    
+
     return 0;
 }
 
@@ -117,7 +142,6 @@ int main(int argc, char *argv[])
         std::future<int> f6 = executor->AddTaskToQueue(fun1, 6, aa);
     std::cout << " =======  sleep ========= " << std::this_thread::get_id() << std::endl;
     sleep(5);
-    SV_LOG("%s", "aaaa");
     */
     while(1)
     {
@@ -130,7 +154,6 @@ int main(int argc, char *argv[])
 	Major major = ProtoBufPacker::PackHeartBeatData(ProtoBufPacker::SerializeToArray<HeartData>(heartData));
 
     	AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
-        printf("运行中。。。");
     }
     //delete executor;
     return 0;

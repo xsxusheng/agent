@@ -71,12 +71,13 @@ bool TaskManager::TaskIsFullByType(Header::DataType type)
     	{
 		if((*iter)->GetTaskType() == type)
 		{
+			//SV_LOG("status = %d   %d", (*iter)->GetState(), (*iter)->GetTaskThreadId());
 			count++;
 		}
 	 
 	}
 	
-	SV_LOG("count %d---", count);
+	//SV_LOG("count %d---", count);
 	switch(type)
 	{
 		case Header::CTRL_APP:
@@ -325,9 +326,9 @@ Task* TaskManager::GetTaskByThreadId(pthread_t id)
 	Task* task = NULL;
 
 	sm_lock.lock();
-	for (vector<Task*>::const_iterator iter = m_task.begin(); iter != m_task.end(); iter++)
+	for (vector<Task*>::const_reverse_iterator iter = m_task.rbegin(); iter != m_task.rend(); iter++)
     	{
-		SV_LOG("%d ---- %d", (*iter)->GetTaskThreadId(), id);
+		//SV_LOG("%d ---- %d", (*iter)->GetTaskThreadId(), id);
         	if((*iter)->GetTaskThreadId() == id)
         	{
 			task = *iter;
@@ -346,7 +347,7 @@ void TaskManager::CheckTask()
 	vector<Task*>::iterator iter = m_task.empty() ? m_task.end() : m_task.begin();
 	while(iter != m_task.end())
     	{
-		SV_LOG("check %d", (*iter)->GetState());
+		//SV_LOG("check %d", (*iter)->GetState());
 		switch((*iter)->GetState())
 		{
 			case Task::TASK_IDLE:
@@ -357,6 +358,7 @@ void TaskManager::CheckTask()
 				}
 				break;
 			case Task::TASK_SUCCESS:
+				SV_LOG("cost -------------------- %d", (*iter)->GetTaskCostMSecTime());
 				delete *iter;
 				iter = m_task.erase(iter);
 				continue;
@@ -366,7 +368,7 @@ void TaskManager::CheckTask()
 				iter = m_task.erase(iter);
 				continue;
 			case Task::TASK_TIMEOUT:
-				(*iter)->SetErrMessage("message task timeout");
+				SV_ERROR("timeout : %s", (*iter)->GetErrMessage().c_str());
 				delete *iter;
 				iter = m_task.erase(iter);
 				continue;
@@ -397,7 +399,7 @@ void TaskManager::MessageProcess(const string &message)
 	{
 		return;
 	}
-
+	SV_LOG("MessageProcess");
 	/* 新建线程处理任务 */
 	AmqpMessageReceiveProcessor* processor = new (std::nothrow) AmqpMessageReceiveProcessor();
 	task->SetProcessor(processor);

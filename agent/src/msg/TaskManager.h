@@ -34,11 +34,11 @@ public:
 		/* 实时查询同时执行的最大任务数 */
 		REALQUERY_TASK_COUNT_LIMIT = 10,
 		/* 配置下发同时执行的最大任务数 */
-		CONFIG_TASK_COUNT_LIMIT = 10,
+		CONFIG_TASK_COUNT_LIMIT = 20,
 		/* APP控制同时执行的最大任务数 */
-		CTRL_APP_TASK_COUNT_LIMIT = 10,
+		CTRL_APP_TASK_COUNT_LIMIT = 5,
 		/* 同时执行的最大总任务数 */
-		ALL_TASK_COUNT_LIMIT = 10
+		ALL_TASK_COUNT_LIMIT = 20
 	};	
 
 	

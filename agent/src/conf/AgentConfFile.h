@@ -7,7 +7,8 @@
 * OtherInfo :
 * ModifyLog :
  ************************************************************************/
-
+#ifndef _AGENTCONFFILE_H_
+#define _AGENTCONFFILE_H_
 #include <iostream>
 #include <string>
 #include "../proto/Config.pb.h"
@@ -23,8 +24,10 @@ public:
 	~AgentConfFile();
 	
 	int Init();
-	string GetAgentConfFile();
+	string GetAgentConfFile(string &path);
 	int Analyse(ConfigData &config, ConfigUpdateResponse &response);
 	
 		
 };
+
+#endif

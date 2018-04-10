@@ -3,7 +3,7 @@
 
 TARGET = conf
 CFLAGS = -Wall -O -g -Wno-write-strings
-INC_DIR = -I../../3rd/protobuf/include -I../../3rd/rabbitmq/include
+INC_DIR = -I../../3rd/protobuf/include -I../../3rd/rabbitmq/include -I/usr/include/libxml2
 ###########################################################
 CC = gcc
 XX = g++
@@ -17,7 +17,7 @@ ALL_OBJ = $(C_OBJS) $(CXX_OBJS)
 %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC_DIR) -std=c99
 %.o:%.cpp 
-	$(XX) $(CFLAGS) -c $< -o $@ $(INC_DIR)
+	$(XX) $(CFLAGS) -c $< -o $@ $(INC_DIR) -std=c++11
 ###########################################################
 all: $(TARGET)
 $(TARGET): $(ALL_OBJ)

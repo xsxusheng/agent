@@ -10,6 +10,7 @@
 #include "../utils/sv_log.h"
 #include "../utils/Common.h"
 #include "../utils/AgentUtils.h"
+#include "ConfManager.h"
 #include "AppConfFile.h"
 
 AppConfFile::AppConfFile()
@@ -27,32 +28,40 @@ int AppConfFile::Init()
 	return 0;
 }
 
-string AppConfFile::GetAppRegisteredConfFile(string &path)
+string AppConfFile::GetAppConfFile(string &path, string &similarFile)
 {
-        string head("agent_apps__");
-        string tail(".xml");
-
-        if(path.empty())
-        {
-                return "agent_apps.xml";
-        }
+        if(path.empty() || similarFile.empty())
+        
+                return "";
+       
 
         vector<string> files = Common::GetAllFiles(path);
-        string alarmConfFile = Common::GetLatestFile(files, head, tail);
+        string alarmConfFile = Common::GetLatestFile(files, similarFile);
         if(!alarmConfFile.empty())
         {
                 return alarmConfFile;
         }
 
-        return "agent_apps.xml";
+        return "";
 }
 
 
 int AppConfFile::Analyse(ConfigData &config, ConfigUpdateResponse &response)
 {
-	string newFileName = config.configfilename();
-	string viewConfScript = config.viewconfscript();
+	int ret = ConfManager::agentConfFileRWLock.TimeRdLock(20);
+	if(0 != ret)
+	{	SV_LOG("get lock error");
+		return -1;
+	}
+
+	/* 文件保存路径 */
 	string fileSavePath = config.filesavepath();
+	/* 下发的新的配置文件 */
+	string newFileName = config.configfilename();
+	/* 当前正在使用的配置文件 */
+	string usingFileName = GetAppConfFile(fileSavePath, newFileName);
+	
+	string viewConfScript = config.viewconfscript();
 	string updateNotifyScript = config.updatenotifyscript();
 	string serverPath = config.serverpath();
 	int id = config.uniqueid();
@@ -67,6 +76,7 @@ int AppConfFile::Analyse(ConfigData &config, ConfigUpdateResponse &response)
 	SV_LOG("no = %d", no);
         SV_LOG("%s", config.configfilecontent().c_str());
         SV_LOG("\n");
+	ConfManager::agentConfFileRWLock.UnLock();
 	return 0;
 }
 

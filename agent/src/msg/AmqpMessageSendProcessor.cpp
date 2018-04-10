@@ -11,6 +11,7 @@
 
 AmqpMessageSendProcessor* AmqpMessageSendProcessor::sm_amqpMessageSendProcessor = NULL;
 Locker AmqpMessageSendProcessor::sm_lock;
+queue<Major>* AmqpMessageSendProcessor::msgQueue = new (std::nothrow) queue<Major>;
 
 
 AmqpMessageSendProcessor::AmqpMessageSendProcessor()
@@ -60,6 +61,10 @@ AmqpMessageSendProcessor* AmqpMessageSendProcessor::GetInstance()
             {
                 SV_ERROR("new error");
             }
+	    else
+	    {
+		sm_amqpMessageSendProcessor->Start();
+	    }
             
         }
         sm_lock.unlock();
@@ -68,15 +73,37 @@ AmqpMessageSendProcessor* AmqpMessageSendProcessor::GetInstance()
     return sm_amqpMessageSendProcessor;
 }
 
+void AmqpMessageSendProcessor::__DoRun()
+{
+	if(msgQueue == NULL || m_messageSender == NULL)
+	{
+		return;
+	}
+	while(1)
+	{
+		if(msgQueue->empty())
+		{
+			usleep(1000);
+			continue;		
+		}
+		Major major = msgQueue->front();
+		m_messageSender->SendMessageToFums(major);
+		msgQueue->pop();
+	}
+}
+
 
 int AmqpMessageSendProcessor::SendMessageToFums(Major &msg)
 {
-    if(m_messageSender == NULL)
-    {
-        SV_ERROR("message sender error, please check the status of rabbitmq server");
-        return -1;
-    }
-    m_messageSender->SendMessageToFums(msg);
-    return 0;
+	//static int i = 0;
+	//SV_LOG("send------------------------------%d", i++);
+    	if(msgQueue == NULL)
+	{
+		return -1;
+	}
+
+	msgQueue->push(msg);
+
+    	return 0;
 }
 

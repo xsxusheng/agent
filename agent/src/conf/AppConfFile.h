@@ -7,6 +7,8 @@
 * OtherInfo :
 * ModifyLog :
  ************************************************************************/
+#ifndef _APPCONFFILE_H_
+#define _APPCONFFILE_H_
 #include <iostream>
 #include <string>
 #include "../proto/Config.pb.h"
@@ -19,10 +21,10 @@ public:
 	AppConfFile();
 	~AppConfFile();
 	int Init();
-	string GetAppRegisteredConfFile(string &path);
+	string GetAppConfFile(string &path, string &similarFile);
 	int Analyse(ConfigData &config, ConfigUpdateResponse &response);
 	int DownloadFile(ConfigData &config, ConfigUpdateResponse &response);
 };
 
-
+#endif
 
