@@ -6,7 +6,7 @@
 
 #include <cstring>
 
-#include "sigar.h"
+#include "SigarAdapt.h"
 #include "MacroDefine.h"
 
 
@@ -230,6 +230,147 @@ private:
 
 
 
+
+
+
+#define NETCONN_CLIENT SIGAR_NETCONN_CLIENT
+#define NETCONN_SERVER SIGAR_NETCONN_SERVER
+
+#define NETCONN_TCP SIGAR_NETCONN_TCP
+#define NETCONN_UDP SIGAR_NETCONN_UDP
+#define NETCONN_RAW SIGAR_NETCONN_RAW
+#define NETCONN_UNIX SIGAR_NETCONN_UNIX
+
+
+enum {
+    TCP_ESTABLISHED = SIGAR_TCP_ESTABLISHED,
+    TCP_SYN_SENT = SIGAR_TCP_SYN_SENT,
+    TCP_SYN_RECV = SIGAR_TCP_SYN_RECV,
+    TCP_FIN_WAIT1 = SIGAR_TCP_FIN_WAIT1,
+    TCP_FIN_WAIT2 = SIGAR_TCP_FIN_WAIT2,
+    TCP_TIME_WAIT = SIGAR_TCP_TIME_WAIT,
+    TCP_CLOSE = SIGAR_TCP_CLOSE,
+    TCP_CLOSE_WAIT = SIGAR_TCP_CLOSE_WAIT,
+    TCP_LAST_ACK = SIGAR_TCP_LAST_ACK,
+    TCP_LISTEN = SIGAR_TCP_LISTEN,
+    TCP_CLOSING = SIGAR_TCP_CLOSING,
+    TCP_IDLE = SIGAR_TCP_IDLE,
+    TCP_BOUND = SIGAR_TCP_BOUND,
+    TCP_UNKNOWN = SIGAR_TCP_UNKNOWN
+};
+
+
+class CNetConn
+{
+public:
+    CNetConn();
+    ~CNetConn();
+
+
+    unsigned long GetLocalPort(){return m_nLocalPort;}
+    void SetLocalPort(unsigned long port){m_nLocalPort = port;}
+
+    T_NET_ADDR* GetLocalAddr(){return &m_localAddress;}
+    void SetLocalAddr(sigar_net_address_t& addr);
+
+    unsigned long GetRemotePort(){return m_nRemotePort;}
+    void SetRemotePort(unsigned long port){m_nRemotePort = port;}
+
+    T_NET_ADDR* GetRemoteAddr(){return &m_remoteAddress;}
+    void SetRemoteAddr(sigar_net_address_t& addr);
+
+    unsigned long GetUid(){return m_nUid;}
+    void SetUid(unsigned long uid){m_nUid = uid;}
+
+    unsigned long GetInode(){return m_nInode;}
+    void SetInode(unsigned long inode){m_nInode = inode;}
+    
+    int GetType(){return m_nType;}
+    void SetType(unsigned long type){m_nType = type;}
+    
+    int GetState(){return m_nState;}
+    void SetState(unsigned long state){m_nState = state;}
+    
+    unsigned long GetSendQueue(){return m_nSendQueue;}
+    void SetSendQueue(unsigned long queue){m_nSendQueue = queue;}
+    
+    unsigned long GetReceiveQueue(){return m_nReceiveQueue;}
+    void SetReceiveQueue(unsigned long queue){m_nReceiveQueue = queue;}
+
+
+private:
+    unsigned long m_nLocalPort;
+    T_NET_ADDR m_localAddress;
+    unsigned long m_nRemotePort;
+    T_NET_ADDR m_remoteAddress;
+    unsigned long m_nUid;
+    unsigned long m_nInode;
+    int m_nType;
+    int m_nState;
+    unsigned long m_nSendQueue;
+    unsigned long m_nReceiveQueue;
+
+
+};
+
+
+
+class CNetConnList
+{
+public:
+    CNetConnList();
+    ~CNetConnList();
+
+
+    void FreeNetConnList();
+
+
+    unsigned long GetNetConnNum(){return m_nNetConnNum;}
+    CNetConn* GetNetConn(unsigned long index);
+    
+    int GetNetConnList();
+    int GetNetConnList(int flag);
+
+
+private:
+    unsigned long m_nNetConnNum;
+    CNetConn *m_pNetConn;
+
+};
+
+
+
+
+
+
+
+
+class CNetStat
+{
+public:
+    CNetStat();
+    ~CNetStat();
+
+
+    int GetTcpStates(int state);
+    unsigned int GetTcpInboundTotal(){return m_nTcpInboundTotal;}
+    unsigned int GetTcpOutboundTotal(){return m_nTcpOutboundTotal;}
+    unsigned int GetAllInboundTotal(){return m_nAllInboundTotal;}
+    unsigned int GetAllOutboundTotal(){return m_nAllOutboundTotal;}
+
+    int GetNetStat();
+
+
+
+private:
+    int m_nTcpStates[SIGAR_TCP_UNKNOWN];
+    unsigned int m_nTcpInboundTotal;
+    unsigned int m_nTcpOutboundTotal;
+    unsigned int m_nAllInboundTotal;
+    unsigned int m_nAllOutboundTotal;
+
+
+};
 
 
 

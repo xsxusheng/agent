@@ -100,7 +100,7 @@ CCpuUsage::~CCpuUsage()
 
 CCpuPerc *CCpuUsage::GetCpuPerc(unsigned long index)
 {
-    if ((index > 0) && (index < m_nCpuNum) && (m_pCpuPercs != NULL))
+    if ((index < m_nCpuNum) && (m_pCpuPercs != NULL))
     {
         return &m_pCpuPercs[index];
     }
@@ -110,7 +110,7 @@ CCpuPerc *CCpuUsage::GetCpuPerc(unsigned long index)
 
 void CCpuUsage::SetCpuPerc(CCpuPerc& cpuPerc, unsigned long index)
 {
-    if ((index > 0) && (index < m_nCpuNum) && (m_pCpuPercs != NULL))
+    if ((index < m_nCpuNum) && (m_pCpuPercs != NULL))
     {
         m_pCpuPercs[index] = cpuPerc;
     }
@@ -120,7 +120,7 @@ void CCpuUsage::SetCpuPerc(CCpuPerc& cpuPerc, unsigned long index)
 
 void CCpuUsage::SetCpuPerc(sigar_cpu_t& cpu, unsigned long index)
 {
-    if ((index > 0) && (index < m_nCpuNum) && (m_pCpuPercs != NULL))
+    if ((index < m_nCpuNum) && (m_pCpuPercs != NULL))
     {
         m_pCpuPercs[index].SetUser(cpu.user);
         m_pCpuPercs[index].SetSys(cpu.sys);
@@ -406,6 +406,216 @@ int CCpuUsage::GetCpuBaseInfo()
     sigar_cpu_info_list_destroy(CSigar::GetSigar(), &tCpuInfo);
     return 0;
 }
+
+
+
+
+
+#if 0
+#endif
+
+
+
+
+CCpuInfo::CCpuInfo()
+{
+    m_nMhz = 0;
+    m_nMhzMax = 0;
+    m_nMhzMin = 0;
+    m_nTotalSockets = 0;
+    m_nTotalCores = 0;
+    m_nCoresPerSocket = 0;
+    m_nCacheSize = 0;
+    memset(m_szVendor, 0, sizeof(m_szVendor));
+    memset(m_szModel, 0, sizeof(m_szModel));
+}
+
+
+
+CCpuInfo::~CCpuInfo()
+{
+}
+
+
+
+
+
+CCpuInfoList::CCpuInfoList()
+{
+    unsigned long num = 0;
+
+    m_nCpuNum = 0;
+    m_pCpuInfoList = NULL;
+
+    num = GetCpuInfoNum();
+    if (m_nCpuNum > 0)
+    {
+        m_pCpuInfoList = new CCpuInfo[m_nCpuNum];
+        if (m_pCpuInfoList != NULL)
+        {
+            m_nCpuNum = num;
+        }
+    }
+}
+
+
+
+CCpuInfoList::~CCpuInfoList()
+{
+    if (m_pCpuInfoList != NULL)
+    {
+        delete []m_pCpuInfoList;
+        m_pCpuInfoList = NULL;
+    }
+    m_nCpuNum = 0;
+}
+
+
+
+CCpuInfo* CCpuInfoList::GetCpuInfo(unsigned long index)
+{
+    if ((index < m_nCpuNum) && (m_pCpuInfoList != NULL))
+    {
+        return &m_pCpuInfoList[index];
+    }
+    return NULL;
+}
+
+
+
+void CCpuInfoList::SetCpuInfo(sigar_cpu_info_t& cpu, unsigned long index)
+{
+    if ((index < m_nCpuNum) && (m_pCpuInfoList != NULL))
+    {
+        m_pCpuInfoList[index].SetVendor(cpu.vendor);
+        m_pCpuInfoList[index].SetModel(cpu.model);
+        m_pCpuInfoList[index].SetMhz(cpu.mhz);
+        m_pCpuInfoList[index].SetMhzMax(cpu.mhz_max);
+        m_pCpuInfoList[index].SetMhzMin(cpu.mhz_min);
+        m_pCpuInfoList[index].SetTotalSockets(cpu.total_sockets);
+        m_pCpuInfoList[index].SetTotalCores(cpu.total_cores);
+        m_pCpuInfoList[index].SetCoresPerSocket(cpu.cores_per_socket);
+        m_pCpuInfoList[index].SetCacheSize(cpu.cache_size);
+    }
+}
+
+
+
+
+unsigned long CCpuInfoList::GetCpuInfoNum()
+{
+    int ret = 0;
+    sigar_cpu_info_list_t tCpu;
+    
+    if (SIGAR_OK != (ret = sigar_cpu_info_list_get(CSigar::GetSigar(), &tCpu)))
+    {
+        printf("sigar_cpu_info_list_get return = %d (%s).\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        return 0;
+    }
+
+    sigar_cpu_info_list_destroy(CSigar::GetSigar(), &tCpu);
+    return tCpu.number;
+}
+
+
+
+int CCpuInfoList::GetCpuInfoList()
+{
+    int ret = 0;
+    unsigned long i = 0;
+    sigar_cpu_info_list_t tCpuList;
+
+    if (m_pCpuInfoList == NULL)
+    {
+        return -1;
+    }
+
+    if (SIGAR_OK != (ret = sigar_cpu_info_list_get(CSigar::GetSigar(), &tCpuList)))
+    {
+        printf("sigar_cpu_list_get return = %d (%s).\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        return -1;
+    }
+
+    for (i = 0; i < tCpuList.number; i++)
+    {
+        SetCpuInfo(tCpuList.data[i], i);
+    }
+    
+    sigar_cpu_info_list_destroy(CSigar::GetSigar(), &tCpuList);
+    return 0;
+}
+
+
+
+
+#if 0
+#endif
+
+
+
+
+CLoadAvg::CLoadAvg()
+{
+    memset(m_fLoadAvg, 0, sizeof(m_fLoadAvg));
+}
+
+
+
+CLoadAvg::~CLoadAvg()
+{
+    memset(m_fLoadAvg, 0, sizeof(m_fLoadAvg));
+}
+
+
+
+double CLoadAvg::GetLoadAvg(int index)
+{
+    if ((index >= 0) && (index < MAX_LOAD_AVG_NUM))
+    {
+        return m_fLoadAvg[index];
+    }
+    return 0.0;
+}
+
+
+
+
+int CLoadAvg::GetLoadAvgInfo()
+{
+    int i = 0;
+    int ret = 0;
+    sigar_loadavg_t loadavg;
+
+    if (SIGAR_OK == (ret = sigar_loadavg_get(CSigar::GetSigar(), &loadavg)))
+    {
+        for (i = 0; i < MAX_LOAD_AVG_NUM; i++)
+        {
+            m_fLoadAvg[i] = loadavg.loadavg[i];
+        }
+        
+        return 0;
+    }
+
+    printf("sigar_loadavg_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+    return -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

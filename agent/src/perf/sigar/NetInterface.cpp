@@ -362,6 +362,153 @@ int CNetInterface::GetNetIfStatus()
 
 
 
+#if 0
+#endif
+
+
+
+CNetConn::CNetConn()
+{
+    m_nLocalPort = 0;
+    m_nRemotePort = 0;
+    m_nUid = 0;
+    m_nInode = 0;
+    m_nType = 0;
+    m_nState = 0;
+    m_nSendQueue = 0;
+    m_nReceiveQueue = 0;
+    memset(&m_localAddress, 0, sizeof(m_localAddress));
+    memset(&m_remoteAddress, 0, sizeof(m_remoteAddress));
+}
+
+
+
+CNetConn::~CNetConn()
+{
+}
+
+
+
+void CNetConn::SetLocalAddr(sigar_net_address_t& addr)
+{
+    if (sizeof(T_NET_ADDR) == sizeof(sigar_net_address_t))
+    {
+        memcpy(&m_localAddress, &addr, sizeof(T_NET_ADDR));
+    }
+}
+
+
+
+void CNetConn::SetRemoteAddr(sigar_net_address_t& addr)
+{
+    if (sizeof(T_NET_ADDR) == sizeof(sigar_net_address_t))
+    {
+        memcpy(&m_remoteAddress, &addr, sizeof(T_NET_ADDR));
+    }
+}
+
+
+
+
+CNetConnList::CNetConnList()
+{
+    m_nNetConnNum = 0;
+    m_pNetConn = NULL;
+}
+
+
+
+CNetConnList::~CNetConnList()
+{
+    FreeNetConnList();
+}
+
+
+
+void CNetConnList::FreeNetConnList()
+{
+    if (m_pNetConn != NULL)
+    {
+        delete []m_pNetConn;
+        m_pNetConn = NULL;
+    }
+    m_nNetConnNum = 0;
+}
+
+
+
+
+CNetConn* CNetConnList::GetNetConn(unsigned long index)
+{
+    if ((index < m_nNetConnNum) || (m_pNetConn != NULL))
+    {
+        return &m_pNetConn[index];
+    }
+
+    return NULL;
+}
+
+
+
+int CNetConnList::GetNetConnList()
+{
+	int ret = 0;
+    sigar_net_connection_list_t connlist;
+
+    if (SIGAR_OK != (ret = sigar_net_connection_list_get(CSigar::GetSigar(), &connlist,
+        SIGAR_NETCONN_SERVER | SIGAR_NETCONN_CLIENT |
+        SIGAR_NETCONN_TCP | SIGAR_NETCONN_UDP)))
+    {
+        printf("sigar_net_connection_list_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        return -1;
+	}
+
+    if (connlist.number > 0)
+    {
+        FreeNetConnList();
+        m_pNetConn = new CNetConn[connlist.number];
+        if (m_pNetConn == NULL)
+        {
+            sigar_net_connection_list_destroy(CSigar::GetSigar(), &connlist);
+            return -1;
+        }
+        m_nNetConnNum = connlist.number;
+    }
+
+    sigar_net_connection_list_destroy(CSigar::GetSigar(), &connlist);
+    return 0;
+}
+
+
+
+
+
+int CNetConnList::GetNetConnList(int flag)
+{
+	int ret = 0;
+    sigar_net_connection_list_t connlist;
+
+    if (SIGAR_OK != (ret = sigar_net_connection_list_get(CSigar::GetSigar(), &connlist, flag)))
+    {
+        printf("sigar_net_connection_list_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        return -1;
+	}
+
+    if (connlist.number > 0)
+    {
+        FreeNetConnList();
+        m_pNetConn = new CNetConn[connlist.number];
+        if (m_pNetConn == NULL)
+        {
+            sigar_net_connection_list_destroy(CSigar::GetSigar(), &connlist);
+            return -1;
+        }
+        m_nNetConnNum = connlist.number;
+    }
+
+    sigar_net_connection_list_destroy(CSigar::GetSigar(), &connlist);
+    return 0;
+}
 
 
 
@@ -369,16 +516,55 @@ int CNetInterface::GetNetIfStatus()
 
 
 
+CNetStat::CNetStat()
+{
+    m_nTcpInboundTotal = 0;
+    m_nTcpOutboundTotal = 0;
+    m_nAllInboundTotal = 0;
+    m_nAllOutboundTotal = 0;
+    memset(m_nTcpStates, 0, sizeof(m_nTcpStates));
+}
+
+
+
+CNetStat::~CNetStat()
+{
+}
 
 
 
 
+int CNetStat::GetTcpStates(int state)
+{
+    if ((state >= 0) && (state < SIGAR_TCP_UNKNOWN))
+    {
+        return m_nTcpStates[state];
+    }
+
+    return 0;
+}
 
 
 
+int CNetStat::GetNetStat()
+{
+    int ret = 0;
+    sigar_net_stat_t netstat;
 
+    if (SIGAR_OK != sigar_net_stat_get(CSigar::GetSigar(), &netstat,
+        SIGAR_NETCONN_SERVER | SIGAR_NETCONN_CLIENT | SIGAR_NETCONN_TCP | SIGAR_NETCONN_UDP))
+    {
+        printf("sigar_net_stat_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        return -1;
+    }
 
-
+    memcpy(m_nTcpStates, netstat.tcp_states, sizeof(m_nTcpStates));
+    m_nTcpInboundTotal = netstat.tcp_inbound_total;
+    m_nTcpOutboundTotal = netstat.tcp_outbound_total;
+    m_nAllInboundTotal = netstat.all_inbound_total;
+    m_nAllOutboundTotal = netstat.all_outbound_total;
+    return 0;
+}
 
 
 

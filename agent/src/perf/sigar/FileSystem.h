@@ -53,44 +53,6 @@ public:
     void SetFlags(unsigned long flags){m_nFlags = flags;}
 
 
-    CFileSystemInfo& operator=(CFileSystemInfo& fileSysInfo);
-
-
-protected:
-
-
-private:
-
-    char m_cDirName[FS_NAME_LEN];
-    char m_cDevName[FS_NAME_LEN];
-    char m_cTypeName[FS_INFO_LEN]; /* e.g. "local" */
-    char m_cSysTypeName[FS_INFO_LEN]; /* e.g. "ext3" */
-    char m_cOptions[FS_INFO_LEN];
-    EFileSystemType m_eType;
-    unsigned long m_nFlags;
-
-
-};
-
-
-
-
-class CFileSystem
-{
-public:
-    CFileSystem();
-    ~CFileSystem();
-
-
-    unsigned long GetFileSystemNum(){return m_nFileSystemNum;}
-    void SetFileSystemNum(unsigned long num){if(num > 0){m_nFileSystemNum = num;}}
-
-    CFileSystemInfo *GetFileSystemInfo(){return m_pFileSystemInfo;}
-    CFileSystemInfo *GetFileSystemInfo(unsigned long index);
-    void SetFileSystemInfo(CFileSystemInfo& fileSysInfo, unsigned long index);
-    void SetFileSystemInfo(sigar_file_system_t& fileSysInfo, unsigned long index);
-
-
     unsigned long long GetDiskReads(){return m_nReads;}
     unsigned long long GetDiskWrites(){return m_nWrites;}
     unsigned long long GetDiskWriteBytes(){return m_nWriteBytes;}
@@ -133,17 +95,17 @@ public:
     void SetFileSysFreeFiles(unsigned long long freeFiles){m_nFreeFiles = freeFiles;}
 
 
-    unsigned long GetFileSystemListNum();
-    int GetFileSystem();
-
-
-protected:
-
 
 private:
 
-    unsigned long m_nFileSystemNum;
-    CFileSystemInfo *m_pFileSystemInfo;
+    char m_cDirName[FS_NAME_LEN];
+    char m_cDevName[FS_NAME_LEN];
+    char m_cTypeName[FS_INFO_LEN]; /* e.g. "local" */
+    char m_cSysTypeName[FS_INFO_LEN]; /* e.g. "ext3" */
+    char m_cOptions[FS_INFO_LEN];
+    EFileSystemType m_eType;
+    unsigned long m_nFlags;
+
 
     unsigned long long m_nReads;
     unsigned long long m_nWrites;
@@ -164,6 +126,39 @@ private:
     unsigned long long m_nAvail;
     unsigned long long m_nFiles;
     unsigned long long m_nFreeFiles;
+
+};
+
+
+
+
+class CFileSystem
+{
+public:
+    CFileSystem();
+    ~CFileSystem();
+
+
+    unsigned long GetFileSystemNum(){return m_nFileSystemNum;}
+    void SetFileSystemNum(unsigned long num){if(num > 0){m_nFileSystemNum = num;}}
+
+    CFileSystemInfo *GetFileSystemInfo(unsigned long index);
+
+    void SetFileSystemInfo(sigar_file_system_t& fileSysInfo, unsigned long index);
+    void SetFileSystemInfo(sigar_file_system_usage_t& fileSysInfo, unsigned long index);
+    void SetFileSystemInfo(sigar_disk_usage_t& fileSysInfo, unsigned long index);
+
+
+    unsigned long GetFileSystemListNum();
+    int GetFileSystem();
+
+
+
+private:
+
+    unsigned long m_nFileSystemNum;
+    CFileSystemInfo *m_pFileSystemInfo;
+
 
 };
 

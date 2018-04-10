@@ -9,14 +9,31 @@
 #include "FileSystem.h"
 #include "NetInterface.h"
 #include "ProcInfo.h"
+#include "StringUtils.h"
+#include "SystemInfo.h"
+#include "Uptime.h"
 
 
 
 
+int CHostStatus::FetchCpuNum()
+{
+    CCpuInfoList tCpuInfo;
+    return (int)tCpuInfo.GetCpuInfoNum();
+}
 
 
 
 double CHostStatus::GetCpuUsage()
+{
+    CCpuUsage tCpuUsage;
+
+    return tCpuUsage.GetCpuUsageTotal();
+}
+
+
+
+double CHostStatus::FetchCpuUsage()
 {
     CCpuUsage tCpuUsage;
 
@@ -32,6 +49,16 @@ string CHostStatus::GetCpuUsageString()
 }
 
 
+
+string FetchCpuMonokaryonUsage()
+{
+    CCpuUsage tCpuUsage;
+
+    return tCpuUsage.GetCpuUsageString();
+}
+
+
+
 int CHostStatus::GetCpuMonokaryonUsage(double **pUsage, unsigned long *pOutLen)
 {
     CCpuUsage tCpuUsage;
@@ -45,8 +72,65 @@ int CHostStatus::GetCpuMonokaryonUsage(double **pUsage, unsigned long *pOutLen)
 }
 
 
+int CHostStatus::FetchCpuMonokaryonUsage(double **pUsage, unsigned long *pOutLen)
+{
+    CCpuUsage tCpuUsage;
+
+    if (pUsage == NULL || pOutLen == NULL)
+    {
+        return -1;
+    }
+
+    return tCpuUsage.GetCpuPercsUsage(pUsage, pOutLen);
+}
+
+
+
+int CHostStatus::FetchCpuFrequency()
+{
+    CCpuInfoList tCpuList;
+
+    tCpuList.GetCpuInfoList();
+    return tCpuList.GetCpuInfo(0)->GetMhz();
+}
+
+
+
+string CHostStatus::FetchCpuLoadAverage()
+{
+    int i = 0;
+    string total("");
+    CLoadAvg tLoadAvg;
+
+    tLoadAvg.GetLoadAvgInfo();
+    for (i = 0; i < MAX_LOAD_AVG_NUM; i++)
+    {
+        total.append(CString::ToString(tLoadAvg.GetLoadAvg(i)));
+        if (i < (MAX_LOAD_AVG_NUM - 1))
+        {
+            total.append(",");
+        }
+    }
+
+    return total;
+}
+
+
+
 
 double CHostStatus::GetMemUsage()
+{
+    double usage = 0.0;
+    CMemUsage tMemUsage;
+
+    tMemUsage.GetMemUsage();
+    usage = tMemUsage.GetMemFreePercent();
+    return usage;
+}
+
+
+
+double CHostStatus::FetchMemUsage()
 {
     double usage = 0.0;
     CMemUsage tMemUsage;
@@ -87,60 +171,116 @@ long CHostStatus::FetchMemoryUsed()
 
 double CHostStatus::GetSwapUsage()
 {
-    int usage = 0.0;
+    return FetchSwapUsage();
+}
+
+
+
+
+double CHostStatus::FetchSwapUsage()
+{
+    double usage = 0.0;
     CSwapUsage tSwapUsage;
 
     tSwapUsage.GetSwapUsage();
     if (tSwapUsage.GetTotal() > 0)
     {
-        usage = (double)((tSwapUsage.GetUsed() * 1.0) / (tSwapUsage.GetTotal() * 1.0));
+        usage = (double)(tSwapUsage.GetUsed()) / (double)(tSwapUsage.GetTotal());
     }
 
-    usage = (double)((int)(usage * 100) / 100.0);
+    usage = usage * 100;
     return usage;
 }
 
 
 
-double CHostStatus::GetDiskUsage()
+int CHostStatus::FetchDiskTotal()
 {
-    int usage = 0;
-    double avail = 0.0;
-    double total = 0.0;
+    unsigned long i = 0;
+    unsigned long total = 0;
+
     CFileSystem tFileSystem;
 
     tFileSystem.GetFileSystem();
-    total = (double)tFileSystem.GetFileSysTotal();
-    avail = (double)tFileSystem.GetFileSysAvail();
-
-    if (total > 0)
+    for (i = 0; i < tFileSystem.GetFileSystemNum(); i++)
     {
-        usage = (total - avail) / total;
+        total += tFileSystem.GetFileSystemInfo(i)->GetFileSysTotal();
     }
 
-    usage = (double)((int)(usage * 100) / 100.0);
-    return usage;
+    return (int)(total / (1024 * 1024)); /*GB*/
 }
 
 
 
-long CHostStatus::FetchMainFSDiskSize()
+int CHostStatus::GetDiskUsage()
 {
-    return 0;
+    return FetchDiskUsage();
 }
 
 
 
-long CHostStatus::FetchDiskAvailableSize()
+int CHostStatus::FetchDiskUsage()
 {
-    return 0;
+    double usage = 0.0;
+
+    int mainFSTotalSize = FetchMainFSDiskSize();
+    int mainFSAvailableSize = FetchDiskAvailableSize();
+    int mainFSUsedSize = mainFSTotalSize - mainFSAvailableSize;
+
+    usage = (double)mainFSUsedSize / (double)mainFSTotalSize;
+    return (int)(usage * 100);
 }
 
 
 
-long CHostStatus::FetchDiskUsedSize()
+int CHostStatus::FetchMainFSDiskSize()
 {
-    return 0;
+    unsigned long i = 0;
+    unsigned long total = 0;
+    CFileSystem tFileSystem;
+
+    tFileSystem.GetFileSystem();
+    for (i = 0; i < tFileSystem.GetFileSystemNum(); i++)
+    {
+        if (tFileSystem.GetFileSystemInfo(i)->GetFileSystemType() == FSTYPE_LOCAL_DISK)
+        {
+            total += tFileSystem.GetFileSystemInfo(i)->GetFileSysTotal();
+        }
+    }
+
+    return (int)(total / (1024 * 1024)); /*GB*/
+}
+
+
+
+int CHostStatus::FetchDiskAvailableSize()
+{
+    unsigned long i = 0;
+    unsigned long total = 0;
+    CFileSystem tFileSystem;
+
+    tFileSystem.GetFileSystem();
+    for (i = 0; i < tFileSystem.GetFileSystemNum(); i++)
+    {
+        if (strcmp(tFileSystem.GetFileSystemInfo(i)->GetDirName(), "identifier") == 0)
+        {
+            continue;
+        }
+        
+        if (tFileSystem.GetFileSystemInfo(i)->GetFileSystemType() == FSTYPE_LOCAL_DISK)
+        {
+            total += tFileSystem.GetFileSystemInfo(i)->GetFileSysAvail();
+        }
+    }
+
+    return (int)(total / (1024 * 1024)); /*GB*/
+}
+
+
+
+int CHostStatus::FetchDiskUsedSize()
+{
+    return FetchMainFSDiskSize() - FetchDiskAvailableSize();
 }
 
 
@@ -269,6 +409,57 @@ CProcMem CHostStatus::GetProcMem(long pid)
     tProcMem.GetProcMem(pid);
     return tProcMem;
 }
+
+
+
+
+string CHostStatus::FetchSysDesc()
+{
+    CSystemInfo os;
+
+    os.GetName();
+    return string("-os") + os.GetName() + " -arch" + os.GetArch() + " -desc" + os.GetDesc() + " -agent version:";
+}
+
+
+
+
+double CHostStatus::FetchUpTime()
+{
+    CUptime uptime;
+    return uptime.GetUptime();
+}
+
+
+
+int CHostStatus::GetTcpEstablished()
+{
+    CNetStat tNetStat;
+
+    tNetStat.GetNetStat();
+    return tNetStat.GetTcpStates(TCP_ESTABLISHED);
+}
+
+
+
+int CHostStatus::FetchAllInputBandWidth()
+{
+    CNetStat tNetStat;
+
+    tNetStat.GetNetStat();
+    return tNetStat.GetAllInboundTotal();
+}
+
+
+
+int CHostStatus::FetchAllOutputBandWidth()
+{
+    CNetStat tNetStat;
+
+    tNetStat.GetNetStat();
+    return tNetStat.GetAllOutboundTotal();
+}
+
 
 
 

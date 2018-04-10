@@ -23,22 +23,34 @@ class CHostStatus
 {
 public:
 
-    static bool NeedReportFums();
 
-
+    static int FetchCpuNum();
     static double GetCpuUsage();
+    static double FetchCpuUsage();
     static string GetCpuUsageString();
+    static string FetchCpuMonokaryonUsage();
     static int GetCpuMonokaryonUsage(double **pUsage, unsigned long *pOutLen);
+    static int FetchCpuMonokaryonUsage(double **pUsage, unsigned long *pOutLen);
+    static int FetchCpuFrequency();
+    static string FetchCpuLoadAverage();
+
 
     static double GetMemUsage();
-    static double GetSwapUsage();
-    static double GetDiskUsage();
+    static double FetchMemUsage();
 
     static long FetchMemorySize();
     static long FetchMemoryUsed();
-    static long FetchMainFSDiskSize();
-    static long FetchDiskAvailableSize();
-    static long FetchDiskUsedSize();
+
+    static double GetSwapUsage();
+    static double FetchSwapUsage();
+
+    static int GetDiskUsage();
+    static int FetchDiskUsage();
+
+    static int FetchDiskTotal();
+    static int FetchMainFSDiskSize();
+    static int FetchDiskAvailableSize();
+    static int FetchDiskUsedSize();
 
     static string GetProcArgs(long pid);
     static string GetProcState(long pid);
@@ -46,6 +58,13 @@ public:
     static CProcMem GetProcMem(long pid);
 
     static int FetchNicUsage(long& rxSum, long& txSum);
+
+    static string FetchSysDesc();
+    static double FetchUpTime();
+
+    static int GetTcpEstablished();
+    static int FetchAllInputBandWidth();
+    static int FetchAllOutputBandWidth();
 
 private:
 

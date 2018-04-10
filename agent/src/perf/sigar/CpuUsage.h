@@ -65,6 +65,7 @@ private:
 
 
 
+
 class CCpuUsage
 {
 public:
@@ -105,6 +106,110 @@ private:
 
 
 
+
+
+
+class CCpuInfo
+{
+public:
+    CCpuInfo();
+    ~CCpuInfo();
+
+
+    char* GetVendor(){return m_szVendor;}
+    void SetVendor(char *vendor){if (vendor != NULL){strncpy(m_szVendor, vendor, (sizeof(m_szVendor)-1));}}
+
+    char* GetModel(){return m_szModel;}
+    void SetModel(char *model){if (model != NULL){strncpy(m_szModel, model, (sizeof(m_szModel)-1));}}
+
+    int GetMhz(){return m_nMhz;}
+    void SetMhz(int mhz){m_nMhz = mhz;}
+
+    int GetMhzMax(){return m_nMhzMax;}
+    void SetMhzMax(int mhz){m_nMhzMax = mhz;}
+
+    int GetMhzMin(){return m_nMhzMin;}
+    void SetMhzMin(int mhz){m_nMhzMin = mhz;}
+
+    int GetTotalSockets(){return m_nTotalSockets;}
+    void SetTotalSockets(int sockets){m_nTotalSockets = sockets;}
+
+    int GetTotalCores(){return m_nTotalCores;}
+    void SetTotalCores(int cores){m_nTotalCores = cores;}
+
+    int GetCoresPerSocket(){return m_nCoresPerSocket;}
+    void SetCoresPerSocket(int socket){m_nCoresPerSocket = socket;}
+
+    unsigned long long GetCacheSize(){return m_nCacheSize;}
+    void SetCacheSize(unsigned long long size){m_nCacheSize = size;}
+
+
+
+private:
+    char m_szVendor[128];
+    char m_szModel[128];
+    int m_nMhz;
+    int m_nMhzMax;
+    int m_nMhzMin;
+    int m_nTotalSockets;
+    int m_nTotalCores;
+    int m_nCoresPerSocket;
+    unsigned long long m_nCacheSize;
+
+};
+
+
+
+
+
+class CCpuInfoList
+{
+public:
+    CCpuInfoList();
+    ~CCpuInfoList();
+
+
+    CCpuInfo *GetCpuInfo(unsigned long index);
+    void SetCpuInfo(sigar_cpu_info_t& cpu, unsigned long index);
+
+    unsigned long GetCpuNum(){return m_nCpuNum;}
+    void SetCpuNum(unsigned long num){if(num > 0){m_nCpuNum = num;}}
+
+
+    unsigned long GetCpuInfoNum();
+    int GetCpuInfoList();
+
+
+
+private:
+    unsigned long m_nCpuNum;
+    CCpuInfo *m_pCpuInfoList;
+
+};
+
+
+
+
+
+
+#define MAX_LOAD_AVG_NUM 3
+
+class CLoadAvg
+{
+public:
+    CLoadAvg();
+    ~CLoadAvg();
+
+
+    double GetLoadAvg(int index);
+
+    int GetLoadAvgInfo();
+
+
+private:
+    double m_fLoadAvg[MAX_LOAD_AVG_NUM];
+
+};
 
 
 
