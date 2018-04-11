@@ -12,13 +12,16 @@
 int CScriptAction::ExecuteScript(char *cmd)
 {
     FILE *fp = NULL;
+    char cmdTimeout[MAX_SCRIPT_CMD_LEN] = {0};
 
     if (cmd == NULL)
     {
         return -1;
     }
 
-    fp = popen(cmd, "r");
+    strcpy(cmdTimeout, SCRIPT_CMD_TIMEOUT);
+    strncat(cmdTimeout, cmd, (MAX_SCRIPT_CMD_LEN-strlen(SCRIPT_CMD_TIMEOUT)-1))
+    fp = popen(cmdTimeout, "r");
     if (fp == NULL)
     {
         return -1;
@@ -33,10 +36,11 @@ int CScriptAction::ExecuteScript(char *cmd)
 int CScriptAction::ExecuteScript(string& cmd)
 {
     FILE *fp = NULL;
-    const char *szCmd = NULL;
+    char cmdTimeout[MAX_SCRIPT_CMD_LEN] = {0};
 
-    szCmd = cmd.c_str();
-    fp = popen(szCmd, "r");
+    strcpy(cmdTimeout, SCRIPT_CMD_TIMEOUT);
+    strncat(cmdTimeout, cmd.c_str(), (MAX_SCRIPT_CMD_LEN-strlen(SCRIPT_CMD_TIMEOUT)-1))
+    fp = popen(cmdTimeout, "r");
     if (fp == NULL)
     {
         return -1;
@@ -51,12 +55,13 @@ int CScriptAction::ExecuteScript(string& cmd)
 
 int CScriptAction::ExecuteScript(string& cmd, string& rlt)
 {
-    char line[MAX_SCRIPT_RESULT_LEN] = {0};
-    const char *szCmd = NULL;
     FILE *fp = NULL;
+    char line[MAX_SCRIPT_RESULT_LEN] = {0};
+    char cmdTimeout[MAX_SCRIPT_CMD_LEN] = {0};
 
-    szCmd = cmd.c_str();
-    fp = popen(szCmd, "r");
+    strcpy(cmdTimeout, SCRIPT_CMD_TIMEOUT);
+    strncat(cmdTimeout, cmd.c_str(), (MAX_SCRIPT_CMD_LEN-strlen(SCRIPT_CMD_TIMEOUT)-1))
+    fp = popen(cmdTimeout, "r");
     if (fp == NULL)
     {
         return -1;

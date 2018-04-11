@@ -11,9 +11,11 @@ using namespace std;
 
 
 
-#define MAX_SCRIPT_FORMAT_LEN   256
-#define MAX_SCRIPT_RESULT_LEN   256
+#define MAX_SCRIPT_FORMAT_LEN 1024
+#define MAX_SCRIPT_RESULT_LEN 1024
+#define MAX_SCRIPT_CMD_LEN 1024
 
+#define SCRIPT_CMD_TIMEOUT "timeout 30s "
 
 class CScriptAction
 {
