@@ -13,7 +13,7 @@
 
 #define NIC_LOCAL_LOOPBACK "lo"
 
-
+#define MAX_IP_LEN 48
 #define MAX_IFNAME_LEN 256
 
 typedef struct
@@ -49,7 +49,7 @@ public:
 
 
     char* GetIfName(){return m_cIfName;}
-    void SetIfName(char *ifName);
+    void SetIfName(const char *ifName);
 
     unsigned long long GetRxPackets(){return m_nRxPackets;}
     void SetRxPackets(unsigned long long rxPackets){m_nRxPackets = rxPackets;}
@@ -92,6 +92,9 @@ public:
 
     unsigned long long GetSpeed(){return m_nSpeed;}
     void SetSpeed(unsigned long long speed){m_nSpeed = speed;}
+
+
+    int GetNetIfStat(const char *ifName);
 
 
 private:
@@ -139,6 +142,7 @@ public:
     void SetHwAddr(sigar_net_address_t& addr);
     
     T_NET_ADDR* GetAddress(){return &m_address;}
+    int GetAddress(string& ipAddr);
     void SetAddress(sigar_net_address_t& addr);
     
     T_NET_ADDR* GetDestination(){return &m_destination;}

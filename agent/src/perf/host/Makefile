@@ -3,7 +3,7 @@
 
 TARGET = perf
 CFLAGS = -Wall -O -g -Wno-write-strings
-INC_DIR = -I/usr/include/libxml2 -I../../include -I../sigar -I../scalar -I../../utils -I../../proto -I../../../3rd/protobuf/include -I../../../3rd/sigar/include
+INC_DIR = -I/usr/include/libxml2 -I../../msg -I../../include -I../sigar -I../scalar -I../../utils -I../../proto -I../../../3rd/protobuf/include -I../../../3rd/sigar/include -I../../../3rd/rabbitmq/include
 ###########################################################
 CC = gcc
 XX = g++

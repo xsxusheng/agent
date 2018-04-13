@@ -67,6 +67,8 @@ private:
 
 #define DISK_STAT_SCRIPT "diskstat.sh"
 #define MAX_DISK_SPLIT_NUM 10
+#define DEF_DISK_STATIC_REPORT (15 * 60)
+
 
 class CDiskStatic : public CTimerBase
 {
@@ -80,9 +82,11 @@ public:
 
     void Sample();
     void SendToFums();
+    bool NeedReportFums();
 
 
 private:
+    CTime m_lastReportFums;
     list<CDisk> m_listDisk;
 
 };

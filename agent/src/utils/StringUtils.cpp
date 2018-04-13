@@ -130,6 +130,18 @@ string CString::ToString(long val)
 
 
 
+string CString::ToString(unsigned long long val)
+{
+    char tBuf[MAX_STRING_FMT_LEN] = {0};
+
+    snprintf(tBuf, (MAX_STRING_FMT_LEN-1), "%llu", val);
+
+    string tStr(tBuf);
+    return tStr;
+}
+
+
+
 string CString::ToString(double val)
 {
     char tBuf[MAX_STRING_FMT_LEN] = {0};

@@ -20,7 +20,45 @@ CProcess::CProcess()
     m_fCpuMax = 0;
     m_fMem = 0;
     m_fMemMax = 0;
+
+    m_strCommand.clear();
+    m_strTime.clear();
+    m_strState.clear();
+
+    m_listCpu.clear();
+    m_listMem.clear();
+    m_listSize.clear();
+    m_listVirt.clear();
+    m_listRes.clear();
+    m_listShr.clear();
 }
+
+
+CProcess::~CProcess()
+{
+    m_nPid = 0;
+    m_nSize = 0;
+    m_nVirt = 0;
+    m_nRes = 0;
+    m_nShr = 0;
+
+    m_fCpu = 0;
+    m_fCpuMax = 0;
+    m_fMem = 0;
+    m_fMemMax = 0;
+
+    m_strCommand.clear();
+    m_strTime.clear();
+    m_strState.clear();
+
+    m_listCpu.clear();
+    m_listMem.clear();
+    m_listSize.clear();
+    m_listVirt.clear();
+    m_listRes.clear();
+    m_listShr.clear();
+}
+
 
 
 

@@ -6,6 +6,19 @@
 
 #include "ProcInfo.h"
 #include "HostStatus.h"
+#include "Perf.pb.h"
+
+#include "AmqpReceiveBuilder.h"
+#include "AmqpMessageReceiveProcessor.h"
+#include "AmqpMessageSendProcessor.h"
+#include "ProtoBufPacker.h"
+
+using namespace com::fiberhome::fums::proto;
+
+
+
+
+
 
 
 CProcessStatic::CProcessStatic()
@@ -60,7 +73,9 @@ void CProcessStatic::Run()
     /*文件生成周期为15分钟*/
     if (NeedReportFums())
     {
+        CalcAvrg();
         SendToFums();
+        ClearAvrg();
     }
 }
 
@@ -141,7 +156,6 @@ void CProcessStatic::GetProcStatus()
 
 void CProcessStatic::CalcAvrg()
 {
-    
     list<CProcess>::iterator it;
     for (it = m_listprocess.begin(); it != m_listprocess.end(); it++)
     {
@@ -156,8 +170,37 @@ void CProcessStatic::CalcAvrg()
 
 
 
+void CProcessStatic::ClearAvrg()
+{
+    m_listprocess.clear();
+}
+
+
+
 void CProcessStatic::SendToFums()
 {
+    list<CProcess>::iterator it;
+    ProcessData data;
+
+    for (it = m_listprocess.begin(); it != m_listprocess.end(); it++)
+    {
+        SingleProcessPerfData *singleData = data.add_perfdata();
+        singleData->set_pid(it->GetPid());
+        singleData->set_command(it->GetCommand());
+        singleData->set_cpu((float)it->GetCpu());
+        singleData->set_mem((float)it->GetMem());
+        singleData->set_size(it->GetSize());
+        singleData->set_virt(it->GetVirt());
+        singleData->set_res(it->GetRes());
+        singleData->set_shr(it->GetShr());
+        singleData->set_time(it->GetTime());
+        singleData->set_state(it->GetState());
+        singleData->set_cpumax((float)it->GetCpuMax());
+        singleData->set_memmax((float)it->GetMemMax());
+    }
+
+    Major major = ProtoBufPacker::PackPerfEntity(ProtoBufPacker::SerializeToArray<ProcessData>(data), PerfData::PROCESS_TYPE);
+    AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
 }
 
 

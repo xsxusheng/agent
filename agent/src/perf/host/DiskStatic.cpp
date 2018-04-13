@@ -11,7 +11,13 @@
 #include "ScriptAction.h"
 #include "StringUtils.h"
 
-//using namespace com::fiberhome::fums::proto;
+#include "AmqpReceiveBuilder.h"
+#include "AmqpMessageReceiveProcessor.h"
+#include "AmqpMessageSendProcessor.h"
+#include "ProtoBufPacker.h"
+
+using namespace com::fiberhome::fums::proto;
+
 
 
 
@@ -65,9 +71,31 @@ CDiskStatic::~CDiskStatic()
 
 
 
+bool CDiskStatic::NeedReportFums()
+{
+    CTime tNow;
+
+    if (m_lastReportFums.DiffSec(tNow) >= DEF_DISK_STATIC_REPORT)
+    {
+        /*重置上次上报时间*/
+        m_lastReportFums = tNow;
+        return true;
+    }
+    return false;
+}
+
+
+
 void CDiskStatic::Run()
 {
     Sample();
+
+    /*文件生成周期为15分钟*/
+    if (NeedReportFums())
+    {
+        SendToFums();
+        m_listDisk.clear();
+    }
 }
 
 
@@ -115,8 +143,28 @@ void CDiskStatic::Sample()
 
 
 
-void SendToFums()
+void CDiskStatic::SendToFums()
 {
+    list<CDisk>::iterator it;
+    DiskData data;
+
+    for (it = m_listDisk.begin(); it != m_listDisk.end(); it++)
+    {
+        SingleDiskPerfData *singleData = data.add_perfdata();
+
+        singleData->set_dev(it->GetDev());
+        singleData->set_tps(it->GetTps());
+        singleData->set_rd_sec(it->GetRdSec());
+        singleData->set_wr_sec(it->GetWrSec());
+        singleData->set_avgqu_sz(it->GetAvgqu());
+        singleData->set_avgrq_sz(it->GetAvgrq());
+        singleData->set_await(it->GetAwait());
+        singleData->set_svctm(it->GetSvctm());
+        singleData->set_util(it->GetUtil());
+    }
+
+    Major major = ProtoBufPacker::PackPerfEntity(ProtoBufPacker::SerializeToArray<DiskData>(data), PerfData::DISK_TYPE);
+    AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
 }
 
 

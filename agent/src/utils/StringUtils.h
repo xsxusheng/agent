@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-#define MAX_STRING_FMT_LEN 256
+#define MAX_STRING_FMT_LEN 1024
 
 class CString
 {
@@ -32,6 +32,7 @@ public:
 
     static string ToString(int val);
     static string ToString(long val);
+    static string ToString(unsigned long long val);
     static string ToString(double val);
 
 };

@@ -4,6 +4,8 @@
  *********************************************************/
 #include "NetInterface.h"
 
+#include <arpa/inet.h>
+
 #include "sigar.h"
 #include "SigarAdapt.h"
 
@@ -35,7 +37,7 @@ CNetIfStat::~CNetIfStat()
 }
 
 
-void CNetIfStat::SetIfName(char *ifName)
+void CNetIfStat::SetIfName(const char *ifName)
 {
     if(ifName != NULL)
     {
@@ -43,6 +45,48 @@ void CNetIfStat::SetIfName(char *ifName)
         strncpy(m_cIfName, ifName, (MAX_IFNAME_LEN - 1));
     }
 }
+
+
+
+int CNetIfStat::GetNetIfStat(const char *ifName)
+{
+    int ret = 0;
+    sigar_net_interface_stat_t ifstat;
+
+    if (ifName == NULL)
+    {
+        return -1;
+    }
+    
+    if (SIGAR_OK != (ret = sigar_net_interface_stat_get(CSigar::GetSigar(), ifName, &ifstat)))
+    {
+        printf("sigar_net_interface_stat_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        return -1;
+    }
+
+    SetIfName(ifName);
+    if (strcmp(ifName, NIC_LOCAL_LOOPBACK) == 0)
+    {
+        return 0;
+    }
+    
+    SetRxPackets(ifstat.rx_packets);
+    SetRxBytes(ifstat.rx_bytes);
+    SetRxErrors(ifstat.rx_errors);
+    SetRxDropped(ifstat.rx_dropped);
+    SetRxOverruns(ifstat.rx_overruns);
+    SetRxFrame(ifstat.rx_frame);
+    SetTxPackets(ifstat.tx_packets);
+    SetTxBytes(ifstat.tx_bytes);
+    SetTxErrors(ifstat.tx_errors);
+    SetTxDropped(ifstat.tx_dropped);
+    SetTxOverruns(ifstat.tx_overruns);
+    SetTxCollisions(ifstat.tx_collisions);
+    SetTxCarrier(ifstat.tx_carrier);
+    SetSpeed(ifstat.speed);
+    return 0;
+}
+
 
 
 
@@ -99,6 +143,31 @@ void CNetIfConfig::SetHwAddr(sigar_net_address_t& addr)
         memcpy(&m_hwAddr, &addr, sizeof(T_NET_ADDR));
     }
 }
+
+
+
+int CNetIfConfig::GetAddress(string& ipAddr)
+{
+    char strIp[MAX_IP_LEN] = {0};
+
+    if (m_address.family == T_NET_ADDR::SIGAR_AF_INET)
+    {
+        inet_ntop(AF_INET, &m_address.addr.in, strIp, (MAX_IP_LEN-1));
+        ipAddr = strIp;
+    }
+    else if (m_address.family == T_NET_ADDR::SIGAR_AF_INET6)
+    {
+        inet_ntop(AF_INET6, &m_address.addr.in6, strIp, (MAX_IP_LEN-1));
+        ipAddr = strIp;
+    }
+    else
+    {
+        return -1;
+    }
+
+    return 0;
+}
+
 
 
 void CNetIfConfig::SetAddress(sigar_net_address_t& addr)

@@ -11,7 +11,12 @@
 #include "ScriptAction.h"
 #include "StringUtils.h"
 
-//using namespace com::fiberhome::fums::proto;
+#include "AmqpReceiveBuilder.h"
+#include "AmqpMessageReceiveProcessor.h"
+#include "AmqpMessageSendProcessor.h"
+#include "ProtoBufPacker.h"
+
+using namespace com::fiberhome::fums::proto;
 
 
 
@@ -118,6 +123,7 @@ void CDiskHealthStatus::SendToFums()
             badFlag = true;
         }
     }
+
 }
 
 

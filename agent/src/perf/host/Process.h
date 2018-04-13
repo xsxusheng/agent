@@ -17,7 +17,7 @@ class CProcess
 {
 public:
     CProcess();
-    ~CProcess(){};
+    ~CProcess();
 
 
     long GetPid(){return m_nPid;}

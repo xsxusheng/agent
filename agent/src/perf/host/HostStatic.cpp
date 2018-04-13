@@ -6,6 +6,11 @@
 #include "Perf.pb.h"
 #include "HostStatus.h"
 
+#include "AmqpReceiveBuilder.h"
+#include "AmqpMessageReceiveProcessor.h"
+#include "AmqpMessageSendProcessor.h"
+#include "ProtoBufPacker.h"
+
 using namespace com::fiberhome::fums::proto;
 
 
@@ -112,7 +117,8 @@ void CHostStatic::SendToFums()
     data.set_disktotal(CHostStatus::FetchMainFSDiskSize());
 
     /*发送消息*/
-    //Major major;
+    Major major = ProtoBufPacker::PackPerfEntity(ProtoBufPacker::SerializeToArray<Hostdata>(data), PerfData::HOST_TYPE);
+    AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
 
 
     /*清空当前信息*/

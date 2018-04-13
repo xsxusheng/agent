@@ -12,7 +12,6 @@
 using namespace std;
 
 
-
 #define DEF_PROCESS_REPORT (15 * 60)
 
 
@@ -31,6 +30,7 @@ public:
 
     void GetProcStatus();
     void CalcAvrg();
+    void ClearAvrg();
     void SendToFums();
 
 
