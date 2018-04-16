@@ -101,7 +101,7 @@ int AmqpMessageSendProcessor::SendMessageToFums(Major &msg)
 	{
 		return -1;
 	}
-
+	//ProtoBufPacker::ProtoToString(msg);
 	msgQueue->push(msg);
 
     	return 0;

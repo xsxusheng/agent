@@ -34,12 +34,12 @@ void App::SetAppVersion(string &appVersion)
 	m_appVersion = appVersion;
 }
 
-inline int App::GetAppStatus()
+int App::GetAppStatus()
 {
 	return m_appStatus;
 }
 
-inline void App::SetAppStatus(int appStatus)
+void App::SetAppStatus(int appStatus)
 {
 	m_appStatus = appStatus;
 }
@@ -49,7 +49,7 @@ string App::GetAppTryInstallingVersion()
 	return m_appTryInstallingVersion;
 }
 
-void App::SetAppTryInstallingVersion(string &appTryInstallingVersion)
+void App::SetAppTryInstallingVersion(string appTryInstallingVersion)
 {
 	m_appTryInstallingVersion = appTryInstallingVersion;
 }
@@ -69,15 +69,24 @@ string App::GetAppTryInstallingFailedReason()
 	return m_appTryInstallingFailedReason;
 }
 
-void App::SetAppTryInstallingFailedReason(string &appTryInstallingFailedReason)
+void App::SetAppTryInstallingFailedReason(string appTryInstallingFailedReason)
 {
 	m_appTryInstallingFailedReason = appTryInstallingFailedReason;
 }
 
-bool App::isStart()
+/* 设置是否启动即fums是否启动了app */
+void App::SetIsStart(bool start)
+{
+	m_isMayStart = start;
+}
+
+/* 获取app是否启动 */
+bool App::GetIsStart()
 {
 	return m_isMayStart;
 }
+
+
 
 int App::GetStartCount()
 {
@@ -98,16 +107,12 @@ void App::SetAppDaemonStatus(int appDaemonStatus)
 {
 	m_appDaemonStatus = appDaemonStatus;
 }
-
-bool App::operator==(const App &app)
+/*
+bool App::operator == (const App& app1, const App& app2)
 {
-	return m_appType == app.m_appType ? true : false;
+	return app1.GetAppType().compare(app2.GetAppType()) == 0 ? true : false;
 }
-
-
-
-
-
+*/
 
 
 

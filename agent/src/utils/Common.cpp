@@ -11,6 +11,7 @@
 #include <cstring>
 #include <unistd.h>  
 #include <dirent.h>
+#include <sys/stat.h>
 #include <errno.h>
 
 
@@ -40,6 +41,51 @@ bool Common::FileExist(string &filename)
 	}	
 	return false;
 }
+
+
+bool Common::CreatDir(string &path)
+{
+	if(path.empty())
+	{
+		return false;
+	}
+	if(mkdir(path.c_str(), 0755) == 0)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+
+/***********************************************************************
+ * FunctionName : GetFileName
+ * Author : xus103
+ * CreateDate : 2018/03/20
+ * Description : 从带路径的文件名中取出文件名
+ * InputParam : pathFileName - 带路径的文件名
+ * OutputParam :
+ * Return Value : 返回文件名, 失败返回空 
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
+string Common::GetFileName(string &pathFileName)
+{
+	if(pathFileName.empty())
+	{
+		return "";
+	}
+
+	unsigned int pos = pathFileName.rfind('/', pathFileName.length());
+	if(pos == string::npos)
+	{
+		return pathFileName;
+	}
+	string filename = pathFileName.substr(pos + 1, pathFileName.length());
+	
+	return filename;
+}
+
 
 /***********************************************************************
  * FunctionName : SaveToFile
@@ -169,9 +215,9 @@ string Common::GetLatestFile(vector<string> &files, string &head, string &tail)
 	}
 
 	vector<string>::iterator it = files.begin();  
-    for(; it != files.end(); ++it)  
-    {
-    	string fileName((*it));
+    	for(; it != files.end(); ++it)  
+    	{
+    		string fileName((*it));
 		unsigned int n = fileName.find(head, 0);
 		if(n == string::npos)
 		{
@@ -204,7 +250,7 @@ string Common::GetLatestFile(vector<string> &files, string &head, string &tail)
 
 		date = tmp;
 		latestFile= fileName;
-    }
+    	}
 	
  	return latestFile;
 }
@@ -252,16 +298,16 @@ string Common::GetAbsolutePathFileName(string &path, string &fileName)
 {
 	string absolutePathFileName;
 
-    if (path[path.size() - 1] == '/')
-    {
-        absolutePathFileName = path + fileName;
-    }
-    else
-    {
-        absolutePathFileName = path + "/" + fileName;
-    }
+    	if (path[path.size() - 1] == '/')
+    	{
+        	absolutePathFileName = path + fileName;
+    	}
+    	else
+    	{
+        	absolutePathFileName = path + "/" + fileName;
+    	}
 	
-    return absolutePathFileName;
+    	return absolutePathFileName;
 }
 
 

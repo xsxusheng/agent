@@ -16,27 +16,28 @@ unordered_map<int, string> AppTypeMap({
         {EnumDefineData::EPG_HA, "EPG_HA"},
         {EnumDefineData::EPG_LOG, "EPG_LOG"},
         {EnumDefineData::EPG_RSYNC, "EPG_RSYNC"},
+	
+        {EnumDefineData::ACS_WEB, "ACS_WEB"},
+        {EnumDefineData::ACS_HA, "ACS_HA"},
+        {EnumDefineData::ACS_LB, "ACS_LB"},
+        {EnumDefineData::ACS, "ACS"},
+        {EnumDefineData::ACS_ALL, "ACS_ALL"},
+
+        {EnumDefineData::AAA, "AAA"},
+        {EnumDefineData::AAA_WEB, "AAA_WEB"},
+        {EnumDefineData::AAA_HA, "AAA_HA"},
+        {EnumDefineData::AAA_LB, "AAA_LB"},
+        {EnumDefineData::AAA_ALL, "AAA_ALL"},
+
+        {EnumDefineData::VODLD, "VODLD"},
+        {EnumDefineData::TVLD, "TVLD"},
+        {EnumDefineData::TVLD_TVLD, "TVLD_TVLD"},
+        {EnumDefineData::TVLD_TLCC, "TVLD_TLCC"},
+
+        {EnumDefineData::VCC, "VCC"},
+
+        {EnumDefineData::MW, "MW"},
 	/*
-        public static final String ACS_WEB = "ACS_WEB";
-        public static final String ACS_HA = "ACS_HA";
-        public static final String ACS_LB = "ACS_LB";
-        public static final String ACS = "ACS";
-        public static final String ACS_ALL = "ACS_ALL";
-
-        public static final String AAA = "AAA";
-        public static final String AAA_WEB = "AAA_WEB";
-        public static final String AAA_HA = "AAA_HA";
-        public static final String AAA_LB = "AAA_LB";
-        public static final String AAA_ALL = "AAA_ALL";
-
-        public static final String VODLD = "VODLD";
-        public static final String TVLD = "TVLD";
-        public static final String TVLD_TVLD = "TVLD_TVLD";
-        public static final String TVLD_TLCC = "TVLD_TLCC";
-
-        public static final String VCC = "VCC";
-
-        public static final String MW = "MW";
         public static final String MW_MA = "MW_MA";
         public static final String MW_OSS = "MW_OSS";
         public static final String MW_JBOSS = "MW_JBOSS";
@@ -473,6 +474,10 @@ string EPG4K_CONCURRENT_NUM_SCRIPT("/opt/fonsview/NE/agent/lvs_conn_num.sh");
 string DNS_REDIRECT_REQUEST_SCRIPT_FILE("/opt/fonsview/NE/drs/proc/dns_statis");
 string DNS_REDIRECT_REQUEST_SCRIPT("/opt/fonsview/NE/agent/script/ucarp/dns_redirect_request.sh");
 
+string AgentConstantDef::GetAppStrType(const int appType)
+{
+	return AppTypeMap[appType];
+}
 
 unordered_map<string, string> AgentConstantDef::S_START_SCRIPTS_MAP({
         {AppTypeMap[EnumDefineData::CSD], CSD_START},

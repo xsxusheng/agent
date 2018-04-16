@@ -10,6 +10,7 @@
 #include "../utils/sv_log.h"
 #include "../utils/Common.h"
 #include "../utils/AgentUtils.h"
+#include "../app/AppScriptAction.h"
 #include "ConfManager.h"
 #include "AppConfFile.h"
 
@@ -28,27 +29,20 @@ int AppConfFile::Init()
 	return 0;
 }
 
-string AppConfFile::GetAppConfFile(string &path, string &similarFile)
+
+int AppConfFile::DeleteExpiredConfFile(string &path, string &newFileName, string &usingFileName)
 {
-        if(path.empty() || similarFile.empty())
-        
-                return "";
-       
-
-        vector<string> files = Common::GetAllFiles(path);
-        string alarmConfFile = Common::GetLatestFile(files, similarFile);
-        if(!alarmConfFile.empty())
-        {
-                return alarmConfFile;
-        }
-
-        return "";
+   
+	return 0;    
 }
 
 
 int AppConfFile::Analyse(ConfigData &config, ConfigUpdateResponse &response)
 {
-	int ret = ConfManager::agentConfFileRWLock.TimeRdLock(20);
+	AppScriptAction appScriptAction;
+	string fileName = "error";
+
+	int ret = ConfManager::appConfFileRWLock.TimeRdLock(20);
 	if(0 != ret)
 	{	SV_LOG("get lock error");
 		return -1;
@@ -58,10 +52,52 @@ int AppConfFile::Analyse(ConfigData &config, ConfigUpdateResponse &response)
 	string fileSavePath = config.filesavepath();
 	/* 下发的新的配置文件 */
 	string newFileName = config.configfilename();
-	/* 当前正在使用的配置文件 */
-	string usingFileName = GetAppConfFile(fileSavePath, newFileName);
-	
+
+	/* 获取app加载配置 */
 	string viewConfScript = config.viewconfscript();
+	appScriptAction.FetchAppLoadConfFile(viewConfScript);
+	if(appScriptAction.exeStatus == AppScriptAction::SUCCESS)
+	{
+		fileName = appScriptAction.outContent;
+	}
+	string usingFileName = Common::GetFileName(fileName);
+	if(!newFileName.compare(usingFileName))
+	{
+		string errMsg = "the same file name, newFileName:" + newFileName + ", usingFileName:" + usingFileName;
+                SV_ERROR("%s", errMsg.c_str());
+                response.set_status(CommonResponse::FAILED);
+                response.set_reason(errMsg);
+                ConfManager::appConfFileRWLock.UnLock();
+                return -1;
+	}
+	
+	if(!Common::FileExist(fileSavePath))
+	{
+		SV_LOG("%s not exist, to create", fileSavePath.c_str());
+		if(!Common::CreatDir(fileSavePath))
+		{
+			SV_ERROR("create dir:%s error", fileSavePath.c_str());
+			string errMsg = "creat dir:" + fileSavePath + "error";
+                	response.set_status(CommonResponse::FAILED);
+                	response.set_reason(errMsg);
+                	ConfManager::appConfFileRWLock.UnLock();
+                	return -1;
+		}
+	}
+	
+	DeleteExpiredConfFile(fileSavePath, newFileName, usingFileName);
+	string content = config.configfilecontent();
+        string fileNameWithPath = Common::GetAbsolutePathFileName(fileSavePath, newFileName);
+        if(!Common::SaveToFile(fileNameWithPath, content))
+        {
+                string errMsg = "fail to save file";
+                SV_ERROR("%s", errMsg.c_str());
+                response.set_status(CommonResponse::FAILED);
+                response.set_reason(errMsg);
+                ConfManager::appConfFileRWLock.UnLock();
+                return -1;
+        }
+
 	string updateNotifyScript = config.updatenotifyscript();
 	string serverPath = config.serverpath();
 	int id = config.uniqueid();

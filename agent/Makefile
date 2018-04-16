@@ -11,23 +11,22 @@ agent:
 	$(MAKE) -C src
 	@echo "============make end==========================="
 pkg:agent
-	[[ ! -d $(TARGET_DIR) ]] || rm -rf $(TARGET_DIR)/*
-	[[ -d $(TARGET_DIR) ]] || mkdir $(TARGET_DIR)
-	mkdir -p $(AGENT_DIR)/lib
-	chmod +x install.sh bin/*
-	
-	\cp -rf bin $(AGENT_DIR)
-	\cp -rf etc $(AGENT_DIR)
-	\cp -rf script $(AGENT_DIR)
-	\cp -df 3rd/log4cplus/lib/* $(AGENT_DIR)/lib/
-	\cp -df 3rd/protobuf/lib/libprotobuf*.so* $(AGENT_DIR)/lib
-	\cp -df 3rd/rabbitmq/lib/* $(AGENT_DIR)/lib
-	\cp -df 3rd/sigar/lib/* $(AGENT_DIR)/lib
-	
-	\cp -f install.sh $(TARGET_DIR)
+	@[[ ! -d $(TARGET_DIR) ]] || rm -rf $(TARGET_DIR)/*
+	@[[ -d $(TARGET_DIR) ]] || mkdir $(TARGET_DIR)
+	@find etc/. -name  "[A-Za-z]*" | xargs sed -i 's/\r$///g'
+	@find bin/ -name  "*.sh" | xargs sed -i 's/\r$///g'
+	@chmod +x install.sh bin/*
 
-	tar zcvf $(TARGET_PKG) $(TARGET_DIR)
-	@echo "to pkg"
+	mkdir -p $(AGENT_DIR)/etc $(AGENT_DIR)/bin $(AGENT_DIR)/script
+	@\cp -rf etc $(AGENT_DIR)
+	@\cp -rf bin $(AGENT_DIR)
+	@\cp -rf script $(AGENT_DIR)
+	@\cp -f  tool/3rd_img/agent_3rd.tar.gz $(AGENT_DIR)
+	@\cp -f install.sh $(TARGET_DIR)
+
+	@tar zcvf $(TARGET_PKG) $(TARGET_DIR)
+	@echo "PKG ===> ${TARGET_PKG}"
+	@echo ""
 
 clean:
 	$(MAKE) clean -C src

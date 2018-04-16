@@ -28,8 +28,8 @@ all:
 	$(MAKE) $(TARGET)
 
 $(TARGET): $(ALL_OBJ) 
-	$(XX) $^ -o $(TARGET) $(CFLAGS) $(INC_DIR) $(LIB_DEPENDS) $(LIB_DIR)  
-	\mv $(TARGET) $(INSTALL_DIR)
+	@$(XX) $^ -o $(TARGET) $(CFLAGS) $(INC_DIR) $(LIB_DEPENDS) $(LIB_DIR)  
+	@\mv $(TARGET) $(INSTALL_DIR)
 
 $(LIB_SF):
 	@cd ../3rd/log4cplus/lib && \
@@ -58,6 +58,20 @@ clean:
 	$(MAKE) clean -C perf
 	$(MAKE) clean -C main
 	rm -rf *.o $(TARGET)
+	@cd ../3rd/log4cplus/lib && \
+	rm -f liblog4cplus.so && \
+	rm -f liblog4cplus-1.2.so.5 
+	@cd ../3rd/rabbitmq/lib && \
+	rm -f librabbitmq.so && \
+	rm -f librabbitmq.so.4 
+	@cd ../3rd/protobuf/lib \
+	rm -f libprotobuf-lite.so && \
+	rm -f libprotobuf-lite.so.14 && \
+	rm -f libprotobuf.so && \
+	rm -f libprotobuf.so.14 
+	@cd ../3rd/sigar/lib && \
+	rm -f libsigar.so && \
+	rm -f libsigar.so.0
 
 .PHONY: all clean distclean 
 

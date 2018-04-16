@@ -20,6 +20,8 @@ public:
 	~Common();
 	
 	static bool FileExist(string &filename);
+	static bool CreatDir(string &path);
+	static string GetFileName(string &pathFileName);
 	static bool SaveToFile(string &filename, string &content);
 	static string GetCompleteFileName();
 	static vector<string> GetAllFiles(string &path);

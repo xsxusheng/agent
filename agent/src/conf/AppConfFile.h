@@ -22,6 +22,7 @@ public:
 	~AppConfFile();
 	int Init();
 	string GetAppConfFile(string &path, string &similarFile);
+	int DeleteExpiredConfFile(string &path, string &newFileName, string &usingFileName);
 	int Analyse(ConfigData &config, ConfigUpdateResponse &response);
 	int DownloadFile(ConfigData &config, ConfigUpdateResponse &response);
 };

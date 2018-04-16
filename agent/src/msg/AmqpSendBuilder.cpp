@@ -126,7 +126,7 @@ int AmqpSendBuilder::SendMessageToFums(Major &major)
 	SV_ERROR("parse message error");
 	return -1;
     }
-
+	ProtoBufPacker::ProtoToString(major);
     try
     {
     	/* 获取消息类型 */

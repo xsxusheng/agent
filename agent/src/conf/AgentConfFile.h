@@ -27,7 +27,6 @@ public:
 	string GetAgentConfFile(string &path);
 	int Analyse(ConfigData &config, ConfigUpdateResponse &response);
 	
-		
 };
 
 #endif

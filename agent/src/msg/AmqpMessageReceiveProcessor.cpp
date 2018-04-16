@@ -165,6 +165,7 @@ int AmqpMessageReceiveProcessor::ProcessRealQuery(const string &body)
 		case RealQueryHostStatusData::SYSTEM:
 		{
 			SV_LOG("--- query type : SYSTEM ---");
+			//HostSystemInfo::SendSystemInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
 			break;
 		}
 		case RealQueryHostStatusData::DISKSTATUS:

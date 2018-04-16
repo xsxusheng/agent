@@ -126,7 +126,7 @@ Task* TaskManager::BuildCtrlAppTask(const string &message, const string &body, H
 		return NULL;
 	}
 
-	/* 超出agent任务允许的处理任务数需要返回给fums */
+	/* 超出agent任务允许的处理任务数需要返回响应给fums */
 	full = TaskIsFullByType(type); 
 	if(full)
 	{
@@ -159,7 +159,7 @@ Task* TaskManager::BuildCtrlAppTask(const string &message, const string &body, H
 
 	task->SetTaskType(type);
 	task->SetMessage(message);
-	task->SetMSecTimeout(15000);
+	task->SetMSecTimeout(60000);
 	task->SetState(Task::TASK_IDLE);
 	task->SetStartTime();
 
@@ -195,7 +195,7 @@ Task* TaskManager::BuildConfigTask(const string &message, const string &body, He
 
 	task->SetTaskType(type);
 	task->SetMessage(message);
-	task->SetMSecTimeout(15000);
+	task->SetMSecTimeout(60000);
 	task->SetState(Task::TASK_IDLE);
 	task->SetStartTime();
 
@@ -230,7 +230,7 @@ Task* TaskManager::BuildSoftWareTask(const string &message, const string &body, 
 
 	task->SetTaskType(type);
 	task->SetMessage(message);
-	task->SetMSecTimeout(100000);
+	task->SetMSecTimeout(180000);
 	task->SetState(Task::TASK_IDLE);
 	task->SetStartTime();
 
@@ -265,7 +265,7 @@ Task* TaskManager::BuildRealQueryTask(const string &message, const string &body,
 
 	task->SetTaskType(type);
 	task->SetMessage(message);
-	task->SetMSecTimeout(15000);
+	task->SetMSecTimeout(60000);
 	task->SetState(Task::TASK_IDLE);
 	task->SetStartTime();
 

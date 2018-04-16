@@ -15,7 +15,6 @@ public:
 	AppControlProcess(){}
 	~AppControlProcess(){}
 	static int ControlProcess(CtrlAppData &ctrlApp);
-	int i;
 };
 
 #endif

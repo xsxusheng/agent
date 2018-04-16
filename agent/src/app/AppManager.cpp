@@ -4,10 +4,11 @@
 #include "../utils/sv_log.h"
 
 
+list<App> AppManager::m_appList;
+CMutex AppManager::sm_appListLock;
+
 AppManager::AppManager(){}
 AppManager::~AppManager(){}
-list<App> AppManager::m_appList;
-
 
 void AppManager::__DoRun()
 {
@@ -32,6 +33,7 @@ void AppManager::__DoRun()
 					//尝试产生一条告警
 					//
 				}
+				RegisterAppTable::ModifyRegisteredApp(app);
 			}
 		}catch(...){
 			SV_ERROR("Exception: ");
@@ -98,7 +100,70 @@ void AppManager::UpdateAppList()
 
 void AppManager::UpdateAppStatus(App &app)
 {
-	AppScriptAction action;
+	AppScriptAction appScriptAction;
 	string appType = app.GetAppType();
-	action.ViewAppStatus(appType);
+
+	if(AgentConstantDef::GetAppStrType(EnumDefineData::MW).compare(appType) == 0)
+	{
+		;
+	}
+	else
+	{
+		appScriptAction.ViewAppStatus(appType);
+		if(appScriptAction.rtnValCode == AppScriptAction::SUCCESS ||
+			appScriptAction.outContent.compare("started") == 0)
+		{
+			app.SetAppStatus(App::STARTED);
+		}
+		else
+		{
+			app.SetAppStatus(App::STOPED);
+		}
+	}
+}
+
+
+void AppManager::SetStartFlag(const string& appType, bool start)
+{
+	sm_appListLock.Lock();
+	for (auto app : m_appList)
+	{
+		if(app.GetAppType().compare(appType) == 0)
+		{
+			app.SetIsStart(start);
+			//break;
+		}
+	}
+	sm_appListLock.UnLock();
+}
+
+string AppManager::GetAppVersion(string &appType)
+{
+	AppScriptAction appScriptAction;
+	appScriptAction.ViewRunningVersion(appType);
+
+	if(appScriptAction.exeStatus == AppScriptAction::SUCCESS)
+	{
+		return appScriptAction.outContent;
+	}
+
+	return "unknown";
+}
+
+void AppManager::CheckAppDaemonStatus(App &app)
+{
+	AppScriptAction appScriptAction;
+	string appType = app.GetAppType();
+	appScriptAction.ViewDaemonStatus(appType);
+
+	if(appScriptAction.exeStatus == AppScriptAction::SUCCESS)
+	{
+		if(appScriptAction.outContent.compare("started"))
+		{
+			app.SetAppDaemonStatus(App::STARTED);
+			return;
+		}
+	}
+	app.SetAppDaemonStatus(App::STOPED);
+	return;
 }

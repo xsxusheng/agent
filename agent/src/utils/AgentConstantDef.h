@@ -7,6 +7,7 @@ using namespace std;
 class AgentConstantDef
 {
 public:
+	static string GetAppStrType(const int appType);
 	static string GetStartScript(const string &appType);
 	static string GetStopScript(const string &appType);
 	static string GetRestartScript(const string &appType);

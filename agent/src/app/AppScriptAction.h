@@ -6,18 +6,21 @@ using namespace std;
 
 class AppScriptAction
 {
-	int m_exeProcessCode;
-	int m_rtnValCode;
-	string m_outConten;
+public:
+	/* 脚本执行的结果 */
+	int exeStatus;
+	/* 脚本执行退出值 */
+	int rtnValCode;
+	/* 脚本输出内容 */
+	string outContent;
+	enum Result{
+		SUCCESS = 0,
+		FAILED  = 1 
+	};
+	
 public:
 	AppScriptAction();
 	~AppScriptAction();
-
-//	int GetExeProcessCode();
-//	int GetRtnValCode();
-
-	/* 获取脚本输出内容 */
-//	string GetOutConten();
 
 	/* 启动APP */
 	void StartApp(string &appType);
