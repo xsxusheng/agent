@@ -74,6 +74,8 @@ long CTime::DiffUSec(const CTime& time)
 
 CTime& CTime::operator = (const CTime& time)
 {
+    _tv.tv_sec = time._tv.tv_sec;
+    _tv.tv_usec = time._tv.tv_usec;
     return *this;
 }
 

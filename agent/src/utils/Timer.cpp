@@ -2,9 +2,8 @@
  * File: Timer.cpp
  * Function: 
  *********************************************************/
-
 #include "Timer.h"
-
+#include "sv_log.h"
 
 
 
@@ -42,8 +41,9 @@ int CTimer::GetFreeTimerId()
     TimerLock();
     for (i = 0; i < MAX_TIMER_NUM; i++)
     {
-        if (m_sTidSet[i] != 0)
+        if (m_sTidSet[i] == 0)
         {
+            m_sTidSet[i] = 1;
             tid = i;
             break;
         }
@@ -75,20 +75,24 @@ int CTimer::TimerStart(CTimerBase *pObj, long timeout)
 
     if (pObj == NULL || timeout <= 0)
     {
+        SV_LOG("TimerStart: Add new node error.");
         return -1;
     }
     
     /*防止链表无线放大*/
     if (m_TimerList.size() >= MAX_TIMER_NUM)
     {
+        SV_LOG("TimerStart: Timer list num is enough(%d).", m_TimerList.size());
         return -1;
     }
 
     node.GetNodeStartTime().GetTimeNow();
     node.SetNodeTimeout(timeout);
+    node.SetNodeObj(pObj);
     node.SetNodeId(GetFreeTimerId());
     if (node.GetNodeId() < 0)
     {
+        SV_LOG("TimerStart: Get free timer id failed...");
         return -1;
     }
 
@@ -106,6 +110,8 @@ int CTimer::TimerStart(CTimerBase *pObj, long timeout)
     {
         /*如果链表插入失败，需要释放TID资源*/
         ReleaseTimerId(node.GetNodeId());
+        SV_LOG("TimerStart: Insert new node failed...");
+        return -1;
     }
     return tid;
 }
@@ -146,13 +152,17 @@ void CTimer::__DoRun()
 
         /*获取当前时间*/
         tNow.GetTimeNow();
-        
+
+        /*SV_LOG("CTimer Run, LIST SIZE=%d....................", m_TimerList.size());*/
         TimerLock();
         for (it = m_TimerList.begin(); it != m_TimerList.end(); it++)
         {
             if (tNow.DiffSec(it->GetNodeStartTime()) >= it->GetNodeTimeout())
             {
-                it->GetNodeObj()->Run();
+                if (it->GetNodeObj() != NULL)
+                {
+                    it->GetNodeObj()->Run();
+                }
 
                 /*更新最近一次的启动时间*/
                 it->SetNodeStartTime(tNow);

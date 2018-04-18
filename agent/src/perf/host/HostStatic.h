@@ -73,6 +73,9 @@ private:
     double m_fMaxCpuUsage;
     double m_fMaxMemUsage;
 
+    int m_nDiskUsage;
+    int m_nDiskTotal;
+
     long m_nRxUsageAve;
     long m_nTxUsageAve;
 

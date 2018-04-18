@@ -34,6 +34,7 @@ CProcessStatic::CProcessStatic()
     m_listProc.push_back("/usr/local/bin/python csvagent.py");
     m_listProc.push_back("/usr/bin/java -jar /opt/fonsview/NE/lcm/lcm.jar");
     m_listProc.push_back("/usr/local/squid/sbin/squid -s");
+    m_listProc.push_back("/opt/fonsview/NE/drs/bin/drs");
 
     m_lastReportFums.GetTimeNow();
 }
@@ -53,7 +54,7 @@ bool CProcessStatic::NeedReportFums()
 {
     CTime tNow;
 
-    if (m_lastReportFums.DiffSec(tNow) >= DEF_PROCESS_REPORT)
+    if (tNow.DiffSec(m_lastReportFums) >= DEF_PROCESS_REPORT)
     {
         /*重置上次上报时间*/
         m_lastReportFums = tNow;
@@ -88,8 +89,29 @@ bool CProcessStatic::CheckProcExist(string& args)
 
     for (it = m_listProc.begin(); it != m_listProc.end(); it++)
     {
-        if (args.find(*it) != string::npos)
+        if ((args.find(*it) != string::npos)
+            && (it->length() == args.length()))
         {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+
+
+bool CProcessStatic::FindProc(string& findProc, string& args)
+{
+    list<string>::iterator it;
+
+    for (it = m_listProc.begin(); it != m_listProc.end(); it++)
+    {
+        if ((args.find(*it) != string::npos)
+            && (it->length() == args.length()))
+        {
+            findProc = (*it);
             return true;
         }
     }
@@ -104,28 +126,32 @@ bool CProcessStatic::CheckProcExist(string& args)
 void CProcessStatic::GetProcStatus()
 {
     long pid = 0;
-    long rssMem = 0;
     long totalMem = 0;
     unsigned long i = 0;
     unsigned long num = 0;
 
     string pidArgs;
+    string procArgs;
     string procState;
 
-    list<string>::iterator it;
+    map<string, list<CProcess> >::iterator it;
     CProcPidList procPids;
     CProcCpu tCpu;
     CProcMem tMem;
 
-    procPids.GetProcPidList();
-    num = procPids.GetProcNum();
+    if (procPids.GetProcPidList() < 0)
+    {
+        SV_ERROR("Get Process pid list failed ...");
+        return;
+    }
 
+    num = procPids.GetProcNum();
     for (i = 0; i < num; i++)
     {
         CProcess ps;
         pid = (long)procPids.GetProcsPid(i);
         pidArgs = CHostStatus::GetProcArgs(pid);
-        if (CheckProcExist(pidArgs))
+        if (FindProc(procArgs, pidArgs))
         {
             ps.SetPid(pid);
             ps.SetCommand(pidArgs);
@@ -135,18 +161,34 @@ void CProcessStatic::GetProcStatus()
 
             tCpu = CHostStatus::GetProcCpu(pid);
             tMem = CHostStatus::GetProcMem(pid);
-            totalMem = CHostStatus::FetchMemorySize();
+            totalMem = CHostStatus::FetchMemorySize(); /*MB*/
 
             ps.SetTime(tCpu.GetTotal());
-            ps.AddCpuList(tCpu.GetPercent());
-            ps.AddResList(tMem.GetRes() / 1024);
-            ps.AddShrList(tMem.GetShare() / 1024);
-            ps.AddVirtList(tMem.GetSize() / 1024);
-            ps.AddSizeList(rssMem / 1024);
-            ps.AddMemList((double)(rssMem / (totalMem * 1024)));
-        }
+            ps.SetCpu(tCpu.GetPercent());
+            ps.SetRes(tMem.GetRes() / 1024);
+            ps.SetShr(tMem.GetShare() / 1024);
+            ps.SetVirt(tMem.GetSize() / 1024);
+            ps.SetSize(tMem.GetRes() / 1024);
+            ps.SetMem((double)(tMem.GetRes()) / (totalMem * 1024.0 * 1024.0));
 
-        m_listprocess.push_back(ps);
+            /*SV_LOG("PID=%ld, ARGS=[%s], STAT=%s, CPU=%f, CPUTOTAL=%llu, MEM=%f, MEMTOTAL=%ld, RES=%llu, SHR=%llu, SIZE=%llu, VIRT=%llu.",
+                pid, pidArgs.c_str(), procState.c_str(), tCpu.GetPercent(), tCpu.GetTotal(), ps.GetMem(),
+                totalMem, tMem.GetRes(), tMem.GetShare(), tMem.GetRes(), tMem.GetSize());*/
+
+
+            /*如果没有，则新建一个；如果找到，则在原有上插入*/
+            it = m_mapProcess.find(procArgs);
+            if (it == m_mapProcess.end())
+            {
+                list<CProcess> listProcess;
+                listProcess.push_back(ps);
+                m_mapProcess.insert(pair<string, list<CProcess> >(procArgs, listProcess));
+            }
+            else
+            {
+                it->second.push_back(ps);
+            }
+        }
     }
 
     return;
@@ -156,15 +198,69 @@ void CProcessStatic::GetProcStatus()
 
 void CProcessStatic::CalcAvrg()
 {
-    list<CProcess>::iterator it;
-    for (it = m_listprocess.begin(); it != m_listprocess.end(); it++)
+    list<CProcess>::iterator itList;
+    list<CProcess>::reverse_iterator ritList;
+    map<string, list<CProcess> >::iterator itMap;
+
+    for (itMap = m_mapProcess.begin(); itMap != m_mapProcess.end(); itMap++)
     {
-        it->CalcCpuAve();
-        it->CalcMemAve();
-        it->CalcResAve();
-        it->CalcShrAve();
-        it->CalcSizeAve();
-        it->CalcVirtAve();
+        double cpuSum = 0.0;
+        double memSum = 0.0;
+        double sizeSum = 0.0;
+        double virtSum = 0.0;
+        double resSum = 0.0;
+        double shrSum = 0.0;
+        double cpuMax = 0.0;
+        double memMax = 0.0;
+
+        size_t size = 0;
+        string tStr;
+        CProcess ps;
+
+        /*匹配最后一个*/
+        ritList = itMap->second.rbegin();
+        size = itMap->second.size();
+
+        tStr = ritList->GetCommand();
+        ps.SetCommand(tStr);
+
+        tStr = ritList->GetState();
+        ps.SetState(tStr);
+
+        tStr = ritList->GetTime();
+        ps.SetTime(tStr);
+        ps.SetPid(ritList->GetPid());
+
+        for (itList = itMap->second.begin(); itList != itMap->second.end(); itList++)
+        {
+            cpuSum += itList->GetCpu();
+            memSum += itList->GetMem();
+            sizeSum += itList->GetSize();
+            virtSum += itList->GetVirt();
+            resSum += itList->GetRes();
+            shrSum += itList->GetShr();
+
+            if (cpuMax < itList->GetCpu())
+            {
+                cpuMax = itList->GetCpu();
+            }
+
+            if (memMax < itList->GetMem())
+            {
+                memMax = itList->GetMem();
+            }
+        }
+
+        ps.SetCpu(cpuSum / size);
+        ps.SetMem(memSum / size);
+        ps.SetSize(sizeSum / size);
+        ps.SetVirt(virtSum / size);
+        ps.SetRes(resSum / size);
+        ps.SetShr(shrSum / size);
+        ps.SetCpuMax(cpuMax);
+        ps.SetMemMax(memMax);
+
+        m_listProcess.push_back(ps);
     }
 }
 
@@ -172,7 +268,8 @@ void CProcessStatic::CalcAvrg()
 
 void CProcessStatic::ClearAvrg()
 {
-    m_listprocess.clear();
+    m_listProcess.clear();
+    m_mapProcess.clear();
 }
 
 
@@ -182,7 +279,7 @@ void CProcessStatic::SendToFums()
     list<CProcess>::iterator it;
     ProcessData data;
 
-    for (it = m_listprocess.begin(); it != m_listprocess.end(); it++)
+    for (it = m_listProcess.begin(); it != m_listProcess.end(); it++)
     {
         SingleProcessPerfData *singleData = data.add_perfdata();
         singleData->set_pid(it->GetPid());
@@ -197,6 +294,10 @@ void CProcessStatic::SendToFums()
         singleData->set_state(it->GetState());
         singleData->set_cpumax((float)it->GetCpuMax());
         singleData->set_memmax((float)it->GetMemMax());
+
+        SV_LOG("PID=%ld, Cmd=%s, CPU=%f, CPUMAX=%f, MEM=%f, MEMMAX=%f, Size=%ld, Virt=%ld, Res=%ld, Shr=%ld, Time=%s, State=%s.",
+            it->GetPid(), it->GetCommand().c_str(), it->GetCpu(), it->GetCpuMax(), it->GetMem(), it->GetMemMax(),
+            it->GetSize(), it->GetVirt(), it->GetRes(), it->GetShr(), it->GetTime().c_str(), it->GetState().c_str());
     }
 
     Major major = ProtoBufPacker::PackPerfEntity(ProtoBufPacker::SerializeToArray<ProcessData>(data), PerfData::PROCESS_TYPE);

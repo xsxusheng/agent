@@ -55,7 +55,7 @@ bool CHostStatic::NeedReportFums()
 {
     CTime tNow;
 
-    if (m_lastReportFums.DiffSec(tNow) >= DEF_HOST_STATIC_REPORT)
+    if (tNow.DiffSec(m_lastReportFums) >= DEF_HOST_STATIC_REPORT)
     {
         /*重置上次上报时间*/
         m_lastReportFums = tNow;
@@ -99,6 +99,9 @@ void CHostStatic::SendToFums()
     /*计算峰值持续时间*/
     CalcMaxContinueTime();
 
+    m_nDiskUsage = CHostStatus::GetDiskUsage();
+    m_nDiskTotal = CHostStatus::FetchMainFSDiskSize();
+
 
     CTime::GetTimeNowStr(timeNow);
     data.set_querytime(timeNow);
@@ -112,9 +115,14 @@ void CHostStatic::SendToFums()
     data.set_tcpinboundtotal(m_nTcpInboundTotal);
     data.set_tcpoutboundtotal(m_nTcpOutboundTotal);
     data.set_memtotal(m_nMemTotalAve);
-    data.set_diskusage(CHostStatus::GetDiskUsage());
+    data.set_diskusage(m_nDiskUsage);
     data.set_memmaxusage(m_fMaxMemUsage);
-    data.set_disktotal(CHostStatus::FetchMainFSDiskSize());
+    data.set_disktotal(m_nDiskTotal);
+
+    SV_LOG("HOST_STATIC: TimeNow=%s, CpuUsage=%f, CpuUsageMax=%f, ContTime=%d, MemUsage=%f, MemUsageMax=%f, "
+        "MemTotal=%f, DiskUsage=%d, DiskTotal=%d, RxUsage=%ld, TxUsage=%ld, TcpLink=%d, TcpInTotal=%d, TcpOutTotal=%d.",
+        timeNow.c_str(), m_fCpuUsageAve, m_fMaxCpuUsage, m_nMaxContinueTime, m_fMemUsageAve, m_fMaxMemUsage,
+        m_nMemTotalAve, m_nDiskUsage, m_nDiskTotal, m_nRxUsageAve, m_nTxUsageAve, m_nTcpLinkNum, m_nTcpInboundTotal, m_nTcpOutboundTotal);
 
     /*发送消息*/
     Major major = ProtoBufPacker::PackPerfEntity(ProtoBufPacker::SerializeToArray<Hostdata>(data), PerfData::HOST_TYPE);
@@ -224,12 +232,12 @@ void CHostStatic::CalcMaxCpuUsage()
     m_fMaxCpuUsage = 0.0;
     list<double>::iterator it;
 
-    m_fCpuUsageAve = 0.0;
+    m_fMaxCpuUsage = 0.0;
     for (it = m_cpuUsageList.begin(); it != m_cpuUsageList.end(); it++)
     {
-        if (m_fCpuUsageAve < *it)
+        if (m_fMaxCpuUsage < *it)
         {
-            m_fCpuUsageAve = *it;
+            m_fMaxCpuUsage = *it;
         }
     }
 }

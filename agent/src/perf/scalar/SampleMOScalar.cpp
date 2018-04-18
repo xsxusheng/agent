@@ -3,7 +3,7 @@
  * Function: 
  *********************************************************/
 #include "SampleMOScalar.h"
-
+#include "sv_log.h"
 
 
 
@@ -11,6 +11,15 @@
 
 CSampleMOScalar::CSampleMOScalar()
 {
+    m_bIsAlarm = true;
+
+    m_nMaxThrod = 0;
+    m_nMinThrod = 0;
+
+    m_nTimesThrod = 0;
+    m_nMaxTimes = 0;
+    m_nMinTimes = 0;
+    m_nMidTimes = 0;
 }
 
 
@@ -19,7 +28,7 @@ CSampleMOScalar::~CSampleMOScalar()
 }
 
 
-int CSampleMOScalar::FetchData()
+double CSampleMOScalar::FetchData()
 {
     return 0;
 }
@@ -36,7 +45,7 @@ int CSampleMOScalar::FetchData(int **pUsage, unsigned long *pOutLen)
 
 void CSampleMOScalar::Run()
 {
-    int val = 0;
+    double val = 0.0;
 
     val = FetchData();
     if (IsAlarm())
@@ -47,13 +56,16 @@ void CSampleMOScalar::Run()
 }
 
 
-void CSampleMOScalar::ReportAlarm(int val)
+void CSampleMOScalar::ReportAlarm(double val)
 {
+    SV_LOG("CSampleMOScalar::ReportAlarm: Type=%d Cur_Val=%f, Max=%f Min=%f ...",
+        GetType(), val, GetMaxThrod(), GetMinThrod());
+
     /*连续多次大于二级门限，发送严重告警*/
     if (val >= GetMaxThrod())
     {
         SetMaxTimes(GetMaxTimes() + 1);
-        if (GetMaxTimes() == GetTimesThrod())
+        if (GetMaxTimes() >= GetTimesThrod())
         {
             SetMaxTimes(0);
 
@@ -69,7 +81,7 @@ void CSampleMOScalar::ReportAlarm(int val)
     if (val <= GetMinThrod())
     {
         SetMinTimes(GetMinTimes() + 1);
-        if (GetMinTimes() == GetTimesThrod())
+        if (GetMinTimes() >= GetTimesThrod())
         {
             SetMinTimes(0);
 
@@ -85,7 +97,7 @@ void CSampleMOScalar::ReportAlarm(int val)
     if ((val > GetMinThrod()) && (val < GetMaxThrod()))
     {
         SetMidTimes(GetMidTimes() + 1);
-        if (GetMidTimes() == GetTimesThrod())
+        if (GetMidTimes() >= GetTimesThrod())
         {
             SetMidTimes(0);
 

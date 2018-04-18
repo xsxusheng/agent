@@ -25,6 +25,8 @@ public:
     ~CXMLElement();
 
 
+    xmlNodePtr GetNode(){return m_pNode;}
+
     CXMLElement GetChildren();
     bool CheckNodeIsNULL();
     int GetNextNode();
@@ -54,9 +56,9 @@ public:
     int ParseFile(const char* pFileName);
     int ParseFile(string& strFileName);
     int ParseMemory(const char* pBuffer, int size);
+    int ParseMemory(string& buffer);
     
     CXMLElement GetRootNode();
-    int GetChildren();
 
 
 private:

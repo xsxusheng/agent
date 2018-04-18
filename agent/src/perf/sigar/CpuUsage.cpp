@@ -4,6 +4,7 @@
  *********************************************************/
 #include "CpuUsage.h"
 #include "MacroDefine.h"
+#include "sv_log.h"
 #include "TimeUtils.h"
 #include "SigarAdapt.h"
 
@@ -74,9 +75,9 @@ CCpuUsage::CCpuUsage()
     m_pCpuPercs = NULL;
 
     num = GetCpuPercNum();
-    if (m_nCpuNum > 0)
+    if ((num > 0) && (num <= MAX_CPU_PERCS))
     {
-        m_pCpuPercs = new CCpuPerc[m_nCpuNum];
+        m_pCpuPercs = new CCpuPerc[num];
         if (m_pCpuPercs != NULL)
         {
             m_nCpuNum = num;
@@ -140,16 +141,19 @@ void CCpuUsage::SetCpuPerc(sigar_cpu_t& cpu, unsigned long index)
 unsigned long CCpuUsage::GetCpuPercNum()
 {
     int ret = 0;
+    unsigned long num = 0;
     sigar_cpu_info_list_t tCpu;
     
     if (SIGAR_OK != (ret = sigar_cpu_info_list_get(CSigar::GetSigar(), &tCpu)))
     {
-        printf("sigar_cpu_info_list_get return = %d (%s).\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        SV_ERROR("sigar_cpu_info_list_get return = %d (%s).\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
         return 0;
     }
 
+    num = tCpu.number;
     sigar_cpu_info_list_destroy(CSigar::GetSigar(), &tCpu);
-    return tCpu.number;
+    //SV_DEBUG("Get Cpu Perc number: %lu,%lu.", num, tCpu.size);
+    return num;
 }
 
 
@@ -162,12 +166,13 @@ int CCpuUsage::GetCpuStat()
 
     if (m_pCpuPercs == NULL)
     {
+        SV_ERROR("Input para is null.");
         return -1;
     }
 
     if (SIGAR_OK != (ret = sigar_cpu_list_get(CSigar::GetSigar(), &tCpuList)))
     {
-        printf("sigar_cpu_list_get return = %d (%s).\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        SV_ERROR("sigar_cpu_list_get return = %d (%s).\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
         return -1;
     }
 
@@ -198,6 +203,7 @@ int CCpuUsage::GetCpuUsage(CCpuPerc **pCpuPers, unsigned long *pOutCpuNum)
 
     if (pCpuPers == NULL || pOutCpuNum == NULL)
     {
+        SV_ERROR("Input para is null...");
         return -1;
     }
 
@@ -206,10 +212,17 @@ int CCpuUsage::GetCpuUsage(CCpuPerc **pCpuPers, unsigned long *pOutCpuNum)
     CTime::msecSleep(100);
     tCurCpuUsage.GetCpuStat();
 
+    if ((tCurCpuUsage.m_nCpuNum <= 0) || (tOldCpuUsage.m_nCpuNum != tCurCpuUsage.m_nCpuNum))
+    {
+        SV_ERROR("Get cpu stat info error.");
+        return -1;
+    }
+
     tCpuNum = tOldCpuUsage.m_nCpuNum < tCurCpuUsage.m_nCpuNum ? tOldCpuUsage.m_nCpuNum : tCurCpuUsage.m_nCpuNum;
     *pCpuPers = new CCpuPerc[tCpuNum];
     if (*pCpuPers == NULL)
     {
+        SV_ERROR("GetCpuUsage: New CCpuPerc error.");
         return -1;
     }
     *pOutCpuNum = tCpuNum;
@@ -240,6 +253,7 @@ int CCpuUsage::GetCpuUsage(CCpuPerc **pCpuPers, unsigned long *pOutCpuNum)
         }
 
         *tCpuPerc = *tCurCpuPerc;
+        //SV_LOG("tCpuPerc=%f, tCurCpuPerc=%f.", tCpuPerc->GetCombined(), tCurCpuPerc->GetCombined());
     }
     return 0;
 }
@@ -304,39 +318,43 @@ int CCpuUsage::GetCpuPercsUsage(double **pUsage, unsigned long *pOutLen)
 
     if (pUsage == NULL || pOutLen == NULL)
     {
+        SV_FATAL("Input para is null.");
         return -1;
     }
 
     if (CCpuUsage::GetCpuUsage(&tCpuPerc, &tCpuNum) != 0)
     {
-        printf("GetCpuUsage error.");
+        SV_ERROR("GetCpuUsage error.");
         return -1;
     }
 
     if (tCpuPerc == NULL)
     {
+        SV_ERROR("GetCpuUsage tCpuPerc == NULL.");
         return -1;
     }
 
-    if (tCpuNum <= 0)
+    if ((tCpuNum <= 0) || (tCpuNum > MAX_CPU_PERCS))
     {
         delete []tCpuPerc;
         tCpuPerc = NULL;
+        SV_ERROR("GetCpuUsage tCpuNum=%lu.", tCpuNum);
         return -1;
     }
 
     *pUsage = new double[tCpuNum];
     if (*pUsage == NULL)
     {
-        delete [](tCpuPerc);
+        delete []tCpuPerc;
         tCpuPerc = NULL;
+        SV_ERROR("Malloc error.");
         return -1;
     }
     
     *pOutLen = tCpuNum;
     for (i = 0; i < tCpuNum; i++)
     {
-        (*pUsage)[i] = (double)((int)(tCpuPerc[i].GetCombined() * 100) / 100.0);
+        (*pUsage)[i] = tCpuPerc[i].GetCombined();
     }
 
     delete []tCpuPerc;
@@ -350,20 +368,21 @@ int CCpuUsage::GetCpuPercsUsage(double **pUsage, unsigned long *pOutLen)
 
 double CCpuUsage::GetCpuUsageTotal()
 {
-    double usage = 0;
     unsigned long i = 0;
     unsigned long tCpuNum = 0;
-    unsigned long total = 0.0;
+    double usage = 0;
+    double total = 0.0;
     CCpuPerc *tCpuPerc = NULL;
 
-    if (CCpuUsage::GetCpuUsage(&tCpuPerc, &tCpuNum) != 0)
+    if (GetCpuUsage(&tCpuPerc, &tCpuNum) != 0)
     {
-        printf("GetCpuUsage error.");
+        SV_ERROR("GetCpuUsage error.");
         return 0.0;
     }
 
     if (tCpuPerc == NULL)
     {
+        SV_ERROR("GetCpuUsage tCpuPerc=NULL error.");
         return 0.0;
     }
 
@@ -372,16 +391,19 @@ double CCpuUsage::GetCpuUsageTotal()
         delete []tCpuPerc;
         tCpuPerc = NULL;
         tCpuNum = 0;
+        SV_ERROR("GetCpuUsage tCpuNum=%lu error.", tCpuNum);
         return 0.0;
     }
 
     for (i = 0; i < tCpuNum; i++)
     {
         total += tCpuPerc[i].GetCombined();
+        //SV_LOG("GetCpuUsage: GetCombined=%f.", tCpuPerc[i].GetCombined());
     }
 
-    usage = (double)((total * 1.0) / (tCpuNum * 1.0));
+    usage = (double)(total  / (tCpuNum * 1.0));
     usage = (int)(usage * 100) / 100.0;
+    //SV_LOG("GetCpuUsage: Value=%f,total=%f,num=%lu.", usage, total, tCpuNum);
 
     delete []tCpuPerc;
     tCpuPerc = NULL;

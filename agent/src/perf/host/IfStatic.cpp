@@ -113,7 +113,7 @@ bool CIfStatic::NeedReportFums()
 {
     CTime tNow;
 
-    if (m_lastReportFums.DiffSec(tNow) >= DEF_NETIF_REPORT)
+    if (tNow.DiffSec(m_lastReportFums) >= DEF_NETIF_REPORT)
     {
         /*重置上次上报时间*/
         m_lastReportFums = tNow;
@@ -205,6 +205,7 @@ void CIfStatic::Sample(bool flag)
     for (i = 0; i < num; i++)
     {
         ifName = netIf.GetNetIfStat(i)->GetIfName();
+
         it = m_mapNicStat.find(ifName);
         if (it != m_mapNicStat.end())
         {
@@ -217,8 +218,10 @@ void CIfStatic::Sample(bool flag)
         netIf.GetNetIfConfig(i)->GetAddress(ipAddr);
         nicStat.SetIpAddr(ipAddr);
 
-        speed = CString::ToString(netIf.GetNetIfConfig()->GetMtu());
+        speed = CString::ToString(netIf.GetNetIfConfig(i)->GetMtu());
         nicStat.SetSpeed(speed);
+
+        //SV_LOG("NIC_STAT: NAME=%s, IPADDR=%s, MTU=%s.", ifName.c_str(), ipAddr.c_str(), speed.c_str());
 
         /*插入新值*/
         m_mapNicStat.insert(pair<string, CNicStat>(ifName, nicStat));
@@ -236,21 +239,31 @@ void CIfStatic::Sample(bool flag)
 
         pNicStat = &(it->second);
         Populate(pNicStat);
+        /*SV_LOG("RX_BYTES=%ld, TX_BYTES=%ld, RX_SPEED=%ld,%ld, TX_SPEED=%ld,%ld.",
+            pNicStat->GetRxBytesMax(), pNicStat->GetTxBytesMax(), pNicStat->GetRxMaxSpeed(),
+            pNicStat->GetRxSpeed(), pNicStat->GetTxMaxSpeed(), pNicStat->GetTxSpeed());*/
 
         if (flag)
         {
-            pNicStat->SetRxBytes((long)netIf.GetNetIfStat()->GetRxBytes());
-            pNicStat->SetRxPackets((long)netIf.GetNetIfStat()->GetRxPackets());
-            pNicStat->SetRxErrors((long)netIf.GetNetIfStat()->GetRxErrors());
-            pNicStat->SetRxDropped((long)netIf.GetNetIfStat()->GetRxDropped());
-            pNicStat->SetRxOverruns((long)netIf.GetNetIfStat()->GetRxOverruns());
-            pNicStat->SetRxFrame((long)netIf.GetNetIfStat()->GetRxFrame());
+            pNicStat->SetRxBytes((long)netIf.GetNetIfStat(i)->GetRxBytes());
+            pNicStat->SetRxPackets((long)netIf.GetNetIfStat(i)->GetRxPackets());
+            pNicStat->SetRxErrors((long)netIf.GetNetIfStat(i)->GetRxErrors());
+            pNicStat->SetRxDropped((long)netIf.GetNetIfStat(i)->GetRxDropped());
+            pNicStat->SetRxOverruns((long)netIf.GetNetIfStat(i)->GetRxOverruns());
+            pNicStat->SetRxFrame((long)netIf.GetNetIfStat(i)->GetRxFrame());
             
-            pNicStat->SetTxBytes((long)netIf.GetNetIfStat()->GetTxBytes());
-            pNicStat->SetTxPackets((long)netIf.GetNetIfStat()->GetTxPackets());
-            pNicStat->SetTxErrors((long)netIf.GetNetIfStat()->GetTxErrors());
-            pNicStat->SetTxDropped((long)netIf.GetNetIfStat()->GetTxDropped());
-            pNicStat->SetTxOverruns((long)netIf.GetNetIfStat()->GetTxOverruns());
+            pNicStat->SetTxBytes((long)netIf.GetNetIfStat(i)->GetTxBytes());
+            pNicStat->SetTxPackets((long)netIf.GetNetIfStat(i)->GetTxPackets());
+            pNicStat->SetTxErrors((long)netIf.GetNetIfStat(i)->GetTxErrors());
+            pNicStat->SetTxDropped((long)netIf.GetNetIfStat(i)->GetTxDropped());
+            pNicStat->SetTxOverruns((long)netIf.GetNetIfStat(i)->GetTxOverruns());
+
+            /*SV_LOG("RX_BYTES=%ld, RX_PACKET=%ld, RX_ERR=%ld, RX_DROP=%ld, RX_OVERRUN=%ld, RX_FRAME=%ld, "
+                "TX_BYTES=%ld, TX_PACKET=%ld, TX_ERR=%ld, TX_DROP=%ld, TX_OVERRUN=%ld.",
+                pNicStat->GetRxBytes(), pNicStat->GetRxPackets(), pNicStat->GetRxErrors(),
+                pNicStat->GetRxDropped(), pNicStat->GetRxOverruns(), pNicStat->GetRxFrame(),
+                pNicStat->GetTxBytes(), pNicStat->GetTxPackets(), pNicStat->GetTxErrors(),
+                pNicStat->GetTxDropped(), pNicStat->GetTxOverruns());*/
         }
     }
 }
@@ -303,6 +316,18 @@ void CIfStatic::SendToFums()
         singleData->set_nictxspeed(it->second.GetTxSpeed());
         singleData->set_nicrxmaxspeed(it->second.GetRxMaxSpeed());
         singleData->set_nictxmaxspeed(it->second.GetTxMaxSpeed());
+    
+        SV_LOG("NIC_NAME=%s, IPADDR=%s, SPEED=%s, RX_BYTES_MAX=%ld, TX_BYTES_MAX=%ld, "
+            "RX_SPEED_MAX=%ld, TX_SPEED_MAX=%ld, RX_SPEED=%ld, TX_SPEED=%ld, "
+            "RX_BYTES=%ld, RX_PACKET=%ld, RX_ERR=%ld, RX_DROP=%ld, RX_OVERRUN=%ld, RX_FRAME=%ld, "
+            "TX_BYTES=%ld, TX_PACKET=%ld, TX_ERR=%ld, TX_DROP=%ld, TX_OVERRUN=%ld.",
+            it->second.GetIfName().c_str(), it->second.GetIpAddr().c_str(), it->second.GetSpeed().c_str(),
+            it->second.GetRxBytesMax(), it->second.GetTxBytesMax(), it->second.GetRxMaxSpeed(),
+            it->second.GetTxMaxSpeed(), it->second.GetRxSpeed(), it->second.GetTxSpeed(),
+            it->second.GetRxBytes(), it->second.GetRxPackets(), it->second.GetRxErrors(),
+            it->second.GetRxDropped(), it->second.GetRxOverruns(), it->second.GetRxFrame(),
+            it->second.GetTxBytes(), it->second.GetTxPackets(), it->second.GetTxErrors(),
+            it->second.GetTxDropped(), it->second.GetTxOverruns());
     }
 
     Major major = ProtoBufPacker::PackPerfEntity(ProtoBufPacker::SerializeToArray<NicData>(data), PerfData::NIC_TYPE);

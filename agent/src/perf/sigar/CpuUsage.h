@@ -13,6 +13,11 @@
 using namespace std;
 
 
+
+
+#define MAX_CPU_PERCS 128
+
+
 class CCpuPerc
 {
 public:

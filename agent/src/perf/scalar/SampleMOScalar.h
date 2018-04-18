@@ -8,6 +8,17 @@
 
 
 
+enum{
+    SCALAR_TYPE_CPU_USAGE,
+    SCALAR_TYPE_MEM_USAGE,
+    SCALAR_TYPE_DISK_USAGE,
+    SCALAR_TYPE_SWAP_USAGE,
+    SCALAR_TYPE_CPU_MONO_USAGE,
+};
+
+
+
+
 #define DEF_SCALAR_PERIOD 10
 
 
@@ -23,11 +34,13 @@ public:
     bool IsAlarm(){return m_bIsAlarm;}
     void SetAlarm(bool isAlarm){m_bIsAlarm = isAlarm;}
 
-    int GetMaxThrod(){return m_nMaxThrod;}
-    void SetMaxThrod(int val){m_nMaxThrod = val;}
+    int GetType(){return m_nType;}
 
-    int GetMinThrod(){return m_nMinThrod;}
-    void SetMinThrod(int val){m_nMinThrod = val;}
+    double GetMaxThrod(){return m_nMaxThrod;}
+    void SetMaxThrod(double val){m_nMaxThrod = val;}
+
+    double GetMinThrod(){return m_nMinThrod;}
+    void SetMinThrod(double val){m_nMinThrod = val;}
 
     int GetTimesThrod(){return m_nTimesThrod;}
     void SetTimesThrod(int val){m_nTimesThrod = val;}
@@ -44,19 +57,20 @@ public:
 
 
     virtual void UpdateThrod() = 0;
-    virtual int FetchData();
+    virtual double FetchData();
     virtual int FetchData(int **pUsage, unsigned long *pOutLen);
 
 
-    void ReportAlarm(int val);
+    void ReportAlarm(double val);
 
 
 
-private:
+protected:
     bool m_bIsAlarm;
+    int m_nType;
 
-    int m_nMaxThrod;
-    int m_nMinThrod;
+    double m_nMaxThrod;
+    double m_nMinThrod;
 
     int m_nTimesThrod;
     int m_nMaxTimes;

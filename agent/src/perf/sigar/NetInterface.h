@@ -13,6 +13,8 @@
 
 #define NIC_LOCAL_LOOPBACK "lo"
 
+#define MAX_NIC_NUM 128
+
 #define MAX_IP_LEN 48
 #define MAX_IFNAME_LEN 256
 
@@ -211,10 +213,9 @@ public:
     unsigned long GetNetIfNum(){return m_nNetIfNum;}
     void SetNetIfNum(unsigned long num){if(num > 0){m_nNetIfNum = num;}}
 
-    CNetIfStat *GetNetIfStat(){return m_pNetIfStat;}
+    CNetIfStat* GetNetIfStat(){return m_pNetIfStat;}
     CNetIfStat *GetNetIfStat(unsigned long index);
     
-    CNetIfConfig *GetNetIfConfig(){return m_pNetIfConfig;}
     CNetIfConfig *GetNetIfConfig(unsigned long index);
 
 

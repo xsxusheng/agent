@@ -65,6 +65,7 @@ void CPerformanceDataCollect::Run()
     rd.GetApps();
     if (rd.CheckAppListEmpty())
     {
+        SV_WARN("APP LIST is empty...");
         return;
     }
 
@@ -72,6 +73,7 @@ void CPerformanceDataCollect::Run()
     {
         SingleAppPerfData *singleData = data.add_perfdata();
 
+        SV_LOG("APP_LIST: %s.", itList->c_str());
         if (strcasecmp(itList->c_str(), "CSD") == 0)
         {
             rd.Read("python /opt/fonsview/NE/csd/bin/csd_sts.py");
@@ -104,16 +106,12 @@ void CPerformanceDataCollect::Run()
 
 
         int sequence = CPerformanceDataCollect::GetSeq();
-        string strSequence = CString::ToString(sequence);
         string createTime = CTime::GetCurTimeStr();
-        double cpuRatioTemp = CHostStatus::GetCpuUsage();
-        string strCpuRatioTemp = CString::ToString(cpuRatioTemp);
+        double cpuUsage = CHostStatus::GetCpuUsage();
         double usedMemory = CHostStatus::FetchMemoryUsed() * 1024;
-        string strUsedMemory = CString::ToString(usedMemory); /*KB*/
-        string memoryUsage = CString::ToString((long)(CHostStatus::GetMemUsage() * 100L));
-        string usedSysDisk = CString::ToString(CHostStatus::FetchDiskUsedSize());
+        double memoryUsage = CHostStatus::GetMemUsage() * 100L;
+        int usedSysDisk = CHostStatus::FetchDiskUsedSize();
         int diskUsage = CHostStatus::GetDiskUsage();
-        string diskUsageStr = CString::ToString(diskUsage);
         
         string content = "";
         string usedDataDisk = "0";
@@ -129,7 +127,7 @@ void CPerformanceDataCollect::Run()
 
         singleData->set_sequence(sequence);
         singleData->set_createtime(createTime);
-        singleData->set_cpuratio(cpuRatioTemp);
+        singleData->set_cpuratio(cpuUsage);
         singleData->set_usedmemory(usedMemory);
 
         itMap = rd.m_mapSts.find("usedDataDisk");
@@ -202,10 +200,13 @@ void CPerformanceDataCollect::Run()
             singleData->set_httpredirects(CString::StrTod(HTTPRedirects));
         }
 
-        content = strSequence + "\t" + createTime + "\t" + strCpuRatioTemp + "\t" + strUsedMemory + "\t" + usedSysDisk + "\t"
-                        + usedDataDisk + "\t" + totalDataDisk + "\t" + cacheIn + "\t" + cacheOut + "\t" + concurrencies
-                        + "\t" + connections + "\t" + DNSRequests + "\t" + DNSResponse + "\t" + HTTPRequests + "\t"
-                        + HTTPRedirects + "\t" + memoryUsage + "\t" + diskUsageStr + "\n";
+
+        SV_INFO("SEQ=%d, CREATETIME=%s, CPUUSAGE=%f, MEMUSED=%f, MEMUSAGE=%f, DISKUSAGE=%d, DISKUSED=%d, "
+            "DATADISKUSED=%s, DATADISKTOTAL=%s, CACHE_IN=%s, CACHE_OUT=%s, CONCURRENTCIES=%s, CONNECTIONS=%s, "
+            "DNSREQ=%s, DNSRES=%s, HTTPREQ=%s, HTTPREDIRECT=%s.",
+            sequence, createTime.c_str(), cpuUsage, usedMemory, memoryUsage, diskUsage, usedSysDisk,
+            usedDataDisk.c_str(), totalDataDisk.c_str(), cacheIn.c_str(), cacheOut.c_str(), concurrencies.c_str(),
+            connections.c_str(), DNSRequests.c_str(), DNSResponse.c_str(), HTTPRequests.c_str(), HTTPRedirects.c_str());
 
         SendDeviceDiskAlarm(diskUsage, (*itList));
     }

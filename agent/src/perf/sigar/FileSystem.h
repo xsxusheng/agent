@@ -27,6 +27,8 @@ typedef enum {
 #define FS_NAME_LEN SIGAR_PATH_MAX
 #define FS_INFO_LEN 256
 
+/*防止函数返回异常的值，这里做限制*/
+#define MAX_FS_NUM 128
 
 
 class CFileSystemInfo

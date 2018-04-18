@@ -6,6 +6,7 @@
 
 #include <cstring>
 
+#include "sv_log.h"
 #include "SigarAdapt.h"
 
 
@@ -248,6 +249,7 @@ int CProcCpu::GetProcCpu(long pid)
 
     if (SIGAR_OK != sigar_proc_cpu_get(CSigar::GetSigar(), (sigar_pid_t)pid, &proc_cpu))
     {
+        SV_ERROR("sigar_proc_cpu_get failed...");
         return -1;
     }
 
@@ -257,6 +259,8 @@ int CProcCpu::GetProcCpu(long pid)
     SetTotal(proc_cpu.total);
     SetLastTime(proc_cpu.last_time);
     SetPercent(proc_cpu.percent);
+    /*SV_LOG("GetProcCpu: START_TIME=%llu, END_TIME=%llu, USER=%llu, SYS=%llu, TOTAL=%llu, PERCENT=%f.",
+        proc_cpu.start_time, proc_cpu.last_time, proc_cpu.user, proc_cpu.sys, proc_cpu.total, proc_cpu.percent);*/
     return 0;
 }
 
@@ -269,12 +273,14 @@ int CProcMem::GetProcMem(long pid)
 
     if (SIGAR_OK != sigar_proc_mem_get(CSigar::GetSigar(), (sigar_pid_t)pid, &proc_mem))
     {
+        SV_ERROR("sigar_proc_mem_get failed...");
         return -1;
     }
 
     SetSize(proc_mem.size);
     SetRes(proc_mem.resident);
     SetShare(proc_mem.share);
+    //SV_LOG("GetProcMem: SIZE=%llu, RES=%llu, SHR=%llu.", proc_mem.size, proc_mem.resident, proc_mem.share);
     return 0;
 }
 
@@ -288,6 +294,8 @@ int CProcMem::GetProcMem(long pid)
 
 CProcPidList::CProcPidList()
 {
+    m_pPid = NULL;
+    m_nProcNum = 0;
 }
 
 
@@ -301,8 +309,9 @@ CProcPidList::~CProcPidList()
 
 int CProcPidList::AllocProcPid(unsigned long size)
 {
-    if (size <= 0)
+    if ((size <= 0) || (size > MAX_PROC_LIST_NUM))
     {
+        SV_ERROR("Input para size %lu error.", size);
         return -1;
     }
     
@@ -337,7 +346,7 @@ void CProcPidList::FreeProcPid()
 
 long CProcPidList::GetProcsPid(unsigned long index)
 {
-    if (index >= GetProcNum() || GetProcsPids() == NULL)
+    if (index >= GetProcNum() || m_pPid == NULL)
     {
         return 0;
     }
@@ -348,7 +357,7 @@ long CProcPidList::GetProcsPid(unsigned long index)
 
 int CProcPidList::SetProcPid(unsigned long index, long pid)
 {
-    if (index >= GetProcNum() || GetProcsPids() == NULL)
+    if (index >= GetProcNum() || m_pPid == NULL)
     {
         return -1;
     }
@@ -362,27 +371,28 @@ int CProcPidList::SetProcPid(unsigned long index, long pid)
 int CProcPidList::GetProcPidList()
 {
     unsigned long i = 0;
-    unsigned long num = 0;
     sigar_proc_list_t proclist;
 
     if (SIGAR_OK != sigar_proc_list_get(CSigar::GetSigar(), &proclist))
     {
+        SV_ERROR("sigar_proc_list_get failed ...");
         return -1;
     }
 
-    if (proclist.number != num)
+    if (proclist.number <= 0)
     {
+        SV_ERROR("sigar_proc_list_get number %lu ...", proclist.number);
         sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
         return -1;
     }
 
-    if (AllocProcPid(num) < 0)
+    if (AllocProcPid(proclist.number) < 0)
     {
         sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
         return -1;
     }
     
-    for (i = 0; i < num; i++)
+    for (i = 0; i < proclist.number; i++)
     {
         SetProcPid(i, proclist.data[i]);
     }

@@ -3,6 +3,7 @@
  * Function: 
  *********************************************************/
 #include "SchedulerActiveJob.h"
+#include "sv_log.h"
 #include "CpuMonokaryonUsageScalar.h"
 #include "CpuUsageScalar.h"
 #include "MainFSDiskUsageScalar.h"
@@ -21,6 +22,9 @@
 
 
 
+CSchedulerActiveJob* CSchedulerActiveJob::sm_schedulerJob = NULL;
+
+
 
 
 
@@ -32,6 +36,41 @@ CSchedulerActiveJob::CSchedulerActiveJob()
 CSchedulerActiveJob::~CSchedulerActiveJob()
 {
 }
+
+
+
+
+CSchedulerActiveJob* CSchedulerActiveJob::GetInstance()
+{
+    if (sm_schedulerJob == NULL)
+    {
+        sm_schedulerJob = new CSchedulerActiveJob();
+        if (sm_schedulerJob == NULL)
+        {
+            SV_ERROR("New CSchedulerActiveJob error...");
+            return NULL;
+        }
+
+        /*启动定时器*/
+        sm_schedulerJob->InitTimer();
+        SV_LOG("Init scheduler timer success ...");
+
+        /*启动定时器任务*/
+        sm_schedulerJob->InitJob();
+        SV_LOG("Init scheduler job success ...");
+    }
+    
+    return sm_schedulerJob;
+}
+
+
+
+int CSchedulerActiveJob::InitTimer()
+{
+    m_timerJob.Start();
+    return 0;
+}
+
 
 
 

@@ -3,7 +3,7 @@
  * Function: 
  *********************************************************/
 #include "XmlUtils.h"
-
+#include "sv_log.h"
 
 
 
@@ -148,16 +148,30 @@ CXMLUtils::~CXMLUtils()
 
 int CXMLUtils::ParseFile(const char* pFileName)
 {
+	int nBufSize = 0;
+	xmlChar *pXmlBuff = NULL;
+
     if (pFileName == NULL)
     {
+        SV_ERROR("Input para is null.");
         return -1;
     }
 
+    xmlKeepBlanksDefault(0);
     if ((m_pDoc = xmlParseFile(pFileName)) == NULL)
     {
+        SV_ERROR("xmlParseFile %s error.", pFileName);
         return -1;
     }
-    
+
+    /*xmlDocDumpFormatMemory(m_pDoc, &pXmlBuff, &nBufSize, 1);
+    if (pXmlBuff != NULL)
+    {
+        //SV_LOG("XML: [%s]", (char *)pXmlBuff);
+        xmlFree(pXmlBuff);
+        pXmlBuff = NULL;
+    }*/
+
     return 0;
 }
 
@@ -167,6 +181,7 @@ int CXMLUtils::ParseFile(string& strFileName)
 {
     if (ParseFile(strFileName.c_str()) < 0)
     {
+        SV_ERROR("ParseFile %s error.", strFileName.c_str());
         return -1;
     }
     
@@ -179,11 +194,27 @@ int CXMLUtils::ParseMemory(const char* pBuffer, int size)
 {
     if (pBuffer == NULL || size <= 0)
     {
+        SV_ERROR("Input para error(%d).", size);
         return -1;
     }
 
+    xmlKeepBlanksDefault(0);
     if ((m_pDoc = xmlParseMemory(pBuffer, size)) == NULL)
     {
+        SV_ERROR("xmlParseMemory %s error.", pBuffer);
+        return -1;
+    }
+
+    return 0;
+}
+
+
+
+int CXMLUtils::ParseMemory(string& buffer)
+{
+    if (ParseMemory(buffer.c_str(), buffer.length()) < 0)
+    {
+        SV_ERROR("ParseMemory %s error.", buffer.c_str());
         return -1;
     }
 

@@ -6,6 +6,7 @@
 
 #include <arpa/inet.h>
 
+#include "sv_log.h"
 #include "sigar.h"
 #include "SigarAdapt.h"
 
@@ -55,12 +56,13 @@ int CNetIfStat::GetNetIfStat(const char *ifName)
 
     if (ifName == NULL)
     {
+        SV_ERROR("Input para is null.");
         return -1;
     }
     
     if (SIGAR_OK != (ret = sigar_net_interface_stat_get(CSigar::GetSigar(), ifName, &ifstat)))
     {
-        printf("sigar_net_interface_stat_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        SV_ERROR("sigar_net_interface_stat_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
         return -1;
     }
 
@@ -231,7 +233,7 @@ CNetInterface::CNetInterface()
     m_pNetIfConfig = NULL;
 
     num = GetNetIfListNum();
-    if (num > 0)
+    if ((num > 0) && (num <= MAX_NIC_NUM))
     {
         m_pNetIfStat = new CNetIfStat[num];
         if (m_pNetIfStat == NULL)
@@ -277,11 +279,13 @@ unsigned long CNetInterface::GetNetIfListNum()
 
     if (SIGAR_OK != sigar_net_interface_list_get(CSigar::GetSigar(), &netIfList))
     {
+        SV_ERROR("sigar_net_interface_list_get failed...");
         return 0;
     }
 
     if (netIfList.number <= 0)
     {
+        SV_ERROR("sigar_net_interface_list_get number %d error...", netIfList.number);
         return 0;
     }
 
@@ -298,6 +302,7 @@ CNetIfStat* CNetInterface::GetNetIfStat(unsigned long index)
 
     if (m_pNetIfStat == NULL)
     {
+        SV_ERROR("Input para is null.");
         return NULL;
     }
 
@@ -317,6 +322,7 @@ CNetIfConfig* CNetInterface::GetNetIfConfig(unsigned long index)
 
     if (m_pNetIfConfig == NULL)
     {
+        SV_ERROR("Input para is null.");
         return NULL;
     }
 
@@ -344,66 +350,38 @@ int CNetInterface::GetNetIfStatus()
     netIfStat = GetNetIfStat();
     if (netIfStat == NULL)
     {
+        SV_ERROR("Input para is null.");
         return -1;
     }
 
     if (SIGAR_OK != sigar_net_interface_list_get(CSigar::GetSigar(), &netIfList))
     {
+        SV_ERROR("sigar_net_interface_list_get failed...");
         return -1;
     }
 
     if (netIfList.number != GetNetIfNum())
     {
+        SV_ERROR("sigar_net_interface_list_get number %lu,%lu error...", netIfList.number, GetNetIfNum());
         sigar_net_interface_list_destroy(CSigar::GetSigar(), &netIfList);
         return -1;
     }
 
     for (i = 0; i < netIfList.number; i++)
     {
-        if (SIGAR_OK != (ret = sigar_net_interface_stat_get(CSigar::GetSigar(), netIfList.data[i], &ifstat)))
-        {
-            printf("sigar_net_interface_stat_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
-            sigar_net_interface_list_destroy(CSigar::GetSigar(), &netIfList);
-            return -1;
-        }
-
-        if (GetNetIfStat(i) == NULL)
-        {
-            sigar_net_interface_list_destroy(CSigar::GetSigar(), &netIfList);
-            return -1;
-        }
-
-        GetNetIfStat(i)->SetIfName(netIfList.data[i]);
-        if (strcmp(netIfList.data[i], NIC_LOCAL_LOOPBACK) == 0)
-        {
-            continue;
-        }
-        
-        GetNetIfStat(i)->SetRxPackets(ifstat.rx_packets);
-        GetNetIfStat(i)->SetRxBytes(ifstat.rx_bytes);
-        GetNetIfStat(i)->SetRxErrors(ifstat.rx_errors);
-        GetNetIfStat(i)->SetRxDropped(ifstat.rx_dropped);
-        GetNetIfStat(i)->SetRxOverruns(ifstat.rx_overruns);
-        GetNetIfStat(i)->SetRxFrame(ifstat.rx_frame);
-        GetNetIfStat(i)->SetTxPackets(ifstat.tx_packets);
-        GetNetIfStat(i)->SetTxBytes(ifstat.tx_bytes);
-        GetNetIfStat(i)->SetTxErrors(ifstat.tx_errors);
-        GetNetIfStat(i)->SetTxDropped(ifstat.tx_dropped);
-        GetNetIfStat(i)->SetTxOverruns(ifstat.tx_overruns);
-        GetNetIfStat(i)->SetTxCollisions(ifstat.tx_collisions);
-        GetNetIfStat(i)->SetTxCarrier(ifstat.tx_carrier);
-        GetNetIfStat(i)->SetSpeed(ifstat.speed);
-
+        memset(&config, 0, sizeof(sigar_net_interface_config_t));
+        memset(&ifstat, 0, sizeof(sigar_net_interface_stat_t));
 
         if (SIGAR_OK != (ret = sigar_net_interface_config_get(CSigar::GetSigar(), netIfList.data[i], &config)))
         {
-            printf("sigar_net_interface_config_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+            SV_ERROR("sigar_net_interface_config_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
             sigar_net_interface_list_destroy(CSigar::GetSigar(), &netIfList);
             return -1;
         }
 
         if (GetNetIfConfig(i) == NULL)
         {
+            SV_ERROR("sigar_net_interface_list_get GetNetIfConfig(i) == NULL...");
             sigar_net_interface_list_destroy(CSigar::GetSigar(), &netIfList);
             return -1;
         }
@@ -421,6 +399,37 @@ int CNetInterface::GetNetIfStatus()
         GetNetIfConfig(i)->SetBroadcast(config.broadcast);
         GetNetIfConfig(i)->SetNetMask(config.netmask);
         GetNetIfConfig(i)->SetAddr6(config.address6);
+
+
+        if (SIGAR_OK != (ret = sigar_net_interface_stat_get(CSigar::GetSigar(), netIfList.data[i], &ifstat)))
+        {
+            SV_ERROR("sigar_net_interface_stat_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+            sigar_net_interface_list_destroy(CSigar::GetSigar(), &netIfList);
+            return -1;
+        }
+
+        if (GetNetIfStat(i) == NULL)
+        {
+            SV_ERROR("sigar_net_interface_list_get GetNetIfStat(i) == NULL...");
+            sigar_net_interface_list_destroy(CSigar::GetSigar(), &netIfList);
+            return -1;
+        }
+
+        GetNetIfStat(i)->SetIfName(netIfList.data[i]);
+        GetNetIfStat(i)->SetRxPackets(ifstat.rx_packets);
+        GetNetIfStat(i)->SetRxBytes(ifstat.rx_bytes);
+        GetNetIfStat(i)->SetRxErrors(ifstat.rx_errors);
+        GetNetIfStat(i)->SetRxDropped(ifstat.rx_dropped);
+        GetNetIfStat(i)->SetRxOverruns(ifstat.rx_overruns);
+        GetNetIfStat(i)->SetRxFrame(ifstat.rx_frame);
+        GetNetIfStat(i)->SetTxPackets(ifstat.tx_packets);
+        GetNetIfStat(i)->SetTxBytes(ifstat.tx_bytes);
+        GetNetIfStat(i)->SetTxErrors(ifstat.tx_errors);
+        GetNetIfStat(i)->SetTxDropped(ifstat.tx_dropped);
+        GetNetIfStat(i)->SetTxOverruns(ifstat.tx_overruns);
+        GetNetIfStat(i)->SetTxCollisions(ifstat.tx_collisions);
+        GetNetIfStat(i)->SetTxCarrier(ifstat.tx_carrier);
+        GetNetIfStat(i)->SetSpeed(ifstat.speed);
     }
 
     sigar_net_interface_list_destroy(CSigar::GetSigar(), &netIfList);
@@ -528,7 +537,7 @@ int CNetConnList::GetNetConnList()
         SIGAR_NETCONN_SERVER | SIGAR_NETCONN_CLIENT |
         SIGAR_NETCONN_TCP | SIGAR_NETCONN_UDP)))
     {
-        printf("sigar_net_connection_list_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        SV_ERROR("sigar_net_connection_list_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
         return -1;
 	}
 
@@ -559,7 +568,7 @@ int CNetConnList::GetNetConnList(int flag)
 
     if (SIGAR_OK != (ret = sigar_net_connection_list_get(CSigar::GetSigar(), &connlist, flag)))
     {
-        printf("sigar_net_connection_list_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        SV_ERROR("sigar_net_connection_list_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
         return -1;
 	}
 
@@ -623,7 +632,7 @@ int CNetStat::GetNetStat()
     if (SIGAR_OK != sigar_net_stat_get(CSigar::GetSigar(), &netstat,
         SIGAR_NETCONN_SERVER | SIGAR_NETCONN_CLIENT | SIGAR_NETCONN_TCP | SIGAR_NETCONN_UDP))
     {
-        printf("sigar_net_stat_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        SV_ERROR("sigar_net_stat_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
         return -1;
     }
 

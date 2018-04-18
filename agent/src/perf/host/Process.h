@@ -58,31 +58,6 @@ public:
     void SetState(string& cmd){m_strState = cmd;}
 
 
-    int AddCpuList(double cpu);
-    void ClearCpuList();
-    int CalcCpuAve();
-
-    int AddMemList(double mem);
-    void ClearMemList();
-    int CalcMemAve();
-
-    int AddSizeList(unsigned long long size);
-    void ClearSizeList();
-    int CalcSizeAve();
-
-    int AddVirtList(unsigned long long virt);
-    void ClearVirtList();
-    int CalcVirtAve();
-
-    int AddResList(unsigned long long res);
-    void ClearResList();
-    int CalcResAve();
-
-    int AddShrList(unsigned long long share);
-    void ClearShrList();
-    int CalcShrAve();
-
-
 private:
 
     long m_nPid;
@@ -99,13 +74,6 @@ private:
     string m_strCommand;
     string m_strTime;
     string m_strState;
-
-    list<double> m_listCpu;
-    list<double> m_listMem;
-    list<unsigned long long> m_listSize;
-    list<unsigned long long> m_listVirt;
-    list<unsigned long long> m_listRes;
-    list<unsigned long long> m_listShr;
 
 };
 

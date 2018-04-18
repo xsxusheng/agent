@@ -32,7 +32,35 @@ void CString::Split(const std::string& s, std::vector<std::string>& v, const std
         pos2 = s.find(c, pos1);
     }
     
-    if(pos1 != s.length())
+    if(pos1 < s.length())
+    {
+        v.push_back(s.substr(pos1));
+    }
+}
+
+
+
+
+void CString::Split2(const std::string& s, std::vector<std::string>& v, const std::string& c)
+{
+    string::size_type pos1 = 0;
+    string::size_type pos2 = 0;
+    
+    pos1 = 0;
+    pos2 = s.find(c);
+    
+    while ((string::npos != pos2) && (string::npos != pos1))
+    {
+        v.push_back(s.substr(pos1, (pos2-pos1)));
+
+        pos1 = s.find_first_not_of(c, pos2);
+        if (string::npos != pos1)
+        {
+            pos2 = s.find(c, pos1);
+        }
+    }
+    
+    if(pos1 < s.length())
     {
         v.push_back(s.substr(pos1));
     }

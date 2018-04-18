@@ -19,17 +19,24 @@ using namespace std;
 class CSchedulerActiveJob
 {
 public:
-    CSchedulerActiveJob();
-    ~CSchedulerActiveJob();
 
+    static CSchedulerActiveJob* GetInstance();
 
     int AddJob(CTimerBase *pObj, long timeout);
     int InitJob();
 
 
+protected:
+    CSchedulerActiveJob();
+    ~CSchedulerActiveJob();
+
+    int InitTimer();
+
 
 private:
     CTimer m_timerJob;
+
+    static CSchedulerActiveJob* sm_schedulerJob;
 
 };
 

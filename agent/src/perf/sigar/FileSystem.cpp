@@ -3,7 +3,7 @@
  * Function: 
  *********************************************************/
 #include "FileSystem.h"
-
+#include "sv_log.h"
 #include "sigar.h"
 #include "SigarAdapt.h"
 
@@ -49,7 +49,7 @@ CFileSystem::CFileSystem()
     m_pFileSystemInfo = NULL;
     
     num = GetFileSystemListNum();
-    if (num > 0)
+    if ((num > 0) && (num <= MAX_FS_NUM))
     {
         m_pFileSystemInfo = new CFileSystemInfo[num];
         if (m_pFileSystemInfo != NULL)
@@ -74,15 +74,19 @@ CFileSystem::~CFileSystem()
 
 unsigned long CFileSystem::GetFileSystemListNum()
 {
+    int ret = 0;
+    unsigned long num = 0;
     sigar_file_system_list_t fslist;
     
-    if (SIGAR_OK == sigar_file_system_list_get(CSigar::GetSigar(), &fslist))
+    if (SIGAR_OK != (ret = sigar_file_system_list_get(CSigar::GetSigar(), &fslist)))
     {
-        return -1;
+        SV_ERROR("sigar_file_system_list_get return = %d (%s).", ret, sigar_strerror(CSigar::GetSigar(), ret));
+        return 0;
     }
-    
+
+    num = fslist.number;
     sigar_file_system_list_destroy(CSigar::GetSigar(), &fslist);
-    return fslist.number;
+    return num;
 }
 
 
@@ -160,11 +164,13 @@ int CFileSystem::GetFileSystem()
 
     if (m_pFileSystemInfo == NULL)
     {
+        SV_FATAL("Input para is null.");
         return -1;
     }
 
     if (SIGAR_OK != sigar_file_system_list_get(CSigar::GetSigar(), &fslist))
     {
+        SV_ERROR("sigar_file_system_list_get failed...");
         return -1;
     }
 
@@ -180,7 +186,7 @@ int CFileSystem::GetFileSystem()
 
         if (SIGAR_OK != (ret = sigar_file_system_usage_get(CSigar::GetSigar(), fslist.data[i].dir_name, &fsusage)))
         {
-            printf("sigar_file_system_usage_get(%s) ret = %d (%s)\n",
+            SV_ERROR("sigar_file_system_usage_get(%s) ret = %d (%s)\n",
 						fslist.data[i].dir_name, ret, sigar_strerror(CSigar::GetSigar(), ret));
             continue;
         }
@@ -189,8 +195,8 @@ int CFileSystem::GetFileSystem()
 
         if (SIGAR_OK != (ret = sigar_disk_usage_get(CSigar::GetSigar(), fslist.data[i].dev_name, &diskusage)))
         {
-            printf("sigar_disk_usage_get(%s) ret = %d (%s)\n",
-						fslist.data[i].dev_name, ret, sigar_strerror(CSigar::GetSigar(), ret));
+            /*SV_ERROR("sigar_disk_usage_get(%s) ret = %d (%s)\n",
+						fslist.data[i].dev_name, ret, sigar_strerror(CSigar::GetSigar(), ret));*/
             continue;
         }
 

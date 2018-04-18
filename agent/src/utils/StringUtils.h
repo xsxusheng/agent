@@ -21,6 +21,7 @@ public:
 
 
     static void Split(const string& s, vector<std::string>& v, const string& c);
+    static void Split2(const string& s, vector<std::string>& v, const string& c);
 
     static long StrTol(string& str);
     static long long StrToll(string& str);

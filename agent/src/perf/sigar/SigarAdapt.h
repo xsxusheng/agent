@@ -24,9 +24,6 @@ public:
     static sigar_t *GetSigar();
 
 
-
-protected:
-
 private:
     static sigar_t *sm_pSigar;
 

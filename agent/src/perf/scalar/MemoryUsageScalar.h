@@ -16,7 +16,7 @@ public:
 
 
     virtual void UpdateThrod();
-    virtual int FetchData();
+    virtual double FetchData();
 
 
 private:

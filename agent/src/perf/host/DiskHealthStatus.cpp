@@ -40,7 +40,7 @@ bool CDiskHealthStatus::NeedReportFums()
 {
     CTime tNow;
 
-    if (m_lastReportFums.DiffSec(tNow) >= DEF_DISK_HEALTH_REPORT)
+    if (tNow.DiffSec(m_lastReportFums) >= DEF_DISK_HEALTH_REPORT)
     {
         /*重置上次上报时间*/
         m_lastReportFums = tNow;
@@ -84,6 +84,7 @@ void CDiskHealthStatus::SendToFums()
     result.erase();
     if (CScriptAction::ExecuteScript(scPath, result) < 0)
     {
+        SV_ERROR("ExecuteScript %s error.", scPath.c_str());
         return;
     }
 
@@ -124,6 +125,14 @@ void CDiskHealthStatus::SendToFums()
         }
     }
 
+    if (badFlag)
+    {
+        SV_INFO("DISK_HEALTH_STATUS: FAILED, DISK_NAME=%s.", badDiskName.c_str());
+    }
+    else
+    {
+        SV_INFO("DISK_HEALTH_STATUS: PASSED.");
+    }
 }
 
 

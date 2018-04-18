@@ -75,7 +75,7 @@ bool CDiskStatic::NeedReportFums()
 {
     CTime tNow;
 
-    if (m_lastReportFums.DiffSec(tNow) >= DEF_DISK_STATIC_REPORT)
+    if (tNow.DiffSec(m_lastReportFums) >= DEF_DISK_STATIC_REPORT)
     {
         /*重置上次上报时间*/
         m_lastReportFums = tNow;
@@ -110,14 +110,18 @@ void CDiskStatic::Sample()
 
     if (CScriptAction::ExecuteScript(script, strDisk) < 0)
     {
+        SV_ERROR("ExecuteScript %s failed.", script.c_str());
         return;
     }
 
-    CString::Split(strDisk, split, "\n");
-    for (i = 0; i < split.size(); i++)
+    /*第一行数据为标题，需跳过*/
+    CString::Split2(strDisk, split, "\n");
+    for (i = 1; i < split.size(); i++)
     {
         CDisk disk;
-        CString::Split(split[i], diskSplit, " ");
+
+        CString::Split2(split[i], diskSplit, " ");
+        //SV_LOG("DISK_STAT: size=%d, [[%s]]", diskSplit.size(), split[i].c_str());
         if (diskSplit.size() < MAX_DISK_SPLIT_NUM)
         {
             continue;
@@ -161,6 +165,10 @@ void CDiskStatic::SendToFums()
         singleData->set_await(it->GetAwait());
         singleData->set_svctm(it->GetSvctm());
         singleData->set_util(it->GetUtil());
+
+        SV_LOG("DEV=%s, TPS=%f, RDSEC=%f, WRSEC=%f, AVGQU=%f, AVGRQ=%f, AWAIT=%f, SVCTM=%f, UTIL=%f.",
+            it->GetDev().c_str(), it->GetTps(), it->GetRdSec(), it->GetWrSec(), it->GetAvgqu(), it->GetAvgrq(),
+            it->GetAwait(), it->GetSvctm(), it->GetUtil());
     }
 
     Major major = ProtoBufPacker::PackPerfEntity(ProtoBufPacker::SerializeToArray<DiskData>(data), PerfData::DISK_TYPE);

@@ -23,6 +23,7 @@ class CHostStatus
 {
 public:
 
+    static int InitHostStatus();
 
     static int FetchCpuNum();
     static double GetCpuUsage();

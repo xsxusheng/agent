@@ -170,6 +170,8 @@ private:
 
 
 
+#define MAX_PROC_LIST_NUM 1024
+
 
 class CProcPidList
 {

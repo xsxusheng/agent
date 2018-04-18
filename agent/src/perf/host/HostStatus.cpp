@@ -3,6 +3,7 @@
  * Function: 
  *********************************************************/
 #include "HostStatus.h"
+#include "sv_log.h"
 #include "CpuUsage.h"
 #include "MemUsage.h"
 #include "SwapUsage.h"
@@ -16,6 +17,22 @@
 
 
 
+
+
+int CHostStatus::InitHostStatus()
+{
+    if (CSigar::InitSigar() < 0)
+    {
+        SV_FATAL("Init Sigar adapter failed...");
+        return -1;
+    }
+
+    SV_LOG("Init Sigar adapter success...");
+    return 0;
+}
+
+
+
 int CHostStatus::FetchCpuNum()
 {
     CCpuInfoList tCpuInfo;
@@ -26,18 +43,19 @@ int CHostStatus::FetchCpuNum()
 
 double CHostStatus::GetCpuUsage()
 {
+    double usage = 0.0;
     CCpuUsage tCpuUsage;
 
-    return tCpuUsage.GetCpuUsageTotal();
+    usage = tCpuUsage.GetCpuUsageTotal();
+    usage = (double)((int)(usage * 1000.0) / 10); /*放大100倍，精度1位*/
+    return usage;
 }
 
 
 
 double CHostStatus::FetchCpuUsage()
 {
-    CCpuUsage tCpuUsage;
-
-    return tCpuUsage.GetCpuUsageTotal();
+    return GetCpuUsage();
 }
 
 
@@ -61,14 +79,28 @@ string FetchCpuMonokaryonUsage()
 
 int CHostStatus::GetCpuMonokaryonUsage(double **pUsage, unsigned long *pOutLen)
 {
+    int ret = 0;
+    unsigned long i = 0;
     CCpuUsage tCpuUsage;
 
     if (pUsage == NULL || pOutLen == NULL)
     {
+        SV_ERROR("Input para is null.");
         return -1;
     }
 
-    return tCpuUsage.GetCpuPercsUsage(pUsage, pOutLen);
+    ret = tCpuUsage.GetCpuPercsUsage(pUsage, pOutLen);
+    if (((*pUsage) == NULL) || (*pOutLen <= 0))
+    {
+        SV_ERROR("GetCpuPercsUsage pOutlen(%lu) error.", (*pOutLen));
+        ret = -1;
+    }
+    
+    for (i = 0; i < *pOutLen; i++)
+    {
+        (*pUsage)[i] = (double)((int)((*pUsage)[i] * 1000.0) / 10); /*放大100倍，精度1位*/
+    }
+    return ret;
 }
 
 
@@ -124,7 +156,7 @@ double CHostStatus::GetMemUsage()
     CMemUsage tMemUsage;
 
     tMemUsage.GetMemUsage();
-    usage = tMemUsage.GetMemFreePercent();
+    usage = tMemUsage.GetMemUsedPercent();
     return usage;
 }
 
@@ -136,7 +168,7 @@ double CHostStatus::FetchMemUsage()
     CMemUsage tMemUsage;
 
     tMemUsage.GetMemUsage();
-    usage = tMemUsage.GetMemFreePercent();
+    usage = tMemUsage.GetMemUsedPercent();
     return usage;
 }
 
@@ -188,7 +220,7 @@ double CHostStatus::FetchSwapUsage()
         usage = (double)(tSwapUsage.GetUsed()) / (double)(tSwapUsage.GetTotal());
     }
 
-    usage = usage * 100;
+    usage = usage * 100.0;
     return usage;
 }
 

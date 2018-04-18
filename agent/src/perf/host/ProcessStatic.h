@@ -5,6 +5,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 
 #include "Timer.h"
 #include "Process.h"
@@ -26,6 +27,7 @@ public:
     bool NeedReportFums();
 
     bool CheckProcExist(string& args);
+    bool FindProc(string& findProc, string& args);
 
 
     void GetProcStatus();
@@ -36,7 +38,8 @@ public:
 
 private:
     list<string> m_listProc;
-    list<CProcess> m_listprocess;
+    list<CProcess> m_listProcess;
+    map<string, list<CProcess> > m_mapProcess;
 
     CTime m_lastReportFums;
 
