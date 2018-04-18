@@ -24,6 +24,10 @@
 #include "../utils/sv_log.h"
 #include "../utils/ProtoBufPacker.h"
 #include "../proto/HeartProto.pb.h"
+#include "../perf/host/HostStatus.h"
+#include "../perf/SchedulerActiveJob.h"
+
+
 using namespace std;
 using namespace com::fiberhome::fums::proto;
 
@@ -82,6 +86,30 @@ int AppManagerInit()
 }
 
 
+
+int StatisticModuleInit()
+{
+    /*SIGAR INIT*/
+    if (CHostStatus::InitHostStatus() < 0)
+    {
+        return -1;
+    }
+
+    /*SCHEDULER JOB INIT*/
+    CSchedulerActiveJob *schedulerJob = CSchedulerActiveJob::GetInstance();
+    if (schedulerJob == NULL)
+    {
+        SV_ERROR("Init SchedulerActiveJob failed...");
+        return -1;
+    }
+
+    SV_LOG("Init StatisticModuleInit success...");
+    return 0;
+}
+
+
+
+
 //初始化agent
 static int InitAgent()
 {
@@ -106,7 +134,11 @@ static int InitAgent()
 	return -1;
     }
 
-    
+    if (StatisticModuleInit() < 0)
+    {
+        SV_ERROR("StatisticModuleInit error...");
+        return -1;
+    }
 
     return 0;
 }

@@ -3,7 +3,7 @@
 
 TARGET = main
 CFLAGS = -Wall -O -g -Wno-write-strings
-INC_DIR = -I../../3rd/rabbitmq/include -I../../3rd/protobuf/include
+INC_DIR = -I../../3rd/rabbitmq/include -I../../3rd/protobuf/include -I../perf/host -I../perf/sigar -I../utils -I../include
 ###########################################################
 CC = gcc
 XX = g++
