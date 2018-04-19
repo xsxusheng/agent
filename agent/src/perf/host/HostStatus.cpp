@@ -106,14 +106,7 @@ int CHostStatus::GetCpuMonokaryonUsage(double **pUsage, unsigned long *pOutLen)
 
 int CHostStatus::FetchCpuMonokaryonUsage(double **pUsage, unsigned long *pOutLen)
 {
-    CCpuUsage tCpuUsage;
-
-    if (pUsage == NULL || pOutLen == NULL)
-    {
-        return -1;
-    }
-
-    return tCpuUsage.GetCpuPercsUsage(pUsage, pOutLen);
+    return GetCpuMonokaryonUsage(pUsage, pOutLen);
 }
 
 

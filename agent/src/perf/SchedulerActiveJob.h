@@ -21,6 +21,7 @@ class CSchedulerActiveJob
 public:
 
     static CSchedulerActiveJob* GetInstance();
+    static void ReleaseInstance();
 
     int AddJob(CTimerBase *pObj, long timeout);
     int InitJob();

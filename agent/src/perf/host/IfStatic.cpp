@@ -317,7 +317,7 @@ void CIfStatic::SendToFums()
         singleData->set_nicrxmaxspeed(it->second.GetRxMaxSpeed());
         singleData->set_nictxmaxspeed(it->second.GetTxMaxSpeed());
     
-        SV_LOG("NIC_NAME=%s, IPADDR=%s, SPEED=%s, RX_BYTES_MAX=%ld, TX_BYTES_MAX=%ld, "
+        SV_INFO("IF_STATIC: NIC_NAME=%s, IPADDR=%s, SPEED=%s, RX_BYTES_MAX=%ld, TX_BYTES_MAX=%ld, "
             "RX_SPEED_MAX=%ld, TX_SPEED_MAX=%ld, RX_SPEED=%ld, TX_SPEED=%ld, "
             "RX_BYTES=%ld, RX_PACKET=%ld, RX_ERR=%ld, RX_DROP=%ld, RX_OVERRUN=%ld, RX_FRAME=%ld, "
             "TX_BYTES=%ld, TX_PACKET=%ld, TX_ERR=%ld, TX_DROP=%ld, TX_OVERRUN=%ld.",

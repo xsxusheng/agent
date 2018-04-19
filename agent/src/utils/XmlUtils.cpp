@@ -148,8 +148,8 @@ CXMLUtils::~CXMLUtils()
 
 int CXMLUtils::ParseFile(const char* pFileName)
 {
-	int nBufSize = 0;
-	xmlChar *pXmlBuff = NULL;
+	//int nBufSize = 0;
+	//xmlChar *pXmlBuff = NULL;
 
     if (pFileName == NULL)
     {

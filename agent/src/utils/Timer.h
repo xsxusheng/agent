@@ -38,8 +38,8 @@ public:
 class CTimerNode
 {
 public:
-    CTimerNode(){}
-    ~CTimerNode(){}
+    CTimerNode();
+    ~CTimerNode();
 
     CTimerBase *GetNodeObj(){return m_pObj;}
     void SetNodeObj(CTimerBase *obj){m_pObj = obj;}

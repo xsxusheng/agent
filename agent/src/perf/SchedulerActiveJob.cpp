@@ -65,6 +65,20 @@ CSchedulerActiveJob* CSchedulerActiveJob::GetInstance()
 
 
 
+
+void CSchedulerActiveJob::ReleaseInstance()
+{
+    if (sm_schedulerJob != NULL)
+    {
+        delete sm_schedulerJob;
+        sm_schedulerJob = NULL;
+    }
+}
+
+
+
+
+
 int CSchedulerActiveJob::InitTimer()
 {
     m_timerJob.Start();

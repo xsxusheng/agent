@@ -68,6 +68,10 @@ void CCpuMonokaryonUsageScalar::Run()
 
         ReportAlarm(usageMax);
     }
+
+    /*释放空间*/
+    delete []usageTotal;
+    usageTotal = NULL;
 }
 
 

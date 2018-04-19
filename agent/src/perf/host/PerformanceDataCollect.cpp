@@ -73,7 +73,6 @@ void CPerformanceDataCollect::Run()
     {
         SingleAppPerfData *singleData = data.add_perfdata();
 
-        SV_LOG("APP_LIST: %s.", itList->c_str());
         if (strcasecmp(itList->c_str(), "CSD") == 0)
         {
             rd.Read("python /opt/fonsview/NE/csd/bin/csd_sts.py");
@@ -201,9 +200,9 @@ void CPerformanceDataCollect::Run()
         }
 
 
-        SV_INFO("SEQ=%d, CREATETIME=%s, CPUUSAGE=%f, MEMUSED=%f, MEMUSAGE=%f, DISKUSAGE=%d, DISKUSED=%d, "
-            "DATADISKUSED=%s, DATADISKTOTAL=%s, CACHE_IN=%s, CACHE_OUT=%s, CONCURRENTCIES=%s, CONNECTIONS=%s, "
-            "DNSREQ=%s, DNSRES=%s, HTTPREQ=%s, HTTPREDIRECT=%s.",
+        SV_INFO("PERFORMANCE_DATA_COLLECT: SEQ=%d, CREATETIME=%s, CPUUSAGE=%f, MEMUSED=%f, MEMUSAGE=%f, "
+            "DISKUSAGE=%d, DISKUSED=%d, DATADISKUSED=%s, DATADISKTOTAL=%s, CACHE_IN=%s, CACHE_OUT=%s, "
+            "CONCURRENTCIES=%s, CONNECTIONS=%s, DNSREQ=%s, DNSRES=%s, HTTPREQ=%s, HTTPREDIRECT=%s.",
             sequence, createTime.c_str(), cpuUsage, usedMemory, memoryUsage, diskUsage, usedSysDisk,
             usedDataDisk.c_str(), totalDataDisk.c_str(), cacheIn.c_str(), cacheOut.c_str(), concurrencies.c_str(),
             connections.c_str(), DNSRequests.c_str(), DNSResponse.c_str(), HTTPRequests.c_str(), HTTPRedirects.c_str());

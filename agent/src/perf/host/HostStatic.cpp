@@ -17,6 +17,24 @@ using namespace com::fiberhome::fums::proto;
 
 CHostStatic::CHostStatic()
 {
+    m_fCpuUsageAve = 0.0;
+    m_fMemUsageAve = 0.0;
+    m_nMemTotalAve = 0.0;
+
+    m_fMaxCpuUsage = 0.0;
+    m_fMaxMemUsage = 0.0;
+
+    m_nDiskUsage = 0;
+    m_nDiskTotal = 0;
+
+    m_nRxUsageAve = 0;
+    m_nTxUsageAve = 0;
+
+    m_nMaxContinueTime = 0;
+    m_nTcpLinkNum = 0;
+    m_nTcpInboundTotal = 0;
+    m_nTcpOutboundTotal = 0;
+
     m_cpuUsageList.clear();
     m_memUsageList.clear();
     m_memTotalList.clear();
@@ -119,7 +137,7 @@ void CHostStatic::SendToFums()
     data.set_memmaxusage(m_fMaxMemUsage);
     data.set_disktotal(m_nDiskTotal);
 
-    SV_LOG("HOST_STATIC: TimeNow=%s, CpuUsage=%f, CpuUsageMax=%f, ContTime=%d, MemUsage=%f, MemUsageMax=%f, "
+    SV_INFO("HOST_STATIC: TimeNow=%s, CpuUsage=%f, CpuUsageMax=%f, ContTime=%d, MemUsage=%f, MemUsageMax=%f, "
         "MemTotal=%f, DiskUsage=%d, DiskTotal=%d, RxUsage=%ld, TxUsage=%ld, TcpLink=%d, TcpInTotal=%d, TcpOutTotal=%d.",
         timeNow.c_str(), m_fCpuUsageAve, m_fMaxCpuUsage, m_nMaxContinueTime, m_fMemUsageAve, m_fMaxMemUsage,
         m_nMemTotalAve, m_nDiskUsage, m_nDiskTotal, m_nRxUsageAve, m_nTxUsageAve, m_nTcpLinkNum, m_nTcpInboundTotal, m_nTcpOutboundTotal);

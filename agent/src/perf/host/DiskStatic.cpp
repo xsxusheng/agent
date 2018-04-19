@@ -166,7 +166,7 @@ void CDiskStatic::SendToFums()
         singleData->set_svctm(it->GetSvctm());
         singleData->set_util(it->GetUtil());
 
-        SV_LOG("DEV=%s, TPS=%f, RDSEC=%f, WRSEC=%f, AVGQU=%f, AVGRQ=%f, AWAIT=%f, SVCTM=%f, UTIL=%f.",
+        SV_INFO("DISK_STATIC: DEV=%s, TPS=%f, RDSEC=%f, WRSEC=%f, AVGQU=%f, AVGRQ=%f, AWAIT=%f, SVCTM=%f, UTIL=%f.",
             it->GetDev().c_str(), it->GetTps(), it->GetRdSec(), it->GetWrSec(), it->GetAvgqu(), it->GetAvgrq(),
             it->GetAwait(), it->GetSvctm(), it->GetUtil());
     }

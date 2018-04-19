@@ -93,6 +93,8 @@ CProcArgs::~CProcArgs()
 
 int CProcArgs::AllocArgs(unsigned long size)
 {
+    unsigned long i = 0;
+
     if (size <= 0)
     {
         return -1;
@@ -106,7 +108,11 @@ int CProcArgs::AllocArgs(unsigned long size)
     m_cArgs = new char* [size];
     if (m_cArgs != NULL)
     {
-        memset(m_cArgs, 0, size);
+        for (i = 0; i < size; i++)
+        {
+            m_cArgs[i] = NULL;
+        }
+
         m_nArgsNum = size;
         return 0;
     }
@@ -166,7 +172,7 @@ int CProcArgs::SetArgs(unsigned long index, char *pArgs)
     m_cArgs[index] = new char[len];
     if (m_cArgs[index] != NULL)
     {
-        memset(m_cArgs[index], 0, len);
+        memset(m_cArgs[index], 0, (sizeof(char) * len));
         strncpy(m_cArgs[index], pArgs, (len - 1));
         return 0;
     }
@@ -309,6 +315,8 @@ CProcPidList::~CProcPidList()
 
 int CProcPidList::AllocProcPid(unsigned long size)
 {
+    unsigned long i = 0;
+
     if ((size <= 0) || (size > MAX_PROC_LIST_NUM))
     {
         SV_ERROR("Input para size %lu error.", size);
@@ -323,6 +331,10 @@ int CProcPidList::AllocProcPid(unsigned long size)
     m_pPid = new long[size];
     if (m_pPid != NULL)
     {
+        for (i = 0; i < size; i++)
+        {
+            m_pPid[i] = 0;
+        }
         SetProcNum(size);
         return 0;
     }
@@ -403,160 +415,6 @@ int CProcPidList::GetProcPidList()
 
 
 
-
-
-
-
-#if 0
-
-
-
-
-
-CProcessInfo::CProcessInfo()
-{
-    unsigned long num = 0;
-
-    m_nProcNum = 0;
-    num = GetProcListNum();
-    if (num > 0)
-    {
-        m_pProcs = new CProcess[num];
-        if (m_pProcs == NULL)
-        {
-            return;
-        }
-        m_nProcNum = num;
-    }
-}
-
-
-
-CProcessInfo::~CProcessInfo()
-{
-    if (m_pProcs != NULL)
-    {
-        delete []m_pProcs;
-        m_pProcs = NULL;
-        m_nProcNum = 0;
-    }
-}
-
-
-
-unsigned long CProcessInfo::GetProcListNum()
-{
-    unsigned long num = 0;
-    sigar_proc_list_t proclist;
-
-    if (SIGAR_OK != sigar_proc_list_get(CSigar::GetSigar(), &proclist))
-    {
-        return 0;
-    }
-
-    if (proclist.number > 0)
-    {
-        num = proclist.number;
-    }
-    sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
-    return num;
-}
-
-
-
-
-CProcess* CProcessInfo::GetProcess(unsigned long index)
-{
-    if (index >= m_nProcNum)
-    {
-        return NULL;
-    }
-    
-    if (m_pProcs != NULL)
-    {
-        return m_pProcs[index];
-    }
-
-    return NULL;
-}
-
-
-
-int CProcessInfo::GetProcList()
-{
-    int ret = 0;
-    unsigned long i = 0;
-    unsigned long num = 0;
-    CProcess* pProc = NULL;
-    sigar_proc_list_t proclist;
-    sigar_proc_mem_t proc_mem;
-    sigar_proc_cpu_t proc_cpu;
-    sigar_proc_state_t proc_state;
-
-    if (GetProcess() == NULL)
-    {
-        return -1;
-    }
-
-    if (SIGAR_OK != sigar_proc_list_get(CSigar::GetSigar(), &proclist))
-    {
-        return -1;
-    }
-
-    num = GetProcNum();
-    if (proclist.number != num)
-    {
-        sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
-        return -1;
-    }
-
-
-    for (i = 0; i < num; i++)
-    {
-        pProc = GetProcess(i);
-        if (pProc == NULL)
-        {
-            sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
-            return -1;
-        }
-        
-        pProc->SetPid((long)proclist.data[i]);
-        if (SIGAR_OK != (ret = sigar_proc_mem_get(CSigar::GetSigar(), proclist.data[i], &proc_mem)))
-        {
-            printf("sigar_proc_mem_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
-            sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
-            return -1;
-        }
-
-        pProc->SetSize((long)proc_mem.size);
-        pProc->SetRes((long)proc_mem.resident);
-        pProc->SetShr((long)proc_mem.share);
-
-
-        if (SIGAR_OK != (ret = sigar_proc_cpu_get(CSigar::GetSigar(), proclist.data[i], &proc_cpu)))
-        {
-            printf("sigar_proc_time_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
-            sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
-            return -1;
-        }
-
-        pProc->SetCpu(proc_cpu.percent);
-
-
-        if (SIGAR_OK != (ret = sigar_proc_state_get(CSigar::GetSigar(), proclist.data[i], &proc_state)))
-        {
-            printf("sigar_proc_state_get ret = %d (%s)\n", ret, sigar_strerror(CSigar::GetSigar(), ret));
-            sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
-            return -1;
-        }
-    }
-    
-    sigar_proc_list_destroy(CSigar::GetSigar(), &proclist);
-    return num;
-}
-
-
-#endif
 
 
 

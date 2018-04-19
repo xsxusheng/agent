@@ -7,6 +7,29 @@
 
 
 
+
+
+CTimerNode::CTimerNode()
+{
+    m_pObj = NULL;
+    m_nTid = -1;
+    m_nTimeout = 0;
+}
+
+
+
+CTimerNode::~CTimerNode()
+{
+    m_pObj = NULL;
+    m_nTid = -1;
+    m_nTimeout = 0;
+}
+
+
+
+
+
+
 CTimer::CTimer()
 {
     m_TimerList.clear();
@@ -16,7 +39,21 @@ CTimer::CTimer()
 
 CTimer::~CTimer()
 {
+    CTimerBase *pTimerBase = NULL;
+    TIMERLIST::iterator it;
+
+    TimerLock();
+    for (it = m_TimerList.begin(); it != m_TimerList.end();)
+    {
+        pTimerBase = it->GetNodeObj();
+        if (pTimerBase != NULL)
+        {
+            delete pTimerBase;
+            it->SetNodeObj(NULL);
+        }
+    }
     m_TimerList.clear();
+    TimerUnLock();
     memset(m_sTidSet, 0, sizeof(m_sTidSet));
 }
 
@@ -75,14 +112,14 @@ int CTimer::TimerStart(CTimerBase *pObj, long timeout)
 
     if (pObj == NULL || timeout <= 0)
     {
-        SV_LOG("TimerStart: Add new node error.");
+        SV_ERROR("TimerStart: Add new node error.");
         return -1;
     }
     
     /*防止链表无线放大*/
     if (m_TimerList.size() >= MAX_TIMER_NUM)
     {
-        SV_LOG("TimerStart: Timer list num is enough(%d).", m_TimerList.size());
+        SV_ERROR("TimerStart: Timer list num is enough(%d).", m_TimerList.size());
         return -1;
     }
 
@@ -92,7 +129,7 @@ int CTimer::TimerStart(CTimerBase *pObj, long timeout)
     node.SetNodeId(GetFreeTimerId());
     if (node.GetNodeId() < 0)
     {
-        SV_LOG("TimerStart: Get free timer id failed...");
+        SV_ERROR("TimerStart: Get free timer id failed...");
         return -1;
     }
 
@@ -110,7 +147,7 @@ int CTimer::TimerStart(CTimerBase *pObj, long timeout)
     {
         /*如果链表插入失败，需要释放TID资源*/
         ReleaseTimerId(node.GetNodeId());
-        SV_LOG("TimerStart: Insert new node failed...");
+        SV_ERROR("TimerStart: Insert new node failed...");
         return -1;
     }
     return tid;

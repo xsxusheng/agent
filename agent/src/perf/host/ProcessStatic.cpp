@@ -295,7 +295,7 @@ void CProcessStatic::SendToFums()
         singleData->set_cpumax((float)it->GetCpuMax());
         singleData->set_memmax((float)it->GetMemMax());
 
-        SV_LOG("PID=%ld, Cmd=%s, CPU=%f, CPUMAX=%f, MEM=%f, MEMMAX=%f, Size=%ld, Virt=%ld, Res=%ld, Shr=%ld, Time=%s, State=%s.",
+        SV_INFO("PROCESS_STATIC: PID=%ld, Cmd=%s, CPU=%f, CPUMAX=%f, MEM=%f, MEMMAX=%f, Size=%ld, Virt=%ld, Res=%ld, Shr=%ld, Time=%s, State=%s.",
             it->GetPid(), it->GetCommand().c_str(), it->GetCpu(), it->GetCpuMax(), it->GetMem(), it->GetMemMax(),
             it->GetSize(), it->GetVirt(), it->GetRes(), it->GetShr(), it->GetTime().c_str(), it->GetState().c_str());
     }
