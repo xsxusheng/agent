@@ -43,7 +43,7 @@ CTimer::~CTimer()
     TIMERLIST::iterator it;
 
     TimerLock();
-    for (it = m_TimerList.begin(); it != m_TimerList.end();)
+    for (it = m_TimerList.begin(); it != m_TimerList.end(); it++)
     {
         pTimerBase = it->GetNodeObj();
         if (pTimerBase != NULL)
