@@ -115,7 +115,11 @@ int CHostStatus::FetchCpuFrequency()
 {
     CCpuInfoList tCpuList;
 
-    tCpuList.GetCpuInfoList();
+    if (tCpuList.GetCpuInfoList() < 0)
+    {
+        SV_ERROR("GetCpuInfoList error.");
+        return 0;
+    }
     return tCpuList.GetCpuInfo(0)->GetMhz();
 }
 

@@ -470,9 +470,9 @@ CCpuInfoList::CCpuInfoList()
     m_pCpuInfoList = NULL;
 
     num = GetCpuInfoNum();
-    if (m_nCpuNum > 0)
+    if (num > 0)
     {
-        m_pCpuInfoList = new CCpuInfo[m_nCpuNum];
+        m_pCpuInfoList = new CCpuInfo[num];
         if (m_pCpuInfoList != NULL)
         {
             m_nCpuNum = num;
@@ -551,6 +551,7 @@ int CCpuInfoList::GetCpuInfoList()
 
     if (m_pCpuInfoList == NULL)
     {
+        SV_ERROR("CCpuInfoList init error...");
         return -1;
     }
 
