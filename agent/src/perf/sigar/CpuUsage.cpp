@@ -527,6 +527,7 @@ void CCpuInfoList::SetCpuInfo(sigar_cpu_info_t& cpu, unsigned long index)
 unsigned long CCpuInfoList::GetCpuInfoNum()
 {
     int ret = 0;
+    unsigned long num = 0;
     sigar_cpu_info_list_t tCpu;
     
     if (SIGAR_OK != (ret = sigar_cpu_info_list_get(CSigar::GetSigar(), &tCpu)))
@@ -535,8 +536,9 @@ unsigned long CCpuInfoList::GetCpuInfoNum()
         return 0;
     }
 
+    num = tCpu.number;
     sigar_cpu_info_list_destroy(CSigar::GetSigar(), &tCpu);
-    return tCpu.number;
+    return num;
 }
 
 
