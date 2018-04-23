@@ -68,7 +68,7 @@ string CHostStatus::GetCpuUsageString()
 
 
 
-string FetchCpuMonokaryonUsage()
+string CHostStatus::FetchCpuMonokaryonUsage()
 {
     CCpuUsage tCpuUsage;
 
