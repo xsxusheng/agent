@@ -131,17 +131,17 @@ int AmqpSendBuilder::SendMessageToFums(Major &major)
     {
     	/* 获取消息类型 */
         msgType =  major.header().type();
-	string message(base64_encode(ProtoBufPacker::SerializeToArray(major)));
+		string message(base64_encode(ProtoBufPacker::SerializeToArray(major)));
 		
-        queuename = GetSendQueuename(msgType);
+        //queuename = GetSendQueuename(msgType);
         routingKey = GetSendRoutingKey(msgType);
         exchange = RabbitmqConfig::GetExchangeNmr();
 		
 
-        QueueDeclare(queuename, 0, 1, 0, 0);
-        QueueBind(queuename, exchange, routingKey);
+        //QueueDeclare(queuename, 0, 1, 1, 1);
+        //QueueBind(queuename, exchange, routingKey);
         /* persistent delivery mode */
-        SetPublishProps(2);
+        //SetPublishProps(2);
         BasicPublish(exchange, routingKey, message);
     }catch(...){
         SV_ERROR("send message error");

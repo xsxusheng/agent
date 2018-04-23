@@ -119,25 +119,24 @@ void AmqpReceiveBuilder::__StartConsume()
     while(1)
     {	
     	message = "";
-        SV_LOG("start consume i l = %d", message.length());
-	sleep(1);
+		sleep(1);
         AmqpMessage::ReceiveMessage(message);
-	for(int i = 0; i<1; i++)
-	{
-	taskManager = TaskManager::GetInstance();
-	taskManager->MessageProcess(message);
-	usleep(10000);
-	ready = false;
-	while(!ready)
-	{
-        	taskManager = TaskManager::GetInstance();
-		taskManager->CheckTask();
-		ready = !taskManager->TaskIsFull();
-		if(!ready)
+		for(int i = 0; i<1; i++)
 		{
-			sleep(1);
+			taskManager = TaskManager::GetInstance();
+			taskManager->MessageProcess(message);
+			usleep(10000);
+			ready = false;
+			while(!ready)
+			{
+        		taskManager = TaskManager::GetInstance();
+				taskManager->CheckTask();
+				ready = !taskManager->TaskIsFull();
+				if(!ready)
+				{
+					sleep(1);
+				}
+			}
 		}
-	}
-	}
     }
 }

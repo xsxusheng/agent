@@ -20,10 +20,20 @@ class AppConfFile
 public:
 	AppConfFile();
 	~AppConfFile();
+
+	/* 初始化 */
 	int Init();
+
+	/* 获取APP配置文件 */
 	string GetAppConfFile(string &path, string &similarFile);
-	int DeleteExpiredConfFile(string &path, string &newFileName, string &usingFileName);
+
+	/* 删除过去配置文件 */
+	void DeleteExpiredConfFile(string &path, string &newFileName, string &usingFileName);
+
+	/* 分析处理配置 */
 	int Analyse(ConfigData &config, ConfigUpdateResponse &response);
+
+	/* 分析处理配置 */
 	int DownloadFile(ConfigData &config, ConfigUpdateResponse &response);
 };
 

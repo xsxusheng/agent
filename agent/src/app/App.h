@@ -1,7 +1,18 @@
+/*************************************************************************
+* File Name : App.h
+* Author : xus103
+* Created Time : 2018年03月13日
+* Description : App
+* CopyRight : Copyright(c) 2000-2020 fiberhome
+* OtherInfo :
+* ModifyLog :
+ ************************************************************************/
+
 #ifndef _APP_H_
 #define _APP_H_
 #include <iostream>
 #include <string>
+#include "../utils/Lock.h"
 using namespace std;
 
 class App
@@ -9,16 +20,17 @@ class App
 public:
 	/* APP 状态 */
 	enum AppStatus{
-		STARTED = 0,
-		STOPED  = 1
+		STARTED = 0, 						/* 启动 */
+		STOPED  = 1  						/* 停止 */
 	};
 	enum AppTryInstallingStatus
 	{
-		INSTALLED_SUCCESS = 0,
-		INSTALLED_FAILED  = 1,
-		DOWNLOAD_SUCC_NOT_INSTALL = 3,
-		DOWNLOAD_FAILED = 4
+		INSTALLED_SUCCESS = 0,				/* 安装成功 */
+		INSTALLED_FAILED  = 1,				/* 安装失败 */
+		DOWNLOAD_SUCC_NOT_INSTALL = 2,		/* 下载成功但未安装 */
+		DOWNLOAD_FAILED = 3					/* 下载失败 */
 	};
+
 	App();
 	App(string &appType, string &appVersion, int appStatus,
 		string &appTryInstallingVersion, int &appTryInstallingStatus, string appTryInstallingFailedReason);
@@ -97,6 +109,7 @@ private:
 	int m_startCount;
 	/* APP daemon 状态 */
 	int m_appDaemonStatus;
+	CMutex m_appLock;
 };
 
 #endif

@@ -1,9 +1,10 @@
 ##c/c++代码编译Makefile
 ###########################################################
 
-TARGET = host
+TARGET = appmsg
 CFLAGS = -Wall -O -g -Wno-write-strings
-INC_DIR = -I../../3rd/protobuf/include
+INC_DIR = -I../../3rd/log4cplus/include -I../../../3rd/protobuf/include -I../../../3rd/rabbitmq/include \
+	-I../include
 ###########################################################
 CC = gcc
 XX = g++
@@ -16,8 +17,8 @@ ALL_OBJ = $(C_OBJS) $(CXX_OBJS)
 ###########################################################
 %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC_DIR) -std=c99
-%.o:%.cpp
-	$(XX) $(CFLAGS) -c $< -o $@ $(INC_DIR)
+%.o:%.cpp 
+	$(XX) $(CFLAGS) -c $< -o $@ $(INC_DIR) -std=c++11
 ###########################################################
 all: $(TARGET)
 $(TARGET): $(ALL_OBJ)
@@ -26,6 +27,6 @@ $(TARGET): $(ALL_OBJ)
 clean:
 	rm -rf *.o $(TARGET)
 
-.PHONY: all clean
+.PHONY: all clean distclean 
 
 

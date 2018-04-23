@@ -1,3 +1,12 @@
+/*************************************************************************
+* File Name : AppControlProcess.h
+* Author : xus103
+* Created Time : 2018年03月13日
+* Description : app cmd process
+* CopyRight : Copyright(c) 2000-2020 fiberhome
+* OtherInfo :
+* ModifyLog :
+ ************************************************************************/
 
 
 #ifndef _APPCONTROLPROCESS_H_

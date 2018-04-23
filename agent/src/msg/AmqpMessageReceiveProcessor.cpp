@@ -11,12 +11,19 @@
 #include "../utils/sv_log.h"
 #include "../conf/ConfManager.h"
 #include "../app/AppControlProcess.h"
+#include "../host/HostSystemInfo.h"
+#include "../host/HostRealProcessInfo.h"
+#include "../host/HostNicStatusInfo.h"
+#include "../host/HostDiskStatusInfo.h"
+#include "../host/HostDiskSmartCtrlInfo.h"
+#include "../host/HostDiskRaidInfo.h"
+#include "../host/HostDiskCfgInfo.h"
 #include "TaskManager.h"
 #include "Task.h"
 #include "AmqpMessageReceiveProcessor.h"
 
 
-AmqpMessageReceiveProcessor::AmqpMessageReceiveProcessor():Thread(true)
+AmqpMessageReceiveProcessor::AmqpMessageReceiveProcessor() : Thread(true)
 {
     
 }
@@ -165,37 +172,43 @@ int AmqpMessageReceiveProcessor::ProcessRealQuery(const string &body)
 		case RealQueryHostStatusData::SYSTEM:
 		{
 			SV_LOG("--- query type : SYSTEM ---");
-			//HostSystemInfo::SendSystemInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
+			HostSystemInfo::SendSystemInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
 			break;
 		}
 		case RealQueryHostStatusData::DISKSTATUS:
 		{
 			SV_LOG("--- query type : DISKSTATUS ---");
+			HostDiskStatusInfo::SendDiskStatusInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
 			break;
 		}
 		case RealQueryHostStatusData::DISKCFG:
 		{
 			SV_LOG("--- query type : DISKCFG ---");
+			HostDiskCfgInfo::SendDiskCfgInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
 			break;
 		}
 		case RealQueryHostStatusData::DISKHEALTH:
 		{
 			SV_LOG("--- query type : DISKHEALTH ---");
+			HostDiskSmartCtrlInfo::SendDiskSmartCtlInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
 			break;
 		}
 		case RealQueryHostStatusData::DISKRAID:
 		{
 			SV_LOG("--- query type : DISKRAID ---");
+			HostDiskRaidInfo::SendDiskRaidInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
 			break;
 		}
 		case RealQueryHostStatusData::NIC:
 		{
 			SV_LOG("--- query type : NIC ---");
+			HostNicStatusInfo::SendNicStatusInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
 			break;
 		}
 		case RealQueryHostStatusData::PROCESS:
 		{
 			SV_LOG("--- query type : PROCESS ---");
+			HostRealProcessInfo::SendRealProcessInfo(realQueryHostStatusData, Header::REALQUERYHOSTCFG);
 			break;
 		}
 		default:
@@ -203,7 +216,6 @@ int AmqpMessageReceiveProcessor::ProcessRealQuery(const string &body)
 			SV_ERROR("unknown query type:%d", realQueryHostStatusData.querycfgtype());
 			return -1;
 		}
-		
 	}
 	
     return 0;

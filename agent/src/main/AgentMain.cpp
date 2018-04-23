@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <string>
 #include "../conf/ConfManager.h"
+#include "../msg/app/AppMsgManager.h"
 #include "../msg/RabbitmqConfig.h"
 #include "ThreadPool.h"
 #include "../msg/AmqpReceiveBuilder.h"
@@ -86,7 +87,6 @@ int AppManagerInit()
 }
 
 
-
 int StatisticModuleInit()
 {
     /*SIGAR INIT*/
@@ -107,7 +107,23 @@ int StatisticModuleInit()
     return 0;
 }
 
+int AppMsgManagerInit()
+{
+	AppMsgManager *appMsgManager = AppMsgManager::GetInstance();
+	if(appMsgManager == NULL)
+	{
+		SV_ERROR("get appMsgManager error");
+		return -1;
+	}
+	if(appMsgManager->Init() < 0)
+	{
+		SV_ERROR("appMsgManager init error");
+		return -1;
+	}
+	appMsgManager->Start();
 
+	return 0;
+}
 
 
 //初始化agent
@@ -134,11 +150,19 @@ static int InitAgent()
 	return -1;
     }
 
-    if (StatisticModuleInit() < 0)
+	if (StatisticModuleInit() < 0)
     {
         SV_ERROR("StatisticModuleInit error...");
         return -1;
     }
+	
+    if(AppMsgManagerInit() < 0)
+    {
+		SV_ERROR("AppMsgManagerInit error");
+		return -1;
+    }
+
+    
 
     return 0;
 }
@@ -178,7 +202,7 @@ int main(int argc, char *argv[])
     while(1)
     {
 	//heart test
-        sleep(5);
+    sleep(5);
 	HeartData heartData;
 	heartData.set_hearttype(HeartData::AGENT);
 	heartData.set_msg("Hello, World!");

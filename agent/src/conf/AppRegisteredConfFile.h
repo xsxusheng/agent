@@ -21,12 +21,20 @@ using namespace std;
 class AppRegisteredConfFile
 {
 public:
-        AppRegisteredConfFile();
-        ~AppRegisteredConfFile();
-        int Init();
+	AppRegisteredConfFile();
+	~AppRegisteredConfFile();
+	
+	/* 初始化 */
+	int Init();
+
+	/*解析配置文件*/
 	list<App>* ParseConfFile(string &fileName);
-        string GetAppRegisteredConfFile(string &path);
-        int Analyse(ConfigData &config, ConfigUpdateResponse &response);
+
+	/* 获取APP注册配置文件*/
+	string GetAppRegisteredConfFile(string &path);
+
+	/* 解析注册配置文件 */
+	int Analyse(ConfigData &config, ConfigUpdateResponse &response);
 };
 
 #endif

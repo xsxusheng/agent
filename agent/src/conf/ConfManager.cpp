@@ -34,6 +34,18 @@ ConfManager::~ConfManager()
 	
 }
 
+
+/***********************************************************************
+ * FunctionName : GetInstance
+ * Author : xus103
+ * CreateDate : 2018/03/16
+ * Description : 获取最配置管理单实例
+ * InputParam : 
+ * OutputParam :
+ * Return Value : 返回配置管理单实例指针
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 ConfManager* ConfManager::GetInstance()
 {
 	 if(sm_confManager == NULL)
@@ -50,6 +62,17 @@ ConfManager* ConfManager::GetInstance()
 }
 
 
+/***********************************************************************
+ * FunctionName : InitConfManager
+ * Author : xus103
+ * CreateDate : 2018/03/16
+ * Description : 初始化配置管理
+ * InputParam : 
+ * OutputParam :
+ * Return Value : 成返回0， 失败返回-1
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 int ConfManager::InitConfManager()
 {
 	//manage agent configure
@@ -59,7 +82,7 @@ int ConfManager::InitConfManager()
 		SV_ERROR("new error");
 		return -1;
 	}
-	if(agentConfFile->Init() <0 )
+	if(agentConfFile->Init() < 0)
 	{
 		SV_ERROR("init agentConfFile error");
 		return -1;
@@ -72,7 +95,7 @@ int ConfManager::InitConfManager()
 		SV_ERROR("new error");
 		return -1;
 	}
-	if(appRegisteredConfFile->Init() <0 )
+	if(appRegisteredConfFile->Init() < 0)
 	{
 		SV_ERROR("init appConfFile error");
 		return -1;
@@ -85,7 +108,7 @@ int ConfManager::InitConfManager()
 		SV_ERROR("new error");
 		return -1;
 	}
-	if(appConfFile->Init() <0 )
+	if(appConfFile->Init() < 0)
 	{
 		SV_ERROR("init appConfFile error");
 		return -1;
@@ -98,14 +121,27 @@ int ConfManager::InitConfManager()
 		SV_ERROR("new error");
 		return -1;
 	}
-	if(ntpConfFile->Init() <0 )
+	if(ntpConfFile->Init() < 0)
 	{
 		SV_ERROR("init appConfFile error");
 		return -1;
 	}
+	
 	return 0;
 }
 
+
+/***********************************************************************
+ * FunctionName : Analyse
+ * Author : xus103
+ * CreateDate : 2018/03/16
+ * Description : 分析处理配置类型
+ * InputParam : 
+ * OutputParam :
+ * Return Value : 成返回0， 失败返回-1
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 int ConfManager::Analyse(ConfigData &config)
 {
 	ConfigUpdateResponse response;

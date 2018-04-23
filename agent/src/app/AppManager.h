@@ -1,3 +1,13 @@
+/*************************************************************************
+* File Name : AppManager.h
+* Author : xus103
+* Created Time : 2018年04月10日
+* Description : app 管理
+* CopyRight : Copyright(c) 2000-2020 fiberhome
+* OtherInfo :
+* ModifyLog :
+ ************************************************************************/
+
 #ifndef _APPMANAGER_H_
 #define _APPMANAGER_H_
 #include <iostream>
@@ -31,12 +41,16 @@ public:
 	/* 检测APP状态 */
 	static void UpdateAppStatus(App &app);
 
+	/* 检查注册app状态 */
 	static void CheckRegisteredAppStatus(App &app);
-	
+
+	/* 获取app版本 */	
 	static string GetAppVersion(string &appType);
-	
+
+	/* 检查app daemon 状态 */	
 	static void CheckAppDaemonStatus(App &app);
 
+	/* 获取所有注册APP */
 	static unordered_map<string, App> GetAllRegisteredApp();
 
 	/* 更新APP列表 */

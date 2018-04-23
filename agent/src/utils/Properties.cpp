@@ -69,7 +69,7 @@ int Properties::Load(string &fileName)
         //LOG_INFO("%s=%s\n", key.c_str(), value.c_str());
     }
     this->m_pathName = fileName;
-    
+    _file.close();  
     return 0;
 }
 

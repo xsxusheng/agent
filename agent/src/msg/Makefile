@@ -22,9 +22,12 @@ ALL_OBJ = $(C_OBJS) $(CXX_OBJS)
 ###########################################################
 all: $(TARGET)
 $(TARGET): $(ALL_OBJ)
+	$(MAKE) -C app
+	@\cp -f app/*.o ./
 	@echo $(TARGET)
 
 clean:
+	$(MAKE) clean -C app
 	rm -rf *.o $(TARGET)
 
 .PHONY: all clean distclean 

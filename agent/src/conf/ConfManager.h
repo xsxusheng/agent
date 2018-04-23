@@ -7,6 +7,8 @@
 * OtherInfo :
 * ModifyLog :
  ************************************************************************/
+#ifndef _CONFMANAGER_H_
+#define _CONFMANAGER_H_
 #include <iostream>
 #include <string>
 #include "../msg/Locker.h"
@@ -25,14 +27,19 @@ using namespace std;
 class ConfManager
 {
 public:
-	static ConfManager* GetInstance();
-	int InitConfManager();
-	int Analyse(ConfigData &config);
-
 	static CRWLock appRegisteredConfFileRWLoc;
 	static CRWLock agentConfFileRWLock;
 	static CRWLock appConfFileRWLock;
 	static CRWLock ntpConfFileRWLock;
+
+	/* 获取配置管理单实例 */
+	static ConfManager* GetInstance();
+
+	/* 初始化配置管理 */
+	int InitConfManager();
+
+	/* 分析处理配置类型，分发 */
+	int Analyse(ConfigData &config);
 	
 protected:
 	ConfManager();
@@ -48,7 +55,7 @@ private:
 
 };
 
-
+#endif
 
 
 

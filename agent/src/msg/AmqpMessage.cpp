@@ -19,12 +19,12 @@ using namespace std;
 AmqpMessage::AmqpMessage()
 {
     m_conn = NULL;
-    SV_LOG("构造函数 AmqpMessage");
+    //SV_LOG("构造函数 AmqpMessage");
 }
 
 AmqpMessage::~AmqpMessage()
 {
-    SV_LOG("析构函数 AmqpMessage");
+    //SV_LOG("析构函数 AmqpMessage");
 }
 
 /***********************************************************************
@@ -152,7 +152,6 @@ void AmqpMessage::Connection(string &ip, int port, string &virtualHost, string &
  * Relation : 
  * OtherInfo : 无
  ***********************************************************************/
-
 void AmqpMessage::CreateChannel()
 {
 	int error = AMQP_RESPONSE_NONE;
@@ -173,6 +172,24 @@ void AmqpMessage::CreateChannel()
     }
 }
 
+
+
+/***********************************************************************
+ * FunctionName : ExchangeDeclare
+ * Author : xus103
+ * CreateDate : 2018/03/09
+ * Description : 声明 mq exchange
+ * InputParam : exchange : exchange
+ 				exchange : exchange 类型
+ 				passive :
+ 				durable : 持久化
+ 				autoDelete : 自动删除
+ 				internal : 
+ * OutputParam : 无
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 void AmqpMessage::ExchangeDeclare(string &exchange, string &exchangeType, int passive, int durable, int autoDelete, int internal)
 {
     int error = AMQP_RESPONSE_NONE;
@@ -197,6 +214,22 @@ void AmqpMessage::ExchangeDeclare(string &exchange, string &exchangeType, int pa
     }
 }
 
+
+/***********************************************************************
+ * FunctionName : QueueDeclare
+ * Author : xus103
+ * CreateDate : 2018/03/09
+ * Description : 声明 mq queue
+ * InputParam : queuename : 队列
+ 				passive :
+ 				durable : 
+ 				exclusive : 连接不在时队列自动删除
+ 				auto_delete : consumer不在时自动删除
+ * OutputParam : 无
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 void AmqpMessage::QueueDeclare(string &queuename, int passive, int durable, int exclusive, int auto_delete)
 {
     int error = AMQP_RESPONSE_NONE;
@@ -232,8 +265,7 @@ void AmqpMessage::QueueBind(string &queuename, string &exchange, string &routing
 		SV_LOG("parameter error: queuename = %s, exchange = %s, routingKey = %s", queuename.c_str(), exchange.c_str(), routingKey.c_str());
 		throw -1;
 	}
-	//SV_LOG("bind queue : queue = %s, exchange = %s, routing_key = %s", queuename.c_str(), exchange.c_str(), routingKey.c_str());
-
+	
     if(m_conn == NULL)
     {
         SV_ERROR("can not bind queue, m_conn is null");

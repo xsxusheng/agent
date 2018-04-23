@@ -17,6 +17,8 @@ string AgentUtils::sm_rabbitmqConfFile("rabbitmq.properties");
 string AgentUtils::sm_systemConfigFile("SystemConfig.properties");
 string AgentUtils::sm_agentVersionFile("version.properties");
 string AgentUtils::sm_agentIP("");
+string AgentUtils::sm_agentIPV6("");
+string AgentUtils::sm_agentIP_FLAG("ipv4");
 string AgentUtils::sm_appMsgPort("8004");
 
 
@@ -76,6 +78,26 @@ string AgentUtils::GetLocalIP()
     return sm_agentIP;
 }
 
+string AgentUtils::GetLocalIPV6()
+{
+    return sm_agentIPV6;
+}
+
+bool AgentUtils::UseIPV6()
+{
+	if(sm_agentIP_FLAG.compare("ipv6") == 0)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+string AgentUtils::GetAppMsgPort()
+{
+	return sm_appMsgPort;
+}
+
 
 int AgentUtils::__LoadSystemConfig(string &fileName)
 {
@@ -89,10 +111,13 @@ int AgentUtils::__LoadSystemConfig(string &fileName)
 
     props.Load(fileName);
     sm_agentIP = props.GetValue("AGENT_IP");
+    sm_agentIPV6 = props.GetValue("AGENT_IPV6");
+    sm_agentIP_FLAG = props.GetValue("IP_FLAG");
     sm_appMsgPort = props.GetValue("APP_MSG_PORT");
-    if(sm_agentIP.empty() || sm_appMsgPort.empty())
+
+    if(sm_agentIP.empty() || sm_agentIP_FLAG.empty() || sm_appMsgPort.empty())
     {
-	SV_ERROR("get agent ip or app msg port error");
+	SV_ERROR("Get agent ip or ip_flag or app msg port error");
 	return -1;
     }
 

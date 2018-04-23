@@ -1,3 +1,13 @@
+/*************************************************************************
+* File Name : AppScriptAction.h
+* Author : xus103
+* Created Time : 2018年04月10日
+* Description : app 脚本处理
+* CopyRight : Copyright(c) 2000-2020 fiberhome
+* OtherInfo :
+* ModifyLog :
+ ************************************************************************/
+
 #ifndef _APPSCRIPTACTION_H_
 #define _APPSCRIPTACTION_H_
 #include <iostream>

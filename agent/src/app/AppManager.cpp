@@ -1,3 +1,12 @@
+/*************************************************************************
+* File Name : AppManager.cpp
+* Author : xus103
+* Created Time : 2018年04月10日
+* Description : app 管理
+* CopyRight : Copyright(c) 2000-2020 fiberhome
+* OtherInfo :
+* ModifyLog :
+ ************************************************************************/
 
 #include <exception>
 #include "AppManager.h"
@@ -10,8 +19,22 @@ CMutex AppManager::sm_appListLock;
 AppManager::AppManager(){}
 AppManager::~AppManager(){}
 
+
+
+/***********************************************************************
+ * FunctionName : __DoRun
+ * Author : xus103
+ * CreateDate : 2018/04/10
+ * Description : app 管理线程注册函数
+ * InputParam : 
+ * OutputParam :
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 void AppManager::__DoRun()
 {
+	SV_LOG("AppManager ---------- %d", GetThreadId());
 	SV_LOG("start app manager");
 	while(1)
 	{
@@ -39,12 +62,22 @@ void AppManager::__DoRun()
 			SV_ERROR("Exception: ");
 		}
 		
-		sleep(20);
+		sleep(1);
 	}
 }
 
 
-
+/***********************************************************************
+ * FunctionName : UpdateAppList
+ * Author : xus103
+ * CreateDate : 2018/04/10
+ * Description : 更新app管理列表
+ * InputParam : 
+ * OutputParam :
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 void AppManager::UpdateAppList()
 {
 	SV_LOG("update app list");
@@ -80,7 +113,6 @@ void AppManager::UpdateAppList()
 		it = apps.empty() ? apps.end() : apps.begin();
 		while(it != apps.end())
 		{
-			SV_LOG("%s  :  %s", (*iter).GetAppType().c_str(), it->first.c_str());
 			if((*iter).GetAppType().compare(it->first) == 0)
 			{
 				break;
@@ -89,15 +121,27 @@ void AppManager::UpdateAppList()
 		}
 		if(it == apps.end())
 		{
-			SV_LOG("erase %s", (*iter).GetAppType().c_str());
 			iter = m_appList.erase(iter);
 			continue;
 		}
 		iter++;
 	}
+
+	return;
 }
 
 
+/***********************************************************************
+ * FunctionName : UpdateAppList
+ * Author : xus103
+ * CreateDate : 2018/04/10
+ * Description : 更新app管理列表
+ * InputParam : 
+ * OutputParam :
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 void AppManager::UpdateAppStatus(App &app)
 {
 	AppScriptAction appScriptAction;
@@ -105,12 +149,12 @@ void AppManager::UpdateAppStatus(App &app)
 
 	if(AgentConstantDef::GetAppStrType(EnumDefineData::MW).compare(appType) == 0)
 	{
-		;
+		;//todo
 	}
 	else
 	{
 		appScriptAction.ViewAppStatus(appType);
-		if(appScriptAction.rtnValCode == AppScriptAction::SUCCESS ||
+		if(appScriptAction.rtnValCode == AppScriptAction::SUCCESS &&
 			appScriptAction.outContent.compare("started") == 0)
 		{
 			app.SetAppStatus(App::STARTED);
@@ -120,9 +164,24 @@ void AppManager::UpdateAppStatus(App &app)
 			app.SetAppStatus(App::STOPED);
 		}
 	}
+
+	return;
 }
 
 
+
+/***********************************************************************
+ * FunctionName : SetStartFlag
+ * Author : xus103
+ * CreateDate : 2018/04/10
+ * Description : 设置app启动标志
+ * InputParam : appType ： app类型
+ 				start : true表示app启动， false表示未启动
+ * OutputParam :
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 void AppManager::SetStartFlag(const string& appType, bool start)
 {
 	sm_appListLock.Lock();
@@ -131,12 +190,27 @@ void AppManager::SetStartFlag(const string& appType, bool start)
 		if(app.GetAppType().compare(appType) == 0)
 		{
 			app.SetIsStart(start);
-			//break;
+			break;
 		}
 	}
 	sm_appListLock.UnLock();
+
+	return;
 }
 
+
+
+/***********************************************************************
+ * FunctionName : GetAppVersion
+ * Author : xus103
+ * CreateDate : 2018/04/10
+ * Description : 获取app版本
+ * InputParam : appType ： app类型
+ * OutputParam :
+ * Return Value : 返回版本
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 string AppManager::GetAppVersion(string &appType)
 {
 	AppScriptAction appScriptAction;
@@ -150,6 +224,19 @@ string AppManager::GetAppVersion(string &appType)
 	return "unknown";
 }
 
+
+
+/***********************************************************************
+ * FunctionName : CheckAppDaemonStatus
+ * Author : xus103
+ * CreateDate : 2018/04/10
+ * Description : 检查app daemon状态
+ * InputParam : app ： app
+ * OutputParam :
+ * Return Value : 无
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 void AppManager::CheckAppDaemonStatus(App &app)
 {
 	AppScriptAction appScriptAction;
@@ -165,5 +252,6 @@ void AppManager::CheckAppDaemonStatus(App &app)
 		}
 	}
 	app.SetAppDaemonStatus(App::STOPED);
+	
 	return;
 }

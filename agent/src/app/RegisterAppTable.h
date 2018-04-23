@@ -1,3 +1,13 @@
+/*************************************************************************
+* File Name : RegisterAppTable.h
+* Author : xus103
+* Created Time : 2018年04月10日
+* Description : app 注册表管理
+* CopyRight : Copyright(c) 2000-2020 fiberhome
+* OtherInfo :
+* ModifyLog :
+ ************************************************************************/
+
 #ifndef _REGISTERAPPTABLE_H_
 #define _REGISTERAPPTABLE_H_
 

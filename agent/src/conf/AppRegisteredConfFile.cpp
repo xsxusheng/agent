@@ -21,6 +21,18 @@ extern "C" {
 AppRegisteredConfFile::AppRegisteredConfFile(){}
 AppRegisteredConfFile::~AppRegisteredConfFile(){}
 
+
+/***********************************************************************
+ * FunctionName : Init
+ * Author : xus103
+ * CreateDate : 2018/03/16
+ * Description : 初始化注册配置，系统启动后需要先执行初始化
+ * InputParam : 
+ * OutputParam :
+ * Return Value : 成功返回0， 失败返回-1
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 int AppRegisteredConfFile::Init()
 {	
 	list<App>* apps = NULL;
@@ -65,6 +77,18 @@ int AppRegisteredConfFile::Init()
 }
 
 
+
+/***********************************************************************
+ * FunctionName : ParseConfFile
+ * Author : xus103
+ * CreateDate : 2018/03/16
+ * Description : 解析注册配置
+ * InputParam : fileName ： 配置文件名
+ * OutputParam :
+ * Return Value : 成功返回app集合， 失败返回空
+ * Relation : 
+ * OtherInfo : 若返回的指针不为NULL, 则在外层需要delete
+ ***********************************************************************/
 list<App>* AppRegisteredConfFile::ParseConfFile(string &fileName)
 {
 	xmlDocPtr doc = NULL;
@@ -89,6 +113,7 @@ list<App>* AppRegisteredConfFile::ParseConfFile(string &fileName)
 	if(doc == NULL)
 	{
 		SV_ERROR("Document not parsed successfully. parse file: %s.", fileName.c_str());
+		delete apps;
 		return NULL;
 	}
 	
@@ -97,6 +122,7 @@ list<App>* AppRegisteredConfFile::ParseConfFile(string &fileName)
 	{
 		SV_ERROR("empty document. parse file: %s.", fileName.c_str());
 		xmlFreeDoc(doc);
+		delete apps;
 		return NULL;
 	}	
 	
@@ -104,6 +130,7 @@ list<App>* AppRegisteredConfFile::ParseConfFile(string &fileName)
 	{
 		SV_ERROR("document of the wrong type, roor node != config. parse file: %s.", fileName.c_str());
 		xmlFreeDoc(doc);
+		delete apps;
 		return NULL;
 	}
 
@@ -161,26 +188,52 @@ list<App>* AppRegisteredConfFile::ParseConfFile(string &fileName)
 	return apps;
 }
 
+
+
+/***********************************************************************
+ * FunctionName : GetAppRegisteredConfFile
+ * Author : xus103
+ * CreateDate : 2018/03/16
+ * Description : 获取最新注册的配置文件
+ * InputParam : path ： 配置文件所在的路径
+ * OutputParam :
+ * Return Value : 返回文件名
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 string AppRegisteredConfFile::GetAppRegisteredConfFile(string &path)
 {
-        string head("agent_apps_");
-        string tail(".xml");
+	string head("agent_apps_");
+	string tail(".xml");
 
-        if(path.empty())
-        {
-                return "agent_apps.xml";
-        }
+ 	if(path.empty())
+ 	{
+		return "agent_apps.xml";
+	}
 
-        vector<string> files = Common::GetAllFiles(path);
-        string alarmConfFile = Common::GetLatestFile(files, head, tail);
-        if(!alarmConfFile.empty())
-        {
-                return alarmConfFile;
-        }
+	vector<string> files = Common::GetAllFiles(path);
+	string alarmConfFile = Common::GetLatestFile(files, head, tail);
+ 	if(!alarmConfFile.empty())
+	{
+		return alarmConfFile;
+	}
 
-        return "agent_apps.xml";
+	return "agent_apps.xml";
 }
 
+
+/***********************************************************************
+ * FunctionName : Analyse
+ * Author : xus103
+ * CreateDate : 2018/03/16
+ * Description : 解析处理配置下发消息
+ * InputParam : config ： 下发要处理的配置消息
+ 				response ： 处理配置消息后返回的响应
+ * OutputParam :
+ * Return Value : 执行成返回0， 失败返回-1
+ * Relation : 
+ * OtherInfo : 无
+ ***********************************************************************/
 int AppRegisteredConfFile::Analyse(ConfigData &config, ConfigUpdateResponse &response)
 {
 	
@@ -190,45 +243,42 @@ int AppRegisteredConfFile::Analyse(ConfigData &config, ConfigUpdateResponse &res
 		SV_ERROR("get lock error");
 		return -1;
 	}
+	/* 文件保存路径 */
+  	string fileSavePath = config.filesavepath();
+  	/* 下发的新的配置文件 */
+	string newFileName = config.configfilename();
+   	/* 当前正在使用的配置文件 */
+	string usingFileName = GetAppRegisteredConfFile(fileSavePath);
 
-        /* 文件保存路径 */
-        string fileSavePath = config.filesavepath();
-        /* 下发的新的配置文件 */
-        string newFileName = config.configfilename();
-        /* 当前正在使用的配置文件 */
-        string usingFileName = GetAppRegisteredConfFile(fileSavePath);
-
-        if(!newFileName.compare(usingFileName))
-        {
-                string errMsg = "the same file name, newFileName:" + newFileName + ", usingFileName:" + usingFileName;
-                SV_ERROR("%s", errMsg.c_str());
-                response.set_status(CommonResponse::FAILED);
-                response.set_reason(errMsg);
-		SV_LOG("xxxxxxxxxxxqqqqqqqqqqsss");
+	if(!newFileName.compare(usingFileName))
+	{
+		string errMsg = "the same file name, newFileName:" + newFileName + ", usingFileName:" + usingFileName;
+		SV_ERROR("%s", errMsg.c_str());
+ 		response.set_status(CommonResponse::FAILED);
+		response.set_reason(errMsg);
 		ConfManager::appRegisteredConfFileRWLoc.UnLock();
-		SV_LOG("xxxxxxxxxxxqqqqqqqqqq");
-                return -1;
-        }
+		return -1;
+ 	}
 
 	string content = config.configfilecontent();
-        string fileNameWithPath = Common::GetAbsolutePathFileName(fileSavePath, newFileName);
-        if(!Common::SaveToFile(fileNameWithPath, content))
-        {
-                string errMsg = "fail to save file";
-                SV_ERROR("%s", errMsg.c_str());
-                response.set_status(CommonResponse::FAILED);
-                response.set_reason(errMsg);
+	string fileNameWithPath = Common::GetAbsolutePathFileName(fileSavePath, newFileName);
+	if(!Common::SaveToFile(fileNameWithPath, content))
+ 	{
+		string errMsg = "fail to save file";
+		SV_ERROR("%s", errMsg.c_str());
+		response.set_status(CommonResponse::FAILED);
+		response.set_reason(errMsg);
 		ConfManager::appRegisteredConfFileRWLoc.UnLock();
-		SV_LOG("xxxxxxxxxxx");
-                return -1;
-        }
 
-        string usingFileNameWithPath = Common::GetAbsolutePathFileName(fileSavePath, usingFileName);
-        if(!Common::DeleteFile(usingFileNameWithPath))
-        {
-                SV_WARN("delete file:%s error", usingFileName.c_str());
-        }
-        //SV_LOG("%s", config.configfilecontent().c_str());
+  		return -1;
+	}
+
+	string usingFileNameWithPath = Common::GetAbsolutePathFileName(fileSavePath, usingFileName);
+	if(!Common::DeleteFile(usingFileNameWithPath))
+	{
+		SV_WARN("delete file:%s error", usingFileName.c_str());
+	}
+ 	//SV_LOG("%s", config.configfilecontent().c_str());
 
 	list<App> *apps = ParseConfFile(fileNameWithPath);
 	if(apps == NULL)
@@ -248,10 +298,12 @@ int AppRegisteredConfFile::Analyse(ConfigData &config, ConfigUpdateResponse &res
 			}
 			iter++;
 		}
+
+		delete apps;
 	}
-	delete apps;
+
 	
 	ConfManager::appRegisteredConfFileRWLoc.UnLock();
-	SV_ERROR("unlock");
-        return 0;
+
+	return 0;
 }

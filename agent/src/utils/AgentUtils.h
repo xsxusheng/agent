@@ -5,6 +5,8 @@
 	> Created Time: 2018年02月13日 星期二 16时45分49秒
  ************************************************************************/
 
+#ifndef _AGENTUTILS_H_
+#define _AGENTUTILS_H_
 #include <string>
 using namespace std;
 
@@ -42,8 +44,19 @@ public:
 
     //获取本地IP
     static string GetLocalIP();
+
+    //获取本地IPV6
+    static string GetLocalIPV6();
+
+    //开启IPV6返回true, 否则返回false
+    static bool UseIPV6();
+
+    //获取APP消息端口
+    static string GetAppMsgPort();
+
     //获取文件名
     static string GetFileName();
+
     //获取当前时间
     static unsigned long long GetCurrentTimeMsec();
 
@@ -57,5 +70,9 @@ private:
     static string sm_agentVersionFile;
     static string sm_agentPath;
     static string sm_agentIP;
+    static string sm_agentIPV6;
+    static string sm_agentIP_FLAG;
     static string sm_appMsgPort;
 };
+
+#endif

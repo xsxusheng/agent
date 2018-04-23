@@ -1,15 +1,17 @@
-#ifndef _HOSTPROCESSINFO_H_
-#define _HOSTPROCESSINFO_H_
+#ifndef _HOSTREALPROCESSINFO_H_
+#define _HOSTREALPROCESSINFO_H_
 #include <iostream>
 #include "../proto/Msg.pb.h"
 #include "../proto/RealQueryHostStatus.pb.h"
+#include "../utils/ProtoBufPacker.h"
+#include "../utils/base64.h"
 using namespace com::fiberhome::fums::proto;
 
-class HostProcessInfo
+class HostRealProcessInfo
 {
 public:
-	void SendSystemInfo(RealQueryHostStatusData &data, Header::DataType type);
-	RealSystemInfo GetSystemInfo();
+	static void SendRealProcessInfo(RealQueryHostStatusData &data, Header::DataType type);
+	static RealProcessStatusInfo GetRealProcessInfo();
 };
 
 #endif

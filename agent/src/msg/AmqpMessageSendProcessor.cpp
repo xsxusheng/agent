@@ -83,7 +83,7 @@ void AmqpMessageSendProcessor::__DoRun()
 	{
 		if(msgQueue->empty())
 		{
-			usleep(1000);
+			usleep(500);
 			continue;		
 		}
 		Major major = msgQueue->front();

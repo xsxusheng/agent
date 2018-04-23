@@ -22,11 +22,15 @@ class AgentConfFile
 public:
 	AgentConfFile();
 	~AgentConfFile();
-	
+
+	/* 初始化 */
 	int Init();
+
+	/*获取agent配置文件 */
 	string GetAgentConfFile(string &path);
+
+	/* 解析注册配置 */
 	int Analyse(ConfigData &config, ConfigUpdateResponse &response);
-	
 };
 
 #endif
