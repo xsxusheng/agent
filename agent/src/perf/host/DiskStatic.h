@@ -65,7 +65,7 @@ private:
 
 
 
-#define DISK_STAT_SCRIPT "./diskstat.sh"
+#define DISK_STAT_SCRIPT "diskstat.sh"
 #define MAX_DISK_SPLIT_NUM 10
 #define DEF_DISK_STATIC_REPORT (15 * 60)
 

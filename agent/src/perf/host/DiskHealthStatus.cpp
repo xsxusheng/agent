@@ -10,7 +10,7 @@
 #include "HostStatus.h"
 #include "ScriptAction.h"
 #include "StringUtils.h"
-
+#include "AgentUtils.h"
 #include "AmqpReceiveBuilder.h"
 #include "AmqpMessageReceiveProcessor.h"
 #include "AmqpMessageSendProcessor.h"
@@ -74,7 +74,7 @@ void CDiskHealthStatus::SendToFums()
     string::size_type notSupport = 0;
     
     string result;
-    string scPath = DISK_HEALTH_SCRIPT1;
+    string scPath = AgentUtils::GetAgentScriptPath() + DISK_HEALTH_SCRIPT1;
     string diskName;
     string badDiskName;
 
@@ -89,19 +89,25 @@ void CDiskHealthStatus::SendToFums()
     }
 
     CString::Split(result, vDiskName, ";");
-    diskName = vDiskName[0];
-
-    pos = diskName.find("=");
-    if (pos != string::npos)
+    if (vDiskName.size() <= 0)
     {
-        diskName = diskName.substr(pos + 1);
+        SV_ERROR("Split script result %s failed...", result.c_str());
+        return;
     }
 
+    diskName = vDiskName[0];
+    pos = diskName.find("=");
+    if (pos == string::npos)
+    {
+        SV_ERROR("Find diskName %s error...", diskName.c_str());
+        return;
+    }
+    
+    diskName = diskName.substr(pos + 1);
     CString::Split(diskName, vDiskNames, "]");
     for (i = 0; i < vDiskNames.size(); i++)
     {
         diskName = vDiskNames[i];
-
         result.erase();
 
         string script(scPath + " " + diskName);

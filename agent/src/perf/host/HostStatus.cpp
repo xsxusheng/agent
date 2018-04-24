@@ -4,6 +4,7 @@
  *********************************************************/
 #include "HostStatus.h"
 #include "sv_log.h"
+#include "AgentUtils.h"
 #include "CpuUsage.h"
 #include "MemUsage.h"
 #include "SwapUsage.h"
@@ -445,9 +446,10 @@ CProcMem CHostStatus::GetProcMem(long pid)
 string CHostStatus::FetchSysDesc()
 {
     CSystemInfo os;
+    string agentVersion = AgentUtils::GetAgentVersion();
 
-    os.GetName();
-    return string("-os") + os.GetName() + " -arch" + os.GetArch() + " -desc" + os.GetDesc() + " -agent version:";
+    os.GetSystemInfo();
+    return string("-os") + os.GetName() + " -arch" + os.GetArch() + " -desc" + os.GetDesc() + " -agent version:" + agentVersion;
 }
 
 

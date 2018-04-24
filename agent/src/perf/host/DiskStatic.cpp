@@ -10,7 +10,7 @@
 #include "HostStatus.h"
 #include "ScriptAction.h"
 #include "StringUtils.h"
-
+#include "AgentUtils.h"
 #include "AmqpReceiveBuilder.h"
 #include "AmqpMessageReceiveProcessor.h"
 #include "AmqpMessageSendProcessor.h"
@@ -104,7 +104,7 @@ void CDiskStatic::Sample()
 {
     unsigned int i = 0;
     string strDisk;
-    string script(DISK_STAT_SCRIPT);
+    string script = AgentUtils::GetAgentScriptPath() + DISK_STAT_SCRIPT;
     vector<string> split;
     vector<string> diskSplit;
 

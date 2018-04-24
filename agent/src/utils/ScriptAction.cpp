@@ -6,16 +6,18 @@
 
 #include <cstring>
 #include <cstdarg>
-
+#include "sv_log.h"
 
 
 int CScriptAction::ExecuteScript(char *cmd)
 {
+    int ret = 0;
     FILE *fp = NULL;
     char cmdTimeout[MAX_SCRIPT_CMD_LEN] = {0};
 
     if (cmd == NULL)
     {
+        SV_ERROR("Input para is null.");
         return -1;
     }
 
@@ -24,10 +26,16 @@ int CScriptAction::ExecuteScript(char *cmd)
     fp = popen(cmdTimeout, "r");
     if (fp == NULL)
     {
+        SV_ERROR("Popen %s error.", cmdTimeout);
         return -1;
     }
 
-    pclose(fp);
+    ret = pclose(fp);
+    if (ret < 0)
+    {
+        SV_ERROR("Pclose %s error(%d).", cmdTimeout, errno);
+        return -1;
+    }
     return 0;
 }
 
@@ -35,6 +43,7 @@ int CScriptAction::ExecuteScript(char *cmd)
 
 int CScriptAction::ExecuteScript(string& cmd)
 {
+    int ret = 0;
     FILE *fp = NULL;
     char cmdTimeout[MAX_SCRIPT_CMD_LEN] = {0};
 
@@ -43,10 +52,16 @@ int CScriptAction::ExecuteScript(string& cmd)
     fp = popen(cmdTimeout, "r");
     if (fp == NULL)
     {
+        SV_ERROR("Popen %s error.", cmdTimeout);
         return -1;
     }
 
-    pclose(fp);
+    ret = pclose(fp);
+    if (ret < 0)
+    {
+        SV_ERROR("Pclose %s error(%d).", cmdTimeout, errno);
+        return -1;
+    }
     return 0;
 }
 
@@ -55,6 +70,7 @@ int CScriptAction::ExecuteScript(string& cmd)
 
 int CScriptAction::ExecuteScript(string& cmd, string& rlt)
 {
+    int ret = 0;
     FILE *fp = NULL;
     char line[MAX_SCRIPT_RESULT_LEN] = {0};
     char cmdTimeout[MAX_SCRIPT_CMD_LEN] = {0};
@@ -64,6 +80,7 @@ int CScriptAction::ExecuteScript(string& cmd, string& rlt)
     fp = popen(cmdTimeout, "r");
     if (fp == NULL)
     {
+        SV_ERROR("Popen %s error.", cmdTimeout);
         return -1;
     }
 
@@ -73,7 +90,12 @@ int CScriptAction::ExecuteScript(string& cmd, string& rlt)
         memset(line, 0, sizeof(line));
     }
 
-    pclose(fp);
+    ret = pclose(fp);
+    if (ret < 0)
+    {
+        SV_ERROR("Pclose %s error(%d).", cmdTimeout, errno);
+        return -1;
+    }
     return 0;
 }
 
@@ -87,6 +109,7 @@ int CScriptAction::ExecuteShellFormat(char* pShellName, char *szFormat, ...)
     
 	if (pShellName == NULL || szFormat == NULL)
 	{
+        SV_ERROR("Input para is null.");
 		return -1;
 	}
 	
@@ -94,7 +117,8 @@ int CScriptAction::ExecuteShellFormat(char* pShellName, char *szFormat, ...)
 	va_start(pvList, szFormat); 
 	actLen = vsprintf(szParam, szFormat, pvList);
 	if((actLen <= 0) || (actLen >= (int)sizeof(szParam)))
-	{	
+	{
+        SV_ERROR("vsprintf error...");
 		return -1;
 	}
 	va_end(pvList);
@@ -113,6 +137,7 @@ void CScriptAction::TrimCRLF(char *pStr)
 
     if (pStr == NULL)
     {
+        SV_ERROR("Input para is null.");
         return;
     }
 

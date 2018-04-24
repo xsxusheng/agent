@@ -11,8 +11,8 @@ using namespace std;
 
 
 
-#define DISK_HEALTH_SCRIPT1 "./diskinfo"
-#define DISK_HEALTH_SCRIPT2 "./diskinfo2"
+#define DISK_HEALTH_SCRIPT1 "diskinfo"
+#define DISK_HEALTH_SCRIPT2 "diskinfo2"
 
 #define DEF_DISK_HEALTH_REPORT (15 * 60)
 
