@@ -105,7 +105,9 @@ string ProtoBufPacker::PrintCfgStr(RealQueryHostStatusData::HostCfgTypeEnum type
 	{
 		case RealQueryHostStatusData::SYSTEM:
 		{
-			
+			RealSystemInfo info;
+			info.ParseFromString(base64_decode(data));
+			pStr.append(info.DebugString());
 			break;
 		}
 		case RealQueryHostStatusData::DISKSTATUS:
@@ -192,6 +194,7 @@ string ProtoBufPacker::PrintResponse(string &body)
 			CtrlSoftwareStatusResponse res;
 			res.ParseFromString(base64_decode(data));
 			pStr.append(res.DebugString());
+			SV_LOG("1111  %s",res.DebugString().c_str());
 			break;
 		}
 		case Header::REALQUERYHOSTCFG:

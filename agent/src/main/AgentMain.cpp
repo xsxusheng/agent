@@ -33,6 +33,7 @@ using namespace std;
 using namespace com::fiberhome::fums::proto;
 
 
+
 //日志系统初始化
 static int log_init()
 {
@@ -125,11 +126,22 @@ int AppMsgManagerInit()
 	return 0;
 }
 
+void agent_signal_handler(int signal)
+{
+	printf("cheked signal  -- %d --\n", signal);
+	AgentUtils::StopAgent();
+}
+
 
 //初始化agent
 static int InitAgent()
 {
     AgentUtils::Init();
+    
+    	signal(SIGINT, agent_signal_handler);
+	signal(SIGHUP, agent_signal_handler);
+	signal(SIGTERM, agent_signal_handler);
+	signal(SIGPIPE, SIG_IGN);   
 
     if(log_init() < 0)
     {
@@ -199,7 +211,7 @@ int main(int argc, char *argv[])
     std::cout << " =======  sleep ========= " << std::this_thread::get_id() << std::endl;
     sleep(5);
     */
-    while(1)
+    while(AgentUtils::GetAgentRunning())
     {
 	//heart test
     sleep(5);
@@ -211,6 +223,7 @@ int main(int argc, char *argv[])
 
     	AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
     }
+    sleep(1);
     //delete executor;
     return 0;
 }

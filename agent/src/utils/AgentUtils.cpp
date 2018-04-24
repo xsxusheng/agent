@@ -16,10 +16,13 @@ string AgentUtils::sm_logConfFile("log.conf");
 string AgentUtils::sm_rabbitmqConfFile("rabbitmq.properties");
 string AgentUtils::sm_systemConfigFile("SystemConfig.properties");
 string AgentUtils::sm_agentVersionFile("version.properties");
+string AgentUtils::sm_agentVersion("");
 string AgentUtils::sm_agentIP("");
 string AgentUtils::sm_agentIPV6("");
 string AgentUtils::sm_agentIP_FLAG("ipv4");
 string AgentUtils::sm_appMsgPort("8004");
+bool   AgentUtils::sm_agentRunning(true);
+CMutex AgentUtils::sm_lock;
 
 
 int AgentUtils::Init()
@@ -40,6 +43,24 @@ int AgentUtils::Init()
     }
 
     return 0;
+}
+
+bool AgentUtils::GetAgentRunning()
+{
+	bool running;
+
+	sm_lock.Lock();
+	running = sm_agentRunning;
+	sm_lock.UnLock();
+
+	return running;
+}
+
+void AgentUtils::StopAgent()
+{
+	sm_lock.Lock();
+        sm_agentRunning = false;
+        sm_lock.UnLock();
 }
 
 string AgentUtils::GetLogConfFile()
@@ -72,6 +93,10 @@ string AgentUtils::GetAgentPath()
 	return sm_agentPath;
 }
 
+string AgentUtils::GetAgentVersion()
+{
+    return sm_agentVersion;
+}
 
 string AgentUtils::GetLocalIP()
 {
@@ -126,6 +151,20 @@ int AgentUtils::__LoadSystemConfig(string &fileName)
 
 int AgentUtils::__LoadAgentVersion(string &fileName)
 {
+    if(fileName.empty())
+    {
+	SV_ERROR("get agent version error");
+	return -1;
+    }
+
+    Properties props;
+    props.Load(fileName);
+    sm_agentVersion = props.GetValue("version");
+    if(sm_agentVersion.empty())
+    {
+	SV_ERROR("ERROR : get agent version error, please check file : version.properties");
+    }   
+    printf("version : %s\n", sm_agentVersion.c_str());    
     return 0;
 }
 

@@ -8,6 +8,7 @@
 * ModifyLog :
  ************************************************************************/
 
+#include "../msg/AmqpMessageSendProcessor.h"
 #include "HostDiskStatusInfo.h"
 
 /***********************************************************************
@@ -29,6 +30,7 @@ void HostDiskStatusInfo::SendDiskStatusInfo(RealQueryHostStatusData &data, Heade
 	response.set_data(base64_encode(ProtoBufPacker::SerializeToArray<RealDiskStatusInfo>(GetDiskStatusInfo())));
 	string responseData = ProtoBufPacker::SerializeToArray<RealQueryHostStatusResponse>(response);
 	Major major = ProtoBufPacker::PackResponseData(responseData, type, data.uniqueid());
+	AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
 }
 
 
@@ -46,6 +48,7 @@ void HostDiskStatusInfo::SendDiskStatusInfo(RealQueryHostStatusData &data, Heade
 RealDiskStatusInfo HostDiskStatusInfo::GetDiskStatusInfo()
 {
 	RealDiskStatusInfo info;
+	
 
 	return info;
 }

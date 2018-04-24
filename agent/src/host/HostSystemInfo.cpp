@@ -8,6 +8,9 @@
 * ModifyLog :
  ************************************************************************/
 
+#include "../msg/AmqpMessageSendProcessor.h"
+#include "../perf/host/HostStatus.h"
+#include "../utils/AgentUtils.h"
 #include "HostSystemInfo.h"
 
 /***********************************************************************
@@ -29,6 +32,7 @@ void HostSystemInfo::SendSystemInfo(RealQueryHostStatusData &data, Header::DataT
 	response.set_data(base64_encode(ProtoBufPacker::SerializeToArray<RealSystemInfo>(GetSystemInfo())));
 	string responseData = ProtoBufPacker::SerializeToArray<RealQueryHostStatusResponse>(response);
 	Major major = ProtoBufPacker::PackResponseData(responseData, type, data.uniqueid());
+	AmqpMessageSendProcessor::GetInstance()->SendMessageToFums(major);
 }
 
 
@@ -46,27 +50,31 @@ void HostSystemInfo::SendSystemInfo(RealQueryHostStatusData &data, Header::DataT
 RealSystemInfo HostSystemInfo::GetSystemInfo()
 {
 	RealSystemInfo info;
-	/*
-	info.set_sysdescr();
-	info.set_cpuusage();
-	info.set_sysuptime();
-	info.set_cpufrequency();
-	info.set_loadaverage();
-	info.set_memorysize();
-	info.set_memorysize();
-	info.set_disktotalsize();
-	info.set_mainfsdisksize();
-	info.set_mainfsavailablesize();
-	info.set_mainfsdiskuseratio();
-	info.set_osname();
-	info.set_osvender();
-	info.set_cpunumbers();
-	info.set_tcpnum();
-	info.set_tcptotalinbound();
-	info.set_tcptotaloutbound();
-	info.set_cpumonokaryonusage();
-	info.set_swapmonokaryonusage();
-	*/
+	
+	info.set_sysdescr(CHostStatus::FetchSysDesc());
+	info.set_cpuusage(CHostStatus::FetchCpuUsage());
+	info.set_sysuptime(CHostStatus::FetchUpTime());
+	//info.set_cpufrequency(CHostStatus::FetchCpuFrequency());
+	info.set_cpufrequency(1.11);
+	info.set_loadaverage(CHostStatus::FetchCpuLoadAverage());
+	info.set_memorysize(CHostStatus::FetchMemorySize());
+	info.set_memoryusage(CHostStatus::FetchMemUsage());
+	info.set_disktotalsize(CHostStatus::FetchDiskTotal());
+	
+	info.set_mainfsdisksize(CHostStatus::FetchMainFSDiskSize());
+	info.set_mainfsavailablesize(CHostStatus::FetchDiskAvailableSize());
+	info.set_mainfsdiskuseratio(CHostStatus::GetDiskUsage());
+	info.set_osname("Linux");
+	info.set_osvender("1111");
+	info.set_osversion("iiiii");
+	info.set_cpunumbers(CHostStatus::FetchCpuNum());
+	info.set_tcpnum(CHostStatus::GetTcpEstablished());
+	info.set_tcptotalinbound(CHostStatus::FetchAllInputBandWidth());
+	info.set_tcptotaloutbound(CHostStatus::FetchAllOutputBandWidth());
+	info.set_cpumonokaryonusage(CHostStatus::FetchCpuMonokaryonUsage());
+	info.set_swapusage(CHostStatus::FetchSwapUsage());
+	info.set_agentversion(AgentUtils::GetAgentVersion());
+	
 	return info;
 }
 

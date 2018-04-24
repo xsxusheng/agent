@@ -8,12 +8,19 @@
 #ifndef _AGENTUTILS_H_
 #define _AGENTUTILS_H_
 #include <string>
+#include "Lock.h"
 using namespace std;
 
 class AgentUtils
 {
 public:
     static int Init();
+    
+    /* 获取agent当前状态 */
+    static bool GetAgentRunning();
+
+    /* 停止agent */
+    static void StopAgent();
 
     //获取日志配置文件
     static string GetLogConfFile();
@@ -68,11 +75,14 @@ private:
     static string sm_rabbitmqConfFile;
     static string sm_systemConfigFile;
     static string sm_agentVersionFile;
+    static string sm_agentVersion;
     static string sm_agentPath;
     static string sm_agentIP;
     static string sm_agentIPV6;
     static string sm_agentIP_FLAG;
     static string sm_appMsgPort;
+    static bool   sm_agentRunning;
+    static CMutex sm_lock;
 };
 
 #endif

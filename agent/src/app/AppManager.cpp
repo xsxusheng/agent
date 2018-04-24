@@ -62,7 +62,7 @@ void AppManager::__DoRun()
 			SV_ERROR("Exception: ");
 		}
 		
-		sleep(1);
+		sleep(300);
 	}
 }
 
