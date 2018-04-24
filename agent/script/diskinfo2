@@ -1,0 +1,22 @@
+#!/bin/sh
+#diskName:disk
+#function:fetch disk info,get return value is 0 or not check the "SMART Health Status" is OK or not
+
+diskName=$1
+if [ -d disk ]
+then
+rm -rf disk
+fi
+mkdir disk
+#smartctl -A $diskName > disk/smartinfo.txt
+smartctl -H $diskName > disk/smartinfo.txt
+if [ $? == "0" ]
+then
+        cat disk/smartinfo.txt | while read line
+        do
+                echo "$line &lt;br&gt;"
+        done
+else
+        exit 1
+fi
+exit 0
